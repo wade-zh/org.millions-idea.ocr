@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/mi-ocr-controller/mi-ocr-controller.iml" filepath="$PROJECT_DIR$/mi-ocr-controller/mi-ocr-controller.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mi-ocr-parent/mi-ocr-parent.iml" filepath="$PROJECT_DIR$/mi-ocr-parent/mi-ocr-parent.iml" />
+    </modules>
+  </component>
+</project>
