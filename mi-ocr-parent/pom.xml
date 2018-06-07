@@ -62,7 +62,7 @@
 
 
     <build>
-        <finalName>mi-ocr-captcha-flow</finalName>
+        <finalName>mi-ocr-captcha-service</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
