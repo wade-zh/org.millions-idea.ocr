@@ -5,6 +5,7 @@
       <list>
         <option value="$PROJECT_DIR$/mi-ocr-parent/pom.xml" />
         <option value="$PROJECT_DIR$/mi-ocr-controller/pom.xml" />
+        <option value="$PROJECT_DIR$/mi-ocr-utility/pom.xml" />
       </list>
     </option>
   </component>

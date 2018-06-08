@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/mi-ocr-biz/mi-ocr-biz.iml" filepath="$PROJECT_DIR$/mi-ocr-biz/mi-ocr-biz.iml" />
       <module fileurl="file://$PROJECT_DIR$/mi-ocr-controller/mi-ocr-controller.iml" filepath="$PROJECT_DIR$/mi-ocr-controller/mi-ocr-controller.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mi-ocr-entity/mi-ocr-entity.iml" filepath="$PROJECT_DIR$/mi-ocr-entity/mi-ocr-entity.iml" />
       <module fileurl="file://$PROJECT_DIR$/mi-ocr-parent/mi-ocr-parent.iml" filepath="$PROJECT_DIR$/mi-ocr-parent/mi-ocr-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mi-ocr-repository/mi-ocr-repository.iml" filepath="$PROJECT_DIR$/mi-ocr-repository/mi-ocr-repository.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mi-ocr-utility/mi-ocr-utility.iml" filepath="$PROJECT_DIR$/mi-ocr-utility/mi-ocr-utility.iml" />
     </modules>
   </component>
 </project>

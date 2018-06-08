@@ -1,2 +1,5 @@
 org\millions\idea\ocr\controller\MiOcrControllerApplication.class
+org\millions\idea\ocr\controller\config\RedisTemplateConfiguration.class
+org\millions\idea\ocr\controller\config\RabbitTemplateConfiguration.class
 org\millions\idea\ocr\controller\rest\CaptchaController.class
+org\millions\idea\ocr\controller\config\FileUploadConfiguration.class

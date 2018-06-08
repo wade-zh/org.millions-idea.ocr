@@ -9,6 +9,10 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>../mi-ocr-controller</module>
+        <module>../mi-ocr-utility</module>
+        <module>../mi-ocr-entity</module>
+        <module>../mi-ocr-biz</module>
+        <module>../mi-ocr-repository</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -30,7 +34,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.11</version>
+            <version>4.12</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -45,6 +49,12 @@
             <version>5.0.5.RELEASE</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+            <version>2.0.1.RELEASE</version>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
@@ -56,6 +66,20 @@
                 <version>2.0.2.RELEASE</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-amqp</artifactId>
+                <version>2.0.1.RELEASE</version>
+                <optional>false</optional>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-redis</artifactId>
+                <version>2.0.6.RELEASE</version>
+                <optional>false</optional>
             </dependency>
         </dependencies>
     </dependencyManagement>

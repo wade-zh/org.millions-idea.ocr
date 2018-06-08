@@ -6,12 +6,22 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="mi-ocr-biz" />
+        <module name="mi-ocr-common" />
         <module name="mi-ocr-controller" />
+        <module name="mi-ocr-entity" />
+        <module name="mi-ocr-repository" />
+        <module name="mi-ocr-utility" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="mi-ocr-biz" target="1.8" />
+      <module name="mi-ocr-common" target="1.8" />
       <module name="mi-ocr-controller" target="1.8" />
+      <module name="mi-ocr-entity" target="1.8" />
       <module name="mi-ocr-parent" target="1.8" />
+      <module name="mi-ocr-repository" target="1.8" />
+      <module name="mi-ocr-utility" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

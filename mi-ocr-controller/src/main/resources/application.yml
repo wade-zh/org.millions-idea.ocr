@@ -1,5 +1,5 @@
 server:
-  port: 0
+  port: 8000
 spring:
   thymeleaf:
     prefix: classpath:/templates/
@@ -8,7 +8,21 @@ spring:
     encoding: UTF-8
     cache: false
   application:
-    name: mi-ocr-service
+    name: mi-ocr-controller
+  rabbitmq:
+    addresses: 139.199.211.96
+    host: 139.199.211.96
+    port: 5672
+    username: wade
+    password: wade
+    virtual-host: /
+    template:
+      exchange: amq.topic
+      routing-key: captcha
+  redis:
+    host: 47.94.107.244
+    port: 6379
+    password: 123456
 eureka:
   client:
     service-url:

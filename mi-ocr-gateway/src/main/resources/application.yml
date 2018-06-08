@@ -18,13 +18,13 @@ eureka:
     initial-instance-info-replication-interval-seconds: 40
 zuul:
   routes:
-    mi-ocr-service:
+    mi-ocr-controller:
       path: /ocr-api/**
   ratelimit:
     enabled: true
     behind-proxy: true
     policy-list:
-      mi-ocr-service:
+      mi-ocr-controller:
         - limit: 10
           refresh-interval: 1
           type:
