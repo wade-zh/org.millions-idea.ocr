@@ -88,6 +88,9 @@
 			<artifactId>mi-ocr-utility</artifactId>
 			<version>1.0-SNAPSHOT</version>
 		</dependency>
+
+
+
 	</dependencies>
 
 

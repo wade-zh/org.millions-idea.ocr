@@ -9,22 +9,22 @@ package org.millions.idea.ocr.entity.common;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.stereotype.Component;
 
-@Configuration
-@PropertySource(value = "classpath:application-rabbitmq.properties")
-@ConfigurationProperties
+@ConfigurationProperties(value = "classpath:rabbitmq.properties")
 public class RabbitConfig {
-    @Value("${address}")
+    @Value("${rabbitmq.address}")
     private String address;
-    @Value("${username}")
+    @Value("${rabbitmq.username}")
     private String username;
-    @Value("${password}")
+    @Value("${rabbitmq.password}")
     private String password;
-    @Value("${queue}")
+    @Value("${rabbitmq.queue}")
     private String queue;
-    @Value("${exchange}")
+    @Value("${rabbitmq.exchange}")
     private String exchange;
 
     public String getAddress() {

@@ -22,4 +22,5 @@ public class MiOcrControllerApplication {
 		SpringApplication.run(MiOcrControllerApplication.class, args);
 
 	}
+
 }
