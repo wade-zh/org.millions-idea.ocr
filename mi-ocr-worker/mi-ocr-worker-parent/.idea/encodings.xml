@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/../mi-ocr-worker-app" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../mi-ocr-worker-model" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../mi-ocr-worker-repository" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../mi-ocr-worker-service" charset="UTF-8" />
+  </component>
+</project>
