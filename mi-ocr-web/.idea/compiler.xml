@@ -12,6 +12,11 @@
         <module name="mi-ocr-entity" />
         <module name="mi-ocr-repository" />
         <module name="mi-ocr-utility" />
+        <module name="mi-ocr-web-biz" />
+        <module name="mi-ocr-web-controller" />
+        <module name="mi-ocr-web-entity" />
+        <module name="mi-ocr-web-repository" />
+        <module name="mi-ocr-web-utility" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -22,6 +27,12 @@
       <module name="mi-ocr-parent" target="1.8" />
       <module name="mi-ocr-repository" target="1.8" />
       <module name="mi-ocr-utility" target="1.8" />
+      <module name="mi-ocr-web-biz" target="1.8" />
+      <module name="mi-ocr-web-controller" target="1.8" />
+      <module name="mi-ocr-web-entity" target="1.8" />
+      <module name="mi-ocr-web-parent" target="1.8" />
+      <module name="mi-ocr-web-repository" target="1.8" />
+      <module name="mi-ocr-web-utility" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
