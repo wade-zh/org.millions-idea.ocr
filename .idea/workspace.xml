@@ -2,64 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4f296295-0fb9-413c-9291-0abe83067469" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/mi-ocr-controller/src/main/resources/rabbitmq.properties" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/mi-ocr-controller/src/main/resources/config/rabbitmq.properties" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/mi-ocr-biz/mi-ocr-biz.iml" afterPath="$PROJECT_DIR$/mi-ocr-biz/mi-ocr-biz.iml" />
-      <change beforePath="$PROJECT_DIR$/mi-ocr-biz/pom.xml" afterPath="$PROJECT_DIR$/mi-ocr-biz/pom.xml" />
-      <change beforePath="$PROJECT_DIR$/mi-ocr-controller/.gitignore" afterPath="$PROJECT_DIR$/mi-ocr-controller/.gitignore" />
-      <change beforePath="$PROJECT_DIR$/mi-ocr-controller/.mvn/wrapper/maven-wrapper.properties" afterPath="$PROJECT_DIR$/mi-ocr-controller/.mvn/wrapper/maven-wrapper.properties" />
       <change beforePath="$PROJECT_DIR$/mi-ocr-controller/mi-ocr-controller.iml" afterPath="$PROJECT_DIR$/mi-ocr-controller/mi-ocr-controller.iml" />
-      <change beforePath="$PROJECT_DIR$/mi-ocr-controller/mvnw" afterPath="$PROJECT_DIR$/mi-ocr-controller/mvnw" />
-      <change beforePath="$PROJECT_DIR$/mi-ocr-controller/mvnw.cmd" afterPath="$PROJECT_DIR$/mi-ocr-controller/mvnw.cmd" />
-      <change beforePath="$PROJECT_DIR$/mi-ocr-controller/pom.xml" afterPath="$PROJECT_DIR$/mi-ocr-controller/pom.xml" />
       <change beforePath="$PROJECT_DIR$/mi-ocr-controller/src/main/java/org/millions/idea/ocr/controller/MiOcrControllerApplication.java" afterPath="$PROJECT_DIR$/mi-ocr-controller/src/main/java/org/millions/idea/ocr/controller/MiOcrControllerApplication.java" />
-      <change beforePath="$PROJECT_DIR$/mi-ocr-controller/src/main/java/org/millions/idea/ocr/controller/config/RabbitTemplateConfiguration.java" afterPath="$PROJECT_DIR$/mi-ocr-controller/src/main/java/org/millions/idea/ocr/controller/config/RabbitTemplateConfiguration.java" />
+      <change beforePath="$PROJECT_DIR$/mi-ocr-controller/src/main/resources/rabbitmq.properties" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/mi-ocr-controller/target/classes/org/millions/idea/ocr/controller/MiOcrControllerApplication.class" afterPath="$PROJECT_DIR$/mi-ocr-controller/target/classes/org/millions/idea/ocr/controller/MiOcrControllerApplication.class" />
       <change beforePath="$PROJECT_DIR$/mi-ocr-controller/target/maven-archiver/pom.properties" afterPath="$PROJECT_DIR$/mi-ocr-controller/target/maven-archiver/pom.properties" />
       <change beforePath="$PROJECT_DIR$/mi-ocr-controller/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="$PROJECT_DIR$/mi-ocr-controller/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" />
-      <change beforePath="$PROJECT_DIR$/mi-ocr-controller/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="$PROJECT_DIR$/mi-ocr-controller/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" />
       <change beforePath="$PROJECT_DIR$/mi-ocr-controller/target/mi-ocr-captcha-service.jar" afterPath="$PROJECT_DIR$/mi-ocr-controller/target/mi-ocr-captcha-service.jar" />
       <change beforePath="$PROJECT_DIR$/mi-ocr-controller/target/mi-ocr-captcha-service.jar.original" afterPath="$PROJECT_DIR$/mi-ocr-controller/target/mi-ocr-captcha-service.jar.original" />
-      <change beforePath="$PROJECT_DIR$/mi-ocr-entity/mi-ocr-entity.iml" afterPath="$PROJECT_DIR$/mi-ocr-entity/mi-ocr-entity.iml" />
-      <change beforePath="$PROJECT_DIR$/mi-ocr-entity/pom.xml" afterPath="$PROJECT_DIR$/mi-ocr-entity/pom.xml" />
       <change beforePath="$PROJECT_DIR$/mi-ocr-entity/src/main/java/org/millions/idea/ocr/entity/common/RabbitConfig.java" afterPath="$PROJECT_DIR$/mi-ocr-entity/src/main/java/org/millions/idea/ocr/entity/common/RabbitConfig.java" />
-      <change beforePath="$PROJECT_DIR$/mi-ocr-entity/src/main/resources/application-rabbitmq.properties" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/mi-ocr-entity/target/classes/application-rabbitmq.properties" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/mi-ocr-entity/target/classes/org/millions/idea/ocr/entity/common/RabbitConfig.class" afterPath="" />
       <change beforePath="$PROJECT_DIR$/mi-ocr-entity/target/maven-archiver/pom.properties" afterPath="$PROJECT_DIR$/mi-ocr-entity/target/maven-archiver/pom.properties" />
       <change beforePath="$PROJECT_DIR$/mi-ocr-entity/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="$PROJECT_DIR$/mi-ocr-entity/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" />
       <change beforePath="$PROJECT_DIR$/mi-ocr-entity/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="$PROJECT_DIR$/mi-ocr-entity/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" />
       <change beforePath="$PROJECT_DIR$/mi-ocr-entity/target/mi-ocr-captcha-service.jar" afterPath="$PROJECT_DIR$/mi-ocr-entity/target/mi-ocr-captcha-service.jar" />
-      <change beforePath="$PROJECT_DIR$/mi-ocr-eureka-server/.gitignore" afterPath="$PROJECT_DIR$/mi-ocr-eureka-server/.gitignore" />
-      <change beforePath="$PROJECT_DIR$/mi-ocr-eureka-server/.mvn/wrapper/maven-wrapper.properties" afterPath="$PROJECT_DIR$/mi-ocr-eureka-server/.mvn/wrapper/maven-wrapper.properties" />
-      <change beforePath="$PROJECT_DIR$/mi-ocr-eureka-server/mvnw" afterPath="$PROJECT_DIR$/mi-ocr-eureka-server/mvnw" />
-      <change beforePath="$PROJECT_DIR$/mi-ocr-eureka-server/mvnw.cmd" afterPath="$PROJECT_DIR$/mi-ocr-eureka-server/mvnw.cmd" />
-      <change beforePath="$PROJECT_DIR$/mi-ocr-eureka-server/pom.xml" afterPath="$PROJECT_DIR$/mi-ocr-eureka-server/pom.xml" />
-      <change beforePath="$PROJECT_DIR$/mi-ocr-eureka-server/src/main/java/org/millionsidea/eureka/server/MiOcrEurekaServerApplication.java" afterPath="$PROJECT_DIR$/mi-ocr-eureka-server/src/main/java/org/millionsidea/eureka/server/MiOcrEurekaServerApplication.java" />
-      <change beforePath="$PROJECT_DIR$/mi-ocr-eureka-server/src/test/java/org/millionsidea/eureka/server/MiOcrEurekaServerApplicationTests.java" afterPath="$PROJECT_DIR$/mi-ocr-eureka-server/src/test/java/org/millionsidea/eureka/server/MiOcrEurekaServerApplicationTests.java" />
-      <change beforePath="$PROJECT_DIR$/mi-ocr-gateway/.gitignore" afterPath="$PROJECT_DIR$/mi-ocr-gateway/.gitignore" />
-      <change beforePath="$PROJECT_DIR$/mi-ocr-gateway/.mvn/wrapper/maven-wrapper.properties" afterPath="$PROJECT_DIR$/mi-ocr-gateway/.mvn/wrapper/maven-wrapper.properties" />
-      <change beforePath="$PROJECT_DIR$/mi-ocr-gateway/mi-ocr-gateway.iml" afterPath="$PROJECT_DIR$/mi-ocr-gateway/mi-ocr-gateway.iml" />
-      <change beforePath="$PROJECT_DIR$/mi-ocr-gateway/mvnw" afterPath="$PROJECT_DIR$/mi-ocr-gateway/mvnw" />
-      <change beforePath="$PROJECT_DIR$/mi-ocr-gateway/mvnw.cmd" afterPath="$PROJECT_DIR$/mi-ocr-gateway/mvnw.cmd" />
-      <change beforePath="$PROJECT_DIR$/mi-ocr-gateway/pom.xml" afterPath="$PROJECT_DIR$/mi-ocr-gateway/pom.xml" />
-      <change beforePath="$PROJECT_DIR$/mi-ocr-gateway/src/main/java/org/millions/idea/ocr/gateway/MiOcrGatewayApplication.java" afterPath="$PROJECT_DIR$/mi-ocr-gateway/src/main/java/org/millions/idea/ocr/gateway/MiOcrGatewayApplication.java" />
-      <change beforePath="$PROJECT_DIR$/mi-ocr-gateway/src/test/java/org/millions/idea/ocr/gateway/MiOcrGatewayApplicationTests.java" afterPath="$PROJECT_DIR$/mi-ocr-gateway/src/test/java/org/millions/idea/ocr/gateway/MiOcrGatewayApplicationTests.java" />
-      <change beforePath="$PROJECT_DIR$/mi-ocr-parent/mi-ocr-parent.iml" afterPath="$PROJECT_DIR$/mi-ocr-parent/mi-ocr-parent.iml" />
-      <change beforePath="$PROJECT_DIR$/mi-ocr-parent/pom.xml" afterPath="$PROJECT_DIR$/mi-ocr-parent/pom.xml" />
-      <change beforePath="$PROJECT_DIR$/mi-ocr-repository/mi-ocr-repository.iml" afterPath="$PROJECT_DIR$/mi-ocr-repository/mi-ocr-repository.iml" />
-      <change beforePath="$PROJECT_DIR$/mi-ocr-repository/pom.xml" afterPath="$PROJECT_DIR$/mi-ocr-repository/pom.xml" />
-      <change beforePath="$PROJECT_DIR$/mi-ocr-utility/mi-ocr-utility.iml" afterPath="$PROJECT_DIR$/mi-ocr-utility/mi-ocr-utility.iml" />
-      <change beforePath="$PROJECT_DIR$/mi-ocr-utility/pom.xml" afterPath="$PROJECT_DIR$/mi-ocr-utility/pom.xml" />
-      <change beforePath="$PROJECT_DIR$/mi-ocr-utility/src/main/java/org/millions/idea/ocr/utility/queue/RabbitUtil.java" afterPath="$PROJECT_DIR$/mi-ocr-utility/src/main/java/org/millions/idea/ocr/utility/queue/RabbitUtil.java" />
-      <change beforePath="$PROJECT_DIR$/mi-ocr-utility/target/classes/org/millions/idea/ocr/utility/json/JsonUtil.class" afterPath="" />
       <change beforePath="$PROJECT_DIR$/mi-ocr-utility/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="$PROJECT_DIR$/mi-ocr-utility/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" />
-      <change beforePath="$PROJECT_DIR$/mi-ocr-utility/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="$PROJECT_DIR$/mi-ocr-utility/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" />
     </list>
     <ignored path="$PROJECT_DIR$/mi-ocr-parent/target/" />
     <ignored path="$PROJECT_DIR$/mi-ocr-controller/target/" />
@@ -77,23 +35,33 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="RabbitConfig.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="RabbitConfig.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mi-ocr-entity/src/main/java/org/millions/idea/ocr/entity/common/RabbitConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="513">
-              <caret line="25" column="25" lean-forward="true" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
+            <state relative-caret-position="107">
+              <caret line="22" column="28" lean-forward="true" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#960#961#0" expanded="true" />
-                <element signature="e#990#991#0" expanded="true" />
+                <element signature="e#845#846#0" expanded="true" />
+                <element signature="e#875#876#0" expanded="true" />
+                <element signature="e#921#922#0" expanded="true" />
+                <element signature="e#959#960#0" expanded="true" />
+                <element signature="e#994#995#0" expanded="true" />
                 <element signature="e#1025#1026#0" expanded="true" />
-                <element signature="e#1056#1057#0" expanded="true" />
-                <element signature="e#1091#1092#0" expanded="true" />
-                <element signature="e#1122#1123#0" expanded="true" />
-                <element signature="e#1154#1155#0" expanded="true" />
-                <element signature="e#1182#1183#0" expanded="true" />
-                <element signature="e#1217#1218#0" expanded="true" />
-                <element signature="e#1248#1249#0" expanded="true" />
+                <element signature="e#1073#1074#0" expanded="true" />
+                <element signature="e#1113#1114#0" expanded="true" />
+                <element signature="e#1148#1149#0" expanded="true" />
+                <element signature="e#1179#1180#0" expanded="true" />
+                <element signature="e#1227#1228#0" expanded="true" />
+                <element signature="e#1267#1268#0" expanded="true" />
+                <element signature="e#1299#1300#0" expanded="true" />
+                <element signature="e#1327#1328#0" expanded="true" />
+                <element signature="e#1369#1370#0" expanded="true" />
+                <element signature="e#1403#1404#0" expanded="true" />
+                <element signature="e#1438#1439#0" expanded="true" />
+                <element signature="e#1469#1470#0" expanded="true" />
+                <element signature="e#1517#1518#0" expanded="true" />
+                <element signature="e#1557#1558#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -102,8 +70,63 @@
       <file leaf-file-name="RabbitUtil.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mi-ocr-utility/src/main/java/org/millions/idea/ocr/utility/queue/RabbitUtil.java">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="162">
+              <caret line="15" column="25" lean-forward="true" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
+              <folding>
+                <element signature="e#572#573#0" expanded="true" />
+                <element signature="e#651#652#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="rabbitmq.properties" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/mi-ocr-controller/src/main/resources/config/rabbitmq.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="108">
+              <caret line="4" column="33" lean-forward="false" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RabbitTemplateConfiguration.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mi-ocr-controller/src/main/java/org/millions/idea/ocr/controller/config/RabbitTemplateConfiguration.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="945">
+              <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+              <folding>
+                <element signature="e#1800#1801#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="application.yml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mi-ocr-controller/src/main/resources/application.yml">
+          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="189">
-              <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+              <caret line="19" column="25" lean-forward="false" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MiOcrControllerApplication.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mi-ocr-controller/src/main/java/org/millions/idea/ocr/controller/MiOcrControllerApplication.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="324">
+              <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CaptchaController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mi-ocr-controller/src/main/java/org/millions/idea/ocr/controller/rest/CaptchaController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="294">
+              <caret line="27" column="20" lean-forward="false" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -171,19 +194,21 @@
         <option value="$PROJECT_DIR$/mi-ocr-utility/src/main/java/org/millions/idea/ocr/utility/Queue/RabbitUtil.java" />
         <option value="$PROJECT_DIR$/mi-ocr-utility/src/test/java/org/millions/idea/ocr/utility/Queue/RabbitUtilTest.java" />
         <option value="$PROJECT_DIR$/mi-ocr-utility/src/test/java/org/millions/idea/ocr/utility/queue/RabbitUtilTest.java" />
-        <option value="$PROJECT_DIR$/mi-ocr-controller/src/main/resources/application.yml" />
         <option value="$PROJECT_DIR$/mi-ocr-utility/pom.xml" />
         <option value="$PROJECT_DIR$/mi-ocr-controller/src/main/java/org/millions/idea/ocr/controller/rest/CaptchaController.java" />
         <option value="$PROJECT_DIR$/mi-ocr-controller/src/main/java/org/millions/idea/ocr/controller/config/RabbitTemplateConfiguration.java" />
         <option value="$PROJECT_DIR$/mi-ocr-utility/src/main/java/org/millions/idea/ocr/utility/queue/RabbitUtil.java" />
         <option value="$PROJECT_DIR$/mi-ocr-entity/src/main/resources/application-rabbitmq.properties" />
         <option value="$PROJECT_DIR$/mi-ocr-controller/src/main/resources/application-rabbitmq.properties" />
-        <option value="$PROJECT_DIR$/mi-ocr-controller/src/main/java/org/millions/idea/ocr/controller/MiOcrControllerApplication.java" />
-        <option value="$PROJECT_DIR$/mi-ocr-parent/pom.xml" />
         <option value="$PROJECT_DIR$/mi-ocr-controller/pom.xml" />
         <option value="$PROJECT_DIR$/mi-ocr-entity/pom.xml" />
         <option value="$PROJECT_DIR$/mi-ocr-controller/src/main/java/org/millions/idea/ocr/controller/config/RabbitConfig.java" />
+        <option value="$PROJECT_DIR$/mi-ocr-parent/pom.xml" />
+        <option value="$PROJECT_DIR$/mi-ocr-controller/src/main/resources/application.yml" />
+        <option value="$PROJECT_DIR$/mi-ocr-controller/src/main/java/org/millions/idea/ocr/controller/MiOcrControllerApplication.java" />
+        <option value="$PROJECT_DIR$/mi-ocr-controller/src/main/resources/rabbitmq.yml" />
         <option value="$PROJECT_DIR$/mi-ocr-entity/src/main/java/org/millions/idea/ocr/entity/common/RabbitConfig.java" />
+        <option value="$PROJECT_DIR$/mi-ocr-controller/src/main/resources/config/rabbitmq.properties" />
       </list>
     </option>
   </component>
@@ -206,11 +231,6 @@
         <path>
           <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
           <item name="mi-ocr-controller" type="9519ce18:MavenProjectsStructure$ProjectNode" />
-        </path>
-        <path>
-          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="mi-ocr-controller" type="9519ce18:MavenProjectsStructure$ProjectNode" />
-          <item name="Dependencies" type="f4be9f2a:MavenProjectsStructure$DependenciesNode" />
         </path>
       </expand>
       <select />
@@ -240,55 +260,10 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
-            <path>
-              <item name="org.millions-idea.ocr" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mi-ocr-controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="org.millions-idea.ocr" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mi-ocr-controller" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="org.millions-idea.ocr" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mi-ocr-controller" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="org.millions-idea.ocr" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mi-ocr-controller" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="org.millions-idea.ocr" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mi-ocr-controller" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="org.millions-idea.ocr" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mi-ocr-controller" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="org.millions-idea.ocr" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mi-ocr-controller" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
             <path>
               <item name="org.millions-idea.ocr" type="b2602c69:ProjectViewProjectNode" />
               <item name="mi-ocr-entity" type="462c0819:PsiDirectoryNode" />
@@ -338,60 +313,10 @@
               <item name="common" type="462c0819:PsiDirectoryNode" />
               <item name="RabbitConfig" type="1a9f42e2:ClassTreeNode" />
             </path>
-            <path>
-              <item name="org.millions-idea.ocr" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mi-ocr-utility" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="org.millions-idea.ocr" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mi-ocr-utility" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="org.millions-idea.ocr" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mi-ocr-utility" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="org.millions-idea.ocr" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mi-ocr-utility" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="org.millions-idea.ocr" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mi-ocr-utility" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="utility" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="org.millions-idea.ocr" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mi-ocr-utility" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="utility" type="462c0819:PsiDirectoryNode" />
-              <item name="queue" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="org.millions-idea.ocr" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mi-ocr-utility" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="utility" type="462c0819:PsiDirectoryNode" />
-              <item name="queue" type="462c0819:PsiDirectoryNode" />
-              <item name="RabbitUtil" type="1a9f42e2:ClassTreeNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="PackagesPane">
         <subPane>
           <expand>
@@ -413,7 +338,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Facets" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/mi-ocr-controller/src/main/java/org/millionsidea/ocr/controller" />
@@ -423,8 +348,8 @@
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth2" value="75" />
     <property name="RequestMappingsPanelOrder2" value="2" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/mi-ocr-gateway" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/mi-ocr-controller/src/main/resources/rabbitmq.yml" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
   </component>
@@ -432,21 +357,21 @@
     <key name="CreateTestDialog.RecentsKey">
       <recent name="org.millions.idea.ocr.utility.Queue" />
     </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="F:\repository\org.millons-idea.ocr\mi-ocr-controller\src\main\resources" />
-    </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\repository\org.millions-idea.ocr\mi-ocr-controller\src\main\resources\config" />
       <recent name="F:\repository\org.millions-idea.ocr\mi-ocr-controller\src\main\resources" />
       <recent name="F:\repository\org.millions-idea.ocr\mi-ocr-entity\src\main\resources" />
       <recent name="F:\repository\org.millons-idea.ocr\mi-ocr-entity\src\main\resources" />
       <recent name="F:\repository\org.millons-idea.ocr\mi-ocr-controller\src\main\resources" />
-      <recent name="F:\repository\org.millons-idea.ocr\mi-ocr-utility\src\main\resources" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\repository\org.millons-idea.ocr\mi-ocr-controller\src\main\resources" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -682,6 +607,7 @@
       <workItem from="1528378775116" duration="3720000" />
       <workItem from="1528449603166" duration="14479000" />
       <workItem from="1528812852918" duration="3036000" />
+      <workItem from="1528886191541" duration="4199000" />
     </task>
     <servers />
   </component>
@@ -718,40 +644,39 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30234000" />
+    <option name="totallyTimeSpent" value="34433000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5021322" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5021322" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23560767" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="LuaCheck" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.4978678" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.4978678" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30627707" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30627707" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18283582" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18496802" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39935064" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39935064" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -762,32 +687,29 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="8" />
+      <option name="time" value="10" />
     </breakpoint-manager>
     <watches-manager />
+  </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="evaluateCodeFragment">
+      <expression>
+        <expression-string>rabbitConfig.getQueue()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+    </expressions>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/mi-ocr-entity/src/main/java/org/millions/idea/ocr/entity/common/RabbitConfig.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#960#961#0" expanded="true" />
-            <element signature="e#990#991#0" expanded="true" />
-            <element signature="e#1025#1026#0" expanded="true" />
-            <element signature="e#1056#1057#0" expanded="true" />
-            <element signature="e#1091#1092#0" expanded="true" />
-            <element signature="e#1122#1123#0" expanded="true" />
-            <element signature="e#1154#1155#0" expanded="true" />
-            <element signature="e#1182#1183#0" expanded="true" />
-            <element signature="e#1217#1218#0" expanded="true" />
-            <element signature="e#1248#1249#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mi-ocr-controller/src/main/resources/rabbitmq.properties">
+    <entry file="file://$PROJECT_DIR$/mi-ocr-controller/src/main/resources/config/rabbitmq.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
           <caret line="2" column="8" lean-forward="false" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
@@ -941,12 +863,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="81">
           <caret line="9" column="23" lean-forward="false" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="23" />
-          <folding>
-            <element signature="e#315#316#0" expanded="false" />
-            <element signature="e#343#344#0" expanded="false" />
-            <element signature="e#385#386#0" expanded="false" />
-            <element signature="e#419#420#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1026,23 +942,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mi-ocr-utility/src/test/java/org/millions/idea/ocr/utility/queue/RabbitUtilTest.java" />
-    <entry file="file://$PROJECT_DIR$/mi-ocr-controller/src/main/resources/application.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="1" column="12" lean-forward="false" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mi-ocr-controller/src/main/java/org/millions/idea/ocr/controller/config/RabbitAutoConfiguration.java" />
-    <entry file="file://$PROJECT_DIR$/mi-ocr-utility/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="50" column="20" lean-forward="true" selection-start-line="50" selection-start-column="20" selection-end-line="50" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://E:/java/1u8/src.zip!/java/lang/String.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="197">
@@ -1058,14 +958,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mi-ocr-controller/src/main/java/org/millions/idea/ocr/controller/rest/CaptchaController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="27" column="22" lean-forward="false" selection-start-line="27" selection-start-column="22" selection-end-line="27" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/amqp/spring-rabbit/2.0.3.RELEASE/spring-rabbit-2.0.3.RELEASE.jar!/org/springframework/amqp/rabbit/connection/CachingConnectionFactory.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1270">
@@ -1073,18 +965,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mi-ocr-controller/src/main/resources/rabbitmq.properties">
+    <entry file="file://$PROJECT_DIR$/mi-ocr-controller/src/main/resources/config/rabbitmq.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mi-ocr-controller/src/main/java/org/millions/idea/ocr/controller/config/RabbitTemplateConfiguration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="28" column="38" lean-forward="false" selection-start-line="27" selection-start-column="3" selection-end-line="28" selection-end-column="38" />
           <folding />
         </state>
       </provider>
@@ -1097,71 +981,126 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mi-ocr-controller/src/main/java/org/millions/idea/ocr/controller/MiOcrControllerApplication.java">
+    <entry file="file://$PROJECT_DIR$/mi-ocr-entity/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+        <state relative-caret-position="216">
+          <caret line="8" column="40" lean-forward="false" selection-start-line="8" selection-start-column="40" selection-end-line="8" selection-end-column="40" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mi-ocr-controller/src/main/resources/rabbitmq.properties">
+    <entry file="file://$PROJECT_DIR$/mi-ocr-utility/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+        <state relative-caret-position="102">
+          <caret line="50" column="20" lean-forward="false" selection-start-line="50" selection-start-column="20" selection-end-line="50" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mi-ocr-parent/pom.xml">
+    <entry file="file://$PROJECT_DIR$/mi-ocr-controller/mvnw.cmd">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="90" column="25" lean-forward="false" selection-start-line="85" selection-start-column="11" selection-end-line="90" selection-end-column="25" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mi-ocr-controller/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
+        <state relative-caret-position="1590">
           <caret line="92" column="0" lean-forward="false" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mi-ocr-entity/pom.xml">
+    <entry file="file://$PROJECT_DIR$/mi-ocr-parent/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+        <state relative-caret-position="344">
+          <caret line="97" column="41" lean-forward="false" selection-start-line="97" selection-start-column="19" selection-end-line="97" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mi-ocr-controller/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="19" column="25" lean-forward="false" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mi-ocr-controller/src/main/java/org/millions/idea/ocr/controller/config/RabbitTemplateConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="945">
+          <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+          <folding>
+            <element signature="e#1800#1801#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mi-ocr-controller/src/main/java/org/millions/idea/ocr/controller/MiOcrControllerApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mi-ocr-controller/src/main/java/org/millions/idea/ocr/controller/rest/CaptchaController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="27" column="20" lean-forward="false" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mi-ocr-utility/src/main/java/org/millions/idea/ocr/utility/queue/RabbitUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="162">
+          <caret line="15" column="25" lean-forward="true" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
+          <folding>
+            <element signature="e#572#573#0" expanded="true" />
+            <element signature="e#651#652#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mi-ocr-entity/src/main/java/org/millions/idea/ocr/entity/common/RabbitConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="25" column="25" lean-forward="true" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
+        <state relative-caret-position="107">
+          <caret line="22" column="28" lean-forward="true" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#960#961#0" expanded="true" />
-            <element signature="e#990#991#0" expanded="true" />
+            <element signature="e#845#846#0" expanded="true" />
+            <element signature="e#875#876#0" expanded="true" />
+            <element signature="e#921#922#0" expanded="true" />
+            <element signature="e#959#960#0" expanded="true" />
+            <element signature="e#994#995#0" expanded="true" />
             <element signature="e#1025#1026#0" expanded="true" />
-            <element signature="e#1056#1057#0" expanded="true" />
-            <element signature="e#1091#1092#0" expanded="true" />
-            <element signature="e#1122#1123#0" expanded="true" />
-            <element signature="e#1154#1155#0" expanded="true" />
-            <element signature="e#1182#1183#0" expanded="true" />
-            <element signature="e#1217#1218#0" expanded="true" />
-            <element signature="e#1248#1249#0" expanded="true" />
+            <element signature="e#1073#1074#0" expanded="true" />
+            <element signature="e#1113#1114#0" expanded="true" />
+            <element signature="e#1148#1149#0" expanded="true" />
+            <element signature="e#1179#1180#0" expanded="true" />
+            <element signature="e#1227#1228#0" expanded="true" />
+            <element signature="e#1267#1268#0" expanded="true" />
+            <element signature="e#1299#1300#0" expanded="true" />
+            <element signature="e#1327#1328#0" expanded="true" />
+            <element signature="e#1369#1370#0" expanded="true" />
+            <element signature="e#1403#1404#0" expanded="true" />
+            <element signature="e#1438#1439#0" expanded="true" />
+            <element signature="e#1469#1470#0" expanded="true" />
+            <element signature="e#1517#1518#0" expanded="true" />
+            <element signature="e#1557#1558#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mi-ocr-controller/src/main/resources/config/rabbitmq.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="4" column="33" lean-forward="false" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1182,7 +1121,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited>Spring</last-edited>
+          <last-edited>Spring (mi-ocr-controller)|Spring</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

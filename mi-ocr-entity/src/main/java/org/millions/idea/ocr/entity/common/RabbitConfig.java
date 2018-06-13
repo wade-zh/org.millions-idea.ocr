@@ -14,36 +14,53 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
-@ConfigurationProperties(value = "classpath:rabbitmq.properties")
+@Component
+@ConfigurationProperties(prefix = "rabbitmq")
+@PropertySource(value = "classpath:/config/rabbitmq.properties")
 public class RabbitConfig {
-    @Value("${rabbitmq.address}")
     private String address;
-    @Value("${rabbitmq.username}")
     private String username;
-    @Value("${rabbitmq.password}")
     private String password;
-    @Value("${rabbitmq.queue}")
     private String queue;
-    @Value("${rabbitmq.exchange}")
     private String exchange;
 
     public String getAddress() {
         return address;
     }
 
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public String getUsername() {
         return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
         return password;
     }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public String getQueue() {
         return queue;
     }
 
+    public void setQueue(String queue) {
+        this.queue = queue;
+    }
+
     public String getExchange() {
         return exchange;
+    }
+
+    public void setExchange(String exchange) {
+        this.exchange = exchange;
     }
 }
