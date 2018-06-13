@@ -1,5 +1,8 @@
 server:
   port: 20001
+management:
+  server:
+    port: 20002
 spring:
   application:
     name: mi-ocr-gateway
@@ -17,6 +20,8 @@ eureka:
     instance-info-replication-interval-seconds: 30
     initial-instance-info-replication-interval-seconds: 40
 zuul:
+  thread-pool:
+    use-separate-thread-pools: true
   routes:
     mi-ocr-controller:
       path: /ocr-api/**
@@ -25,7 +30,7 @@ zuul:
     behind-proxy: true
     policy-list:
       mi-ocr-controller:
-        - limit: 10
+        - limit: 100000
           refresh-interval: 1
           type:
             - user
@@ -35,3 +40,18 @@ zuul:
 ribbon:
   ReadTimeout: 60000
   ConnectTimeout: 60000
+hystrix:
+  threadpool:
+    default:
+      coreSize: 500  #Parallel thread count, default is 10
+  command:
+    paas-file:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 240000
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 240000 #Command execute timeout, default is 1000 ms

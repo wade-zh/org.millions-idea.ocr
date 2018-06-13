@@ -2,22 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4f296295-0fb9-413c-9291-0abe83067469" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/mi-ocr-controller/src/main/resources/config/rabbitmq.properties" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/mi-ocr-gateway/src/main/java/org/millions/idea/ocr/gateway/HystrixConfiguration.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/mi-ocr-hystrix-dashboard/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/mi-ocr-controller/mi-ocr-controller.iml" afterPath="$PROJECT_DIR$/mi-ocr-controller/mi-ocr-controller.iml" />
-      <change beforePath="$PROJECT_DIR$/mi-ocr-controller/src/main/java/org/millions/idea/ocr/controller/MiOcrControllerApplication.java" afterPath="$PROJECT_DIR$/mi-ocr-controller/src/main/java/org/millions/idea/ocr/controller/MiOcrControllerApplication.java" />
-      <change beforePath="$PROJECT_DIR$/mi-ocr-controller/src/main/resources/rabbitmq.properties" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/mi-ocr-controller/target/classes/org/millions/idea/ocr/controller/MiOcrControllerApplication.class" afterPath="$PROJECT_DIR$/mi-ocr-controller/target/classes/org/millions/idea/ocr/controller/MiOcrControllerApplication.class" />
-      <change beforePath="$PROJECT_DIR$/mi-ocr-controller/target/maven-archiver/pom.properties" afterPath="$PROJECT_DIR$/mi-ocr-controller/target/maven-archiver/pom.properties" />
-      <change beforePath="$PROJECT_DIR$/mi-ocr-controller/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="$PROJECT_DIR$/mi-ocr-controller/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" />
-      <change beforePath="$PROJECT_DIR$/mi-ocr-controller/target/mi-ocr-captcha-service.jar" afterPath="$PROJECT_DIR$/mi-ocr-controller/target/mi-ocr-captcha-service.jar" />
-      <change beforePath="$PROJECT_DIR$/mi-ocr-controller/target/mi-ocr-captcha-service.jar.original" afterPath="$PROJECT_DIR$/mi-ocr-controller/target/mi-ocr-captcha-service.jar.original" />
-      <change beforePath="$PROJECT_DIR$/mi-ocr-entity/src/main/java/org/millions/idea/ocr/entity/common/RabbitConfig.java" afterPath="$PROJECT_DIR$/mi-ocr-entity/src/main/java/org/millions/idea/ocr/entity/common/RabbitConfig.java" />
-      <change beforePath="$PROJECT_DIR$/mi-ocr-entity/target/maven-archiver/pom.properties" afterPath="$PROJECT_DIR$/mi-ocr-entity/target/maven-archiver/pom.properties" />
-      <change beforePath="$PROJECT_DIR$/mi-ocr-entity/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="$PROJECT_DIR$/mi-ocr-entity/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" />
-      <change beforePath="$PROJECT_DIR$/mi-ocr-entity/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="$PROJECT_DIR$/mi-ocr-entity/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" />
-      <change beforePath="$PROJECT_DIR$/mi-ocr-entity/target/mi-ocr-captcha-service.jar" afterPath="$PROJECT_DIR$/mi-ocr-entity/target/mi-ocr-captcha-service.jar" />
-      <change beforePath="$PROJECT_DIR$/mi-ocr-utility/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="$PROJECT_DIR$/mi-ocr-utility/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" />
+      <change beforePath="$PROJECT_DIR$/mi-ocr-gateway/mi-ocr-gateway.iml" afterPath="$PROJECT_DIR$/mi-ocr-gateway/mi-ocr-gateway.iml" />
+      <change beforePath="$PROJECT_DIR$/mi-ocr-gateway/pom.xml" afterPath="$PROJECT_DIR$/mi-ocr-gateway/pom.xml" />
+      <change beforePath="$PROJECT_DIR$/mi-ocr-gateway/src/main/java/org/millions/idea/ocr/gateway/MiOcrGatewayApplication.java" afterPath="$PROJECT_DIR$/mi-ocr-gateway/src/main/java/org/millions/idea/ocr/gateway/MiOcrGatewayApplication.java" />
+      <change beforePath="$PROJECT_DIR$/mi-ocr-gateway/src/main/resources/application.yml" afterPath="$PROJECT_DIR$/mi-ocr-gateway/src/main/resources/application.yml" />
+      <change beforePath="$PROJECT_DIR$/mi-ocr-gateway/target/classes/application.yml" afterPath="$PROJECT_DIR$/mi-ocr-gateway/target/classes/application.yml" />
+      <change beforePath="$PROJECT_DIR$/mi-ocr-gateway/target/classes/org/millions/idea/ocr/gateway/MiOcrGatewayApplication.class" afterPath="$PROJECT_DIR$/mi-ocr-gateway/target/classes/org/millions/idea/ocr/gateway/MiOcrGatewayApplication.class" />
     </list>
     <ignored path="$PROJECT_DIR$/mi-ocr-parent/target/" />
     <ignored path="$PROJECT_DIR$/mi-ocr-controller/target/" />
@@ -80,11 +73,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="rabbitmq.properties" pinned="false" current-in-tab="true">
+      <file leaf-file-name="rabbitmq.properties" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mi-ocr-controller/src/main/resources/config/rabbitmq.properties">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="108">
-              <caret line="4" column="33" lean-forward="false" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
+              <caret line="4" column="33" lean-forward="true" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -102,10 +95,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="application.yml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="application.yml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mi-ocr-controller/src/main/resources/application.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
+            <state relative-caret-position="513">
               <caret line="19" column="25" lean-forward="false" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="25" />
               <folding />
             </state>
@@ -237,7 +230,8 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="481" />
+    <option name="x" value="700" />
+    <option name="y" value="61" />
     <option name="width" value="1400" />
     <option name="height" value="992" />
   </component>
@@ -607,7 +601,7 @@
       <workItem from="1528378775116" duration="3720000" />
       <workItem from="1528449603166" duration="14479000" />
       <workItem from="1528812852918" duration="3036000" />
-      <workItem from="1528886191541" duration="4199000" />
+      <workItem from="1528886191541" duration="8241000" />
     </task>
     <servers />
   </component>
@@ -644,7 +638,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34433000" />
+    <option name="totallyTimeSpent" value="38475000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1021,14 +1015,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mi-ocr-controller/src/main/resources/application.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="19" column="25" lean-forward="false" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mi-ocr-controller/src/main/java/org/millions/idea/ocr/controller/config/RabbitTemplateConfiguration.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="945">
@@ -1099,7 +1085,15 @@
     <entry file="file://$PROJECT_DIR$/mi-ocr-controller/src/main/resources/config/rabbitmq.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
-          <caret line="4" column="33" lean-forward="false" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
+          <caret line="4" column="33" lean-forward="true" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mi-ocr-controller/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="19" column="25" lean-forward="false" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="25" />
           <folding />
         </state>
       </provider>
