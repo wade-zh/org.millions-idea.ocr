@@ -46,7 +46,7 @@
                   <resource>META-INF/spring.schemas</resource>
                 </transformer>
                 <transformer>
-                  <mainClass>org.wade.mbus.app.App</mainClass>
+                  <mainClass>org.millions.idea.ocr.worker.app.App</mainClass>
                 </transformer>
               </transformers>
             </configuration>

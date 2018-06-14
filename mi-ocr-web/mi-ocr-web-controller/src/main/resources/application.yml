@@ -16,9 +16,6 @@ spring:
     username: wade
     password: wade
     virtual-host: /
-    template:
-      exchange: amq.topic
-      routing-key: captcha
   redis:
     host: 47.94.107.244
     port: 6379

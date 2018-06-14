@@ -36,4 +36,12 @@ public class CaptchaEntity {
         this.ticket = ticket;
         this.code = code;
     }
+
+    @Override
+    public String toString() {
+        return "CaptchaEntity{" +
+                "ticket='" + ticket + '\'' +
+                ", code='" + code + '\'' +
+                '}';
+    }
 }

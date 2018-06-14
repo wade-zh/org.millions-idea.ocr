@@ -1,4 +1,3 @@
-org\millions\idea\ocr\worker\app\service\impl\SocketMessageListenServiceImpl.class
 org\millions\idea\ocr\worker\app\service\utils\UrlUtil.class
 org\millions\idea\ocr\worker\app\service\IMessageListenerService.class
 org\millions\idea\ocr\worker\app\service\impl\MessageListenServiceImpl.class
