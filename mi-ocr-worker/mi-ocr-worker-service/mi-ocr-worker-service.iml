@@ -17,6 +17,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="mi-ocr-worker-repository" />
+    <orderEntry type="library" name="Maven: org.millions-idea.ocr:mi-ocr-common-entity:1.0-SNAPSHOT" level="project" />
     <orderEntry type="module" module-name="mi-ocr-worker-model" />
     <orderEntry type="library" name="Maven: org.springframework:spring-core:5.0.5.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-jcl:5.0.5.RELEASE" level="project" />

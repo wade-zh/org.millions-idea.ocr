@@ -6,18 +6,15 @@
 
     <!-- services -->
 
-    <bean id="messageListenerService" class="org.wade.mbus.worker.service.impl.MessageListenServiceImpl">
-        <property name="validateCodeRepositoryImpl" ref="validateCodeRepositoryImpl"></property>
-        <property name="eNValidateCodeRepositoryImpl" ref="enValidateCodeRepositoryImpl"></property>
-        <property name="eNExValidateCodeRepositoryImpl" ref="enExValidateCodeRepositoryImpl"></property>
-        <property name="jedisUtil" ref="jedisUtil"></property>
-        <property name="redisConfig" ref="redisConfig"></property>
+    <bean id="messageListenerService" class="org.millions.idea.ocr.worker.app.service.impl.MessageListenServiceImpl">
+<!--        <property name="jedisUtil" ref="jedisUtil"></property>
+        <property name="redisConfig" ref="redisConfig"></property>-->
     </bean>
 
 
-    <bean id="socketMessageListenService" class="org.wade.mbus.worker.service.impl.SocketMessageListenServiceImpl">
-        <property name="jedisUtil" ref="jedisUtil"></property>
-        <property name="redisConfig" ref="redisConfig"></property>
+    <bean id="socketMessageListenService" class="org.millions.idea.ocr.worker.app.service.impl.SocketMessageListenServiceImpl">
+       <!-- <property name="jedisUtil" ref="jedisUtil"></property>
+        <property name="redisConfig" ref="redisConfig"></property>-->
     </bean>
     <!-- more bean definitions for services go here -->
 
