@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/mi-ocr-worker-app/mi-ocr-worker-app.iml" filepath="$PROJECT_DIR$/mi-ocr-worker-app/mi-ocr-worker-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mi-ocr-worker-model/mi-ocr-worker-model.iml" filepath="$PROJECT_DIR$/mi-ocr-worker-model/mi-ocr-worker-model.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mi-ocr-worker-parent/mi-ocr-worker-parent.iml" filepath="$PROJECT_DIR$/mi-ocr-worker-parent/mi-ocr-worker-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mi-ocr-worker-repository/mi-ocr-worker-repository.iml" filepath="$PROJECT_DIR$/mi-ocr-worker-repository/mi-ocr-worker-repository.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mi-ocr-worker-service/mi-ocr-worker-service.iml" filepath="$PROJECT_DIR$/mi-ocr-worker-service/mi-ocr-worker-service.iml" />
+    </modules>
+  </component>
+</project>
