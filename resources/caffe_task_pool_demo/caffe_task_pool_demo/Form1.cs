@@ -31,7 +31,7 @@ namespace caffe_task_pool_demo
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            if (!CC.InitCaptcha("./deploy.prototxt", "./_iter_4000.caffemodel", "./label-map.txt", -1, 1))
+            if (!CC.InitCaptcha("./deploy.prototxt", "./_iter_4000.caffemodel", "./label-map.txt", -1, 5))
             {
                 MessageBox.Show("Load faild!");
             }
