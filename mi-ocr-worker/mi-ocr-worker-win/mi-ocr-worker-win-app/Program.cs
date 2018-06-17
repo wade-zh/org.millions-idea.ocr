@@ -22,9 +22,14 @@ namespace mi_ocr_worker_win_app
         {
             UnityConfig.Configure();
             ReceiveMessageService = UnityConfig.Container.Resolve<ReceiveMessageServiceImpl>();
-
             QueueConfig.StartupMessageReceive(ReceiveMessageService.OnMessage);
-            Console.ReadLine();
+            Console.WriteLine("Please enter \"exit\" to exit the system safely.");
+            var cmdLine = string.Empty;
+            do
+            {
+                cmdLine = Console.ReadLine();
+            } while (cmdLine != "exit");
+            QueueConfig.Close();
         }
     }
 }

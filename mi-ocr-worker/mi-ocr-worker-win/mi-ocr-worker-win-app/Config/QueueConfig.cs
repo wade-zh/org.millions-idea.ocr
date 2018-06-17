@@ -12,7 +12,10 @@ namespace mi_ocr_worker_win_app.Config
 {
     class QueueConfig
     {
-        public static void StartupMessageReceive(Action<string> action) {
+        public static IConnection Connection { get; set; }
+        public static IModel Model { get; set; }
+
+        public static void StartupMessageReceive(Func<string,bool> action) {
             ConnectionFactory factory = new ConnectionFactory();
 
             factory.UserName = Constant.Username;
@@ -21,28 +24,33 @@ namespace mi_ocr_worker_win_app.Config
             factory.HostName = Constant.HostName;
             factory.Port = Constant.Port;
 
-            using (IConnection conn = factory.CreateConnection())
-            {
-                using (IModel channel = conn.CreateModel())
-                {
-                    channel.QueueDeclare(queue: Constant.QueueName,
+            Connection = factory.CreateConnection();
+            Model = Connection.CreateModel();
+
+            Model.QueueDeclare(queue: Constant.QueueName,
                                      durable: false,
                                      exclusive: false,
                                      autoDelete: false,
                                      arguments: null);
 
-                    var consumer = new EventingBasicConsumer(channel);
-                    consumer.Received += (model, ea) =>
-                    {
-                        var _body = ea.Body;
-                        var _message = Encoding.UTF8.GetString(_body);
-                        action(_message);
-                        channel.BasicAck(deliveryTag: ea.DeliveryTag, multiple: false);
-                    };
-
-                    channel.BasicConsume(queue: Constant.QueueName, autoAck: false, consumer: consumer); 
+            var consumer = new EventingBasicConsumer(Model);
+            consumer.Received += (model, ea) =>
+            {
+                var _body = ea.Body;
+                var _message = Encoding.UTF8.GetString(_body);
+                if (action(_message))
+                {
+                    Model.BasicAck(deliveryTag: ea.DeliveryTag, multiple: false);
                 }
-            }
+            };
+
+            Model.BasicConsume(queue: Constant.QueueName, autoAck: false, consumer: consumer);
+        }
+
+
+        public static void Close() {
+            Model.Close();
+            Connection.Close();
         }
     }
 }

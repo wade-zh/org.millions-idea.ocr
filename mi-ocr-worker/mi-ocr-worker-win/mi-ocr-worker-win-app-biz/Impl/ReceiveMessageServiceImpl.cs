@@ -8,9 +8,10 @@ namespace mi_ocr_worker_win_app_biz
 {
     public class ReceiveMessageServiceImpl : IReceiveMessageService
     {
-        public void OnMessage(string message)
+        public bool OnMessage(string message)
         {
-            Console.WriteLine("消息到达" + message);
+            Console.WriteLine(message);
+            return true;
         }
     }
 }

@@ -8,6 +8,6 @@ namespace mi_ocr_worker_win_app_biz
 {
     public interface IReceiveMessageService
     {
-        void OnMessage(string message);
+        bool OnMessage(string message);
     }
 }
