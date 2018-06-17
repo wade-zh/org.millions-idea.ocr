@@ -45,7 +45,7 @@
             // 
             // btnInitLmdb
             // 
-            this.btnInitLmdb.Location = new System.Drawing.Point(165, 28);
+            this.btnInitLmdb.Location = new System.Drawing.Point(199, 28);
             this.btnInitLmdb.Name = "btnInitLmdb";
             this.btnInitLmdb.Size = new System.Drawing.Size(108, 23);
             this.btnInitLmdb.TabIndex = 1;
@@ -55,7 +55,7 @@
             // 
             // btnTrain
             // 
-            this.btnTrain.Location = new System.Drawing.Point(292, 28);
+            this.btnTrain.Location = new System.Drawing.Point(326, 28);
             this.btnTrain.Name = "btnTrain";
             this.btnTrain.Size = new System.Drawing.Size(108, 23);
             this.btnTrain.TabIndex = 2;
@@ -65,7 +65,7 @@
             // 
             // btnContinueTrain
             // 
-            this.btnContinueTrain.Location = new System.Drawing.Point(421, 28);
+            this.btnContinueTrain.Location = new System.Drawing.Point(455, 28);
             this.btnContinueTrain.Name = "btnContinueTrain";
             this.btnContinueTrain.Size = new System.Drawing.Size(108, 23);
             this.btnContinueTrain.TabIndex = 3;
