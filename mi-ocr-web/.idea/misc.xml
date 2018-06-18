@@ -6,6 +6,12 @@
         <option value="$PROJECT_DIR$/mi-ocr-parent/pom.xml" />
         <option value="$PROJECT_DIR$/mi-ocr-controller/pom.xml" />
         <option value="$PROJECT_DIR$/mi-ocr-utility/pom.xml" />
+        <option value="$PROJECT_DIR$/mi-ocr-web-biz/pom.xml" />
+        <option value="$PROJECT_DIR$/mi-ocr-web-controller/pom.xml" />
+        <option value="$PROJECT_DIR$/mi-ocr-web-entity/pom.xml" />
+        <option value="$PROJECT_DIR$/mi-ocr-web-repository/pom.xml" />
+        <option value="$PROJECT_DIR$/mi-ocr-web-parent/pom.xml" />
+        <option value="$PROJECT_DIR$/mi-ocr-web-utility/pom.xml" />
       </list>
     </option>
   </component>

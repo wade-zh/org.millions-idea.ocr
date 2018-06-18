@@ -4,18 +4,18 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>org.millions-idea.ocr</groupId>
-	<artifactId>mi-ocr-controller</artifactId>
+	<artifactId>mi-ocr-web-controller</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>mi-ocr-controller</name>
+	<name>mi-ocr-web-controller</name>
 	<description>This is controller layer for ocr</description>
 
 	<parent>
 		<groupId>org.millions-idea.ocr</groupId>
-		<artifactId>mi-ocr-parent</artifactId>
+		<artifactId>mi-ocr-web-parent</artifactId>
 		<version>1.0-SNAPSHOT</version>
-		<relativePath>../mi-ocr-parent/</relativePath>
+		<relativePath>../mi-ocr-web-parent</relativePath>
 	</parent>
 
 
@@ -30,6 +30,12 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
 		</dependency>
 
 
@@ -80,15 +86,26 @@
 		</dependency>
         <dependency>
             <groupId>org.millions-idea.ocr</groupId>
-            <artifactId>mi-ocr-utility</artifactId>
+            <artifactId>mi-ocr-web-utility</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
 		<dependency>
 			<groupId>org.millions-idea.ocr</groupId>
-			<artifactId>mi-ocr-utility</artifactId>
+			<artifactId>mi-ocr-web-utility</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.millions-idea.ocr</groupId>
+			<artifactId>mi-ocr-web-biz</artifactId>
 			<version>1.0-SNAPSHOT</version>
 		</dependency>
 
+
+        <!-- Add Log4j2 Dependency -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-log4j2</artifactId>
+        </dependency>
 
 
 	</dependencies>

@@ -259,3 +259,8 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+/mi-ocr-worker/mi-ocr-worker-win/mi-ocr-worker-win-app-utility/Caffe.cs
+/mi-ocr-worker/mi-ocr-worker-win/mi-ocr-worker-win-app-utility/classification_dll.dll
+/mi-ocr-worker/mi-ocr-worker-win/mi-ocr-worker-win-app-utility/deploy.prototxt
+/mi-ocr-worker/mi-ocr-worker-win/mi-ocr-worker-win-app-utility/label-map.txt
+/mi-ocr-worker/mi-ocr-worker-win/mi-ocr-worker-win-app-utility/bin

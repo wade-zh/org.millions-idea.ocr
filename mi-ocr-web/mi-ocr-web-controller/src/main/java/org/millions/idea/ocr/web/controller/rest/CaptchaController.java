@@ -7,26 +7,43 @@
  */
 package org.millions.idea.ocr.web.controller.rest;
 
-import org.millions.idea.ocr.web.utility.queue.RabbitUtil;
+import org.millions.idea.ocr.web.biz.IMessageService;
+import org.millions.idea.ocr.web.entity.HttpResp;
+import org.millions.idea.ocr.web.entity.types.HttpErrorCodeType;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 @RestController
 @RequestMapping("captcha")
 public class CaptchaController {
-
-    @Value("${server.port}")
-    private String instancePort;
+    @Autowired
+    @Qualifier(value = "MessageServiceImpl")
+    private IMessageService messageServiceImpl;
 
     @Autowired
-    private RabbitUtil rabbitUtil;
+    @Qualifier(value = "PublishMessageServiceImpl")
+    private IMessageService publishMessageServiceImpl;
 
     @RequestMapping("upload")
-    public String upload(){
-        rabbitUtil.publish("hello");
-        System.out.println("At your service " + instancePort);
-        return "At your service " + instancePort;
+    public HttpResp upload(@RequestParam("file") MultipartFile file,
+                           @RequestParam("channel") String channel){
+        try {
+            return new HttpResp(-1, publishMessageServiceImpl.publish(file.getBytes(), channel));
+        } catch (IOException e) {
+            return new HttpResp(HttpErrorCodeType.IOException.ordinal(), HttpErrorCodeType.IOException.toString());
+        }
+    }
+
+    @RequestMapping("getCaptcha")
+    public HttpResp getCaptcha(String cid){
+        String code = messageServiceImpl.getCaptcha(cid);
+        if(code != null) return new HttpResp(-1, code);
+        return new HttpResp(HttpErrorCodeType.NotResult.ordinal(), HttpErrorCodeType.NotResult.toString());
     }
 }

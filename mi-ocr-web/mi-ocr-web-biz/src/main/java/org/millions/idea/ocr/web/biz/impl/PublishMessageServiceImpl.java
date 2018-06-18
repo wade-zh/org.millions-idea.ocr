@@ -11,6 +11,7 @@ import org.millions.idea.ocr.common.entity.Captcha;
 import org.millions.idea.ocr.web.utility.json.JsonUtil;
 import org.millions.idea.ocr.web.utility.queue.RabbitUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
@@ -18,13 +19,12 @@ import java.util.UUID;
 
 @Service("PublishMessageServiceImpl")
 public class PublishMessageServiceImpl extends MessageServiceImpl {
-    private final RabbitUtil rabbitUtil;
-    private final RedisTemplate redisTemplate;
 
     @Autowired
+    private MongoTemplate mongoTemplate;
+
     public PublishMessageServiceImpl(RabbitUtil rabbitUtil, RedisTemplate redisTemplate) {
-        this.rabbitUtil = rabbitUtil;
-        this.redisTemplate = redisTemplate;
+        super(rabbitUtil, redisTemplate);
     }
 
     @Override
@@ -34,15 +34,4 @@ public class PublishMessageServiceImpl extends MessageServiceImpl {
         return ticket.toString();
     }
 
-    @Override
-    public String getCaptcha(String cid) {
-        Object captcha = redisTemplate.opsForValue().get(cid);
-        String code = null;
-        if(captcha != null && !captcha.toString().equalsIgnoreCase("null")) {
-            code = captcha.toString();
-            redisTemplate.delete(code.toString());
-            return code;
-        }
-        return null;
-    }
 }

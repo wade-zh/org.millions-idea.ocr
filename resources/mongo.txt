@@ -1,0 +1,2 @@
+#插入数据中有重复数据，设置唯一键
+db.things.ensureIndex({"md5":1},{unique:true})

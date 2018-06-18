@@ -20,6 +20,11 @@ spring:
     host: 47.94.107.244
     port: 6379
     password: 123456
+  data:
+    mongodb:
+      database: mi-ocr
+      host: 47.94.107.244
+      port: 27017
 eureka:
   client:
     service-url:

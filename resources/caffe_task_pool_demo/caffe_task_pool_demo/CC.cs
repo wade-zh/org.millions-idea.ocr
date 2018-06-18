@@ -107,9 +107,9 @@ namespace caffe_task_pool_demo
                     CC.map.Add(mapFile[i]);
                 }
             }
-            string time_step = Util.GetMiddleString(CC.prototxt, "time_step:", "\r\n");
+            string time_step = Util.GetMiddleString(CC.prototxt, "time_step:", "b").Trim();
             string layer = Util.GetMiddleString(CC.prototxt, "inner_product_param {", "{");
-            string alphabet_size = Util.GetMiddleString(layer, "num_output:", "\r\n");
+            string alphabet_size = Util.GetMiddleString(layer, "num_output:", "p").Trim();
             CC.timeStep = int.Parse(time_step);
             CC.alphabetSize = int.Parse(alphabet_size);
             return CC.taskPool != 0;

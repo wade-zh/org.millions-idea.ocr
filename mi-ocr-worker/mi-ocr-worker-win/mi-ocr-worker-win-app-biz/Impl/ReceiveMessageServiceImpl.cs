@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using mi_ocr_worker_win_app_biz.Util;
 using mi_ocr_worker_win_app_entity;
+using mi_ocr_worker_win_app_utility;
 using Newtonsoft.Json;
 
 namespace mi_ocr_worker_win_app_biz
@@ -19,6 +21,15 @@ namespace mi_ocr_worker_win_app_biz
             string code = Caffe.GetCaptcha(binary);
             if (code.Length == 0) code = "null";
             CacheHelper.Cache.Set(captcha.Ticket, code, DateTime.Now.AddSeconds(30));
+            MongoDBHelper<Samples> mongoDBHelper = new MongoDBHelper<Samples>();
+            Samples entity = new Samples()
+            { 
+                captchaId = captcha.Ticket,
+                code = code,
+                image = captcha.Binary,
+                md5 = Md5Util.GetMD5Hash(binary)
+            };
+            Console.WriteLine($"Insert samples state is:{mongoDBHelper.Insert(entity) != null}");
             return true;
         }
     }
