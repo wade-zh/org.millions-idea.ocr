@@ -103,6 +103,10 @@
       <Project>{d18afd57-f969-43fd-ac31-2afdb8a25910}</Project>
       <Name>mi-ocr-worker-win-app-entity</Name>
     </ProjectReference>
+    <ProjectReference Include="..\mi-ocr-worker-win-app-utility\mi-ocr-worker-win-app-utility.csproj">
+      <Project>{95D3C9BB-4B54-4F8E-993B-3F279B5BDBEB}</Project>
+      <Name>mi-ocr-worker-win-app-utility</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

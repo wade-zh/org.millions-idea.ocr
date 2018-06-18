@@ -6,6 +6,7 @@ using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -23,6 +24,7 @@ namespace mi_ocr_worker_win_app
             UnityConfig.Configure();
             ReceiveMessageService = UnityConfig.Container.Resolve<ReceiveMessageServiceImpl>();
             QueueConfig.StartupMessageReceive(ReceiveMessageService.OnMessage);
+            Console.WriteLine($"Startup state is {Caffe.InitCaptcha("./deploy.prototxt", ConfigurationManager.AppSettings["caffemodel"], "./label-map.txt", -1, 32)}");
             Console.WriteLine("Please enter \"exit\" to exit the system safely.");
             var cmdLine = string.Empty;
             do

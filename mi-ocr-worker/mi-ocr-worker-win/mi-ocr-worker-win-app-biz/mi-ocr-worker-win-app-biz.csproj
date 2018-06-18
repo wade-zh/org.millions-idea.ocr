@@ -30,9 +30,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="StackExchange.Redis, Version=1.2.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\StackExchange.Redis.1.2.6\lib\net46\StackExchange.Redis.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression" />
     <Reference Include="System.Runtime.Remoting" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -42,12 +49,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ICache.cs" />
+    <Compile Include="Impl\RedisCacheImpl.cs" />
     <Compile Include="IReceiveMessageService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Impl\ReceiveMessageServiceImpl.cs" />
+    <Compile Include="Util\CacheHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\mi-ocr-worker-win-app-entity\mi-ocr-worker-win-app-entity.csproj">
+      <Project>{d18afd57-f969-43fd-ac31-2afdb8a25910}</Project>
+      <Name>mi-ocr-worker-win-app-entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\mi-ocr-worker-win-app-utility\mi-ocr-worker-win-app-utility.csproj">
+      <Project>{95D3C9BB-4B54-4F8E-993B-3F279B5BDBEB}</Project>
+      <Name>mi-ocr-worker-win-app-utility</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

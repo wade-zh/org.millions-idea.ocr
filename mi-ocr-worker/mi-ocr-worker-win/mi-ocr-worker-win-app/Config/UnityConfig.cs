@@ -1,4 +1,5 @@
 ﻿using mi_ocr_worker_win_app_biz;
+using mi_ocr_worker_win_app_entity;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Configuration;
 using System;

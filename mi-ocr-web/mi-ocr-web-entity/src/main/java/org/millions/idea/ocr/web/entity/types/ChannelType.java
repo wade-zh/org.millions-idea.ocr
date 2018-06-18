@@ -1,13 +1,13 @@
 /***
  * @pName org.millions-idea.ocr
- * @name CaptchaType
+ * @name ChannelType
  * @user HongWei
  * @date 2018/6/8
  * @desc
  */
 package org.millions.idea.ocr.web.entity.types;
 
-public enum CaptchaType {
+public enum ChannelType {
     /**
      * Normal Captcha
      * strategy: 0-9, A-Z
@@ -24,7 +24,7 @@ public enum CaptchaType {
         this.value = value;
     }
 
-    CaptchaType(String value) {
+    ChannelType(String value) {
 
         this.value = value;
     }
