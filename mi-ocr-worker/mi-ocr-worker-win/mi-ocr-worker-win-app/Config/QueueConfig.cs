@@ -3,6 +3,7 @@ using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -15,19 +16,26 @@ namespace mi_ocr_worker_win_app.Config
         public static IConnection Connection { get; set; }
         public static IModel Model { get; set; }
 
-        public static void StartupMessageReceive(Func<string,bool> action) {
-            ConnectionFactory factory = new ConnectionFactory();
-
-            factory.UserName = Constant.Username;
-            factory.Password = Constant.Password;
-            factory.VirtualHost = Constant.VirtualHost;
-            factory.HostName = Constant.HostName;
-            factory.Port = Constant.Port;
+        public static void StartupMessageReceive(string queue, Func<string, bool> action)
+        {
+            ConnectionFactory factory = new ConnectionFactory
+            {
+                UserName = Constant.Username,
+                Password = Constant.Password,
+                VirtualHost = Constant.VirtualHost,
+                HostName = Constant.HostName,
+                Port = Constant.Port
+            };
 
             Connection = factory.CreateConnection();
-            Model = Connection.CreateModel();
 
-            Model.QueueDeclare(queue: Constant.QueueName,
+            BindQueue(queue, action);
+        }
+
+        private static void BindQueue(string queue, Func<string, bool> action)
+        {
+            Model = Connection.CreateModel();
+            Model.QueueDeclare(queue: queue,
                                      durable: false,
                                      exclusive: false,
                                      autoDelete: false,
@@ -43,14 +51,17 @@ namespace mi_ocr_worker_win_app.Config
                     Model.BasicAck(deliveryTag: ea.DeliveryTag, multiple: false);
                 }
             };
-
-            Model.BasicConsume(queue: Constant.QueueName, autoAck: false, consumer: consumer);
+            Model.BasicConsume(queue: queue, autoAck: false, consumer: consumer);
         }
-
 
         public static void Close() {
             Model.Close();
             Connection.Close();
         }
+    }
+
+    class MultiQueue {
+        public static string Captcha => ConfigurationManager.AppSettings["Queue"].Split(',')[0];
+        public static string Report => ConfigurationManager.AppSettings["Queue"].Split(',')[1];
     }
 }

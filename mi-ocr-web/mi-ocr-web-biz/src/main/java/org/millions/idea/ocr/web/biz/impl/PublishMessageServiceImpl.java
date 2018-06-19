@@ -9,12 +9,14 @@ package org.millions.idea.ocr.web.biz.impl;
 
 import org.millions.idea.ocr.common.entity.Captcha;
 import org.millions.idea.ocr.web.biz.util.EnumUtil;
+import org.millions.idea.ocr.web.entity.MultiQueue;
 import org.millions.idea.ocr.web.entity.types.ChannelType;
 import org.millions.idea.ocr.web.utility.json.JsonUtil;
 import org.millions.idea.ocr.web.utility.queue.RabbitUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -25,8 +27,23 @@ public class PublishMessageServiceImpl extends MessageServiceImpl {
     @Autowired
     private MongoTemplate mongoTemplate;
 
+    @Autowired
+    private MultiQueue multiQueue;
+
     public PublishMessageServiceImpl(RabbitUtil rabbitUtil, RedisTemplate redisTemplate) {
         super(rabbitUtil, redisTemplate);
+    }
+
+    /**
+     * publish to report error captcha queue
+     *
+     * @param cid
+     * @return
+     */
+    @Override
+    @Async
+    public void publish(String cid) {
+        rabbitUtil.publish(multiQueue.getReport(), cid);
     }
 
     @Override
@@ -34,7 +51,7 @@ public class PublishMessageServiceImpl extends MessageServiceImpl {
         if(!EnumUtil.isExist(channel))
             return null;
         UUID ticket = UUID.randomUUID();
-        rabbitUtil.publish(JsonUtil.getJson(new Captcha(ticket.toString(), channel, binary)));
+        rabbitUtil.publish(multiQueue.getCaptcha(), JsonUtil.getJson(new Captcha(ticket.toString(), channel, binary)));
         return ticket.toString();
     }
 

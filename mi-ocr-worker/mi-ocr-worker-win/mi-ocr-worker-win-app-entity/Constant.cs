@@ -19,7 +19,6 @@ namespace mi_ocr_worker_win_app_entity
 
         public static int Port { get; set; } = int.Parse(ConfigurationManager.AppSettings["Port"]);
 
-        public static string QueueName { get; set; } = ConfigurationManager.AppSettings["QueueName"];
 
     }
 }

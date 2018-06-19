@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace mi_ocr_worker_win_app_biz
 {
-    public interface IReceiveMessageService
+    public interface IReceiveMessageService : IMessageService
     {
-        bool OnMessage(string message);
     }
 }

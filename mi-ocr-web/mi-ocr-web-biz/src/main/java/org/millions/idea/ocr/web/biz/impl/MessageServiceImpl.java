@@ -38,6 +38,16 @@ public class MessageServiceImpl implements IMessageService {
         return null;
     }
 
+    /**
+     * publish to report error captcha queue
+     *
+     * @param cid
+     * @return
+     */
+    @Override
+    @Async
+    public void publish(String cid) {}
+
     @Override
     public String getCaptcha(String cid) {
         /**

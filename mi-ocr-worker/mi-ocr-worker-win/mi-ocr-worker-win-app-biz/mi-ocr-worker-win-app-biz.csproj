@@ -68,8 +68,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ICache.cs" />
+    <Compile Include="IMessageService.cs" />
     <Compile Include="Impl\RedisCacheImpl.cs" />
+    <Compile Include="Impl\ReportMessageServiceImpl.cs" />
     <Compile Include="IReceiveMessageService.cs" />
+    <Compile Include="IReportMessageService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Impl\ReceiveMessageServiceImpl.cs" />
     <Compile Include="Util\CacheHelper.cs" />

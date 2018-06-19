@@ -16,12 +16,9 @@ import org.springframework.stereotype.Component;
 public class RabbitUtil {
 
     @Autowired
-    private RabbitConfig rabbitConfig;
-
-    @Autowired
     private RabbitTemplate rabbitTemplate;
 
-    public void publish(String message){
-        rabbitTemplate.convertAndSend(rabbitConfig.getQueue(), message);
+    public void publish(String queue, String message){
+        rabbitTemplate.convertAndSend(queue, message);
     }
 }

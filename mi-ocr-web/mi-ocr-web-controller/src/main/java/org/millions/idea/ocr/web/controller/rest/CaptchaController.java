@@ -46,4 +46,10 @@ public class CaptchaController {
         if(code != null) return new HttpResp(-1, code);
         return new HttpResp(HttpErrorCodeType.NotResult.ordinal(), HttpErrorCodeType.NotResult.toString());
     }
+
+    @RequestMapping("report")
+    public void report(String cid){
+        if(cid == null || cid.length() < 36) return;
+        publishMessageServiceImpl.publish(cid);
+    }
 }

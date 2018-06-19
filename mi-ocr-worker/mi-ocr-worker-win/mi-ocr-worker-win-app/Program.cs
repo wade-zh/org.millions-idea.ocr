@@ -22,11 +22,18 @@ namespace mi_ocr_worker_win_app
 
         static void Main(string[] args)
         {
-
+            // bind unity container
             UnityConfig.Configure();
+
+            // bind receive messsages callback method
             ReceiveMessageService = UnityConfig.Container.Resolve<ReceiveMessageServiceImpl>();
-            QueueConfig.StartupMessageReceive(ReceiveMessageService.OnMessage);
-            
+            QueueConfig.StartupMessageReceive(MultiQueue.Captcha, ReceiveMessageService.OnMessage);
+
+            // bind report error messsages callback method
+            ReceiveMessageService = UnityConfig.Container.Resolve<ReceiveMessageServiceImpl>();
+            QueueConfig.StartupMessageReceive(MultiQueue.Report, ReceiveMessageService.OnMessage);
+
+            #region print some messages
             Console.WriteLine($"Startup state is {Caffe.InitCaptcha("./deploy.prototxt", ConfigurationManager.AppSettings["caffemodel"], "./label-map.txt", -1, 32)}");
             Console.WriteLine("Please enter \"exit\" to exit the system safely.");
             var cmdLine = string.Empty;
@@ -35,6 +42,7 @@ namespace mi_ocr_worker_win_app
                 cmdLine = Console.ReadLine();
             } while (cmdLine != "exit");
             QueueConfig.Close();
+            #endregion
         }
     }
 }

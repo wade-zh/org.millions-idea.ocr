@@ -7,17 +7,21 @@
  */
 package org.millions.idea.ocr.web.controller.config;
 
+import org.millions.idea.ocr.web.entity.MultiQueue;
 import org.millions.idea.ocr.web.entity.common.RabbitConfig;
-import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.DirectExchange;
 import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.rabbit.config.SimpleRabbitListenerContainerFactory;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.autoconfigure.amqp.SimpleRabbitListenerContainerFactoryConfigurer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 
 @Configuration
 public class RabbitTemplateConfiguration {
@@ -26,17 +30,15 @@ public class RabbitTemplateConfiguration {
     private RabbitConfig rabbitConfig;
 
     @Autowired
-    private RabbitTemplate rabbitTemplate;
+    private MultiQueue multiQueue;
 
-    @Bean
-    public RabbitTemplate rabbitTemplate() {
-        RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory());
-        rabbitTemplate.setExchange(rabbitConfig.getExchange());
-        return rabbitTemplate;
+    @Bean(name="captchaConnectionFactory")
+    @Primary
+    public ConnectionFactory firstConnectionFactory(){
+        return getFactory();
     }
 
-    @Bean
-    public ConnectionFactory connectionFactory() {
+    private ConnectionFactory getFactory() {
         CachingConnectionFactory connectionFactory = new CachingConnectionFactory();
         connectionFactory.setAddresses(rabbitConfig.getAddress());
         connectionFactory.setUsername(rabbitConfig.getUsername());
@@ -47,19 +49,83 @@ public class RabbitTemplateConfiguration {
     }
 
 
-    @Bean
-    Queue queue() {
-        return new Queue(rabbitConfig.getQueue(), false);
+    @Bean(name="reportConnectionFactory")
+    public ConnectionFactory reportConnectionFactory(){
+        return getFactory();
     }
 
-    @Bean
-    DirectExchange exchange() {
-        return new DirectExchange(rabbitConfig.getExchange());
+
+
+    @Bean(name="captchaRabbitTemplate")
+    public RabbitTemplate captchaRabbitTemplate(
+            @Qualifier("captchaConnectionFactory") ConnectionFactory connectionFactory
+    ){
+        RabbitTemplate captchaRabbitTemplate = new RabbitTemplate(connectionFactory);
+        captchaRabbitTemplate.setExchange(rabbitConfig.getExchange());
+        return captchaRabbitTemplate;
     }
 
-    @Bean
-    Binding binding(Queue queue, DirectExchange exchange) {
-        return BindingBuilder.bind(queue).to(exchange).with(rabbitConfig.getQueue());
+    @Bean(name="reportRabbitTemplate")
+    public RabbitTemplate reportRabbitTemplate(
+            @Qualifier("reportConnectionFactory") ConnectionFactory connectionFactory
+    ){
+        RabbitTemplate reportRabbitTemplate = new RabbitTemplate(connectionFactory);
+        reportRabbitTemplate.setExchange(rabbitConfig.getExchange());
+        return reportRabbitTemplate;
     }
+
+
+    @Bean(name="captchaFactory")
+    public SimpleRabbitListenerContainerFactory firstFactory(
+            SimpleRabbitListenerContainerFactoryConfigurer configurer,
+            @Qualifier("captchaConnectionFactory") ConnectionFactory connectionFactory
+    ) {
+        SimpleRabbitListenerContainerFactory factory = new SimpleRabbitListenerContainerFactory();
+        configurer.configure(factory, connectionFactory);
+        return factory;
+    }
+
+    @Bean(name="reportFactory")
+    public SimpleRabbitListenerContainerFactory secondFactory(
+            SimpleRabbitListenerContainerFactoryConfigurer configurer,
+            @Qualifier("reportConnectionFactory") ConnectionFactory connectionFactory
+    ) {
+        SimpleRabbitListenerContainerFactory factory = new SimpleRabbitListenerContainerFactory();
+        configurer.configure(factory, connectionFactory);
+        return factory;
+    }
+
+
+    @Bean
+    public String captchaQueue(
+            @Qualifier("captchaConnectionFactory") ConnectionFactory connectionFactory
+    ) {
+        try {
+            connectionFactory.createConnection().createChannel(false)
+                    .queueDeclare(multiQueue.getCaptcha(), true, false, false, null);
+            BindingBuilder.bind(new Queue(multiQueue.getCaptcha())).to(new DirectExchange(rabbitConfig.getExchange())).with(multiQueue.getCaptcha());
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            return multiQueue.getCaptcha();
+        }
+    }
+
+
+    @Bean
+    public String reportQueue(
+            @Qualifier("reportConnectionFactory") ConnectionFactory connectionFactory
+    ) {
+        try {
+            connectionFactory.createConnection().createChannel(false)
+                    .queueDeclare(multiQueue.getReport(), true, false, false, null);
+            BindingBuilder.bind(new Queue(multiQueue.getReport())).to(new DirectExchange(rabbitConfig.getExchange())).with(multiQueue.getReport());
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            return multiQueue.getReport();
+        }
+    }
+
 
 }

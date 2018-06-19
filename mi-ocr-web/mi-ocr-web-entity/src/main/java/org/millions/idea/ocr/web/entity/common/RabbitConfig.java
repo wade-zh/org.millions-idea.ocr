@@ -49,7 +49,14 @@ public class RabbitConfig {
     }
 
     public String getQueue() {
+        String[] split = queue.split(",");
+        if(split.length > 0) return split[0];
         return queue;
+    }
+
+    public String getQueue(int index) {
+        String[] split = queue.split(",");
+        return split[index];
     }
 
     public void setQueue(String queue) {
