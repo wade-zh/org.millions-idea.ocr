@@ -95,7 +95,7 @@
 
 
     <build>
-        <finalName>mi-ocr-captcha-service</finalName>
+        <finalName>mi-ocr-web-service</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

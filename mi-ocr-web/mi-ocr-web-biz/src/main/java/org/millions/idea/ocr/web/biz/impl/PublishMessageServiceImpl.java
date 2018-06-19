@@ -8,6 +8,8 @@
 package org.millions.idea.ocr.web.biz.impl;
 
 import org.millions.idea.ocr.common.entity.Captcha;
+import org.millions.idea.ocr.web.biz.util.EnumUtil;
+import org.millions.idea.ocr.web.entity.types.ChannelType;
 import org.millions.idea.ocr.web.utility.json.JsonUtil;
 import org.millions.idea.ocr.web.utility.queue.RabbitUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,9 +31,13 @@ public class PublishMessageServiceImpl extends MessageServiceImpl {
 
     @Override
     public String publish(byte[] binary, String channel) {
+        if(!EnumUtil.isExist(channel))
+            return null;
         UUID ticket = UUID.randomUUID();
         rabbitUtil.publish(JsonUtil.getJson(new Captcha(ticket.toString(), channel, binary)));
         return ticket.toString();
     }
+
+
 
 }

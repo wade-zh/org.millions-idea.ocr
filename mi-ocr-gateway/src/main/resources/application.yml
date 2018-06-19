@@ -1,8 +1,5 @@
 server:
   port: 20001
-management:
-  server:
-    port: 20002
 spring:
   application:
     name: mi-ocr-gateway
@@ -23,14 +20,15 @@ zuul:
   thread-pool:
     use-separate-thread-pools: true
   routes:
-    mi-ocr-controller:
+    mi-ocr-web-service:
       path: /ocr-api/**
   ratelimit:
     enabled: true
     behind-proxy: true
     policy-list:
-      mi-ocr-controller:
-        - limit: 100000
+      mi-ocr-web-service:
+        - limit: 100
+          quota: 30
           refresh-interval: 1
           type:
             - user

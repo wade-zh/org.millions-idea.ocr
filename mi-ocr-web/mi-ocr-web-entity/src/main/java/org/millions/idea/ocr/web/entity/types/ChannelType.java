@@ -11,8 +11,9 @@ public enum ChannelType {
     /**
      * Normal Captcha
      * strategy: 0-9, A-Z
+     * len: 4
      */
-    NC36("A36");
+    T0003604("T0003604");
 
     private String value;
 

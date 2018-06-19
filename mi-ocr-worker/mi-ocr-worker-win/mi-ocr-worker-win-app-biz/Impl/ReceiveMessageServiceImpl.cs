@@ -20,17 +20,23 @@ namespace mi_ocr_worker_win_app_biz
             if (binary.Length == 0) return false;
             string code = Caffe.GetCaptcha(binary);
             if (code.Length == 0) code = "null";
+            PublishMessageAsync(captcha, binary, code);
+            return true;
+        }
+
+        private async void PublishMessageAsync(Captcha captcha, byte[] binary, string code) {
             CacheHelper.Cache.Set(captcha.Ticket, code, DateTime.Now.AddSeconds(30));
             MongoDBHelper<Samples> mongoDBHelper = new MongoDBHelper<Samples>();
             Samples entity = new Samples()
-            { 
+            {
+                channel = captcha.Channel,
                 captchaId = captcha.Ticket,
                 code = code,
                 image = captcha.Binary,
-                md5 = Md5Util.GetMD5Hash(binary)
+                md5 = Md5Util.GetMD5Hash(binary),
+                isError = false
             };
             Console.WriteLine($"Insert samples state is:{mongoDBHelper.Insert(entity) != null}");
-            return true;
         }
     }
 }
