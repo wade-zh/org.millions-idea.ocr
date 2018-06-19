@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MongoDB.Bson.Serialization.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,7 +15,11 @@ namespace mi_ocr_worker_win_app_entity
         public string image { get; set; }
         public string md5 { get; set; }
         public bool isError { get; set; }
+
+        [BsonDateTimeOptions(Kind = DateTimeKind.Local)]
         public DateTime createTime { get; set; }
-        public DateTime updateTime => DateTime.Now;
+
+        [BsonDateTimeOptions(Kind = DateTimeKind.Local)]
+        public DateTime updateTime => DateTime.Now.AddHours(8);
     }
 }

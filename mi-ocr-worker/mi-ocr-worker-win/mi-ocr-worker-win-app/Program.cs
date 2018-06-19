@@ -1,5 +1,6 @@
 ﻿using mi_ocr_worker_win_app.Config;
 using mi_ocr_worker_win_app_biz;
+using mi_ocr_worker_win_app_biz.Impl;
 using mi_ocr_worker_win_app_biz.Util;
 using mi_ocr_worker_win_app_entity;
 using Microsoft.Practices.Unity;
@@ -19,6 +20,7 @@ namespace mi_ocr_worker_win_app
     class Program
     {
         public static IReceiveMessageService ReceiveMessageService { get; set; }
+        public static IReportMessageService ReportMessageService { get; set; }
 
         static void Main(string[] args)
         {
@@ -30,8 +32,8 @@ namespace mi_ocr_worker_win_app
             QueueConfig.StartupMessageReceive(MultiQueue.Captcha, ReceiveMessageService.OnMessage);
 
             // bind report error messsages callback method
-            ReceiveMessageService = UnityConfig.Container.Resolve<ReceiveMessageServiceImpl>();
-            QueueConfig.StartupMessageReceive(MultiQueue.Report, ReceiveMessageService.OnMessage);
+            ReportMessageService = UnityConfig.Container.Resolve<ReportMessageServiceImpl>();
+            QueueConfig.StartupMessageReceive(MultiQueue.Report, ReportMessageService.OnMessage);
 
             #region print some messages
             Console.WriteLine($"Startup state is {Caffe.InitCaptcha("./deploy.prototxt", ConfigurationManager.AppSettings["caffemodel"], "./label-map.txt", -1, 32)}");

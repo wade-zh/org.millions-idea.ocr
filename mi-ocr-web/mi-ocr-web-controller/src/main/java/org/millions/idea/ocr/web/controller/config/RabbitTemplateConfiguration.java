@@ -7,6 +7,7 @@
  */
 package org.millions.idea.ocr.web.controller.config;
 
+import com.rabbitmq.client.Channel;
 import org.millions.idea.ocr.web.entity.MultiQueue;
 import org.millions.idea.ocr.web.entity.common.RabbitConfig;
 import org.springframework.amqp.core.BindingBuilder;
@@ -57,6 +58,7 @@ public class RabbitTemplateConfiguration {
 
 
     @Bean(name="captchaRabbitTemplate")
+    @Primary
     public RabbitTemplate captchaRabbitTemplate(
             @Qualifier("captchaConnectionFactory") ConnectionFactory connectionFactory
     ){
@@ -101,9 +103,10 @@ public class RabbitTemplateConfiguration {
             @Qualifier("captchaConnectionFactory") ConnectionFactory connectionFactory
     ) {
         try {
-            connectionFactory.createConnection().createChannel(false)
-                    .queueDeclare(multiQueue.getCaptcha(), true, false, false, null);
-            BindingBuilder.bind(new Queue(multiQueue.getCaptcha())).to(new DirectExchange(rabbitConfig.getExchange())).with(multiQueue.getCaptcha());
+            Channel channel = connectionFactory.createConnection().createChannel(false);
+            channel.queueDeclare(multiQueue.getCaptcha(), true, false, false, null);
+            channel.exchangeDeclare(rabbitConfig.getExchange(), "direct", true,false ,null);
+            channel.queueBind(multiQueue.getCaptcha(), rabbitConfig.getExchange(),multiQueue.getCaptcha());
         }catch (Exception e){
             e.printStackTrace();
         }finally {
@@ -117,9 +120,10 @@ public class RabbitTemplateConfiguration {
             @Qualifier("reportConnectionFactory") ConnectionFactory connectionFactory
     ) {
         try {
-            connectionFactory.createConnection().createChannel(false)
-                    .queueDeclare(multiQueue.getReport(), true, false, false, null);
-            BindingBuilder.bind(new Queue(multiQueue.getReport())).to(new DirectExchange(rabbitConfig.getExchange())).with(multiQueue.getReport());
+            Channel channel = connectionFactory.createConnection().createChannel(false);
+            channel.queueDeclare(multiQueue.getReport(), true, false, false, null);
+            channel.exchangeDeclare(rabbitConfig.getExchange(), "direct", true,false ,null);
+            channel.queueBind(multiQueue.getReport(), rabbitConfig.getExchange(),multiQueue.getReport());
         }catch (Exception e){
             e.printStackTrace();
         }finally {

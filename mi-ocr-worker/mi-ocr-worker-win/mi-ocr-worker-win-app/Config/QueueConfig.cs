@@ -36,7 +36,7 @@ namespace mi_ocr_worker_win_app.Config
         {
             Model = Connection.CreateModel();
             Model.QueueDeclare(queue: queue,
-                                     durable: false,
+                                     durable: true,
                                      exclusive: false,
                                      autoDelete: false,
                                      arguments: null);

@@ -35,7 +35,7 @@ namespace mi_ocr_worker_win_app_biz
                 image = captcha.Binary,
                 md5 = Md5Util.GetMD5Hash(binary),
                 isError = false,
-                createTime = DateTime.Now
+                createTime = DateTime.Now.AddHours(8)
             };
             Console.WriteLine($"Insert samples state is:{mongoDBHelper.Insert(entity) != null}");
         }
