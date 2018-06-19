@@ -16,7 +16,7 @@ namespace mi_ocr_worker_win_app.Config
         public static IConnection Connection { get; set; }
         public static IModel Model { get; set; }
 
-        public static void StartupMessageReceive(string queue, Func<string, bool> action)
+        public static void StartupMessageReceive(string queue, Action<string, Action<bool>> action)
         {
             ConnectionFactory factory = new ConnectionFactory
             {
@@ -32,7 +32,7 @@ namespace mi_ocr_worker_win_app.Config
             BindQueue(queue, action);
         }
 
-        private static void BindQueue(string queue, Func<string, bool> action)
+        private static void BindQueue(string queue, Action<string, Action<bool>> action)
         {
             Model = Connection.CreateModel();
             Model.QueueDeclare(queue: queue,
@@ -46,10 +46,9 @@ namespace mi_ocr_worker_win_app.Config
             {
                 var _body = ea.Body;
                 var _message = Encoding.UTF8.GetString(_body);
-                if (action(_message))
-                {
-                    Model.BasicAck(deliveryTag: ea.DeliveryTag, multiple: false);
-                }
+                action(_message, (res) => {
+                    if (res) Model.BasicAck(deliveryTag: ea.DeliveryTag, multiple: false);
+                }); 
             };
             Model.BasicConsume(queue: queue, autoAck: false, consumer: consumer);
         }

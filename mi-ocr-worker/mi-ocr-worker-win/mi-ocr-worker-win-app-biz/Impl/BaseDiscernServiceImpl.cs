@@ -11,18 +11,25 @@ namespace mi_ocr_worker_win_app_biz.Impl
 {
     public abstract class BaseDiscernServiceImpl : ICaptchaDiscernService
     {
-        public string Discern(Captcha captcha)
+        public void Discern(Captcha captcha, Action<string> call) => Task.Run(() =>
         {
             byte[] binary = Convert.FromBase64String(captcha.Binary);
-            if (binary.Length == 0) return null;
-            string code = OnNority(captcha, binary);
-            if (code == null) return null;
-            PublishRedisMessage(captcha, binary, code);
-            PublishMongoMessage(captcha, binary, code);
-            return code;
-        }
+            if (binary.Length == 0) {
+                call(null);
+                return;
+            }
+            OnNority(captcha, binary, (code) => {
+                if (code == null) {
+                    call(null);
+                    return;
+                }
+                PublishRedisMessage(captcha, binary, code);
+                PublishMongoMessage(captcha, binary, code);
+            });
+        });
 
-        public abstract string OnNority(Captcha captcha, byte[] binary);
+        public abstract void OnNority(Captcha captcha, byte[] binary, Action<string> call);
+
 
         private async void PublishMongoMessage(Captcha captcha, byte[] binary, string code)
         {

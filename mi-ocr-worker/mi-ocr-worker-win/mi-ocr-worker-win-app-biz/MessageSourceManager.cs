@@ -19,18 +19,17 @@ namespace mi_ocr_worker_win_app_biz
         }
 
 
-        public string NotifyAll(Captcha captcha)
+        public void NotifyAll(Captcha captcha, Action<string> call)
         {
-            string res = null;
             foreach (var item in observers)
             {
                 if (item != null)
                 {
-                    res = item.Discern(captcha);
-                    if (res != null) break;
+                    item.Discern(captcha, (code) => {
+                        call(code);
+                    });
                 }
             }
-            return res;
         }
     }
 }

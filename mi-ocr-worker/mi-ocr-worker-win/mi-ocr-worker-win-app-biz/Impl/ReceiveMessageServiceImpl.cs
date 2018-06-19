@@ -12,16 +12,23 @@ namespace mi_ocr_worker_win_app_biz
 {
     public class ReceiveMessageServiceImpl : IReceiveMessageService
     {
-        public bool OnMessage(string message)
+        public void OnMessage(string message, Action<bool> call)
         { 
             Captcha captcha = JsonConvert.DeserializeObject<Captcha>(message);
             // Checking rule
-            if (captcha == null || captcha.Binary == null || !IsDefined(captcha.Channel)) return false;
+            if (captcha == null || captcha.Binary == null || !IsDefined(captcha.Channel)) {
+                call(false);
+                return;
+            }
 
             // Resolve direction
-            string code = MessageSourceManager.Instance.NotifyAll(captcha);
-            if (code == null) return false;
-            return true;
+            MessageSourceManager.Instance.NotifyAll(captcha, (code)=> {
+                if (code == null) {
+                    call(false);
+                    return;
+                }
+                call(true);
+            });
         }
 
         private bool IsDefined(string value) {

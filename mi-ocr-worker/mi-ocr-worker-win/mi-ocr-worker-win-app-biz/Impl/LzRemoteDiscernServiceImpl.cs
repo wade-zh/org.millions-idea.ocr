@@ -12,19 +12,27 @@ namespace mi_ocr_worker_win_app_biz.Impl
 {
     public class LzRemoteDiscernServiceImpl : BaseDiscernServiceImpl, ILzRemoteDiscernService
     {
-        public override string OnNority(Captcha captcha, byte[] binary)
+        public override void OnNority(Captcha captcha, byte[] binary, Action<string> call)
         {
-            if (!captcha.Channel.StartsWith("J")) return null;
+            if (!captcha.Channel.StartsWith("J")) {
+                call(null);
+                return;
+            }
 
             #region upload
             IRestResponse response = upload(binary);
-            if (response == null || response.StatusCode != System.Net.HttpStatusCode.OK || !response.Content.Contains("true")) return null;
+            if (response == null || response.StatusCode != System.Net.HttpStatusCode.OK || !response.Content.Contains("true"))
+            {
+                call(null);
+                return;
+            }
             LzCaptcha lzCaptcha = JsonConvert.DeserializeObject<LzCaptcha>(response.Content);
             Console.WriteLine(response.Content);
             #endregion
 
             captcha.Ticket = lzCaptcha.data.id.ToString();
-            return lzCaptcha.data.val;
+
+            call(lzCaptcha.data.val);
         }
 
         private IRestResponse upload(byte[] binary) {

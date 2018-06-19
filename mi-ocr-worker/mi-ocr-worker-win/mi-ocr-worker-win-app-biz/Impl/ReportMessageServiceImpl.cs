@@ -11,7 +11,7 @@ namespace mi_ocr_worker_win_app_biz.Impl
 {
     public class ReportMessageServiceImpl : IReportMessageService
     {
-        public bool OnMessage(string message)
+        public void OnMessage(string message, Action<bool> call)
         {
             if (message.Length != 36)
             {
@@ -19,7 +19,7 @@ namespace mi_ocr_worker_win_app_biz.Impl
                 ReportErrorToLianZhong(message);
             }
             DeleteErrorSampleAsync(message);
-            return true;
+            call(true);
         }
 
         private async void DeleteErrorSampleAsync(string message)

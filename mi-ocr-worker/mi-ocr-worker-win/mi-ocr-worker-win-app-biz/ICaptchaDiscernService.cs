@@ -9,6 +9,6 @@ namespace mi_ocr_worker_win_app_biz
 {
     public interface ICaptchaDiscernService
     {
-        string Discern(Captcha captcha);
+        void Discern(Captcha captcha, Action<string> call);
     }
 }
