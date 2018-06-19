@@ -49,7 +49,7 @@ public class CaptchaController {
 
     @RequestMapping("report")
     public void report(String cid){
-        if(cid == null || cid.length() < 36) return;
+        if(cid == null || cid.length() == 0) return;
         publishMessageServiceImpl.publish(cid);
     }
 }

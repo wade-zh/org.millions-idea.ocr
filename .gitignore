@@ -268,3 +268,4 @@ __pycache__/
 /mi-ocr-eureka-server/src/main/resources/*.yml
 /mi-ocr-web/mi-ocr-web-controller/src/main/resources/*.yml
 /mi-ocr-gateway/src/main/resources/*.yml
+/tags/1.0.0-20180619

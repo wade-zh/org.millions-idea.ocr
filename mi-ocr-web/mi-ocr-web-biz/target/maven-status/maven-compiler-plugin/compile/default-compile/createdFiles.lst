@@ -1,0 +1,4 @@
+org\millions\idea\ocr\web\biz\impl\PublishMessageServiceImpl.class
+org\millions\idea\ocr\web\biz\IMessageService.class
+org\millions\idea\ocr\web\biz\util\EnumUtil.class
+org\millions\idea\ocr\web\biz\impl\MessageServiceImpl.class
