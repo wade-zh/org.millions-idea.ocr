@@ -264,3 +264,7 @@ __pycache__/
 /mi-ocr-worker/mi-ocr-worker-win/mi-ocr-worker-win-app-utility/deploy.prototxt
 /mi-ocr-worker/mi-ocr-worker-win/mi-ocr-worker-win-app-utility/label-map.txt
 /mi-ocr-worker/mi-ocr-worker-win/mi-ocr-worker-win-app-utility/bin
+/mi-ocr-eureka-server/src/main/resources/*.yml
+/mi-ocr-eureka-server/src/main/resources/*.yml
+/mi-ocr-web/mi-ocr-web-controller/src/main/resources/*.yml
+/mi-ocr-gateway/src/main/resources/*.yml
