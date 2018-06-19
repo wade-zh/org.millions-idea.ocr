@@ -21,19 +21,23 @@ namespace mi_ocr_worker_win_app
     {
         public static IReceiveMessageService ReceiveMessageService { get; set; }
         public static IReportMessageService ReportMessageService { get; set; }
+        public static ILocalDiscernService LocalDiscernService { get; set; }
+        public static ILzRemoteDiscernService LzRemoteDiscernService { get; set; }
 
         static void Main(string[] args)
         {
-            // bind unity container
+            // Bind unity container
             UnityConfig.Configure();
+            FillUnityContainer();
 
-            // bind receive messsages callback method
-            ReceiveMessageService = UnityConfig.Container.Resolve<ReceiveMessageServiceImpl>();
+            // Bind receive messsages callback method
             QueueConfig.StartupMessageReceive(MultiQueue.Captcha, ReceiveMessageService.OnMessage);
 
-            // bind report error messsages callback method
-            ReportMessageService = UnityConfig.Container.Resolve<ReportMessageServiceImpl>();
+            // Bind report error messsages callback method
             QueueConfig.StartupMessageReceive(MultiQueue.Report, ReportMessageService.OnMessage);
+
+            // Bind message source
+            MessageSourceConfig.Configure(LocalDiscernService, LzRemoteDiscernService);
 
             #region print some messages
             Console.WriteLine($"Startup state is {Caffe.InitCaptcha("./deploy.prototxt", ConfigurationManager.AppSettings["caffemodel"], "./label-map.txt", -1, 32)}");
@@ -45,6 +49,14 @@ namespace mi_ocr_worker_win_app
             } while (cmdLine != "exit");
             QueueConfig.Close();
             #endregion
+        }
+
+        private static void FillUnityContainer()
+        {
+            ReceiveMessageService = UnityConfig.Container.Resolve<ReceiveMessageServiceImpl>();
+            ReportMessageService = UnityConfig.Container.Resolve<ReportMessageServiceImpl>();
+            LocalDiscernService = UnityConfig.Container.Resolve<LocalDiscernServiceImpl>();
+            LzRemoteDiscernService = UnityConfig.Container.Resolve<LzRemoteDiscernServiceImpl>();
         }
     }
 }

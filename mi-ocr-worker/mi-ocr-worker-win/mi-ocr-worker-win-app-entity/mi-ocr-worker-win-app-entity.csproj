@@ -50,6 +50,7 @@
     <Compile Include="CaptchaEntity.cs" />
     <Compile Include="ChannelType.cs" />
     <Compile Include="Constant.cs" />
+    <Compile Include="LzCaptcha.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

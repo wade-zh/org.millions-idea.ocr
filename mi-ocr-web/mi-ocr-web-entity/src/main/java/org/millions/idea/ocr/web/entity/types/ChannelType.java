@@ -9,11 +9,18 @@ package org.millions.idea.ocr.web.entity.types;
 
 public enum ChannelType {
     /**
-     * Normal Captcha
+     * Normal captcha
      * strategy: 0-9, A-Z
      * len: 4
      */
-    T0003604("T0003604");
+    T0003604("T0003604"),
+
+    /**
+     * LianZhong remote captcha
+     * strategy: 0-9, A-Z
+     * len: 4
+     */
+    J0003604("J0003604");
 
     private String value;
 

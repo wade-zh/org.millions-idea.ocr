@@ -85,6 +85,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Config\MessageSourceConfig.cs" />
     <Compile Include="Config\QueueConfig.cs" />
     <Compile Include="Config\UnityConfig.cs" />
     <Compile Include="Program.cs" />
