@@ -15,13 +15,30 @@ namespace mi_ocr_worker_win_app_biz
         public bool OnMessage(string message)
         { 
             Captcha captcha = JsonConvert.DeserializeObject<Captcha>(message);
-            if (captcha == null || captcha.Binary == null) return false;
+
+            // Checking rule
+            if (captcha == null || captcha.Binary == null || IsDefined(captcha.Channel)) return false;
+            
+            // Resolve direction
+
             byte[] binary = Convert.FromBase64String(captcha.Binary);
             if (binary.Length == 0) return false;
             string code = Caffe.GetCaptcha(binary);
             if (code.Length == 0) code = "null";
             PublishMessageAsync(captcha, binary, code);
             return true;
+        }
+
+        private bool IsDefined(string value) {
+            if (ChannelType.T0003604.Equals(value))
+            {
+                return true;
+            }
+            else if (ChannelType.J0003604.Equals(value))
+            {
+                return true;
+            }
+            return false;
         }
 
         private async void PublishMessageAsync(Captcha captcha, byte[] binary, string code) {
