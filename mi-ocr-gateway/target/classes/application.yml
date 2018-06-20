@@ -20,13 +20,13 @@ zuul:
   thread-pool:
     use-separate-thread-pools: true
   routes:
-    mi-ocr-web-service:
-      path: /ocr-api/**
+    mi-ocr-web-captcha-service:
+      path: /captcha-api/**
   ratelimit:
     enabled: true
     behind-proxy: true
     policy-list:
-      mi-ocr-web-service:
+      mi-ocr-web-captcha-service:
         - limit: 30
           quota: 30
           refresh-interval: 1
