@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4f296295-0fb9-413c-9291-0abe83067469" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/mi-ocr-web-controller/src/main/resources/config/rabbitmq.properties" afterPath="$PROJECT_DIR$/mi-ocr-web-controller/src/main/resources/config/rabbitmq.properties" />
-    </list>
+    <list default="true" id="4f296295-0fb9-413c-9291-0abe83067469" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/mi-ocr-parent/target/" />
     <ignored path="$PROJECT_DIR$/mi-ocr-controller/target/" />
     <ignored path="$PROJECT_DIR$/mi-ocr-common/target/" />
@@ -26,11 +24,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="PublishMessageServiceImpl.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="PublishMessageServiceImpl.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mi-ocr-web-biz/src/main/java/org/millions/idea/ocr/web/biz/impl/PublishMessageServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="50" column="25" lean-forward="true" selection-start-line="50" selection-start-column="25" selection-end-line="50" selection-end-column="25" />
+            <state relative-caret-position="283">
+              <caret line="50" column="0" lean-forward="false" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
               <folding>
                 <element signature="e#1311#1312#0" expanded="true" />
                 <element signature="e#1374#1375#0" expanded="true" />
@@ -39,101 +37,32 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="rabbitmq.properties" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mi-ocr-web-controller/src/main/resources/config/rabbitmq.properties">
+      <file leaf-file-name="AopUtils.class" pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/5.0.6.RELEASE/spring-aop-5.0.6.RELEASE.jar!/org/springframework/aop/support/AopUtils.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+            <state relative-caret-position="175">
+              <caret line="193" column="0" lean-forward="false" selection-start-line="193" selection-start-column="0" selection-end-line="193" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CaptchaController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="JdkDynamicAopProxy.class" pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/5.0.6.RELEASE/spring-aop-5.0.6.RELEASE.jar!/org/springframework/aop/framework/JdkDynamicAopProxy.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="158">
+              <caret line="83" column="87" lean-forward="false" selection-start-line="83" selection-start-column="87" selection-end-line="83" selection-end-column="87" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CaptchaController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mi-ocr-web-controller/src/main/java/org/millions/idea/ocr/web/controller/rest/CaptchaController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="358">
-              <caret line="51" column="40" lean-forward="false" selection-start-line="51" selection-start-column="40" selection-end-line="51" selection-end-column="40" />
+            <state relative-caret-position="16">
+              <caret line="36" column="66" lean-forward="false" selection-start-line="36" selection-start-column="66" selection-end-line="36" selection-end-column="66" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RabbitTemplateConfiguration.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mi-ocr-web-controller/src/main/java/org/millions/idea/ocr/web/controller/config/RabbitTemplateConfiguration.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="763">
-              <caret line="125" column="105" lean-forward="true" selection-start-line="125" selection-start-column="105" selection-end-line="125" selection-end-column="105" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1432#1433#0" expanded="true" />
-                <element signature="e#1467#1468#0" expanded="true" />
-                <element signature="e#2040#2041#0" expanded="true" />
-                <element signature="e#2075#2076#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RabbitConfig.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mi-ocr-web-entity/src/main/java/org/millions/idea/ocr/web/entity/common/RabbitConfig.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1030">
-              <caret line="65" column="18" lean-forward="false" selection-start-line="65" selection-start-column="18" selection-end-line="65" selection-end-column="18" />
-              <folding>
-                <element signature="e#849#850#0" expanded="true" />
-                <element signature="e#879#880#0" expanded="true" />
-                <element signature="e#1650#1651#0" expanded="true" />
-                <element signature="e#1681#1682#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EnumUtil.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mi-ocr-web-biz/src/main/java/org/millions/idea/ocr/web/biz/util/EnumUtil.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="14" column="42" lean-forward="false" selection-start-line="14" selection-start-column="42" selection-end-line="14" selection-end-column="42" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Channel.java" pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/com/rabbitmq/amqp-client/5.1.2/amqp-client-5.1.2-sources.jar!/com/rabbitmq/client/Channel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="236">
-              <caret line="505" column="89" lean-forward="true" selection-start-line="505" selection-start-column="21" selection-end-line="505" selection-end-column="89" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RabbitUtil.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mi-ocr-web-utility/src/main/java/org/millions/idea/ocr/web/utility/queue/RabbitUtil.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="256">
-              <caret line="20" column="16" lean-forward="false" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
-              <folding>
-                <element signature="e#539#540#0" expanded="true" />
-                <element signature="e#600#601#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ChannelType.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mi-ocr-web-entity/src/main/java/org/millions/idea/ocr/web/entity/types/ChannelType.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-              <folding>
-                <element signature="e#457#458#0" expanded="true" />
-                <element signature="e#485#486#0" expanded="true" />
-                <element signature="e#527#528#0" expanded="true" />
-                <element signature="e#561#562#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -172,6 +101,7 @@
       <find>LoggingFailureAnalysisReporter</find>
       <find>Queue</find>
       <find>exchange</find>
+      <find>JsonUti</find>
     </findStrings>
     <replaceStrings>
       <replace>100MB</replace>
@@ -223,7 +153,6 @@
         <option value="$PROJECT_DIR$/mi-ocr-web-controller/src/main/java/org/millions/idea/ocr/web/controller/config/WebMvcConfiguration.java" />
         <option value="$PROJECT_DIR$/mi-ocr-web-controller/src/main/resources/log4j.properties" />
         <option value="$PROJECT_DIR$/mi-ocr-web-controller/src/main/resources/log4j.xml" />
-        <option value="$PROJECT_DIR$/mi-ocr-web-controller/src/main/java/org/millions/idea/ocr/web/controller/interceptor/ApiExceptionInterceptor.java" />
         <option value="$PROJECT_DIR$/mi-ocr-web-controller/pom.xml" />
         <option value="$PROJECT_DIR$/mi-ocr-web-biz/src/main/java/org/millions/idea/ocr/web/biz/util/SamplesUtil.java" />
         <option value="$PROJECT_DIR$/mi-ocr-web-controller/src/main/resources/application.yml" />
@@ -243,6 +172,7 @@
         <option value="$PROJECT_DIR$/mi-ocr-web-controller/src/main/java/org/millions/idea/ocr/web/controller/config/RabbitTemplateConfiguration.java" />
         <option value="$PROJECT_DIR$/mi-ocr-web-entity/src/main/java/org/millions/idea/ocr/web/entity/types/ChannelType.java" />
         <option value="$PROJECT_DIR$/mi-ocr-web-controller/src/main/java/org/millions/idea/ocr/web/controller/rest/CaptchaController.java" />
+        <option value="$PROJECT_DIR$/mi-ocr-web-controller/src/main/java/org/millions/idea/ocr/web/controller/interceptor/ApiExceptionInterceptor.java" />
       </list>
     </option>
   </component>
@@ -279,7 +209,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="289" />
     <option name="y" value="14" />
     <option name="width" value="1400" />
@@ -319,52 +249,11 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="mi-ocr-web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mi-ocr-web-biz" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mi-ocr-web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mi-ocr-web-biz" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mi-ocr-web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mi-ocr-web-biz" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mi-ocr-web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mi-ocr-web-biz" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mi-ocr-web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mi-ocr-web-biz" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="biz" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mi-ocr-web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mi-ocr-web-biz" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="biz" type="462c0819:PsiDirectoryNode" />
-              <item name="impl" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mi-ocr-web" type="b2602c69:ProjectViewProjectNode" />
               <item name="mi-ocr-web-controller" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -400,7 +289,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="controller" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
+              <item name="filter" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="mi-ocr-web" type="b2602c69:ProjectViewProjectNode" />
@@ -409,7 +298,8 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="controller" type="462c0819:PsiDirectoryNode" />
-              <item name="rest" type="462c0819:PsiDirectoryNode" />
+              <item name="filter" type="462c0819:PsiDirectoryNode" />
+              <item name="CorsFilter" type="1a9f42e2:ClassTreeNode" />
             </path>
             <path>
               <item name="mi-ocr-web" type="b2602c69:ProjectViewProjectNode" />
@@ -418,28 +308,24 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="controller" type="462c0819:PsiDirectoryNode" />
-              <item name="rest" type="462c0819:PsiDirectoryNode" />
-              <item name="CaptchaController" type="1a9f42e2:ClassTreeNode" />
+              <item name="interceptor" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="mi-ocr-web" type="b2602c69:ProjectViewProjectNode" />
               <item name="mi-ocr-web-controller" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mi-ocr-web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mi-ocr-web-controller" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="interceptor" type="462c0819:PsiDirectoryNode" />
+              <item name="ApiExceptionInterceptor" type="1a9f42e2:ClassTreeNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -758,7 +644,9 @@
       <workItem from="1529377625767" duration="3044000" />
       <workItem from="1529384008694" duration="1697000" />
       <workItem from="1529404517469" duration="2389000" />
-      <workItem from="1529407167893" duration="4852000" />
+      <workItem from="1529407167893" duration="5446000" />
+      <workItem from="1529460942043" duration="2501000" />
+      <workItem from="1529490619743" duration="1389000" />
     </task>
     <servers />
   </component>
@@ -795,10 +683,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="77197000" />
+    <option name="totallyTimeSpent" value="81681000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -814,7 +702,7 @@
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30627707" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1401919" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14179105" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -823,7 +711,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39935064" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39935064" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -839,7 +727,21 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="34" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/mi-ocr-web-controller/src/main/java/org/millions/idea/ocr/web/controller/interceptor/ApiExceptionInterceptor.java</url>
+          <line>27</line>
+          <properties />
+          <option name="timeStamp" value="35" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/mi-ocr-web-biz/src/main/java/org/millions/idea/ocr/web/biz/impl/PublishMessageServiceImpl.java</url>
+          <line>45</line>
+          <properties />
+          <option name="timeStamp" value="37" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="38" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -878,34 +780,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/mi-ocr-web-entity/src/main/java/org/millions/idea/ocr/web/entity/types/HttpErrorCodeType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mi-ocr-web-utility/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1404">
-          <caret line="52" column="43" lean-forward="false" selection-start-line="52" selection-start-column="43" selection-end-line="52" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/alibaba/fastjson/1.2.47/fastjson-1.2.47.jar!/com/alibaba/fastjson/JSONObject.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="26" column="52" lean-forward="false" selection-start-line="26" selection-start-column="52" selection-end-line="26" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/8.5.31/tomcat-embed-core-8.5.31.jar!/javax/servlet/ServletResponse.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="891">
-          <caret line="38" column="9" lean-forward="false" selection-start-line="38" selection-start-column="9" selection-end-line="38" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/8.5.31/tomcat-embed-core-8.5.31.jar!/org/apache/catalina/connector/CoyoteWriter.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="337">
@@ -962,14 +836,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mi-ocr-web-controller/src/main/java/org/millions/idea/ocr/web/controller/MiOcrControllerApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mi-ocr-web-controller/src/main/java/org/millions/idea/ocr/web/controller/config/WebMvcConfiguration.java" />
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/5.0.6.RELEASE/spring-webmvc-5.0.6.RELEASE-sources.jar!/org/springframework/web/servlet/DispatcherServlet.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -998,13 +864,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="267">
           <caret line="29" column="11" lean-forward="false" selection-start-line="29" selection-start-column="11" selection-end-line="29" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mi-ocr-web-controller/src/main/java/org/millions/idea/ocr/web/controller/interceptor/ApiExceptionInterceptor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1060,7 +919,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1998">
           <caret line="74" column="55" lean-forward="false" selection-start-line="74" selection-start-column="53" selection-end-line="74" selection-end-column="55" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1068,7 +926,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
           <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1076,7 +933,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1134">
           <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1085,22 +941,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="81">
           <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding>
-            <marker date="1529310747175" expanded="false" signature="0:104" ph="/.../" />
-            <marker date="1529310747175" expanded="true" signature="323:422" ph="{...}" />
-            <marker date="1529310747175" expanded="false" signature="453:464" ph=" { " />
-            <marker date="1529310747175" expanded="false" signature="483:489" ph=" }" />
-            <marker date="1529310747175" expanded="false" signature="531:542" ph=" { " />
-            <marker date="1529310747175" expanded="false" signature="563:569" ph=" }" />
-            <marker date="1529310747175" expanded="false" signature="601:612" ph=" { " />
-            <marker date="1529310747175" expanded="false" signature="632:638" ph=" }" />
-            <marker date="1529310747175" expanded="false" signature="682:693" ph=" { " />
-            <marker date="1529310747175" expanded="false" signature="716:722" ph=" }" />
-            <marker date="1529310747175" expanded="false" signature="753:764" ph=" { " />
-            <marker date="1529310747175" expanded="false" signature="783:789" ph=" }" />
-            <marker date="1529310747175" expanded="false" signature="831:842" ph=" { " />
-            <marker date="1529310747175" expanded="false" signature="863:869" ph=" }" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1132,14 +972,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
           <caret line="14" column="23" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="23" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#492#493#0" expanded="false" />
-            <element signature="e#539#540#0" expanded="false" />
-            <element signature="e#572#573#0" expanded="false" />
-            <element signature="e#619#620#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1147,13 +979,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
           <caret line="11" column="19" lean-forward="false" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
-          <folding>
-            <marker date="1526542300260" expanded="false" signature="0:104" ph="/.../" />
-            <marker date="1526542300260" expanded="false" signature="160:282" ph="..." />
-            <marker date="1526542300260" expanded="true" signature="511:518" ph="{}" />
-            <marker date="1526542300260" expanded="true" signature="576:850" ph="{...}" />
-            <marker date="1526542300260" expanded="true" signature="917:1632" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1169,243 +994,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="301">
           <caret line="397" column="39" lean-forward="false" selection-start-line="397" selection-start-column="34" selection-end-line="397" selection-end-column="39" />
-          <folding>
-            <marker date="1525271721991" expanded="false" signature="0:104" ph="/.../" />
-            <marker date="1525271721991" expanded="false" signature="160:4966" ph="..." />
-            <marker date="1525271721991" expanded="true" signature="6312:6367" ph="{...}" />
-            <marker date="1525271721991" expanded="false" signature="8403:8414" ph=" { " />
-            <marker date="1525271721991" expanded="false" signature="8443:8449" ph=" }" />
-            <marker date="1525271721991" expanded="false" signature="8513:8524" ph=" { " />
-            <marker date="1525271721991" expanded="false" signature="8569:8575" ph=" }" />
-            <marker date="1525271721991" expanded="false" signature="8619:8630" ph=" { " />
-            <marker date="1525271721991" expanded="false" signature="8685:8691" ph=" }" />
-            <marker date="1525271721991" expanded="false" signature="8737:8748" ph=" { " />
-            <marker date="1525271721991" expanded="false" signature="8797:8803" ph=" }" />
-            <marker date="1525271721991" expanded="false" signature="8836:8847" ph=" { " />
-            <marker date="1525271721991" expanded="false" signature="8868:8874" ph=" }" />
-            <marker date="1525271721991" expanded="false" signature="8924:8935" ph=" { " />
-            <marker date="1525271721991" expanded="false" signature="8964:8970" ph=" }" />
-            <marker date="1525271721991" expanded="false" signature="9005:9016" ph=" { " />
-            <marker date="1525271721991" expanded="false" signature="9039:9045" ph=" }" />
-            <marker date="1525271721991" expanded="true" signature="9085:9096" ph=" { " />
-            <marker date="1525271721991" expanded="true" signature="9115:9121" ph=" }" />
-            <marker date="1525271721991" expanded="false" signature="9167:9178" ph=" { " />
-            <marker date="1525271721991" expanded="false" signature="9203:9209" ph=" }" />
-            <marker date="1525271721991" expanded="false" signature="9242:9253" ph=" { " />
-            <marker date="1525271721991" expanded="false" signature="9274:9280" ph=" }" />
-            <marker date="1525271721991" expanded="true" signature="9348:9440" ph="{...}" />
-            <marker date="1525271721991" expanded="false" signature="9496:9507" ph=" { " />
-            <marker date="1525271721991" expanded="false" signature="9544:9550" ph=" }" />
-            <marker date="1525271721991" expanded="false" signature="9602:9613" ph=" { " />
-            <marker date="1525271721991" expanded="false" signature="9646:9652" ph=" }" />
-            <marker date="1525271721991" expanded="false" signature="9724:9735" ph=" { " />
-            <marker date="1525271721991" expanded="false" signature="9776:9782" ph=" }" />
-            <marker date="1525271721991" expanded="true" signature="9885:10061" ph="{...}" />
-            <marker date="1525271721991" expanded="false" signature="10135:10146" ph=" { " />
-            <marker date="1525271721991" expanded="false" signature="10185:10191" ph=" }" />
-            <marker date="1525271721991" expanded="false" signature="10242:10253" ph=" { " />
-            <marker date="1525271721991" expanded="false" signature="10282:10288" ph=" }" />
-            <marker date="1525271721991" expanded="true" signature="10373:10587" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="10669:10877" ph="{...}" />
-            <marker date="1525271721991" expanded="false" signature="10926:10937" ph=" { " />
-            <marker date="1525271721991" expanded="false" signature="10995:11001" ph=" }" />
-            <marker date="1525271721991" expanded="true" signature="11074:11224" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="11299:11473" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="11586:11689" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="11808:11917" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="11976:12199" ph="{...}" />
-            <marker date="1525271721991" expanded="false" signature="12262:12273" ph=" { " />
-            <marker date="1525271721991" expanded="false" signature="12308:12314" ph=" }" />
-            <marker date="1525271721991" expanded="false" signature="12389:12400" ph=" { " />
-            <marker date="1525271721991" expanded="false" signature="12441:12447" ph=" }" />
-            <marker date="1525271721991" expanded="true" signature="12527:12691" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="12793:13139" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="13239:13579" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="13688:13769" ph="{...}" />
-            <marker date="1525271721991" expanded="false" signature="13828:13839" ph=" { " />
-            <marker date="1525271721991" expanded="false" signature="13876:13882" ph=" }" />
-            <marker date="1525271721991" expanded="true" signature="13964:14039" ph="{...}" />
-            <marker date="1525271721991" expanded="false" signature="14105:14116" ph=" { " />
-            <marker date="1525271721991" expanded="false" signature="14157:14163" ph=" }" />
-            <marker date="1525271721991" expanded="true" signature="14232:14313" ph="{...}" />
-            <marker date="1525271721991" expanded="false" signature="14355:14366" ph=" { " />
-            <marker date="1525271721991" expanded="false" signature="14387:14393" ph=" }" />
-            <marker date="1525271721991" expanded="false" signature="14449:14460" ph=" { " />
-            <marker date="1525271721991" expanded="false" signature="14493:14499" ph=" }" />
-            <marker date="1525271721991" expanded="false" signature="14564:14575" ph=" { " />
-            <marker date="1525271721991" expanded="false" signature="14618:14624" ph=" }" />
-            <marker date="1525271721991" expanded="false" signature="14671:14682" ph=" { " />
-            <marker date="1525271721991" expanded="false" signature="14717:14723" ph=" }" />
-            <marker date="1525271721991" expanded="true" signature="14799:14868" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="14921:15679" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="15745:16446" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="16485:16683" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="16572:16669" ph="{...}" />
-            <marker date="1525271721991" expanded="false" signature="16714:16725" ph=" { " />
-            <marker date="1525271721991" expanded="false" signature="16740:16746" ph=" }" />
-            <marker date="1525271721991" expanded="true" signature="16777:16784" ph="{}" />
-            <marker date="1525271721991" expanded="true" signature="16815:17168" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="17198:17205" ph="{}" />
-            <marker date="1525271721991" expanded="true" signature="17238:17478" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="17519:17625" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="17668:18599" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="18073:18199" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="18660:18727" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="18807:18869" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="18966:19046" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="19176:19552" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="19212:19453" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="19656:20795" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="20864:20963" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="21076:21169" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="21257:21351" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="21472:21560" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="21665:21754" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="21892:21997" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="22110:22209" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="22341:22458" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="22604:22720" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="22885:22996" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="23145:23257" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="23439:23689" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="23741:23832" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="23879:24009" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="24067:24990" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="24130:24827" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="25060:25218" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="25285:26199" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="25348:26132" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="26260:26331" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="26408:26486" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="26565:26651" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="26748:26977" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="27071:27148" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="27260:27344" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="27458:27550" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="27682:27922" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="28027:28106" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="28229:28330" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="28471:28572" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="28741:28903" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="28820:28895" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="29058:29161" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="29334:29425" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="29601:29974" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="29653:29870" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="30064:31578" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="31689:32873" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="32921:33170" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="33357:35504" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="35578:35662" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="35769:35872" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="35965:36061" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="36187:36285" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="36395:36492" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="36635:36728" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="36807:36889" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="37001:37137" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="37235:37329" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="37460:37591" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="37706:37810" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="37958:38084" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="38206:38340" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="38495:38625" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="38766:38912" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="39086:39211" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="39369:39495" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="39686:39932" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="40060:40162" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="40323:40479" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="40626:40740" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="40920:41071" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="41235:41359" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="41556:41702" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="41873:42027" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="42231:42381" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="42571:42737" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="42960:43105" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="43312:43458" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="43698:43963" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="44140:44517" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="44582:44729" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="44856:45515" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="45655:48283" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="45707:48184" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="46633:47714" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="46777:47700" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="48367:48639" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="48775:49230" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="48821:48958" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="49011:49131" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="49365:51495" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="51664:52981" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="53099:54357" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="54577:55165" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="55218:55332" ph="{...}" />
-            <marker date="1525271721991" expanded="false" signature="55385:55396" ph=" { " />
-            <marker date="1525271721991" expanded="false" signature="55453:55459" ph=" }" />
-            <marker date="1525271721991" expanded="true" signature="55551:56175" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="55676:55765" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="56269:59046" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="59102:61220" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="59227:59373" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="61271:61832" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="61885:62458" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="62548:62955" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="63119:64676" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="64818:65090" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="65189:65720" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="65788:65926" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="65992:66107" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="66176:66310" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="66419:67058" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="67148:67434" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="67534:67793" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="67862:68096" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="68174:68626" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="68673:69508" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="69584:69884" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="70044:71612" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="70640:70821" ph="{...}" />
-            <marker date="1525271721991" expanded="false" signature="71652:71663" ph=" { " />
-            <marker date="1525271721991" expanded="false" signature="71699:71705" ph=" }" />
-            <marker date="1525271721991" expanded="false" signature="71744:71755" ph=" { " />
-            <marker date="1525271721991" expanded="false" signature="71767:71773" ph=" }" />
-            <marker date="1525271721991" expanded="true" signature="71815:72076" ph="{...}" />
-            <marker date="1525271721991" expanded="false" signature="72105:72116" ph=" { " />
-            <marker date="1525271721991" expanded="false" signature="72133:72139" ph=" }" />
-            <marker date="1525271721991" expanded="true" signature="72184:73263" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="73359:74381" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="74540:75733" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="74711:75301" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="74789:74884" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="74946:75048" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="75188:75291" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="75796:75896" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="75960:76038" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="76117:76377" ph="{...}" />
-            <marker date="1525271721991" expanded="false" signature="76167:76182" ph=" { " />
-            <marker date="1525271721991" expanded="false" signature="76197:76207" ph=" }" />
-            <marker date="1525271721991" expanded="true" signature="76242:76371" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="76417:78063" ph="{...}" />
-            <marker date="1525271721991" expanded="false" signature="76597:76612" ph=" { " />
-            <marker date="1525271721991" expanded="false" signature="76651:76661" ph=" }" />
-            <marker date="1525271721991" expanded="false" signature="76702:76717" ph=" { " />
-            <marker date="1525271721991" expanded="false" signature="76742:76752" ph=" }" />
-            <marker date="1525271721991" expanded="false" signature="76810:76825" ph=" { " />
-            <marker date="1525271721991" expanded="false" signature="76858:76868" ph=" }" />
-            <marker date="1525271721991" expanded="false" signature="76913:76928" ph=" { " />
-            <marker date="1525271721991" expanded="false" signature="76957:76967" ph=" }" />
-            <marker date="1525271721991" expanded="false" signature="77033:77048" ph=" { " />
-            <marker date="1525271721991" expanded="false" signature="77089:77099" ph=" }" />
-            <marker date="1525271721991" expanded="true" signature="77158:77260" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="77346:77484" ph="{...}" />
-            <marker date="1525271721991" expanded="true" signature="77537:77863" ph="{...}" />
-            <marker date="1525271721991" expanded="false" signature="77905:77920" ph=" { " />
-            <marker date="1525271721991" expanded="false" signature="77942:77952" ph=" }" />
-            <marker date="1525271721991" expanded="false" signature="78014:78029" ph=" { " />
-            <marker date="1525271721991" expanded="false" signature="78047:78057" ph=" }" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1413,10 +1001,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
           <caret line="12" column="12" lean-forward="false" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
-          <folding>
-            <marker date="1525271721991" expanded="false" signature="0:104" ph="/.../" />
-            <marker date="1525271721991" expanded="false" signature="166:285" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1424,44 +1008,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
           <caret line="11" column="15" lean-forward="false" selection-start-line="11" selection-start-column="15" selection-end-line="11" selection-end-column="15" />
-          <folding>
-            <marker date="1525271721991" expanded="false" signature="0:104" ph="/.../" />
-            <marker date="1525271721991" expanded="false" signature="166:247" ph="..." />
-            <marker date="1525271721991" expanded="false" signature="678:689" ph=" { " />
-            <marker date="1525271721991" expanded="false" signature="701:707" ph=" }" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mi-ocr-web-utility/src/main/java/org/millions/idea/ocr/web/utility/queue/RabbitUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
+        <state relative-caret-position="297">
           <caret line="20" column="16" lean-forward="false" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
-          <folding>
-            <element signature="e#539#540#0" expanded="true" />
-            <element signature="e#600#601#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/rabbitmq/amqp-client/5.1.2/amqp-client-5.1.2-sources.jar!/com/rabbitmq/client/Channel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="505" column="89" lean-forward="true" selection-start-line="505" selection-start-column="21" selection-end-line="505" selection-end-column="89" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mi-ocr-web-entity/src/main/java/org/millions/idea/ocr/web/entity/common/RabbitConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1030">
-          <caret line="65" column="18" lean-forward="false" selection-start-line="65" selection-start-column="18" selection-end-line="65" selection-end-column="18" />
-          <folding>
-            <element signature="e#849#850#0" expanded="true" />
-            <element signature="e#879#880#0" expanded="true" />
-            <element signature="e#1650#1651#0" expanded="true" />
-            <element signature="e#1681#1682#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1473,27 +1026,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mi-ocr-web-controller/src/main/java/org/millions/idea/ocr/web/controller/config/RabbitTemplateConfiguration.java">
+    <entry file="file://$PROJECT_DIR$/mi-ocr-web-entity/src/main/java/org/millions/idea/ocr/web/entity/common/RabbitConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="763">
-          <caret line="125" column="105" lean-forward="true" selection-start-line="125" selection-start-column="105" selection-end-line="125" selection-end-column="105" />
+        <state relative-caret-position="1080">
+          <caret line="65" column="18" lean-forward="false" selection-start-line="65" selection-start-column="18" selection-end-line="65" selection-end-column="18" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1432#1433#0" expanded="true" />
-            <element signature="e#1467#1468#0" expanded="true" />
-            <element signature="e#2040#2041#0" expanded="true" />
-            <element signature="e#2075#2076#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mi-ocr-web-biz/src/main/java/org/millions/idea/ocr/web/biz/impl/PublishMessageServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="50" column="25" lean-forward="true" selection-start-line="50" selection-start-column="25" selection-end-line="50" selection-end-column="25" />
-          <folding>
-            <element signature="e#1311#1312#0" expanded="true" />
-            <element signature="e#1374#1375#0" expanded="true" />
+            <element signature="e#849#850#0" expanded="true" />
+            <element signature="e#879#880#0" expanded="true" />
+            <element signature="e#1650#1651#0" expanded="true" />
+            <element signature="e#1681#1682#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1506,10 +1047,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/rabbitmq/amqp-client/5.1.2/amqp-client-5.1.2-sources.jar!/com/rabbitmq/client/Channel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="13014">
+          <caret line="505" column="89" lean-forward="false" selection-start-line="505" selection-start-column="21" selection-end-line="505" selection-end-column="89" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/mi-ocr-web-entity/src/main/java/org/millions/idea/ocr/web/entity/types/ChannelType.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+        <state relative-caret-position="459">
+          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
           <folding>
             <element signature="e#457#458#0" expanded="true" />
             <element signature="e#485#486#0" expanded="true" />
@@ -1519,11 +1068,87 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/mi-ocr-web-utility/src/main/java/org/millions/idea/ocr/web/utility/json/JsonUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="22" column="23" lean-forward="true" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/alibaba/fastjson/1.2.47/fastjson-1.2.47.jar!/com/alibaba/fastjson/JSON.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="637" column="24" lean-forward="false" selection-start-line="637" selection-start-column="18" selection-end-line="637" selection-end-column="24" />
+          <folding>
+            <element signature="e#24810#24811#0" expanded="true" />
+            <element signature="e#24883#24884#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mi-ocr-web-controller/src/main/java/org/millions/idea/ocr/web/controller/interceptor/ApiExceptionInterceptor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mi-ocr-web-controller/src/main/java/org/millions/idea/ocr/web/controller/MiOcrControllerApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="48" lean-forward="false" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mi-ocr-web-controller/src/main/java/org/millions/idea/ocr/web/controller/config/RabbitTemplateConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="448">
+          <caret line="125" column="105" lean-forward="false" selection-start-line="125" selection-start-column="105" selection-end-line="125" selection-end-column="105" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1432#1433#0" expanded="true" />
+            <element signature="e#1467#1468#0" expanded="true" />
+            <element signature="e#2040#2041#0" expanded="true" />
+            <element signature="e#2075#2076#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/mi-ocr-web-controller/src/main/java/org/millions/idea/ocr/web/controller/rest/CaptchaController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="358">
-          <caret line="51" column="40" lean-forward="false" selection-start-line="51" selection-start-column="40" selection-end-line="51" selection-end-column="40" />
+        <state relative-caret-position="16">
+          <caret line="36" column="66" lean-forward="false" selection-start-line="36" selection-start-column="66" selection-end-line="36" selection-end-column="66" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/5.0.6.RELEASE/spring-aop-5.0.6.RELEASE.jar!/org/springframework/aop/support/AopUtils.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="193" column="0" lean-forward="false" selection-start-line="193" selection-start-column="0" selection-end-line="193" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/5.0.6.RELEASE/spring-aop-5.0.6.RELEASE.jar!/org/springframework/aop/framework/JdkDynamicAopProxy.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="158">
+          <caret line="83" column="87" lean-forward="false" selection-start-line="83" selection-start-column="87" selection-end-line="83" selection-end-column="87" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mi-ocr-web-biz/src/main/java/org/millions/idea/ocr/web/biz/impl/PublishMessageServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="283">
+          <caret line="50" column="0" lean-forward="false" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+          <folding>
+            <element signature="e#1311#1312#0" expanded="true" />
+            <element signature="e#1374#1375#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

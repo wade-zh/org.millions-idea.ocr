@@ -17,13 +17,13 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @SpringBootApplication()
 @EnableDiscoveryClient
 @EnableAsync
-@ComponentScan("org.millions.idea")
+@ComponentScan(basePackages = "org.millions.idea")
 @EnableFeignClients("org.millions.idea")
 @EnableZuulProxy
 @EnableCircuitBreaker //open breaker
 public class MiOcrGatewayApplication {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		SpringApplication.run(MiOcrGatewayApplication.class, args);
 	}
 }
