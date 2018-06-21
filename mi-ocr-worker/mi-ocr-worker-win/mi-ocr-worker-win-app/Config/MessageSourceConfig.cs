@@ -16,5 +16,13 @@ namespace mi_ocr_worker_win_app.Config
                 MessageSourceManager.Instance.AddObserver(item);
             }
         }
+
+        public static void Configure(params IReportErrorMessageService[] list)
+        {
+            foreach (var item in list)
+            {
+                MessageSourceManager.Instance.AddObserver(item);
+            }
+        }
     }
 }

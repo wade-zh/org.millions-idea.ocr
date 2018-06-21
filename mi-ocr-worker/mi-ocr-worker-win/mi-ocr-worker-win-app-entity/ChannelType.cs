@@ -17,6 +17,11 @@ namespace mi_ocr_worker_win_app_entity
         /// <summary>
         /// 4位英文数字混合型-联众答题
         /// </summary>
-        public static string J0003604 => "J0003604";
+        public static string J000360401001 => "J000360401001";
+
+        /// <summary>
+        /// 4位英文数字混合型-若快答题
+        /// </summary>
+        public static string R000360403040 => "R000360403040";
     }
 }

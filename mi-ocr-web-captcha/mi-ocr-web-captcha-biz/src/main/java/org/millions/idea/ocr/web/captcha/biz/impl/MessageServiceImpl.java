@@ -8,6 +8,9 @@
 package org.millions.idea.ocr.web.captcha.biz.impl;
 
 import org.millions.idea.ocr.web.captcha.biz.IMessageService;
+import org.millions.idea.ocr.web.captcha.biz.util.EnumUtil;
+import org.millions.idea.ocr.web.captcha.entity.common.SharedResult;
+import org.millions.idea.ocr.web.captcha.utility.json.JsonUtil;
 import org.millions.idea.ocr.web.captcha.utility.queue.RabbitUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -52,11 +55,15 @@ public class MessageServiceImpl implements IMessageService {
          *  当后端系统将识别结果发送到缓存服务器时，用户主动调用本方法从缓存服务器中取出验证码
          *  当用户成功取出验证码后，将缓存删除，并且，将识别结果上传到样本数据分析中心
          */
-
         Object captcha = redisTemplate.opsForValue().get(cid);
         if(captcha != null && !captcha.toString().equalsIgnoreCase("null")) {
             String code = captcha.toString();
-            redisTemplate.delete(code.toString());
+            if (code.contains("Ticket") && code.contains("Id") && code.contains("Result")){
+                SharedResult model = JsonUtil.getModel(code, SharedResult.class);
+                if(model == null) return null;
+                code = model.getResult();
+            }
+            redisTemplate.delete(cid);
             /*Query query = new Query();
             query.addCriteria(Criteria.where("captchaId").is(cid));
             Update update = Update.update("code", code);

@@ -20,7 +20,14 @@ public enum ChannelType {
      * strategy: 0-9, A-Z
      * len: 4
      */
-    J0003604("J0003604");
+    J000360401001("J000360401001"),
+
+    /**
+     * RuoKuai remote captcha
+     * strategy: 0-9, A-Z
+     * len: 4
+     */
+    R000360403040("R000360403040");
 
     private String value;
 

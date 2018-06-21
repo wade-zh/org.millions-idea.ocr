@@ -21,8 +21,12 @@ namespace mi_ocr_worker_win_app
     {
         public static IReceiveMessageService ReceiveMessageService { get; set; }
         public static IReportMessageService ReportMessageService { get; set; }
+        public static IRkReportMessageService RkReportMessageService { get; set; }
+        public static ILzReportMessageService LzReportMessageService { get; set; }
+        public static ILocalReportMessageService LocalReportMessageService { get; set; }
         public static ILocalDiscernService LocalDiscernService { get; set; }
         public static ILzRemoteDiscernService LzRemoteDiscernService { get; set; }
+        public static IRkRemoteDiscernService RkRemoteDiscernService { get; set; }
 
         static void Main(string[] args)
         {
@@ -30,17 +34,19 @@ namespace mi_ocr_worker_win_app
             UnityConfig.Configure();
             FillUnityContainer();
 
+            // Bind message source
+            MessageSourceConfig.Configure(LocalDiscernService, LzRemoteDiscernService, RkRemoteDiscernService);
+            MessageSourceConfig.Configure(LocalReportMessageService, LzReportMessageService, RkReportMessageService);
+
             // Bind receive messsages callback method
             QueueConfig.StartupMessageReceive(MultiQueue.Captcha, ReceiveMessageService.OnMessage);
 
             // Bind report error messsages callback method
             QueueConfig.StartupMessageReceive(MultiQueue.Report, ReportMessageService.OnMessage);
 
-            // Bind message source
-            MessageSourceConfig.Configure(LocalDiscernService, LzRemoteDiscernService);
 
             #region print some messages
-            Console.WriteLine($"Startup state is {Caffe.InitCaptcha("./deploy.prototxt", ConfigurationManager.AppSettings["caffemodel"], "./label-map.txt", -1, 32)}");
+            Console.WriteLine($"Startup state is {Caffe.InitCaptcha("./deploy.prototxt", ConfigurationManager.AppSettings["Caffemodel"], "./label-map.txt", -1, 32)}");
             Console.WriteLine("Please enter \"exit\" to exit the system safely.");
             var cmdLine = string.Empty;
             do
@@ -57,6 +63,10 @@ namespace mi_ocr_worker_win_app
             ReportMessageService = UnityConfig.Container.Resolve<ReportMessageServiceImpl>();
             LocalDiscernService = UnityConfig.Container.Resolve<LocalDiscernServiceImpl>();
             LzRemoteDiscernService = UnityConfig.Container.Resolve<LzRemoteDiscernServiceImpl>();
+            RkRemoteDiscernService = UnityConfig.Container.Resolve<RkRemoteDiscernServiceImpl>();
+            LocalReportMessageService = UnityConfig.Container.Resolve<LocalReportMessageServiceImpl>();
+            LzReportMessageService = UnityConfig.Container.Resolve<LzReportMessageServiceImpl>();
+            RkReportMessageService = UnityConfig.Container.Resolve<RkReportMessageServiceImpl>();
         }
     }
 }

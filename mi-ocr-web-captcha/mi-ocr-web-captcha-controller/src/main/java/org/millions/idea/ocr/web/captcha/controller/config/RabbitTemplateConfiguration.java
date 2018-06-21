@@ -8,6 +8,7 @@
 package org.millions.idea.ocr.web.captcha.controller.config;
 
 import com.rabbitmq.client.Channel;
+import com.rabbitmq.client.DeliverCallback;
 import org.millions.idea.ocr.web.captcha.entity.MultiQueue;
 import org.millions.idea.ocr.web.captcha.entity.common.RabbitConfig;
 import org.springframework.amqp.rabbit.config.SimpleRabbitListenerContainerFactory;
@@ -101,9 +102,10 @@ public class RabbitTemplateConfiguration {
     ) {
         try {
             Channel channel = connectionFactory.createConnection().createChannel(false);
+            channel.exchangeDeclare(rabbitConfig.getExchange(), "topic", true,false ,null);
             channel.queueDeclare(multiQueue.getCaptcha(), true, false, false, null);
-            channel.exchangeDeclare(rabbitConfig.getExchange(), "direct", true,false ,null);
             channel.queueBind(multiQueue.getCaptcha(), rabbitConfig.getExchange(),multiQueue.getCaptcha());
+            channel.basicConsume(multiQueue.getCaptcha(), false, null);
         }catch (Exception e){
             e.printStackTrace();
         }finally {
@@ -118,9 +120,10 @@ public class RabbitTemplateConfiguration {
     ) {
         try {
             Channel channel = connectionFactory.createConnection().createChannel(false);
-            channel.queueDeclare(multiQueue.getReport(), true, false, false, null);
-            channel.exchangeDeclare(rabbitConfig.getExchange(), "direct", true,false ,null);
+            channel.exchangeDeclare(rabbitConfig.getExchange(), "topic", false,false ,null);
+            channel.queueDeclare(multiQueue.getReport(), false, true, false, null);
             channel.queueBind(multiQueue.getReport(), rabbitConfig.getExchange(),multiQueue.getReport());
+            channel.basicConsume(multiQueue.getReport(), false, null);
         }catch (Exception e){
             e.printStackTrace();
         }finally {

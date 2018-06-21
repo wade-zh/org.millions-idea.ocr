@@ -14,13 +14,13 @@ namespace mi_ocr_worker_win_app_biz.Impl
     {
         public override void OnNority(Captcha captcha, byte[] binary, Action<string> call)
         {
-            if (!captcha.Channel.StartsWith("J")) {
+            if (!captcha.Channel.ToUpper().StartsWith("J")) {
                 call(null);
                 return;
             }
 
             #region upload
-            IRestResponse response = upload(binary);
+            IRestResponse response = upload(captcha, binary);
             if (response == null || response.StatusCode != System.Net.HttpStatusCode.OK || !response.Content.Contains("true"))
             {
                 call(null);
@@ -30,21 +30,25 @@ namespace mi_ocr_worker_win_app_biz.Impl
             Console.WriteLine(response.Content);
             #endregion
 
-            captcha.Ticket = lzCaptcha.data.id.ToString();
-
-            call(lzCaptcha.data.val);
+            SharedResult sr = new SharedResult()
+            {
+                Ticket = captcha.Ticket,
+                Id = lzCaptcha.data.id.ToString(),
+                Result = lzCaptcha.data.val
+            };
+            call(JsonConvert.SerializeObject(sr));
         }
 
-        private IRestResponse upload(byte[] binary) {
+        private IRestResponse upload(Captcha captcha, byte[] binary) {
             var client = new RestClient("http://v1-http-api.jsdama.com/api.php?mod=php&act=upload");
             var request = new RestRequest(Method.POST);
-            request.AddParameter("user_name", Constant.JUserName);
-            request.AddParameter("user_pw", Constant.JPassword);
+            request.AddParameter("user_name", RemoteUser.LianZhong);
+            request.AddParameter("user_pw", Constant.RemotePassword);
             request.AddFileBytes("upload", binary, "captcha.jpg", "image/jpeg");
-            request.AddParameter("yzmtype_mark", "1001");
+            request.AddParameter("yzmtype_mark", captcha.Channel.Substring(captcha.Channel.Length - 4, 4));
             request.AddParameter("yzm_minlen", "4");
             request.AddParameter("yzm_maxlen", "4");
-            request.AddParameter("zztool_token", Constant.JUserName);
+            request.AddParameter("zztool_token", RemoteUser.LianZhong);
             return client.Execute(request);
         }
     }

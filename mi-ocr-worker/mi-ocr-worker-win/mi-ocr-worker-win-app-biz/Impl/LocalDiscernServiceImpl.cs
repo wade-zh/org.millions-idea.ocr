@@ -11,12 +11,12 @@ namespace mi_ocr_worker_win_app_biz.Impl
     {
         public override void OnNority(Captcha captcha, byte[] binary, Action<string> call)
         {
-            if (!captcha.Channel.StartsWith("T")) {
+            if (!captcha.Channel.ToUpper().StartsWith("T")) {
                 call(null);
                 return;
             }
             string code = Caffe.GetCaptcha(binary);
-            if (code.Length == 0) code = "null";
+            if (code.Length == 0) code = null;
             call(code);
         }
     }

@@ -20,6 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>7.2</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -28,6 +29,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>7.2</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DnsClient, Version=1.0.7.0, Culture=neutral, PublicKeyToken=4574bb5573c51424, processorArchitecture=MSIL">
@@ -76,15 +78,26 @@
     <Compile Include="ICache.cs" />
     <Compile Include="ICaptchaDiscernService.cs" />
     <Compile Include="ILocalDiscernService.cs" />
+    <Compile Include="ILzReportMessageService.cs" />
+    <Compile Include="IReportErrorMessageService.cs" />
+    <Compile Include="Util\ChannelUtil.cs" />
+    <Compile Include="Impl\ReportMessageServiceImpl.cs" />
+    <Compile Include="IReportMessageService.cs" />
+    <Compile Include="IRkReportMessageService.cs" />
     <Compile Include="ILzRemoteDiscernService.cs" />
     <Compile Include="IMessageService.cs" />
     <Compile Include="Impl\BaseDiscernServiceImpl.cs" />
+    <Compile Include="Impl\BaseReportMessageServiceImpl.cs" />
     <Compile Include="Impl\LocalDiscernServiceImpl.cs" />
+    <Compile Include="Impl\LocalReportMessageServiceImpl.cs" />
     <Compile Include="Impl\LzRemoteDiscernServiceImpl.cs" />
+    <Compile Include="Impl\RkReportMessageServiceImpl.cs" />
     <Compile Include="Impl\RedisCacheImpl.cs" />
-    <Compile Include="Impl\ReportMessageServiceImpl.cs" />
+    <Compile Include="Impl\LzReportMessageServiceImpl.cs" />
+    <Compile Include="Impl\RkRemoteDiscernServiceImpl.cs" />
     <Compile Include="IReceiveMessageService.cs" />
-    <Compile Include="IReportMessageService.cs" />
+    <Compile Include="ILocalReportMessageService.cs" />
+    <Compile Include="IRkRemoteDiscernService.cs" />
     <Compile Include="MessageSourceManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Impl\ReceiveMessageServiceImpl.cs" />

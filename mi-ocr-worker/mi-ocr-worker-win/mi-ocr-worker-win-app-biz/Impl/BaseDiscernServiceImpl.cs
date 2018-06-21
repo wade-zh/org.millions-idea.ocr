@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using mi_ocr_worker_win_app_biz.Util;
 using mi_ocr_worker_win_app_entity;
 using mi_ocr_worker_win_app_utility;
+using Newtonsoft.Json;
 
 namespace mi_ocr_worker_win_app_biz.Impl
 {
@@ -23,6 +24,7 @@ namespace mi_ocr_worker_win_app_biz.Impl
                     call(null);
                     return;
                 }
+                call(code);
                 PublishRedisMessage(captcha, binary, code);
                 PublishMongoMessage(captcha, binary, code);
             });
@@ -33,18 +35,38 @@ namespace mi_ocr_worker_win_app_biz.Impl
 
         private async void PublishMongoMessage(Captcha captcha, byte[] binary, string code)
         {
-            MongoDBHelper<Samples> mongoDBHelper = new MongoDBHelper<Samples>();
-            Samples entity = new Samples()
+
+            try
             {
-                channel = captcha.Channel,
-                captchaId = captcha.Ticket,
-                code = code,
-                image = captcha.Binary,
-                md5 = Md5Util.GetMD5Hash(binary),
-                isError = false,
-                createTime = DateTime.Now.AddHours(8)
-            };
-            Console.WriteLine($"Insert samples state is:{mongoDBHelper.Insert(entity) != null}");
+                string captchaId = captcha.Ticket;
+                if (code.Contains("Ticket") && code.Contains("Id") && code.Contains("Result"))
+                {
+                    string nCode = code;
+                    captchaId = JsonConvert.DeserializeObject<SharedResult>(nCode).Id;
+                    code = JsonConvert.DeserializeObject<SharedResult>(nCode).Result;
+                }
+                MongoDBHelper<Samples> mongoDBHelper = new MongoDBHelper<Samples>();
+                Samples entity = new Samples()
+                {
+                    channel = captcha.Channel,
+                    ticket = captcha.Ticket,
+                    captchaId = captchaId,
+                    code = code.ToUpper(),
+                    image = captcha.Binary,
+                    md5 = Md5Util.GetMD5Hash(binary),
+                    isError = false,
+                    createTime = DateTime.Now.AddHours(8)
+                };
+                mongoDBHelper.Insert(entity);
+            }
+            catch (Exception e)
+            {
+                if (e.Message.Contains("duplicate key error"))
+                {
+                    Console.WriteLine("该验证码已在存在，本次不录入样本库");
+                    return;
+                }
+            }
         }
 
         private async void PublishRedisMessage(Captcha captcha, byte[] binary, string code)

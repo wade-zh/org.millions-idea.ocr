@@ -18,7 +18,8 @@ namespace mi_ocr_worker_win_app_entity
         public static string HostName { get; set; } = ConfigurationManager.AppSettings["HostName"];
 
         public static int Port { get; set; } = int.Parse(ConfigurationManager.AppSettings["Port"]);
-        public static string JUserName { get; set; } = ConfigurationManager.AppSettings["JUserName"];
-        public static string JPassword { get; set; } = ConfigurationManager.AppSettings["JPassword"];
+         
+
+        public static string RemotePassword { get; set; } = ConfigurationManager.AppSettings["RemotePassword"];
     }
 }

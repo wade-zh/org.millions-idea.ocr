@@ -11,22 +11,39 @@ namespace mi_ocr_worker_win_app_biz
     {
         public static MessageSourceManager Instance { get; set; }
 
-        private List<ICaptchaDiscernService> observers = new List<ICaptchaDiscernService>();
+        private List<ICaptchaDiscernService> DiscernObservers = new List<ICaptchaDiscernService>();
+        private List<IReportErrorMessageService> ReportObservers = new List<IReportErrorMessageService>();
 
         public void AddObserver(ICaptchaDiscernService observer)
         {
-            observers.Add(observer);
+            DiscernObservers.Add(observer);
+        }
+        public void AddObserver(IReportErrorMessageService observer)
+        {
+            ReportObservers.Add(observer);
         }
 
-
-        public void NotifyAll(Captcha captcha, Action<string> call)
+        public void NotifyAllDiscern(Captcha captcha, Action<string> call)
         {
-            foreach (var item in observers)
+            foreach (var item in DiscernObservers)
             {
                 if (item != null)
                 {
                     item.Discern(captcha, (code) => {
                         call(code);
+                    });
+                }
+            }
+        }
+
+        public void NotifyAllReport(Captcha captcha, Action<bool> call)
+        {
+            foreach (var item in ReportObservers)
+            {
+                if (item != null)
+                {
+                    item.Report(captcha, (flag) => {
+                        call(flag);
                     });
                 }
             }
