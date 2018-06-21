@@ -1,0 +1,16 @@
+server:
+  port: 20000
+spring:
+  application:
+    name: mi-ocr-eureka-server
+eureka:
+  instance:
+    hostname: localhost
+  server:
+    renewal-percent-threshold: 0.85
+    enable-self-preservation: true
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+     defaultZone: http://localhost:20000/eureka

@@ -1,0 +1,55 @@
+server:
+  port: 20001
+spring:
+  application:
+    name: mi-ocr-gateway
+  redis:
+    password: 123456
+    host: 47.94.107.244
+    port: 6379
+eureka:
+  instance:
+    virtual-host-name: mi-ocr-gateway
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://localhost:20000/eureka
+    instance-info-replication-interval-seconds: 30
+    initial-instance-info-replication-interval-seconds: 40
+zuul:
+  thread-pool:
+    use-separate-thread-pools: true
+  routes:
+    mi-ocr-web-captcha-service:
+      path: /captcha-api/**
+  ratelimit:
+    enabled: true
+    behind-proxy: true
+    policy-list:
+      mi-ocr-web-captcha-service:
+        - limit: 30
+          quota: 30
+          refresh-interval: 1
+          type:
+            - user
+            - origin
+            - url
+    #repository: REDIS
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 60000
+hystrix:
+  threadpool:
+    default:
+      coreSize: 500  #Parallel thread count, default is 10
+  command:
+    paas-file:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 240000
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 240000 #Command execute timeout, default is 1000 ms
