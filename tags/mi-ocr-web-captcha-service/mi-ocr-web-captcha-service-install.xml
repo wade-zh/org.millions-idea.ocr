@@ -1,0 +1,12 @@
+<service>
+    <id>mi-ocr-web-captcha-service</id>
+    <name>mi-ocr-web-captcha-service</name>
+    <description>mi-ocr-web-captcha-service</description>
+    <executable>%JAVA_HOME%\jre\bin\java</executable>
+     <onfailure action="restart" delay="60 sec"/>
+    <arguments> -jar "%BASE%\mi-ocr-web-captcha-service.jar"</arguments>
+    <log mode="roll-by-size">
+        <sizeThreshold>20480</sizeThreshold>
+        <keepFiles>8</keepFiles>
+    </log>
+</service>
