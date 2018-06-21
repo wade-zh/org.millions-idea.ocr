@@ -4,7 +4,7 @@
     <description>mi-ocr-eureka-server</description>
     <executable>%JAVA_HOME%\jre\bin\java</executable>
      <onfailure action="restart" delay="60 sec"/>
-    <arguments> -jar "%BASE%\mi-ocr-eureka-server.jar"</arguments>
+    <arguments> -jar "..\mi-ocr-eureka-server.jar"</arguments>
     <log mode="roll-by-size">
         <sizeThreshold>20480</sizeThreshold>
         <keepFiles>8</keepFiles>

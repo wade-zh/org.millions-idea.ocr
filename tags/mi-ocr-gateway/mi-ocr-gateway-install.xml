@@ -4,7 +4,7 @@
     <description>mi-ocr-gateway</description>
     <executable>%JAVA_HOME%\jre\bin\java</executable>
      <onfailure action="restart" delay="60 sec"/>
-    <arguments> -jar "%BASE%\mi-ocr-gateway.jar"</arguments>
+    <arguments> -jar "..\mi-ocr-gateway.jar"</arguments>
     <log mode="roll-by-size">
         <sizeThreshold>20480</sizeThreshold>
         <keepFiles>8</keepFiles>
