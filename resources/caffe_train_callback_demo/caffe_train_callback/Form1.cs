@@ -173,6 +173,10 @@ namespace caffe_train_callback
                     break;
                 case 7:
                     TrainValInfo info = getInfo(param3);
+                    if (info.values[0] > 0.99)
+                    {
+                        Log($"高精度出现，第{param1}次迭代，accuracy：{info.values[0]}，ctc_loss = {info.values[1]} (* 1 = {info.values[1]} loss)");
+                    }
                     Log($"测试完毕，accuracy：{info.values[0]}，ctc_loss = {info.values[1]} (* 1 = {info.values[1]} loss)");
                     break;
                 case 5:
