@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.millions.idea.ocr.web.user.repository.mapper.IUserMapperRepository">
+    <sql id="fields">
+       user_name, password, issue_id, issue_result, qq
+    </sql>
+
+    <sql id="full_fields">
+        uid,<include refid="fields"/>
+    </sql>
+
+    <select id="query" parameterType="java.util.List" resultType="org.millions.idea.ocr.web.user.entity.db.Users">
+        SELECT <include refid="full_fields"/> FROM users
+    </select>
+
+    <select id="query" parameterType="java.lang.Integer" resultType="org.millions.idea.ocr.web.user.entity.db.Users">
+        SELECT <include refid="full_fields"/> FROM users WHERE uid = #{uid}
+    </select>
+</mapper>

@@ -1,0 +1,40 @@
+server:
+  port: 0
+druid:
+  maxActive: 20
+  minIdle: 3
+  maxWait: 10000
+  validationQuery: SELECT 'x'
+  timeBetweenEvictionRunsMillis: 60000
+  minEvictableIdleTimeMillis: 300000
+  borrowConnectionTimeout: 30000
+spring:
+  application:
+    name: mi-ocr-web-user-service
+  datasource:
+    url: jdbc:mysql://193.112.151.148:3306/mi-ocr-user?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: weiwei5371958!
+    druid:
+      validation-query: select 'x'
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 1800000
+eureka:
+  instance:
+      virtual-host-name: mi-ocr-web-user-service
+      hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://localhost:20000/eureka
+mybatis:
+  mapper-locations: classpath:mapper/*-mapper.xml
+  type-aliases-package: org.million.idea.ocr.web.user.entity
+  configuration:
+    cache-enabled: false
+    map-underscore-to-camel-case: true
+    use-generated-keys: true
+    safe-row-bounds-enabled: false
+    default-statement-timeout: 600
+logging:
+  level:
+    org.millions.idea.ocr.web.user.repository.mapper: debug

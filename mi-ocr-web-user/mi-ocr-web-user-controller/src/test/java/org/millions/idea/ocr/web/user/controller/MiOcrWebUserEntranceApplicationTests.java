@@ -1,4 +1,4 @@
-package org.millions.idea.ocr.user.controller;
+package org.millions.idea.ocr.web.user.controller;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

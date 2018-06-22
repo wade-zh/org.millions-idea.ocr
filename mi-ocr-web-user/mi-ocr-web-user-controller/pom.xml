@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>org.millions.idea.ocr</groupId>
+	<groupId>org.millions-idea.ocr</groupId>
 	<artifactId>mi-ocr-web-user-controller</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
@@ -30,12 +30,6 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-logging</artifactId>
-                </exclusion>
-            </exclusions>
 		</dependency>
 
 		<dependency>
@@ -52,10 +46,32 @@
 		</dependency>
 
         <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-web</artifactId>
-        <version>RELEASE</version>
-    </dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.cuisongliu</groupId>
+            <artifactId>druid-spring-boot-autoconfigure</artifactId>
+            <version>RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.millions-idea.ocr</groupId>
+            <artifactId>mi-ocr-web-user-biz</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>or</groupId>
+            <artifactId></artifactId>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
@@ -87,7 +103,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>org.millions.idea.ocr.user.controller.MiOcrWebUserEntranceApplication</mainClass>
+                    <mainClass>org.millions.idea.ocr.web.user.controller.MiOcrWebUserEntranceApplication</mainClass>
                 </configuration>
                 <executions>
                     <execution>
@@ -99,6 +115,5 @@
             </plugin>
         </plugins>
     </build>
-
 
 </project>

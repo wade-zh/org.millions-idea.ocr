@@ -22,6 +22,8 @@ zuul:
   routes:
     mi-ocr-web-captcha-service:
       path: /captcha-api/**
+    mi-ocr-web-user-service:
+      path: /user-api/**
   ratelimit:
     enabled: true
     behind-proxy: true
