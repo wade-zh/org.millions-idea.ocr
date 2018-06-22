@@ -31,7 +31,7 @@ public class UserServiceImpl implements IUserService {
      */
     @Override
     public List<Users> getUsers() {
-        return userMapperRepository.query();
+        return userMapperRepository.queryList();
     }
 
     /**

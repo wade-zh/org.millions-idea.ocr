@@ -34,8 +34,8 @@ namespace caffe_train_callback
         }
         public unsafe void ConvertImageSet()
         {
-            Caffe.ConvertImageset("./ label-train.txt train_lmdb --shuffle=true --gray=true --resize_width=120 --resize_height=30", new Caffe.ConvertImageSetEventCallback(ConvertImageSetCallback));
-            Caffe.ConvertImageset("./ label-val.txt val_lmdb --shuffle=true --gray=true --resize_width=120 --resize_height=30", new Caffe.ConvertImageSetEventCallback(ConvertImageSetCallback));
+            Caffe.ConvertImageset("./ label-train.txt train_lmdb --shuffle=true --gray=true --resize_width=160 --resize_height=60", new Caffe.ConvertImageSetEventCallback(ConvertImageSetCallback));
+            Caffe.ConvertImageset("./ label-val.txt val_lmdb --shuffle=true --gray=true --resize_width=160 --resize_height=60", new Caffe.ConvertImageSetEventCallback(ConvertImageSetCallback));
         }
 
         const int event_readlabel = 1;
@@ -176,6 +176,12 @@ namespace caffe_train_callback
                     if (info.values[0] > 0.99)
                     {
                         Log($"高精度出现，第{param1}次迭代，accuracy：{info.values[0]}，ctc_loss = {info.values[1]} (* 1 = {info.values[1]} loss)");
+                        return 1;
+                    }
+                    if (info.values[0] == 1F)
+                    {
+                        Log($"超高精度出现，第{param1}次迭代，accuracy：{info.values[0]}，ctc_loss = {info.values[1]} (* 1 = {info.values[1]} loss)");
+                        return 1;
                     }
                     Log($"测试完毕，accuracy：{info.values[0]}，ctc_loss = {info.values[1]} (* 1 = {info.values[1]} loss)");
                     break;
@@ -194,7 +200,7 @@ namespace caffe_train_callback
             Caffe.TraindEventCallback func = new Caffe.TraindEventCallback(trainCallback);
             Caffe.setTraindEventCallback(func);
             new Thread(new ThreadStart(()=> {
-                Caffe.train_network($"train --solver=solver.prototxt --weights=models/_iter_4500.caffemodel");
+                Caffe.train_network($"train --solver=solver.prototxt --weights=models/" + this.textBox2.Text);
             })).Start();
         }
 

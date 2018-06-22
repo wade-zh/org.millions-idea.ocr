@@ -8,22 +8,26 @@
 package org.millions.idea.ocr.web.user.repository.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.millions.idea.ocr.web.user.entity.db.Users;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Mapper
+@Component
 public interface IUserMapperRepository {
     /**
      * Query all
      * @return
      */
-    List<Users> query();
+    List<Users> queryList();
 
     /**
      * Query by uid
      * @param uid
      * @return
      */
-    Users query(Integer uid);
+    Users query(@Param("uid") Integer uid);
 }

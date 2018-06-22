@@ -7,9 +7,13 @@
  */
 package org.millions.idea.ocr.web.user.repository.mapper;
 
+
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Component;
 
 @Mapper
+@Component
 public interface IWalletMapperRepository {
     /**
      * Reduce users wallet balance

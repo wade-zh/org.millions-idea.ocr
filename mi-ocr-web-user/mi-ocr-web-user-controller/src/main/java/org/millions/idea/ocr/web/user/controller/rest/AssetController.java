@@ -26,8 +26,8 @@ public class AssetController {
         return userService.getUsers();
     }
 
-    @RequestMapping(value = "/get/{uid}", params = "uid")
-    public Users get(@PathVariable Integer uid){
-        return userService.getUser(uid);
+    @RequestMapping(value = "/get/{id}")
+    public Users get(@PathVariable Integer id){
+        return userService.getUser(id);
     }
 }
