@@ -4,7 +4,7 @@ CREATE TABLE `wallet` (
   `balance` decimal(10,4) NOT NULL COMMENT '钱包余额',
   PRIMARY KEY (`wid`),
   UNIQUE KEY `uq_uid` (`uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1 COMMENT='钱包表';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='钱包表';
 
 
 INSERT INTO `wallet`(uid,balance) VALUES(1, 10000);

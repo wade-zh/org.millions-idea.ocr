@@ -1,6 +1,4 @@
-#后台分类表#
-
-CREATE TABLE `backcategorys` (
+\CREATE TABLE `backcategorys` (
   `cid` int(11) NOT NULL AUTO_INCREMENT,
   `code` varchar(32) CHARACTER SET utf8 NOT NULL COMMENT '通道代码',
   `cname` varchar(32) CHARACTER SET utf8 NOT NULL COMMENT '分类名',
