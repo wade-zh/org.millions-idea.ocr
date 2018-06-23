@@ -30,6 +30,6 @@ public class WalletServiceImpl implements IWalletService {
      */
     @Override
     public boolean reduce(Integer uid, String channel) {
-        return walletMapperRepository.Reduce(uid, channel);
+        return walletMapperRepository.reduce(uid, channel);
     }
 }

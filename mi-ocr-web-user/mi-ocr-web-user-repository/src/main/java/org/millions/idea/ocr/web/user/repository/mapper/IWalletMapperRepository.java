@@ -22,5 +22,5 @@ public interface IWalletMapperRepository {
      * @param channel
      * @return
      */
-    boolean Reduce(@Param("uid") Integer uid, @Param("channel") String channel);
+    boolean reduce(@Param("uid") Integer uid, @Param("channel") String channel);
 }
