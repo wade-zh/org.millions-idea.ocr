@@ -39,16 +39,20 @@
             // 
             // listBox1
             // 
+            this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listBox1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 12;
-            this.listBox1.Location = new System.Drawing.Point(12, 71);
+            this.listBox1.ItemHeight = 16;
+            this.listBox1.Location = new System.Drawing.Point(12, 50);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(776, 364);
+            this.listBox1.Size = new System.Drawing.Size(776, 388);
             this.listBox1.TabIndex = 0;
             // 
             // btnInitLmdb
             // 
-            this.btnInitLmdb.Location = new System.Drawing.Point(199, 28);
+            this.btnInitLmdb.Location = new System.Drawing.Point(199, 13);
             this.btnInitLmdb.Name = "btnInitLmdb";
             this.btnInitLmdb.Size = new System.Drawing.Size(108, 23);
             this.btnInitLmdb.TabIndex = 1;
@@ -58,7 +62,7 @@
             // 
             // btnTrain
             // 
-            this.btnTrain.Location = new System.Drawing.Point(326, 28);
+            this.btnTrain.Location = new System.Drawing.Point(326, 13);
             this.btnTrain.Name = "btnTrain";
             this.btnTrain.Size = new System.Drawing.Size(108, 23);
             this.btnTrain.TabIndex = 2;
@@ -68,7 +72,7 @@
             // 
             // btnContinueTrain
             // 
-            this.btnContinueTrain.Location = new System.Drawing.Point(455, 28);
+            this.btnContinueTrain.Location = new System.Drawing.Point(455, 13);
             this.btnContinueTrain.Name = "btnContinueTrain";
             this.btnContinueTrain.Size = new System.Drawing.Size(108, 23);
             this.btnContinueTrain.TabIndex = 3;
@@ -79,7 +83,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(588, 31);
+            this.label1.Location = new System.Drawing.Point(588, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 12);
             this.label1.TabIndex = 4;
@@ -87,7 +91,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(635, 28);
+            this.textBox1.Location = new System.Drawing.Point(635, 13);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 21);
             this.textBox1.TabIndex = 5;

@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.ExceptionServices;
 using System.Security;
@@ -76,10 +77,12 @@ namespace caffe_train_callback
         }
 
 
-        private void Log(string log, params object[] param) {
+        private void Log(string log, params object[] param)
+        {
             if (exit) return;
             this.Invoke((EventHandler)delegate {
                 listBox1.Items.Add(log);
+
             });
         }
 
@@ -90,7 +93,7 @@ namespace caffe_train_callback
             new Thread(new ThreadStart(() => {
                 Caffe.train_network("train --solver=solver.prototxt");
             })).Start();
-        } 
+        }
 
         public struct TrainValInfo
         {
@@ -175,12 +178,20 @@ namespace caffe_train_callback
                     TrainValInfo info = getInfo(param3);
                     if (info.values[0] > 0.99)
                     {
-                        Log($"高精度出现，第{param1}次迭代，accuracy：{info.values[0]}，ctc_loss = {info.values[1]} (* 1 = {info.values[1]} loss)");
+                        WriteLog($"高精度出现，第{info.iterNum}次迭代，{info.values[0] * 100}%，accuracy：{info.values[0]}，ctc_loss = {info.values[1]} (* 1 = {info.values[1]} loss)");
+                        Log($"高精度出现，第{info.iterNum}次迭代，{info.values[0] * 100}%，accuracy：{info.values[0]}，ctc_loss = {info.values[1]} (* 1 = {info.values[1]} loss)");
+                        return 1;
+                    }
+                    if (info.values[0] > 0.995)
+                    {
+                        WriteLog($"超高精度出现，第{info.iterNum}次迭代，{info.values[0] * 100}%，accuracy：{info.values[0]}，ctc_loss = {info.values[1]} (* 1 = {info.values[1]} loss)");
+                        Log($"超高精度出现，第{info.iterNum}次迭代，{info.values[0] * 100}%，accuracy：{info.values[0]}，ctc_loss = {info.values[1]} (* 1 = {info.values[1]} loss)");
                         return 1;
                     }
                     if (info.values[0] == 1F)
                     {
-                        Log($"超高精度出现，第{param1}次迭代，accuracy：{info.values[0]}，ctc_loss = {info.values[1]} (* 1 = {info.values[1]} loss)");
+                        WriteLog($"完整精度出现，第{info.iterNum}次迭代，{info.values[0] * 100}%，accuracy：{info.values[0]}，ctc_loss = {info.values[1]} (* 1 = {info.values[1]} loss)");
+                        Log($"完整精度出现，第{info.iterNum}次迭代，{info.values[0] * 100}%，accuracy：{info.values[0]}，ctc_loss = {info.values[1]} (* 1 = {info.values[1]} loss)");
                         return 1;
                     }
                     Log($"测试完毕，accuracy：{info.values[0]}，ctc_loss = {info.values[1]} (* 1 = {info.values[1]} loss)");
@@ -199,7 +210,7 @@ namespace caffe_train_callback
         {
             Caffe.TraindEventCallback func = new Caffe.TraindEventCallback(trainCallback);
             Caffe.setTraindEventCallback(func);
-            new Thread(new ThreadStart(()=> {
+            new Thread(new ThreadStart(() => {
                 Caffe.train_network($"train --solver=solver.prototxt --weights=models/" + this.textBox2.Text);
             })).Start();
         }
@@ -207,6 +218,42 @@ namespace caffe_train_callback
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             exit = true;
+        }
+
+        public void WriteLog(string msg)
+        {
+            string filePath = AppDomain.CurrentDomain.BaseDirectory + "Log";
+            if (!Directory.Exists(filePath))
+            {
+                Directory.CreateDirectory(filePath);
+            }
+            string logPath = AppDomain.CurrentDomain.BaseDirectory + "Log\\" + DateTime.Now.ToString("yyyy-MM-dd") + ".txt";
+            try
+            {
+                using (StreamWriter sw = File.AppendText(logPath))
+                {
+                    sw.WriteLine("消息：" + msg);
+                    sw.WriteLine("时间：" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+                    sw.WriteLine("**************************************************");
+                    sw.WriteLine();
+                    sw.Flush();
+                    sw.Close();
+                    sw.Dispose();
+                }
+            }
+            catch (IOException e)
+            {
+                using (StreamWriter sw = File.AppendText(logPath))
+                {
+                    sw.WriteLine("异常：" + e.Message);
+                    sw.WriteLine("时间：" + DateTime.Now.ToString("yyy-MM-dd HH:mm:ss"));
+                    sw.WriteLine("**************************************************");
+                    sw.WriteLine();
+                    sw.Flush();
+                    sw.Close();
+                    sw.Dispose();
+                }
+            }
         }
     }
 }
