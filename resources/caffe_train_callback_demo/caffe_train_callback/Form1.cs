@@ -80,10 +80,18 @@ namespace caffe_train_callback
         private void Log(string log, params object[] param)
         {
             if (exit) return;
-            this.Invoke((EventHandler)delegate {
-                listBox1.Items.Add(log);
-
-            });
+            try
+            {
+                WriteLog(log);
+                this.Invoke((EventHandler)delegate {
+                    listBox1.Items.Add(log);
+                });
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            
         }
 
         private unsafe void btnTrain_Click(object sender, EventArgs e)
@@ -184,13 +192,11 @@ namespace caffe_train_callback
                     }
                     if (info.values[0] > 0.995)
                     {
-                        WriteLog($"超高精度出现，第{info.iterNum}次迭代，{info.values[0] * 100}%，accuracy：{info.values[0]}，ctc_loss = {info.values[1]} (* 1 = {info.values[1]} loss)");
                         Log($"超高精度出现，第{info.iterNum}次迭代，{info.values[0] * 100}%，accuracy：{info.values[0]}，ctc_loss = {info.values[1]} (* 1 = {info.values[1]} loss)");
                         return 1;
                     }
                     if (info.values[0] == 1F)
                     {
-                        WriteLog($"完整精度出现，第{info.iterNum}次迭代，{info.values[0] * 100}%，accuracy：{info.values[0]}，ctc_loss = {info.values[1]} (* 1 = {info.values[1]} loss)");
                         Log($"完整精度出现，第{info.iterNum}次迭代，{info.values[0] * 100}%，accuracy：{info.values[0]}，ctc_loss = {info.values[1]} (* 1 = {info.values[1]} loss)");
                         return 1;
                     }

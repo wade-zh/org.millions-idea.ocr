@@ -12,6 +12,9 @@ mybatis:
 spring:
   application:
     name: mi-ocr-web-user-service
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://193.112.151.148:3306/mi-ocr-user?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull

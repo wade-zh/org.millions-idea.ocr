@@ -2,3 +2,4 @@ org\millions\idea\ocr\common\utility\jedis\RedisUtil.class
 org\millions\idea\ocr\common\utility\json\JsonUtil.class
 org\millions\idea\ocr\common\utility\jedis\JedisUtil.class
 org\millions\idea\ocr\common\utility\jedis\RedisConfig.class
+org\millions\idea\ocr\common\utility\date\DateUtil.class

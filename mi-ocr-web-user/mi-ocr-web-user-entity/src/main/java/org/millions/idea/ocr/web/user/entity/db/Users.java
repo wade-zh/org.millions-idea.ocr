@@ -7,6 +7,9 @@
  */
 package org.millions.idea.ocr.web.user.entity.db;
 
+import java.sql.Timestamp;
+import java.util.Date;
+
 public class Users {
     private Integer uid;
     private String userName;
@@ -14,30 +17,57 @@ public class Users {
     private Integer issueId;
     private String issueResult;
     private String qq;
+    private Timestamp registTime;
+    private Timestamp lastActiveTime;
+    private String lastLoginIp;
+    private Integer levelId;
 
-    @Override
-    public String toString() {
-        return "Users{" +
-                "uid=" + uid +
-                ", userName='" + userName + '\'' +
-                ", password='" + password + '\'' +
-                ", issueId=" + issueId +
-                ", issueResult='" + issueResult + '\'' +
-                ", qq='" + qq + '\'' +
-                '}';
+    public Timestamp getRegistTime() {
+        return registTime;
     }
 
-    public Users() {
+    public void setRegistTime(Timestamp registTime) {
+        this.registTime = registTime;
     }
 
-    public Users(Integer uid, String userName, String password, Integer issueId, String issueResult, String qq) {
+    public Timestamp getLastActiveTime() {
+        return lastActiveTime;
+    }
 
+    public void setLastActiveTime(Timestamp lastActiveTime) {
+        this.lastActiveTime = lastActiveTime;
+    }
+
+    public Users(Integer uid, String userName, String password, Integer issueId, String issueResult, String qq, Timestamp registTime, Timestamp lastActiveTime, String lastLoginIp, Integer levelId) {
         this.uid = uid;
         this.userName = userName;
         this.password = password;
         this.issueId = issueId;
         this.issueResult = issueResult;
         this.qq = qq;
+        this.registTime = registTime;
+        this.lastActiveTime = lastActiveTime;
+        this.lastLoginIp = lastLoginIp;
+        this.levelId = levelId;
+    }
+
+    public String getLastLoginIp() {
+        return lastLoginIp;
+    }
+
+    public void setLastLoginIp(String lastLoginIp) {
+        this.lastLoginIp = lastLoginIp;
+    }
+
+    public Integer getLevelId() {
+        return levelId;
+    }
+
+    public void setLevelId(Integer levelId) {
+        this.levelId = levelId;
+    }
+
+    public Users() {
     }
 
     public Integer getUid() {

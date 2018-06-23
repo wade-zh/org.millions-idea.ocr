@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="2" failures="0" name="org.millions.idea.ocr.common.utility.json.LogTest" time="0.02" errors="0" skipped="0">
+<testsuite tests="2" failures="0" name="org.millions.idea.ocr.common.utility.json.LogTest" time="0.045" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="E:\java\1u8\jre\bin"/>
@@ -65,6 +65,6 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="org.millions.idea.ocr.common.utility.json.LogTest" name="testWriteLine" time="0.02"/>
+  <testcase classname="org.millions.idea.ocr.common.utility.json.LogTest" name="testWriteLine" time="0.045"/>
   <testcase classname="org.millions.idea.ocr.common.utility.json.LogTest" name="testLoggerIsNull" time="0"/>
 </testsuite>
