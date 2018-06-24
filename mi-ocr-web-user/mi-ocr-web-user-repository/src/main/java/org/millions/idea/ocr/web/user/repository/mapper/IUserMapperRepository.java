@@ -18,15 +18,18 @@ import java.util.List;
 @Component
 public interface IUserMapperRepository {
     /**
-     * Query all
-     * @return
-     */
-    List<Users> queryList();
-
-    /**
      * Query by uid
      * @param uid
      * @return
      */
     Users query(@Param("uid") Integer uid);
+
+
+    /**
+     * Query users information
+     * @param uname
+     * @param pwd
+     * @return
+     */
+    Users login(@Param("uname") String uname, @Param("pwd") String pwd);
 }

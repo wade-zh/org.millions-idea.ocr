@@ -7,14 +7,15 @@
  */
 package org.millions.idea.ocr.web.captcha.biz;
 
+import org.millions.idea.ocr.web.captcha.entity.UploadCaptchaReq;
+
 public interface IMessageService {
     /**
      * publish to captcha leaning queue
-     * @param binary
-     * @param channel
+     * @param uploadCaptchaReq
      * @return
      */
-    String publish(byte[] binary, String channel);
+    String publish(UploadCaptchaReq uploadCaptchaReq);
 
     /**
      * publish to report error captcha queue

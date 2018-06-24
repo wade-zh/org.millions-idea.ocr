@@ -12,9 +12,7 @@ import org.millions.idea.ocr.web.captcha.entity.types.HttpErrorCodeType;
 import org.millions.idea.ocr.web.common.entity.common.HttpResp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -31,24 +29,25 @@ public class CaptchaController {
 
     @RequestMapping("upload")
     public HttpResp upload(@RequestParam("file") MultipartFile file,
-                           @RequestParam("channel") String channel){
+                           @RequestParam("channel") String channel,
+                           @RequestParam("token") String token){
         try {
-            return new HttpResp(-1, publishMessageServiceImpl.publish(file.getBytes(), channel));
+            return new HttpResp(-1, publishMessageServiceImpl.publish(token, file.getBytes(), channel));
         } catch (IOException e) {
             return new HttpResp(HttpErrorCodeType.IOException.ordinal(), HttpErrorCodeType.IOException.toString());
         }
     }
 
-    @RequestMapping("getCaptcha")
-    public HttpResp getCaptcha(String cid){
-        String code = messageServiceImpl.getCaptcha(cid);
-        if(code != null) return new HttpResp(-1, code);
-        return new HttpResp(HttpErrorCodeType.NotResult.ordinal(), HttpErrorCodeType.NotResult.toString());
+    @PostMapping("getCaptcha")
+    public HttpResp getCaptcha(String captchaId){
+        String code = messageServiceImpl.getCaptcha(captchaId);
+        if(code != null) return new HttpResp(HttpErrorCodeType.SUCCESS.ordinal(), code);
+        return new HttpResp(HttpErrorCodeType.WAIT.ordinal(), null);
     }
 
-    @RequestMapping("report")
-    public void report(String cid){
-        if(cid == null || cid.length() == 0) return;
-        publishMessageServiceImpl.publish(cid);
+    @GetMapping("report")
+    public void report(String captchaId){
+        if(captchaId == null || captchaId.length() == 0) return;
+        publishMessageServiceImpl.publish(captchaId);
     }
 }

@@ -11,6 +11,6 @@ namespace mi_ocr_worker_win_app_entity
         public string Binary { get; set; }
         public string Channel { get; set; }
         public string Ticket { get; set; }
-        public int Uid { get; set; }
+        public string Token { get; set; }
     }
 }

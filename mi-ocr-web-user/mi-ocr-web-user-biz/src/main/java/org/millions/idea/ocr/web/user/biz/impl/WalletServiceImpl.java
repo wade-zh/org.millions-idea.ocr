@@ -7,20 +7,26 @@
  */
 package org.millions.idea.ocr.web.user.biz.impl;
 
+import org.millions.idea.ocr.web.common.entity.exception.MessageException;
+import org.millions.idea.ocr.web.common.utility.json.JsonUtil;
 import org.millions.idea.ocr.web.user.biz.IWalletService;
+import org.millions.idea.ocr.web.user.entity.db.Users;
 import org.millions.idea.ocr.web.user.entity.db.Wallet;
-import org.millions.idea.ocr.web.user.entity.exception.MessageException;
 import org.millions.idea.ocr.web.user.repository.mapper.IWalletMapperRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
+import sun.plugin2.message.Message;
 
 @Service
 public class WalletServiceImpl implements IWalletService {
     private final IWalletMapperRepository walletMapperRepository;
+    private final RedisTemplate redisTemplate;
 
     @Autowired
-    public WalletServiceImpl(IWalletMapperRepository walletMapperRepository) {
+    public WalletServiceImpl(IWalletMapperRepository walletMapperRepository, RedisTemplate redisTemplate) {
         this.walletMapperRepository = walletMapperRepository;
+        this.redisTemplate = redisTemplate;
     }
 
     /**

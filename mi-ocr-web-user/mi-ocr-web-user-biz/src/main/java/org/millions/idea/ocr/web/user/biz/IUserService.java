@@ -7,16 +7,12 @@
  */
 package org.millions.idea.ocr.web.user.biz;
 
+import org.millions.idea.ocr.web.user.entity.common.LoginResult;
 import org.millions.idea.ocr.web.user.entity.db.Users;
 
 import java.util.List;
 
 public interface IUserService {
-    /**
-     * Get all user information
-     * @return
-     */
-    List<Users> getUsers();
 
     /**
      * Get user information by uid
@@ -24,4 +20,12 @@ public interface IUserService {
      * @return
      */
     Users getUser(Integer uid);
+
+    /**
+     * Login
+     * @param uname
+     * @param pwd
+     * @return
+     */
+    LoginResult login(String uname, String pwd);
 }

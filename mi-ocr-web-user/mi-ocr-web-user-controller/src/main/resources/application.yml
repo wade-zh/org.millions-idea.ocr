@@ -15,6 +15,15 @@ spring:
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
+  redis:
+    host: 47.94.107.244
+    port: 6379
+    password: 123456
+    timeout: 12000
+    jedis:
+      pool:
+        max-idle: 128
+        max-active: 1024
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://193.112.151.148:3306/mi-ocr-user?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useAffectedRows=true

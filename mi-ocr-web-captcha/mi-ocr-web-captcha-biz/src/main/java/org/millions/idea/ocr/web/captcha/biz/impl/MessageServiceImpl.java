@@ -9,6 +9,7 @@ package org.millions.idea.ocr.web.captcha.biz.impl;
 
 import org.millions.idea.ocr.web.captcha.biz.IMessageService;
 import org.millions.idea.ocr.web.captcha.biz.util.EnumUtil;
+import org.millions.idea.ocr.web.captcha.entity.UploadCaptchaReq;
 import org.millions.idea.ocr.web.captcha.entity.common.SharedResult;
 import org.millions.idea.ocr.web.captcha.utility.json.JsonUtil;
 import org.millions.idea.ocr.web.captcha.utility.queue.RabbitUtil;
@@ -34,7 +35,7 @@ public class MessageServiceImpl implements IMessageService {
 
 
     @Override
-    public String publish(byte[] binary, String channel) {
+    public String publish(UploadCaptchaReq uploadCaptchaReq) {
         return null;
     }
 

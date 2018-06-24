@@ -10,6 +10,7 @@ package org.millions.idea.ocr.web.user.controller;
 import org.millions.idea.ocr.web.common.entity.common.HttpResp;
 import org.millions.idea.ocr.web.user.biz.IWalletService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,7 +21,7 @@ public class WalletController {
     @Autowired
     private IWalletService walletService;
 
-    @RequestMapping(value = "/reduce", method = RequestMethod.POST)
+    @PostMapping(value = "/reduce")
     public HttpResp reduce(Integer uid, String channel){
         boolean result = walletService.reduce(uid, channel);
         if(result) return new HttpResp(0, HttpResp.RespCode.SUCCESS.getCode());

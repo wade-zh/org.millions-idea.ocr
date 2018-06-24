@@ -8,11 +8,11 @@
         uid,<include refid="fields"/>
     </sql>
 
-    <select id="queryList" parameterType="java.util.List" resultType="org.millions.idea.ocr.web.user.entity.db.Users">
-        SELECT <include refid="f_fields"/> FROM users
-    </select>
-
     <select id="query" parameterType="java.lang.Integer" resultType="org.millions.idea.ocr.web.user.entity.db.Users">
         SELECT <include refid="f_fields"/> FROM users WHERE uid = #{uid}
+    </select>
+
+    <select id="login" resultType="org.millions.idea.ocr.web.user.entity.db.Users">
+        SELECT * FROM users WHERE user_name = #{uname} AND password = #{pwd}
     </select>
 </mapper>

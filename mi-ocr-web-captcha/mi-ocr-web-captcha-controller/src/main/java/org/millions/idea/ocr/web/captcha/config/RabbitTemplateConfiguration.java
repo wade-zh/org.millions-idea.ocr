@@ -83,6 +83,7 @@ public class RabbitTemplateConfiguration {
             channel.exchangeDeclare(rabbitConfig.getExchange(), "topic", true,false ,null);
             channel.queueDeclare(multiQueue.getWallet(), true, false, false, null);
             channel.queueBind(multiQueue.getWallet(), rabbitConfig.getExchange(),multiQueue.getWallet());
+            channel.basicQos(1);
             channel.basicConsume(multiQueue.getWallet(), false, new DefaultConsumer(channel) {
                 /**
                  * No-op implementation of {@link Consumer#handleDelivery}.
@@ -94,9 +95,13 @@ public class RabbitTemplateConfiguration {
                  */
                 @Override
                 public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException {
-                    String message = new String(body, "UTF-8");
-                    System.out.println(message);
-                    walletMessageService.onMessage(channel, envelope, message);
+                    try{
+                        String message = new String(body, "UTF-8");
+                        walletMessageService.onMessage(channel, envelope, message);
+                    } catch (Exception e){
+                        System.err.println(e.getCause().getMessage());
+                        channel.basicAck(envelope.getDeliveryTag(), false);
+                    }
                 }
             });
         }catch (Exception e){

@@ -3,3 +3,4 @@ org\millions\idea\ocr\web\common\entity\Captcha.class
 org\millions\idea\ocr\web\common\entity\common\HttpResp$RespCode.class
 org\millions\idea\ocr\web\common\entity\common\WalletReq.class
 org\millions\idea\ocr\web\common\entity\common\HttpResp.class
+org\millions\idea\ocr\web\common\entity\exception\MessageException.class

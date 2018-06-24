@@ -38,12 +38,14 @@ namespace mi_ocr_worker_win_app_biz
                 call(true);
 
                 // Reduce balance 
-                var body = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(new WalletReq()
+                var msg = JsonConvert.SerializeObject(new WalletReq()
                 {
-                    uid = captcha.Uid,
+                    token = captcha.Token,
                     channel = captcha.Channel
-                }));
+                });
+                var body = Encoding.UTF8.GetBytes(msg);
                 consumer.Model.BasicPublish(MultiQueue.Exchange, MultiQueue.Wallet, null, body);
+                Console.WriteLine($"发送扣费请求:{msg}");
             });
         }
          

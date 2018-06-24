@@ -8,7 +8,9 @@
 package org.millions.idea.ocr.web.captcha.entity.types;
 
 public enum HttpErrorCodeType {
-    NotResult,
+    SUCCESS,
+    ERROR,
+    WAIT,
     IOException,
     Exception
 }

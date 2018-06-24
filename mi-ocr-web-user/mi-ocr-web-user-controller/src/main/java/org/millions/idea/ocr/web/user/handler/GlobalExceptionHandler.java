@@ -9,7 +9,7 @@ package org.millions.idea.ocr.web.user.handler;
 
 
 import org.millions.idea.ocr.web.common.entity.common.HttpResp;
-import org.millions.idea.ocr.web.user.entity.exception.MessageException;
+import org.millions.idea.ocr.web.common.entity.exception.MessageException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
