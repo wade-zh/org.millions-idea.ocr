@@ -13,6 +13,7 @@
         <module>../mi-ocr-web-captcha-entity</module>
         <module>../mi-ocr-web-captcha-biz</module>
         <module>../mi-ocr-web-captcha-repository</module>
+        <module>../mi-ocr-web-captcha-agent</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -55,6 +56,19 @@
             <artifactId>spring-boot-autoconfigure</artifactId>
             <version>2.0.1.RELEASE</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-feign -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-feign</artifactId>
+            <version>1.4.4.RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.netflix.feign</groupId>
+            <artifactId>feign-jackson</artifactId>
+            <version>8.18.0</version>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
@@ -89,7 +103,6 @@
                 <version>2.0.2.RELEASE</version>
                 <optional>false</optional>
             </dependency>
-
         </dependencies>
     </dependencyManagement>
 

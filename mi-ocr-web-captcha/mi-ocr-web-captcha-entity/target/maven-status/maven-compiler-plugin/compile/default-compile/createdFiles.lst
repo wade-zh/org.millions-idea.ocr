@@ -1,5 +1,0 @@
-org\millions\idea\ocr\web\captcha\entity\MultiQueue.class
-org\millions\idea\ocr\web\captcha\entity\common\RabbitConfig.class
-org\millions\idea\ocr\web\captcha\entity\Sample.class
-org\millions\idea\ocr\web\captcha\entity\types\ChannelType.class
-org\millions\idea\ocr\web\captcha\entity\types\HttpErrorCodeType.class

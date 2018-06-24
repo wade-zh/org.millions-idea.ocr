@@ -20,11 +20,18 @@ public class MultiQueue {
     private String captcha;
     private String report;
 
+
+    private String wallet;
+
     public String getCaptcha() {
         return rabbitConfig.getQueue(0);
     }
 
     public String getReport() {
         return rabbitConfig.getQueue(1);
+    }
+
+    public String getWallet() {
+        return rabbitConfig.getQueue(2);
     }
 }

@@ -6,14 +6,19 @@ using System.Threading.Tasks;
 using mi_ocr_worker_win_app_biz.Impl;
 using mi_ocr_worker_win_app_biz.Util;
 using mi_ocr_worker_win_app_entity;
+using mi_ocr_worker_win_app_entity.common;
 using mi_ocr_worker_win_app_utility;
 using Newtonsoft.Json;
+using RabbitMQ.Client;
+using RabbitMQ.Client.Events;
 
 namespace mi_ocr_worker_win_app_biz
 {
     public class ReceiveMessageServiceImpl : IReceiveMessageService
     {
-        public void OnMessage(string message, Action<bool> call)
+        private IWalletService walletService { get; set; }
+
+        public void OnMessage(EventingBasicConsumer consumer, string message, Action<bool> call)
         { 
             Captcha captcha = JsonConvert.DeserializeObject<Captcha>(message);
             // Checking rule
@@ -28,7 +33,17 @@ namespace mi_ocr_worker_win_app_biz
                     call(false);
                     return;
                 }
+
+
                 call(true);
+
+                // Reduce balance 
+                var body = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(new WalletReq()
+                {
+                    uid = captcha.Uid,
+                    channel = captcha.Channel
+                }));
+                consumer.Model.BasicPublish(MultiQueue.Exchange, MultiQueue.Wallet, null, body);
             });
         }
          

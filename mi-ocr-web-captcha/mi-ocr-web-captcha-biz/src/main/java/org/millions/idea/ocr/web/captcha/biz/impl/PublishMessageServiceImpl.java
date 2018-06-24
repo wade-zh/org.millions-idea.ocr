@@ -7,11 +7,11 @@
  */
 package org.millions.idea.ocr.web.captcha.biz.impl;
 
-import org.millions.idea.ocr.common.entity.Captcha;
 import org.millions.idea.ocr.web.captcha.biz.util.EnumUtil;
 import org.millions.idea.ocr.web.captcha.entity.MultiQueue;
 import org.millions.idea.ocr.web.captcha.utility.json.JsonUtil;
 import org.millions.idea.ocr.web.captcha.utility.queue.RabbitUtil;
+import org.millions.idea.ocr.web.common.entity.Captcha;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.redis.core.RedisTemplate;

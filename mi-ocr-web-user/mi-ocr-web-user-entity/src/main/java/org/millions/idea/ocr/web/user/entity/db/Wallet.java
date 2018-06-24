@@ -11,6 +11,15 @@ public class Wallet {
     private Integer wid;
     private Integer uid;
     private Double balance;
+    private Integer version;
+
+    public Integer getVersion() {
+        return version;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
+    }
 
     @Override
     public String toString() {
@@ -18,7 +27,15 @@ public class Wallet {
                 "wid=" + wid +
                 ", uid=" + uid +
                 ", balance=" + balance +
+                ", version=" + version +
                 '}';
+    }
+
+    public Wallet(Integer wid, Integer uid, Double balance, Integer version) {
+        this.wid = wid;
+        this.uid = uid;
+        this.balance = balance;
+        this.version = version;
     }
 
     public Integer getWid() {
@@ -49,10 +66,4 @@ public class Wallet {
 
     }
 
-    public Wallet(Integer wid, Integer uid, Double balance) {
-
-        this.wid = wid;
-        this.uid = uid;
-        this.balance = balance;
-    }
 }

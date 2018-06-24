@@ -8,6 +8,8 @@
 package org.millions.idea.ocr.web.user.biz.impl;
 
 import org.millions.idea.ocr.web.user.biz.IWalletService;
+import org.millions.idea.ocr.web.user.entity.db.Wallet;
+import org.millions.idea.ocr.web.user.entity.exception.MessageException;
 import org.millions.idea.ocr.web.user.repository.mapper.IWalletMapperRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,6 +32,10 @@ public class WalletServiceImpl implements IWalletService {
      */
     @Override
     public boolean reduce(Integer uid, String channel) {
-        return walletMapperRepository.reduce(uid, channel);
+        Wallet wallet = walletMapperRepository.select(uid);
+        if (wallet == null) throw new MessageException("用户不存在");
+        if (wallet.getBalance() <= 0) throw new MessageException("余额不足");
+        return walletMapperRepository.reduce(uid, channel, wallet.getVersion());
     }
+
 }

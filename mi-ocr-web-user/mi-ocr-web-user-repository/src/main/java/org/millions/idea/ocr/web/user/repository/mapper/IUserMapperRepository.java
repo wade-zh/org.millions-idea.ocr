@@ -10,7 +10,6 @@ package org.millions.idea.ocr.web.user.repository.mapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.millions.idea.ocr.web.user.entity.db.Users;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

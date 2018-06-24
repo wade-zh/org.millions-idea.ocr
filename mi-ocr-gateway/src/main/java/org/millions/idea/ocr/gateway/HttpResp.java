@@ -42,5 +42,9 @@ public class HttpResp {
         this.msg = msg;
     }
 
+    public HttpResp(String msg,int error) {
 
+        this.msg = msg;
+        this.error = error;
+    }
 }

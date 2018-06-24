@@ -102,6 +102,12 @@
             <artifactId>spring-boot-starter-log4j2</artifactId>
         </dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-feign -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-feign</artifactId>
+			<version>1.4.4.RELEASE</version>
+		</dependency>
 
 	</dependencies>
 
@@ -135,7 +141,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<mainClass>org.millions.idea.ocr.web.captcha.controller.MiOcrControllerApplication</mainClass>
+					<mainClass>org.millions.idea.ocr.web.captcha.MiOcrControllerApplication</mainClass>
 				</configuration>
 				<executions>
 					<execution>

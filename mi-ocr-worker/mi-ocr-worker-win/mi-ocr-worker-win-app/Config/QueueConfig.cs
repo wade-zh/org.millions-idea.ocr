@@ -1,9 +1,10 @@
-﻿using mi_ocr_worker_win_app_entity;
+﻿using mi_ocr_worker_win_app_biz;
+using mi_ocr_worker_win_app_biz.Util;
+using mi_ocr_worker_win_app_entity;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -16,7 +17,7 @@ namespace mi_ocr_worker_win_app.Config
         public static IConnection Connection { get; set; }
         public static IModel model { get; set; }
 
-        public static void StartupMessageReceive(string queue, Action<string, Action<bool>> action)
+        public static void StartupMessageReceive(string queue, Action<EventingBasicConsumer, string, Action<bool>> action)
         {
             ConnectionFactory factory = new ConnectionFactory
             {
@@ -30,12 +31,15 @@ namespace mi_ocr_worker_win_app.Config
                 RequestedConnectionTimeout = 60 *1000
                 
             };
+
+            RabbitTemplate.connectionFactory = factory;
+
             Connection = factory.CreateConnection();
 
             BindQueue(queue, action);
         }
 
-        private static void BindQueue(string queue, Action<string, Action<bool>> action)
+        private static void BindQueue(string queue, Action<EventingBasicConsumer, string, Action<bool>> action)
         {
             model = Connection.CreateModel();
             model.ExchangeDeclare(exchange: MultiQueue.Exchange, type: "topic",durable: true, autoDelete: false, arguments: null);
@@ -51,7 +55,7 @@ namespace mi_ocr_worker_win_app.Config
             {
                 var _body = ea.Body;
                 var _message = Encoding.UTF8.GetString(_body);
-                action(_message, (res) => {
+                action(((EventingBasicConsumer)model),_message, (res) => {
                     if (res) {
                         ((EventingBasicConsumer)model).Model.BasicAck(deliveryTag: ea.DeliveryTag, multiple: false);
                     }
@@ -66,11 +70,5 @@ namespace mi_ocr_worker_win_app.Config
             model.Close();
             Connection.Close();
         }
-    }
-
-    class MultiQueue {
-        public static string Captcha => ConfigurationManager.AppSettings["Queue"].Split(',')[0];
-        public static string Exchange => ConfigurationManager.AppSettings["Exchange"];
-        public static string Report => ConfigurationManager.AppSettings["Queue"].Split(',')[1];
     }
 }

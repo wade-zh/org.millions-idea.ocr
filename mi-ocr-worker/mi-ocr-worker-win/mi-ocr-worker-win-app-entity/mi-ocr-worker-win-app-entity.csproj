@@ -53,10 +53,12 @@
     <Compile Include="ChannelType.cs" />
     <Compile Include="Constant.cs" />
     <Compile Include="LzCaptcha.cs" />
+    <Compile Include="MultiQueue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RemoteUser.cs" />
     <Compile Include="RkCaptcha.cs" />
     <Compile Include="SharedResult.cs" />
+    <Compile Include="common\WalletReq.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

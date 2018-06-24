@@ -10,7 +10,6 @@ namespace mi_ocr_worker_win_app_entity
     public class Constant
     {
         public static string Username { get; set; } = ConfigurationManager.AppSettings["Username"];
-
         public static string Password { get; set; } = ConfigurationManager.AppSettings["Password"];
 
         public static string VirtualHost { get; set; } = ConfigurationManager.AppSettings["VirtualHost"];
@@ -19,7 +18,7 @@ namespace mi_ocr_worker_win_app_entity
 
         public static int Port { get; set; } = int.Parse(ConfigurationManager.AppSettings["Port"]);
          
-
         public static string RemotePassword { get; set; } = ConfigurationManager.AppSettings["RemotePassword"];
+
     }
 }

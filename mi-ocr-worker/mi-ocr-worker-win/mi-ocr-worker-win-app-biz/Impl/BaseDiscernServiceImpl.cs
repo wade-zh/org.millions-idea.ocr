@@ -12,6 +12,7 @@ namespace mi_ocr_worker_win_app_biz.Impl
 {
     public abstract class BaseDiscernServiceImpl : ICaptchaDiscernService
     {
+
         public void Discern(Captcha captcha, Action<string> call) => Task.Run(() =>
         {
             byte[] binary = Convert.FromBase64String(captcha.Binary);
@@ -72,6 +73,11 @@ namespace mi_ocr_worker_win_app_biz.Impl
         private async void PublishRedisMessage(Captcha captcha, byte[] binary, string code)
         {
             CacheHelper.Cache.Set(captcha.Ticket, code, DateTime.Now.AddSeconds(30));
+        }
+
+
+        private async void ReduceBalance(Captcha captcha) {
+
         }
     }
 }

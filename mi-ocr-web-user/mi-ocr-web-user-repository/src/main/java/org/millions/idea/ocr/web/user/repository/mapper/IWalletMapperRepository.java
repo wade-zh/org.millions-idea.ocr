@@ -10,7 +10,7 @@ package org.millions.idea.ocr.web.user.repository.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.context.annotation.ComponentScan;
+import org.millions.idea.ocr.web.user.entity.db.Wallet;
 import org.springframework.stereotype.Component;
 
 @Mapper
@@ -22,5 +22,12 @@ public interface IWalletMapperRepository {
      * @param channel
      * @return
      */
-    boolean reduce(@Param("uid") Integer uid, @Param("channel") String channel);
+    boolean reduce(@Param("uid") Integer uid,@Param("channel") String channel,@Param("version") Integer version);
+
+    /**
+     * Select users wallet information
+     * @param uid
+     * @return
+     */
+    Wallet select(@Param("uid") Integer uid);
 }
