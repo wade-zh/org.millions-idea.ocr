@@ -37,7 +37,7 @@ public class WalletMessageServiceImpl implements IWalletMessageService{
         try {
             WalletReq model = JsonUtil.getModel(message, WalletReq.class);
             logger.info("扣费参数:" + message);
-            String result = walletAgentService.reduce(model.getUid(), model.getChannel());
+            HttpResp result = walletAgentService.reduce(model.getUid(), model.getChannel());
             logger.info("扣费结果:" + result);
             channel.basicAck(envelope.getDeliveryTag(), false);
         } catch (IOException e) {

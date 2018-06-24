@@ -7,6 +7,8 @@
  */
 package org.millions.idea.ocr.web.captcha.entity.db;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.sql.Timestamp;
 
 public class Users {
@@ -16,7 +18,11 @@ public class Users {
     private Integer issueId;
     private String issueResult;
     private String qq;
+
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Timestamp registTime;
+
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Timestamp lastActiveTime;
     private String lastLoginIp;
     private Integer levelId;

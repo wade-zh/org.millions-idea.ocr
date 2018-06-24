@@ -75,9 +75,10 @@ public class PublishMessageServiceImpl extends MessageServiceImpl {
 
     private boolean extractUserInfo(UploadCaptchaReq uploadCaptchaReq){
         LoginResult loginResult = userAgentService.login(uploadCaptchaReq.getUname(), uploadCaptchaReq.getPwd());
-        if(loginResult != null) {
+        if(loginResult != null  && loginResult.getToken() != null && loginResult.getUser() != null) {
             redisTemplate.delete(loginResult.getToken());
             redisTemplate.opsForValue().set(uploadCaptchaReq.getToken(), JsonUtil.getJson(loginResult.getUser()), 30, TimeUnit.MINUTES);
+            return true;
         }
         return false;
     }

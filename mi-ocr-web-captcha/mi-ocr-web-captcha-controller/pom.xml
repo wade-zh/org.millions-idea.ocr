@@ -106,6 +106,12 @@
             <artifactId>spring-boot-starter-log4j2</artifactId>
         </dependency>
 
+		<!-- https://mvnrepository.com/artifact/com.netflix.feign/feign-gson -->
+		<dependency>
+			<groupId>com.netflix.feign</groupId>
+			<artifactId>feign-jackson</artifactId>
+			<version>8.18.0</version>
+		</dependency>
 	</dependencies>
 
 

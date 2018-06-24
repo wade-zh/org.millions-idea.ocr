@@ -8,6 +8,7 @@
 package org.millions.idea.ocr.web.captcha.controller;
 
 import org.millions.idea.ocr.web.captcha.biz.IMessageService;
+import org.millions.idea.ocr.web.captcha.entity.UploadCaptchaReq;
 import org.millions.idea.ocr.web.captcha.entity.types.HttpErrorCodeType;
 import org.millions.idea.ocr.web.common.entity.common.HttpResp;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,9 +31,11 @@ public class CaptchaController {
     @RequestMapping("upload")
     public HttpResp upload(@RequestParam("file") MultipartFile file,
                            @RequestParam("channel") String channel,
-                           @RequestParam("token") String token){
+                           @RequestParam("token") String token,
+                           @RequestParam("uname") String uname,
+                           @RequestParam("pwd") String pwd){
         try {
-            return new HttpResp(-1, publishMessageServiceImpl.publish(token, file.getBytes(), channel));
+            return new HttpResp(-1, publishMessageServiceImpl.publish(new UploadCaptchaReq(uname, pwd, token, file.getBytes(), channel)));
         } catch (IOException e) {
             return new HttpResp(HttpErrorCodeType.IOException.ordinal(), HttpErrorCodeType.IOException.toString());
         }
