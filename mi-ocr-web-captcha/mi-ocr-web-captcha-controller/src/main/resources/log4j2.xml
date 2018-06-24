@@ -133,18 +133,22 @@
         </RollingFile>
     </Appenders>
 
-    <Loggers name="org.millions">
+    <Loggers>
         <!-- 配置日志的根节点 -->
         <!-- 定义logger，只有定义了logger并引入了appender，appender才会生效 -->
         <root level="trace">
             <appender-ref ref="console_out_appender" />
             <appender-ref ref="console_err_appender" />
             <appender-ref ref="trace_appender" />
+            <appender-ref ref="warn_appender" />
+        </root>
+
+        <logger name="org.millions.idea" level="info">
             <appender-ref ref="debug_appender" />
             <appender-ref ref="info_appender" />
-            <appender-ref ref="warn_appender" />
             <appender-ref ref="error_appender" />
-        </root>
+        </logger>
+
         <!-- 第三方日志系统 -->
         <logger name="org.springframework.core" level="info" />
         <logger name="org.springframework.beans" level="info" />
