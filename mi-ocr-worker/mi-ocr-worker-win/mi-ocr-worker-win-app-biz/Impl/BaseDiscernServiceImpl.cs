@@ -37,47 +37,47 @@ namespace mi_ocr_worker_win_app_biz.Impl
         private async void PublishMongoMessage(Captcha captcha, byte[] binary, string code)
         {
 
-            try
-            {
-                string captchaId = captcha.Ticket;
-                if (code.Contains("Ticket") && code.Contains("Id") && code.Contains("Result"))
+            await Task.Run(()=> {
+                try
                 {
-                    string nCode = code;
-                    captchaId = JsonConvert.DeserializeObject<SharedResult>(nCode).Id;
-                    code = JsonConvert.DeserializeObject<SharedResult>(nCode).Result;
+                    string captchaId = captcha.Ticket;
+                    if (code.Contains("Ticket") && code.Contains("Id") && code.Contains("Result"))
+                    {
+                        string nCode = code;
+                        captchaId = JsonConvert.DeserializeObject<SharedResult>(nCode).Id;
+                        code = JsonConvert.DeserializeObject<SharedResult>(nCode).Result;
+                    }
+                    MongoDBHelper<Samples> mongoDBHelper = new MongoDBHelper<Samples>();
+                    Samples entity = new Samples()
+                    {
+                        channel = captcha.Channel,
+                        ticket = captcha.Ticket,
+                        captchaId = captchaId,
+                        code = code.ToUpper(),
+                        image = captcha.Binary,
+                        md5 = Md5Util.GetMD5Hash(binary),
+                        isError = false,
+                        createTime = DateTime.Now.AddHours(8)
+                    };
+                    mongoDBHelper.Insert(entity);
                 }
-                MongoDBHelper<Samples> mongoDBHelper = new MongoDBHelper<Samples>();
-                Samples entity = new Samples()
+                catch (Exception e)
                 {
-                    channel = captcha.Channel,
-                    ticket = captcha.Ticket,
-                    captchaId = captchaId,
-                    code = code.ToUpper(),
-                    image = captcha.Binary,
-                    md5 = Md5Util.GetMD5Hash(binary),
-                    isError = false,
-                    createTime = DateTime.Now.AddHours(8)
-                };
-                mongoDBHelper.Insert(entity);
-            }
-            catch (Exception e)
-            {
-                if (e.Message.Contains("duplicate key error"))
-                {
-                    Console.WriteLine("Ignore current captcha, duplicate key error: " + code);
-                    return;
+                    if (e.Message.Contains("duplicate key error"))
+                    {
+                        Console.WriteLine("Ignore current captcha, duplicate key error: " + code);
+                        return;
+                    }
                 }
-            }
+            });
         }
 
         private async void PublishRedisMessage(Captcha captcha, byte[] binary, string code)
         {
-            CacheHelper.Cache.Set(captcha.Ticket, code, DateTime.Now.AddSeconds(30));
+            await Task.Run(() => {
+                CacheHelper.Cache.Set(captcha.Ticket, code, DateTime.Now.AddSeconds(30));
+            });
         }
 
-
-        private async void ReduceBalance(Captcha captcha) {
-
-        }
     }
 }

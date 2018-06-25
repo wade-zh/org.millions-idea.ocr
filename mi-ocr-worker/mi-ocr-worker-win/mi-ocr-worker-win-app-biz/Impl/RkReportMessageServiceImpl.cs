@@ -28,16 +28,20 @@ namespace mi_ocr_worker_win_app_biz.Impl
         /// </summary>
         /// <param name="message"></param>
         private async void ReportError(string message) {
-            var client = new RestClient("http://api.ruokuai.com/reporterror.json");
-            var request = new RestRequest(Method.POST);
-            request.AddParameter("username", RemoteUser.RuoKuai);
-            request.AddParameter("password", Constant.RemotePassword);
-            request.AddParameter("softid", RemoteUser.RuoKuaiSoftId);
-            request.AddParameter("softkey", RemoteUser.RuoKuaiSoftKey);
-            request.AddParameter("id", message);
-            IRestResponse response = client.Execute(request);
-            if (response == null || response.StatusCode != System.Net.HttpStatusCode.OK) return;
-            Console.WriteLine($"Upload error reports to ruokuai: { System.Web.HttpUtility.UrlDecode(message, System.Text.Encoding.GetEncoding("UTF-8"))}");
+            await Task.Run(() =>
+            {
+                var client = new RestClient("http://api.ruokuai.com/reporterror.json");
+                var request = new RestRequest(Method.POST);
+                request.AddParameter("username", RemoteUser.RuoKuai);
+                request.AddParameter("password", Constant.RemotePassword);
+                request.AddParameter("softid", RemoteUser.RuoKuaiSoftId);
+                request.AddParameter("softkey", RemoteUser.RuoKuaiSoftKey);
+                request.AddParameter("id", message);
+                client.ExecuteAsync(request, (response, RestRequestAsyncHandle) => {
+                    if (response == null || response.StatusCode != System.Net.HttpStatusCode.OK) return;
+                    Console.WriteLine($"Upload error reports to ruokuai: { System.Web.HttpUtility.UrlDecode(message, Encoding.GetEncoding("UTF-8"))}");
+                });
+            });
         }
     }
 }

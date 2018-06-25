@@ -28,14 +28,18 @@ namespace mi_ocr_worker_win_app_biz.Impl
         /// </summary>
         /// <param name="message"></param>
         private async void ReportError(string message) {
-            var client = new RestClient("http://v1-http-api.jsdama.com/api.php?mod=php&act=error");
-            var request = new RestRequest(Method.POST);
-            request.AddParameter("user_name", RemoteUser.LianZhong);
-            request.AddParameter("user_pw", Constant.RemotePassword);
-            request.AddParameter("yzm", message);
-            IRestResponse response = client.Execute(request);
-            if (response == null || response.StatusCode != System.Net.HttpStatusCode.OK) return;
-            Console.WriteLine($"Upload error reports to lianzhong: { System.Web.HttpUtility.UrlDecode(message, System.Text.Encoding.GetEncoding("UTF-8"))}");
+            await Task.Run(() =>
+            {
+                var client = new RestClient("http://v1-http-api.jsdama.com/api.php?mod=php&act=error");
+                var request = new RestRequest(Method.POST);
+                request.AddParameter("user_name", RemoteUser.LianZhong);
+                request.AddParameter("user_pw", Constant.RemotePassword);
+                request.AddParameter("yzm", message);
+                client.ExecuteAsync(request, (response, RestRequestAsyncHandle) => {
+                    if (response == null || response.StatusCode != System.Net.HttpStatusCode.OK) return;
+                    Console.WriteLine($"Upload error reports to lianzhong: { System.Web.HttpUtility.UrlDecode(message, Encoding.GetEncoding("UTF-8"))}");
+                });
+            });
         }
     }
 }

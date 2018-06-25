@@ -29,11 +29,13 @@ namespace mi_ocr_worker_win_app_biz.Impl
 
         private async void DeleteErrorSampleAsync(Captcha captcha)
         {
-            MongoDBHelper<Samples> mongoDBHelper = new MongoDBHelper<Samples>();
-            Samples sample = mongoDBHelper.GetEntity(s => s.captchaId == captcha.Ticket && s.channel == captcha.Channel);
-            if (sample == null) return;
-            sample.isError = true;
-            mongoDBHelper.Update(sample, s => s.captchaId == captcha.Ticket && s.channel == captcha.Channel);
+            await Task.Run(()=> {
+                MongoDBHelper<Samples> mongoDBHelper = new MongoDBHelper<Samples>();
+                Samples sample = mongoDBHelper.GetEntity(s => s.captchaId == captcha.Ticket && s.channel == captcha.Channel);
+                if (sample == null) return;
+                sample.isError = true;
+                mongoDBHelper.Update(sample, s => s.captchaId == captcha.Ticket && s.channel == captcha.Channel);
+            });
         }
     }
 }
