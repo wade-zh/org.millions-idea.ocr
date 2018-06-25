@@ -15,6 +15,9 @@ CREATE TABLE `users` (
  
 INSERT INTO `users`(user_name,password,issue_id,issue_result,contact,regist_time) VALUES('admin', MD5('admin123456'), 1, '哥谭市', 'qq:2175656094', CURRENT_TIMESTAMP);
 
+INSERT INTO `users`(user_name,password,issue_id,issue_result,contact,regist_time) VALUES('root', MD5('root123456'), 1, '哥谭市', 'qq:2175656094', CURRENT_TIMESTAMP);
+
+
 
 #评定用户消费等级[不要录入数据库]
 UPDATE users SET level_id = 

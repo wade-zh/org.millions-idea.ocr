@@ -3,7 +3,7 @@
 <mapper namespace="org.millions.idea.ocr.web.user.repository.mapper.IWalletMapperRepository">
     <update id="reduce">
         UPDATE wallet SET balance = balance - (SELECT reduce FROM backcategorys WHERE `code` = #{channel}), version = version + 1
-        WHERE uid = #{uid} AND balance >= (SELECT reduce FROM backcategorys WHERE `code` = #{channel}) AND version = #{version};
+        WHERE uid = #{uid} AND balance > 0 AND version = #{version};
     </update>
 
     <select id="select" resultType="org.millions.idea.ocr.web.user.entity.db.Wallet">

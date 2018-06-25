@@ -64,7 +64,7 @@ namespace mi_ocr_worker_win_app_biz.Impl
             {
                 if (e.Message.Contains("duplicate key error"))
                 {
-                    Console.WriteLine("该验证码已在存在，本次不录入样本库");
+                    Console.WriteLine("Ignore current captcha, duplicate key error: " + code);
                     return;
                 }
             }

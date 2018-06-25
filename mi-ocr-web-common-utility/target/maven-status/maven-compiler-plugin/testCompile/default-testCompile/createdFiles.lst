@@ -1,2 +1,5 @@
-org\millions\idea\ocr\web\common\utility\json\LogTest.class
+org\millions\idea\ocr\web\common\utility\utils\PropertyUtilTest.class
 org\millions\idea\ocr\web\common\utility\encrypt\Md5UtilTest.class
+org\millions\idea\ocr\web\common\utility\json\LogTest.class
+org\millions\idea\ocr\web\common\utility\utils\B.class
+org\millions\idea\ocr\web\common\utility\utils\A.class

@@ -8,15 +8,21 @@
 package org.millions.idea.ocr.web.common.entity.common;
 
 public class WalletReq {
-    private Integer uid;
     private String channel;
+    private String token;
 
-    public Integer getUid() {
-        return uid;
+    public WalletReq(String channel, String token) {
+        this.channel = channel;
+        this.token = token;
     }
 
-    public void setUid(Integer uid) {
-        this.uid = uid;
+    public String getToken() {
+
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
     public String getChannel() {
@@ -31,9 +37,5 @@ public class WalletReq {
 
     }
 
-    public WalletReq(Integer uid, String channel) {
 
-        this.uid = uid;
-        this.channel = channel;
-    }
 }

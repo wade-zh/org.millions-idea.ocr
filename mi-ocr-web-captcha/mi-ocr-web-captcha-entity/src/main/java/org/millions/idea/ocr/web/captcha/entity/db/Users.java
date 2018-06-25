@@ -17,66 +17,27 @@ public class Users {
     private String password;
     private Integer issueId;
     private String issueResult;
-    private String qq;
-
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    private String contact;
     private Timestamp registTime;
-
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Timestamp lastActiveTime;
     private String lastLoginIp;
-    private Integer levelId;
 
-    public Timestamp getRegistTime() {
-        return registTime;
-    }
-
-    public void setRegistTime(Timestamp registTime) {
-        this.registTime = registTime;
-    }
-
-    public Timestamp getLastActiveTime() {
-        return lastActiveTime;
-    }
-
-    public void setLastActiveTime(Timestamp lastActiveTime) {
-        this.lastActiveTime = lastActiveTime;
-    }
-
-    public Users(Integer uid, String userName, String password, Integer issueId, String issueResult, String qq, Timestamp registTime, Timestamp lastActiveTime, String lastLoginIp, Integer levelId) {
-        this.uid = uid;
-        this.userName = userName;
-        this.password = password;
-        this.issueId = issueId;
-        this.issueResult = issueResult;
-        this.qq = qq;
-        this.registTime = registTime;
-        this.lastActiveTime = lastActiveTime;
-        this.lastLoginIp = lastLoginIp;
-        this.levelId = levelId;
-    }
-
-    public String getLastLoginIp() {
-        return lastLoginIp;
-    }
-
-    public void setLastLoginIp(String lastLoginIp) {
-        this.lastLoginIp = lastLoginIp;
-    }
-
-    public Integer getLevelId() {
-        return levelId;
-    }
-
-    public void setLevelId(Integer levelId) {
-        this.levelId = levelId;
-    }
-
-    public Users() {
+    @Override
+    public String toString() {
+        return "Users{" +
+                "uid=" + uid +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                ", issueId=" + issueId +
+                ", issueResult='" + issueResult + '\'' +
+                ", contact='" + contact + '\'' +
+                ", registTime=" + registTime +
+                ", lastActiveTime=" + lastActiveTime +
+                ", lastLoginIp='" + lastLoginIp + '\'' +
+                '}';
     }
 
     public Integer getUid() {
-
         return uid;
     }
 
@@ -116,11 +77,52 @@ public class Users {
         this.issueResult = issueResult;
     }
 
-    public String getQq() {
-        return qq;
+    public String getContact() {
+        return contact;
     }
 
-    public void setQq(String qq) {
-        this.qq = qq;
+    public void setContact(String contact) {
+        this.contact = contact;
+    }
+
+    public Timestamp getRegistTime() {
+        return registTime;
+    }
+
+    public void setRegistTime(Timestamp registTime) {
+        this.registTime = registTime;
+    }
+
+    public Timestamp getLastActiveTime() {
+        return lastActiveTime;
+    }
+
+    public void setLastActiveTime(Timestamp lastActiveTime) {
+        this.lastActiveTime = lastActiveTime;
+    }
+
+    public String getLastLoginIp() {
+        return lastLoginIp;
+    }
+
+    public void setLastLoginIp(String lastLoginIp) {
+        this.lastLoginIp = lastLoginIp;
+    }
+
+    public Users() {
+
+    }
+
+    public Users(Integer uid, String userName, String password, Integer issueId, String issueResult, String contact, Timestamp registTime, Timestamp lastActiveTime, String lastLoginIp) {
+
+        this.uid = uid;
+        this.userName = userName;
+        this.password = password;
+        this.issueId = issueId;
+        this.issueResult = issueResult;
+        this.contact = contact;
+        this.registTime = registTime;
+        this.lastActiveTime = lastActiveTime;
+        this.lastLoginIp = lastLoginIp;
     }
 }

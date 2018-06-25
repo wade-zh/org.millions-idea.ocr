@@ -27,5 +27,5 @@ public interface IUserService {
      * @param pwd
      * @return
      */
-    LoginResult login(String uname, String pwd);
+    String login(String uname, String pwd);
 }

@@ -23,6 +23,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 @Configuration
 public class RabbitTemplateConfiguration {
@@ -81,7 +83,10 @@ public class RabbitTemplateConfiguration {
         try {
             Channel channel = connectionFactory.createConnection().createChannel(false);
             channel.exchangeDeclare(rabbitConfig.getExchange(), "topic", true,false ,null);
-            channel.queueDeclare(multiQueue.getWallet(), true, false, false, null);
+            Map<String, Object> arguments = new HashMap<String, Object>();
+            arguments.put("x-dead-letter-exchange", rabbitConfig.getExchange());
+            arguments.put("x-message-ttl", 30 * 1000);
+            channel.queueDeclare(multiQueue.getWallet(), true, false, false, arguments);
             channel.queueBind(multiQueue.getWallet(), rabbitConfig.getExchange(),multiQueue.getWallet());
             channel.basicQos(1);
             channel.basicConsume(multiQueue.getWallet(), false, new DefaultConsumer(channel) {
@@ -99,7 +104,7 @@ public class RabbitTemplateConfiguration {
                         String message = new String(body, "UTF-8");
                         walletMessageService.onMessage(channel, envelope, message);
                     } catch (Exception e){
-                        System.err.println(e.getCause().getMessage());
+                        System.err.println(e.toString());
                         channel.basicAck(envelope.getDeliveryTag(), false);
                     }
                 }

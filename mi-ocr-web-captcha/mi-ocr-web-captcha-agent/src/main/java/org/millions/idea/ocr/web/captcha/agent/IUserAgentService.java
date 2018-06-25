@@ -8,9 +8,8 @@
 package org.millions.idea.ocr.web.captcha.agent;
 
 import feign.Headers;
-import feign.RequestLine;
-import org.millions.idea.ocr.web.captcha.entity.common.LoginResult;
 import org.millions.idea.ocr.web.captcha.entity.db.Users;
+import org.millions.idea.ocr.web.common.entity.common.HttpResp;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,5 +22,5 @@ public interface IUserAgentService {
     Users getUserByUid(Integer uid);
 
     @PostMapping("/login")
-    LoginResult login(@RequestParam("uname") String uname, @RequestParam("pwd") String pwd);
+    HttpResp login(@RequestParam("uname") String uname, @RequestParam("pwd") String pwd);
 }

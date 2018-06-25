@@ -40,12 +40,12 @@ namespace mi_ocr_worker_win_app_biz
                 // Reduce balance 
                 var msg = JsonConvert.SerializeObject(new WalletReq()
                 {
-                    token = captcha.Token,
-                    channel = captcha.Channel
+                    channel = captcha.Channel,
+                    token = captcha.Token
                 });
                 var body = Encoding.UTF8.GetBytes(msg);
                 consumer.Model.BasicPublish(MultiQueue.Exchange, MultiQueue.Wallet, null, body);
-                Console.WriteLine($"发送扣费请求:{msg}");
+                Console.WriteLine($"Send deduction request: {msg}");
             });
         }
          

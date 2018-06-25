@@ -43,11 +43,14 @@ namespace mi_ocr_worker_win_app.Config
         {
             model = Connection.CreateModel();
             model.ExchangeDeclare(exchange: MultiQueue.Exchange, type: "topic",durable: true, autoDelete: false, arguments: null);
+            IDictionary<string, object> arguments = new Dictionary<string, object>();
+            arguments.Add("x-dead-letter-exchange", MultiQueue.Exchange);
+            arguments.Add("x-message-ttl", 30 * 1000);
             model.QueueDeclare(queue: queue,
                                      durable: true,
                                      exclusive: false,
                                      autoDelete: false,
-                                     arguments: null);
+                                     arguments: arguments);
             model.QueueBind(queue, MultiQueue.Exchange, queue);
 
             var consumer = new EventingBasicConsumer(model);

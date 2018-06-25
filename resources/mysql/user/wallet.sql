@@ -8,11 +8,11 @@ CREATE TABLE `wallet` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='钱包表';
 
 
-INSERT INTO `wallet`(uid,balance) VALUES(1, 1000000);
+INSERT INTO `wallet`(uid,balance) VALUES(1, 100);
 
-
+INSERT INTO `wallet`(uid,balance) VALUES(2, 100);
 
 
 #扣减余额
 UPDATE wallet SET balance = balance - (SELECT reduce FROM backcategorys WHERE `code` = 'T0003604'), version = version + 1
-WHERE uid = 1 AND balance >= (SELECT reduce FROM backcategorys WHERE `code` = 'T0003604') AND version = 1;
+WHERE uid = 1 AND balance > 0 AND version = 1;

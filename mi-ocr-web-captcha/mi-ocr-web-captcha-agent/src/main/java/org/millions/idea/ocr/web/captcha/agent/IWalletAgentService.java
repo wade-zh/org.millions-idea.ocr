@@ -18,5 +18,5 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface IWalletAgentService {
 
     @PostMapping("/wallet/reduce")
-    HttpResp reduce(@RequestParam("uid") Integer uid, @RequestParam("channel") String channel);
+    HttpResp reduce(@RequestParam("token") String token, @RequestParam("uid") Integer uid, @RequestParam("channel") String channel);
 }

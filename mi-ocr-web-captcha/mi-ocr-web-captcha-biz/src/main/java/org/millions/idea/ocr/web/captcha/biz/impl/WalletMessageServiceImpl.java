@@ -13,6 +13,7 @@ import org.apache.logging.log4j.Logger;
 import org.millions.idea.ocr.web.captcha.agent.IWalletAgentService;
 import org.millions.idea.ocr.web.captcha.biz.IWalletMessageService;
 import org.millions.idea.ocr.web.captcha.entity.db.Users;
+import org.millions.idea.ocr.web.captcha.entity.ext.UserEntity;
 import org.millions.idea.ocr.web.captcha.utility.json.JsonUtil;
 import org.millions.idea.ocr.web.common.entity.common.HttpResp;
 import org.millions.idea.ocr.web.common.entity.common.WalletReq;
@@ -37,10 +38,16 @@ public class WalletMessageServiceImpl implements IWalletMessageService{
         try {
             WalletReq model = JsonUtil.getModel(message, WalletReq.class);
             logger.info("扣费参数:" + message);
-            HttpResp result = walletAgentService.reduce(model.getUid(), model.getChannel());
-            logger.info("扣费结果:" + result);
-            channel.basicAck(envelope.getDeliveryTag(), false);
-        } catch (IOException e) {
+            Object data = redisTemplate.opsForValue().get(model.getToken());
+            if (data != null){
+                UserEntity userEntity = JsonUtil.getModel(String.valueOf(data), UserEntity.class);
+                if (userEntity != null){
+                    HttpResp result = walletAgentService.reduce(model.getToken(), userEntity.getUid(), model.getChannel());
+                    logger.info("扣费结果:" + JsonUtil.getJson(result));
+                    channel.basicAck(envelope.getDeliveryTag(), false);
+                }
+            }
+        } catch (Exception e) {
             logger.error("扣费异常:" + e.getCause().getMessage());
         }
     }

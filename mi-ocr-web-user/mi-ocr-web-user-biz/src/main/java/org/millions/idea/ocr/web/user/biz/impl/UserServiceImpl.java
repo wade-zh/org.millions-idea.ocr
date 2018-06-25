@@ -10,10 +10,14 @@ package org.millions.idea.ocr.web.user.biz.impl;
 import org.millions.idea.ocr.web.common.entity.exception.MessageException;
 import org.millions.idea.ocr.web.common.utility.encrypt.Md5Util;
 import org.millions.idea.ocr.web.common.utility.json.JsonUtil;
+import org.millions.idea.ocr.web.common.utility.utils.PropertyUtil;
 import org.millions.idea.ocr.web.user.biz.IUserService;
 import org.millions.idea.ocr.web.user.entity.common.LoginResult;
 import org.millions.idea.ocr.web.user.entity.db.Users;
+import org.millions.idea.ocr.web.user.entity.db.Wallet;
+import org.millions.idea.ocr.web.user.entity.ext.UserEntity;
 import org.millions.idea.ocr.web.user.repository.mapper.IUserMapperRepository;
+import org.millions.idea.ocr.web.user.repository.mapper.IWalletMapperRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
@@ -24,10 +28,12 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class UserServiceImpl implements IUserService {
     private final IUserMapperRepository userMapperRepository;
+    private final IWalletMapperRepository walletMapperRepository;
     private final RedisTemplate redisTemplate;
     @Autowired
-    public UserServiceImpl(IUserMapperRepository userMapperRepository, RedisTemplate redisTemplate) {
+    public UserServiceImpl(IUserMapperRepository userMapperRepository, IWalletMapperRepository walletMapperRepository, RedisTemplate redisTemplate) {
         this.userMapperRepository = userMapperRepository;
+        this.walletMapperRepository = walletMapperRepository;
         this.redisTemplate = redisTemplate;
     }
 
@@ -51,7 +57,7 @@ public class UserServiceImpl implements IUserService {
      * @return
      */
     @Override
-    public LoginResult login(String uname, String pwd) {
+    public String login(String uname, String pwd) {
         /*
             登录流程：
                 1、获取加密后的密码
@@ -62,9 +68,18 @@ public class UserServiceImpl implements IUserService {
         Users user = userMapperRepository.login(uname, newPwd);
         if(user == null) throw new MessageException("用户名或密码错误");
 
+        Wallet wallet = walletMapperRepository.select(user.getUid());
+        if(wallet == null) throw new MessageException("用户不存在");
+
+        UserEntity userEntity = new UserEntity();
+        PropertyUtil.clone(user, userEntity);
+
         String key = UUID.randomUUID().toString();
-        redisTemplate.opsForValue().set(key, JsonUtil.getJson(user), 30, TimeUnit.MINUTES);
-        return new LoginResult(user, key);
+        userEntity.setToken(key);
+        userEntity.setWallet(wallet);
+
+        redisTemplate.opsForValue().set(key, JsonUtil.getJson(userEntity), 30, TimeUnit.MINUTES);
+        return key;
     }
 
 

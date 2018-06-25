@@ -1,0 +1,48 @@
+server:
+  port: 0
+spring:
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: LEGACYHTML5
+    encoding: UTF-8
+    cache: false
+  application:
+    name: mi-ocr-web-captcha-service
+  rabbitmq:
+    addresses: 139.199.211.96
+    host: 139.199.211.96
+    port: 5672
+    username: wade
+    password: wade
+    virtual-host: /
+  redis:
+    host: 47.94.107.244
+    port: 6379
+    password: 123456
+    timeout: 12000
+    jedis:
+      pool:
+        max-active: 1024
+        max-idle: 128
+  data:
+    mongodb:
+      database: mi-ocr
+      host: 47.94.107.244
+      port: 27017
+eureka:
+  instance:
+      virtual-host-name: mi-ocr-web-captcha-service
+      hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://localhost:20000/eureka
+services:
+    user: mi-ocr-web-user-service
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 60000
+logging:
+  level:
+    org.millions.idea.ocr.web.captcha.agent.IUserAgentService: DEBUG
+    org.millions.idea.ocr.web.captcha.agent.IWalletAgentService: DEBUG

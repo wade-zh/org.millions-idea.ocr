@@ -1,0 +1,39 @@
+server:
+  port: 0
+mybatis:
+  mapper-locations: classpath:mapper/*-mapper.xml
+  type-aliases-package: org.million.idea.ocr.web.user.entity
+  configuration:
+    cache-enabled: false
+    map-underscore-to-camel-case: true
+    use-generated-keys: true
+    safe-row-bounds-enabled: false
+    default-statement-timeout: 600
+spring:
+  application:
+    name: mi-ocr-web-user-service
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  redis:
+    host: 47.94.107.244
+    port: 6379
+    password: 123456
+    timeout: 12000
+    jedis:
+      pool:
+        max-idle: 128
+        max-active: 1024
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://193.112.151.148:3306/mi-ocr-user?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useAffectedRows=true
+    username: root
+    password: weiwei5371958!
+    type: com.alibaba.druid.pool.DruidDataSource
+eureka:
+  instance:
+      virtual-host-name: mi-ocr-web-user-service
+      hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://localhost:20000/eureka

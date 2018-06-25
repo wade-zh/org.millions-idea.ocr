@@ -7,6 +7,7 @@
  */
 package org.millions.idea.ocr.web.user.controller;
 
+import com.netflix.ribbon.proxy.annotation.Http;
 import org.millions.idea.ocr.web.common.entity.common.HttpResp;
 import org.millions.idea.ocr.web.user.biz.IUserService;
 import org.millions.idea.ocr.web.user.entity.common.LoginResult;
@@ -23,8 +24,8 @@ public class UserController {
     private IUserService userService;
 
     @PostMapping("/login")
-    public LoginResult login(String uname, String pwd){
-        return userService.login(uname, pwd);
+    public HttpResp login(String uname, String pwd){
+        return new HttpResp(0,userService.login(uname, pwd));
     }
 
     @GetMapping("/getUserByUid")

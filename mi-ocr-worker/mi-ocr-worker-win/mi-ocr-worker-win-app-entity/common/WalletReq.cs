@@ -8,8 +8,8 @@ namespace mi_ocr_worker_win_app_entity.common
 {
     public class WalletReq
     {
+        public string channel { get; set; }
         public string token { get; set; }
 
-        public string channel { get; set; }
     }
 }

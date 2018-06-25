@@ -4,9 +4,14 @@ spring:
   application:
     name: mi-ocr-gateway
   redis:
-    password: 123456
     host: 47.94.107.244
     port: 6379
+    password: 123456
+    timeout: 12000
+    jedis:
+      pool:
+        max-active: 1024
+        max-idle: 128
 eureka:
   instance:
     virtual-host-name: mi-ocr-gateway

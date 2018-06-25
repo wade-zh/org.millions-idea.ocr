@@ -8,27 +8,9 @@
 package org.millions.idea.ocr.web.captcha.entity;
 
 public class UploadCaptchaReq {
-    private String uname;
-    private String pwd;
     private String token;
     private byte[] binary;
     private String channel;
-
-    public String getUname() {
-        return uname;
-    }
-
-    public void setUname(String uname) {
-        this.uname = uname;
-    }
-
-    public String getPwd() {
-        return pwd;
-    }
-
-    public void setPwd(String pwd) {
-        this.pwd = pwd;
-    }
 
     public String getToken() {
         return token;
@@ -58,10 +40,7 @@ public class UploadCaptchaReq {
 
     }
 
-    public UploadCaptchaReq(String uname, String pwd, String token, byte[] binary, String channel) {
-
-        this.uname = uname;
-        this.pwd = pwd;
+    public UploadCaptchaReq(String token, byte[] binary, String channel) {
         this.token = token;
         this.binary = binary;
         this.channel = channel;

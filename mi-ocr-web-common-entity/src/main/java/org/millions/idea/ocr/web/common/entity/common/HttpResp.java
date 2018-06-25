@@ -33,6 +33,9 @@ public class HttpResp {
         this.msg = msg;
     }
 
+    public HttpResp() {
+    }
+
     public enum RespCode{
         SUCCESS("success"),
         FAILD("faild");

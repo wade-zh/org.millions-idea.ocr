@@ -11,7 +11,7 @@ namespace c_observer_demo
     {
         static void Main(string[] args)
         {
-            MessageSourceManager messageSourceManager = new MessageSourceManager();
+            /*MessageSourceManager messageSourceManager = new MessageSourceManager();
             messageSourceManager.AddObserver(new LocalDiscernServiceImpl());
             messageSourceManager.AddObserver(new LzRemoteDiscernServiceImpl());
             messageSourceManager.NotifyAll(new Captcha()
@@ -25,7 +25,11 @@ namespace c_observer_demo
                 Ticket = "2cbe26c4-7be0-4cf7-8f3e-6207fd04b2b5",
                 Channel = "J0003604",
                 Binary = "#"
-            });
+            });*/
+
+            var token = "2cbe26c4-7be0-4cf7-8f3e-6207fd04b2b5-1856";
+            Console.WriteLine(token.Split('-')[5]);
+
             Console.ReadLine();
         }
     }
