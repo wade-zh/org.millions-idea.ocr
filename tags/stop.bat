@@ -18,3 +18,5 @@ for /f "tokens=1-5" %%i in ('netstat -ano^|findstr ":%port%"') do (
 )
 
 taskkill /F /im mi-ocr-worker-win-app.exe
+
+taskkill /F /im java.exe

@@ -1,0 +1,1 @@
+sc start mi-ocr-web-user-service
