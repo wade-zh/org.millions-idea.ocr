@@ -17,6 +17,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Headers("Content-Type: application/json")
 public interface IWalletAgentService {
 
+    @PostMapping("/wallet/reduceAsync")
+    HttpResp reduceAsync(@RequestParam("token") String token);
+
     @PostMapping("/wallet/reduce")
-    HttpResp reduce(@RequestParam("token") String token, @RequestParam("uid") Integer uid, @RequestParam("channel") String channel);
+    HttpResp reduce(@RequestParam("token") String token, @RequestParam("channel") String channel);
 }

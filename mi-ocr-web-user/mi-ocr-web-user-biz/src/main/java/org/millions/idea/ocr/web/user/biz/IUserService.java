@@ -7,6 +7,7 @@
  */
 package org.millions.idea.ocr.web.user.biz;
 
+import org.millions.idea.ocr.web.common.entity.common.HttpResp;
 import org.millions.idea.ocr.web.user.entity.common.LoginResult;
 import org.millions.idea.ocr.web.user.entity.db.Users;
 
@@ -28,4 +29,12 @@ public interface IUserService {
      * @return
      */
     String login(String uname, String pwd);
+
+
+    /**
+     * 查询余额
+     * @param token
+     * @return
+     */
+    Integer getBalance(String token);
 }

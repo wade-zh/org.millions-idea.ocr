@@ -30,4 +30,6 @@ public interface IWalletMapperRepository {
      * @return
      */
     Wallet select(@Param("uid") Integer uid);
+
+    boolean update(@Param("uid") Integer uid, @Param("balance") Integer balance);
 }

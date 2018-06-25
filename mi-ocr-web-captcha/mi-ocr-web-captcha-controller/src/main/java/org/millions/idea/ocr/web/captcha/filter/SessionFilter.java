@@ -47,7 +47,7 @@ public class SessionFilter implements Filter {
 
         // 校验与续期操作
         Long result = redisTemplate.getExpire(token).longValue();
-        if(result == null){
+        if(result == null || result <= 0){
             returnFaildMessage(response, "请重新登录");
             return;
         }

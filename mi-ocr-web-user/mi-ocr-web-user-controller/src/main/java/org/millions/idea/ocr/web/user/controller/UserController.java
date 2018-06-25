@@ -32,4 +32,10 @@ public class UserController {
     public Users getUserByUid(Integer uid){
         return userService.getUser(uid);
     }
+
+    @GetMapping("/getBalance")
+    public HttpResp getBalance(String token){
+        return new HttpResp(1,String.valueOf(userService.getBalance(token)));
+    }
+
 }

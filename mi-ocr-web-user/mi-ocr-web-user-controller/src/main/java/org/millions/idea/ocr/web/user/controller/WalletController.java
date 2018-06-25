@@ -22,8 +22,15 @@ public class WalletController {
     private IWalletService walletService;
 
     @PostMapping(value = "/reduce")
-    public HttpResp reduce(String token, Integer uid, String channel){
-        boolean result = walletService.reduce(token, uid, channel);
+    public HttpResp reduce(String token, String channel){
+        boolean result = walletService.reduce(token, channel);
+        if(result) return new HttpResp(0, HttpResp.RespCode.SUCCESS.getCode());
+        return new HttpResp(1, HttpResp.RespCode.FAILD.getCode());
+    }
+
+    @PostMapping(value = "/reduceAsync")
+    public HttpResp reduceAsync(String token){
+        boolean result = walletService.reduce(token);
         if(result) return new HttpResp(0, HttpResp.RespCode.SUCCESS.getCode());
         return new HttpResp(1, HttpResp.RespCode.FAILD.getCode());
     }

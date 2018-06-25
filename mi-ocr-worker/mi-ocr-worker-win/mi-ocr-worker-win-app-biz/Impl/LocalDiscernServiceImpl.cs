@@ -11,7 +11,8 @@ namespace mi_ocr_worker_win_app_biz.Impl
     {
         public override void OnNority(Captcha captcha, byte[] binary, Action<string> call)
         {
-            if (!captcha.Channel.ToUpper().StartsWith("T")) {
+            if (!captcha.Channel.ToUpper().StartsWith("T"))
+            {
                 call(null);
                 return;
             }

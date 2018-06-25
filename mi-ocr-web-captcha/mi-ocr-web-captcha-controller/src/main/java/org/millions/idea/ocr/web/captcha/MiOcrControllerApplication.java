@@ -14,10 +14,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @EnableDiscoveryClient
 @EnableAsync
 public class MiOcrControllerApplication {
-
 	public static void main(String[] args) {
 		SpringApplication.run(MiOcrControllerApplication.class, args);
-
 	}
-
 }

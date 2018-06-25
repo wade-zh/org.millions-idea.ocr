@@ -40,11 +40,7 @@ namespace mi_ocr_worker_win_app_biz.Util
             }
             catch (Exception e)
             {
-                if (e.Message.Contains("duplicate key error"))
-                {
-                    throw e;
-                }
-                Console.WriteLine(e);
+                throw e;
             }
             return entity;
         }

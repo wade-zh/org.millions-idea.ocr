@@ -21,7 +21,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @ComponentScan(basePackages = "org.millions.idea")
 @EnableFeignClients("org.millions.idea")
 @EnableZuulProxy
-// @EnableCircuitBreaker //open breaker
+@EnableCircuitBreaker //open breaker
 public class MiOcrGatewayApplication {
 
 	@Bean

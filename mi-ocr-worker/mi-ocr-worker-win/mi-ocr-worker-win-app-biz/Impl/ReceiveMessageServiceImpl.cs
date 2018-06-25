@@ -19,17 +19,20 @@ namespace mi_ocr_worker_win_app_biz
         private IWalletService walletService { get; set; }
 
         public void OnMessage(EventingBasicConsumer consumer, string message, Action<bool> call)
-        { 
+        {
             Captcha captcha = JsonConvert.DeserializeObject<Captcha>(message);
             // Checking rule
-            if (captcha == null || captcha.Binary == null || !ChannelUtil.IsDefined(captcha.Channel)) {
+            if (captcha == null || captcha.Binary == null || !ChannelUtil.IsDefined(captcha.Channel))
+            {
                 call(false);
                 return;
             }
 
             // Resolve direction
-            MessageSourceManager.Instance.NotifyAllDiscern(captcha, (code)=> {
-                if (code == null) {
+            MessageSourceManager.Instance.NotifyAllDiscern(captcha, (code) =>
+            {
+                if (code == null)
+                {
                     call(false);
                     return;
                 }

@@ -57,7 +57,7 @@ public class MessageServiceImpl implements IMessageService {
          *  当用户成功取出验证码后，将缓存删除，并且，将识别结果上传到样本数据分析中心
          */
         Object captcha = redisTemplate.opsForValue().get(cid);
-        if(captcha != null && !captcha.toString().equalsIgnoreCase("null")) {
+        if(captcha != null && !captcha.toString().equalsIgnoreCase("null") && captcha.toString().length() < 12) {
             String code = captcha.toString();
             if (code.contains("Ticket") && code.contains("Id") && code.contains("Result")){
                 SharedResult model = JsonUtil.getModel(code, SharedResult.class);
@@ -65,10 +65,6 @@ public class MessageServiceImpl implements IMessageService {
                 code = model.getResult();
             }
             redisTemplate.delete(cid);
-            /*Query query = new Query();
-            query.addCriteria(Criteria.where("captchaId").is(cid));
-            Update update = Update.update("code", code);
-            mongoTemplate.updateFirst(query, update, "samples");*/
             return code;
         }
         return null;

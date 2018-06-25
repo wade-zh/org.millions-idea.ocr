@@ -10,7 +10,7 @@ package org.millions.idea.ocr.web.captcha.entity.db;
 public class Wallet {
     private Integer wid;
     private Integer uid;
-    private Double balance;
+    private Integer balance;
     private Integer version;
 
     public Integer getVersion() {
@@ -31,7 +31,7 @@ public class Wallet {
                 '}';
     }
 
-    public Wallet(Integer wid, Integer uid, Double balance, Integer version) {
+    public Wallet(Integer wid, Integer uid, Integer balance, Integer version) {
         this.wid = wid;
         this.uid = uid;
         this.balance = balance;
@@ -54,11 +54,11 @@ public class Wallet {
         this.uid = uid;
     }
 
-    public Double getBalance() {
+    public Integer getBalance() {
         return balance;
     }
 
-    public void setBalance(Double balance) {
+    public void setBalance(Integer balance) {
         this.balance = balance;
     }
 

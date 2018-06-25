@@ -20,6 +20,7 @@ import org.millions.idea.ocr.web.common.entity.common.WalletReq;
 import org.millions.idea.ocr.web.common.entity.exception.MessageException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -38,14 +39,10 @@ public class WalletMessageServiceImpl implements IWalletMessageService{
         try {
             WalletReq model = JsonUtil.getModel(message, WalletReq.class);
             logger.info("扣费参数:" + message);
-            Object data = redisTemplate.opsForValue().get(model.getToken());
-            if (data != null){
-                UserEntity userEntity = JsonUtil.getModel(String.valueOf(data), UserEntity.class);
-                if (userEntity != null){
-                    HttpResp result = walletAgentService.reduce(model.getToken(), userEntity.getUid(), model.getChannel());
-                    logger.info("扣费结果:" + JsonUtil.getJson(result));
-                    channel.basicAck(envelope.getDeliveryTag(), false);
-                }
+            HttpResp result = walletAgentService.reduce(model.getToken(), model.getChannel());
+            logger.info("扣费结果:" + JsonUtil.getJson(result));
+            if(result.getError() == 0) {
+                channel.basicAck(envelope.getDeliveryTag(), false);
             }
         } catch (Exception e) {
             logger.error("扣费异常:" + e.getCause().getMessage());

@@ -9,4 +9,8 @@
     <select id="select" resultType="org.millions.idea.ocr.web.user.entity.db.Wallet">
         SELECT * FROM wallet WHERE uid = #{uid}
     </select>
+
+    <update id="update">
+        UPDATE wallet SET balance = #{balance} WHERE uid = #{uid}
+    </update>
 </mapper>

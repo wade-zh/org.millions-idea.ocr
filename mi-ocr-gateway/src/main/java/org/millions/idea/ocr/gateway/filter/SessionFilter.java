@@ -34,7 +34,7 @@ public class SessionFilter implements Filter {
     private RedisTemplate redisTemplate;
 
     private static final Set<String> EXCLUDE = Collections.unmodifiableSet(new HashSet<>(
-            Arrays.asList("/user-api/login")));
+            Arrays.asList("/user-api/login", "/user-api/category/initCache")));
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {

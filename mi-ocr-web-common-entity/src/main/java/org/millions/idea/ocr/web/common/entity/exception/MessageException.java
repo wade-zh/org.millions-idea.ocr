@@ -21,6 +21,21 @@ public class MessageException extends RuntimeException {
         super(message);
     }
 
+    private Integer error;
+
+    public Integer getError() {
+        return error;
+    }
+
+    public void setError(Integer error) {
+        this.error = error;
+    }
+
+    public MessageException(Integer error, String message) {
+        super(message);
+        this.error = error;
+    }
+
     /**
      * Constructs a new runtime exception with the specified detail message and
      * cause.  <p>Note that the detail message associated with

@@ -13,6 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace mi_ocr_worker_win_app
 {
@@ -28,8 +29,11 @@ namespace mi_ocr_worker_win_app
         public static ILzRemoteDiscernService LzRemoteDiscernService { get; set; }
         public static IRkRemoteDiscernService RkRemoteDiscernService { get; set; }
 
+
         static void Main(string[] args)
         {
+            Console.WriteLine($"Startup state is {Caffe.InitCaptcha("./deploy.prototxt", ConfigurationManager.AppSettings["Caffemodel"], "./label-map.txt", -1, 32)}");
+
             // Bind unity container
             UnityConfig.Configure();
             FillUnityContainer();
@@ -46,7 +50,6 @@ namespace mi_ocr_worker_win_app
 
 
             #region print some messages
-            Console.WriteLine($"Startup state is {Caffe.InitCaptcha("./deploy.prototxt", ConfigurationManager.AppSettings["Caffemodel"], "./label-map.txt", -1, 32)}");
             Console.WriteLine("Please enter \"exit\" to exit the system safely.");
             var cmdLine = string.Empty;
             do

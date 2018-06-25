@@ -1,5 +1,6 @@
 package org.millions.idea.ocr.web.common.utility.jedis;
 
+import org.springframework.data.redis.core.script.DefaultRedisScript;
 import redis.clients.jedis.Jedis;
 
 public class JedisUtil{
@@ -27,9 +28,9 @@ public class JedisUtil{
         return result;
     }
 
-    public boolean incr(String key){
+    public boolean incrBy(String key, Integer num){
         Jedis jedis = RedisUtil.getJedis();
-        Long result = jedis.incrBy(key,1);
+        Long result = jedis.incrBy(key,num);
         return result != 0;
     }
 }

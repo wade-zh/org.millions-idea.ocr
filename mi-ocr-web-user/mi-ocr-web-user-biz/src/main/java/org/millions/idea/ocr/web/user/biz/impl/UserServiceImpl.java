@@ -79,7 +79,22 @@ public class UserServiceImpl implements IUserService {
         userEntity.setWallet(wallet);
 
         redisTemplate.opsForValue().set(key, JsonUtil.getJson(userEntity), 30, TimeUnit.MINUTES);
+        redisTemplate.opsForValue().set("stock_" + userEntity.getUid(), userEntity.getWallet().getBalance().toString(), 7, TimeUnit.DAYS);
         return key;
+    }
+
+    /**
+     * 查询余额
+     *
+     * @param token
+     * @return
+     */
+    @Override
+    public Integer getBalance(String token) {
+        Object json = redisTemplate.opsForValue().get(token);
+        if(json == null) throw new MessageException("请重新登录");
+        UserEntity userEntity = JsonUtil.getModel(String.valueOf(json), UserEntity.class);
+        return userEntity.getWallet().getBalance();
     }
 
 

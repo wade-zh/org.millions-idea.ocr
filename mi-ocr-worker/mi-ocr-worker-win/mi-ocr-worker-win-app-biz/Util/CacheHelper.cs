@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace mi_ocr_worker_win_app_biz
@@ -26,11 +27,15 @@ namespace mi_ocr_worker_win_app_biz
             /// 加载缓存
             /// </summary>
             /// <exception cref=""></exception>
-            private static void Load()
+            public static void Load()
             {
                 try
                 {
                     cache = new RedisCacheImpl();
+                    if (cache == null)
+                    {
+                        Console.WriteLine("Get redis connection faild!");
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -203,16 +208,19 @@ namespace mi_ocr_worker_win_app_biz
             }
 
 
-            public static void Set(string key, string data, DateTime cacheTime)
+            public static bool Set(string key, string data, DateTime cacheTime)
             {
                 if (!string.IsNullOrWhiteSpace(key) && data != null)
                 {
                     //lock (cacheLocker)
                     {
-                        cache.Set(key, data, cacheTime);
                     }
+
+                    cache.Set(key, data, cacheTime);
                 }
+                return true;
             }
+
 
         }
     }

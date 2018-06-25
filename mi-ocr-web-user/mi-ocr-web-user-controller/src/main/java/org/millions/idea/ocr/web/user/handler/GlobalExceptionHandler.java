@@ -26,9 +26,9 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(value = MessageException.class)
     public HttpResp preException(HttpServletRequest request,
-                                 Exception exception) throws Exception {
+                                 MessageException exception) throws Exception {
         logger.error(String.format("自定义消息异常: %s",exception.toString()));
-        return new HttpResp(1, exception.getMessage());
+        return new HttpResp(exception.getError() == 0 ? 1 : exception.getError(), exception.getMessage());
     }
 }
 
