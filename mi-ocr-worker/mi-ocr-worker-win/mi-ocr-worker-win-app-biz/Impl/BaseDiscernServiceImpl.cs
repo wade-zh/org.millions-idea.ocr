@@ -101,6 +101,7 @@ namespace mi_ocr_worker_win_app_biz.Impl
                 catch (Exception e)
                 {
                     Console.WriteLine("PublishRedisMessage exception:" + e.Message);
+                    CacheHelper.Cache.Load();
                 }
             });
            
