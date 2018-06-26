@@ -8,7 +8,10 @@
 package org.millions.idea.ocr.web.captcha.config;
 
 import com.rabbitmq.client.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.millions.idea.ocr.web.captcha.biz.IWalletMessageService;
+import org.millions.idea.ocr.web.captcha.biz.impl.PublishMessageServiceImpl;
 import org.millions.idea.ocr.web.captcha.entity.MultiQueue;
 import org.millions.idea.ocr.web.captcha.entity.common.RabbitConfig;
 import org.springframework.amqp.rabbit.config.SimpleRabbitListenerContainerFactory;
@@ -29,6 +32,7 @@ import java.util.concurrent.Executors;
 
 @Configuration
 public class RabbitTemplateConfiguration {
+    final static Logger logger = LogManager.getLogger(RabbitTemplateConfiguration.class);
 
     @Autowired
     private RabbitConfig rabbitConfig;
@@ -86,13 +90,15 @@ public class RabbitTemplateConfiguration {
                  */
                 @Override
                 public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException {
+                    logger.debug("收到" + consumerTag +  "标签消息, 封包长度:" + body.length);
+
                     try{
                         String message = new String(body, "UTF-8");
+
                         walletMessageService.onMessage(finalChannel, envelope, message);
                     } catch (Exception e){
                         System.err.println(e.toString());
                     }
-                    System.err.println("****************************收到消息****************************");
                 }
             });
         }catch (Exception e){

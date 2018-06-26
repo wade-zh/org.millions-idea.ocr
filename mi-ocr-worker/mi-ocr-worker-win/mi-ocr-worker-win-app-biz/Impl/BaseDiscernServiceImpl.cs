@@ -31,12 +31,12 @@ namespace mi_ocr_worker_win_app_biz.Impl
                     }
                     call(code);
                     PublishRedisMessage(captcha, binary, code);
+                    PublishMongoMessage(captcha, binary, code);
                 }
                 catch (Exception e)
                 {
                     Console.WriteLine("OnNority exception:" + e.Message);
                 }
-                //PublishMongoMessage(captcha, binary, code);
             });
         }
 
@@ -77,6 +77,12 @@ namespace mi_ocr_worker_win_app_biz.Impl
                         Console.WriteLine("Ignore current captcha, duplicate key error: " + code);
                         return;
                     }
+                    else if(e.Message.Contains("System.Net.Sockets.SocketException"))
+                    {
+                        
+                        Console.WriteLine("MongoDB connect timeout");
+
+                    }
                     else
                     {
                         Console.WriteLine("MongoDB exception: " + e.Message);
@@ -87,14 +93,17 @@ namespace mi_ocr_worker_win_app_biz.Impl
 
         private async void PublishRedisMessage(Captcha captcha, byte[] binary, string code)
         {
-            try
-            {
-                CacheHelper.Cache.Set(captcha.Ticket, code, DateTime.Now.AddSeconds(30));
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("PublishRedisMessage exception:" + e.Message);
-            }
+            await Task.Run(() => {
+                try
+                {
+                    if (CacheHelper.Cache.Set(captcha.Ticket, code, DateTime.Now.AddSeconds(30))) Console.WriteLine("Publish redis success!");
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("PublishRedisMessage exception:" + e.Message);
+                }
+            });
+           
         }
 
     }

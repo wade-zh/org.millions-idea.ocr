@@ -1,3 +1,4 @@
+org\millions\idea\ocr\web\user\repository\mapper\IBackcategoryMapperRepository.class
 org\millions\idea\ocr\web\user\repository\IUserNoSqlRepository.class
 org\millions\idea\ocr\web\user\repository\mapper\IUserMapperRepository.class
 org\millions\idea\ocr\web\user\repository\mapper\IWalletMapperRepository.class

@@ -33,7 +33,7 @@ public class CaptchaController {
                            @RequestParam("channel") String channel,
                            @RequestParam("token") String token){
         try {
-            return new HttpResp(-1, publishMessageServiceImpl.publish(new UploadCaptchaReq(token, file.getBytes(), channel)));
+            return new HttpResp(HttpErrorCodeType.SUCCESS.ordinal(), publishMessageServiceImpl.publish(new UploadCaptchaReq(token, file.getBytes(), channel)));
         } catch (IOException e) {
             return new HttpResp(HttpErrorCodeType.IOException.ordinal(), HttpErrorCodeType.IOException.toString());
         }

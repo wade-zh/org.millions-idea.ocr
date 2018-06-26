@@ -28,7 +28,7 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 @Component
-@WebFilter(urlPatterns = {"/captcha-api", "/user-api"}, filterName = "sessionFilter")
+@WebFilter(urlPatterns = "/**", filterName = "sessionFilter")
 public class SessionFilter implements Filter {
     @Autowired
     private RedisTemplate redisTemplate;
@@ -59,12 +59,12 @@ public class SessionFilter implements Filter {
         }
 
         // 校验与续期操作
-        Long result = redisTemplate.getExpire(token).longValue();
-        if(result == null){
+        Integer result = redisTemplate.getExpire(token).intValue();
+        if(result == null || result <= 0){
             returnFaildMessage(response, "请重新登录");
             return;
         }
-        result += 30L;
+        result += 30;
         redisTemplate.expire(token,result, TimeUnit.SECONDS);
         filterChain.doFilter(servletRequest, response);
     }

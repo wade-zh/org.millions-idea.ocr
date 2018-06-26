@@ -1,4 +1,6 @@
 org\millions\idea\ocr\web\user\biz\impl\UserServiceImpl.class
 org\millions\idea\ocr\web\user\biz\impl\WalletServiceImpl.class
 org\millions\idea\ocr\web\user\biz\IUserService.class
+org\millions\idea\ocr\web\user\biz\IBackCategoryService.class
+org\millions\idea\ocr\web\user\biz\impl\BackCategoryServiceImpl.class
 org\millions\idea\ocr\web\user\biz\IWalletService.class

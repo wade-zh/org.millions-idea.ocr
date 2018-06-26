@@ -5,7 +5,7 @@
 <Configuration status="WARN" monitorInterval="600" name="mi-ocr-logs" packages="org.millions" >
 
     <Properties> <!-- 配置日志文件输出目录，此配置将日志输出到tomcat根目录下的指定文件夹 -->
-        <Property name="LOG_HOME">C:/logs/mi-ocr-web-user-service-logs/</Property>
+        <Property name="LOG_HOME">C:/logs/mi-ocr-user-logs/</Property>
     </Properties>
 
     <Appenders>
@@ -43,7 +43,7 @@
 
         <!-- TRACE级别日志 ; 设置日志格式并配置日志压缩格式，压缩文件独立放在一个文件夹内， 日期格式不能为冒号，否则无法生成，因为文件名不允许有冒号，此appender只输出trace级别的数据到trace.log -->
         <RollingFile name="trace_appender" immediateFlush="true"
-                     fileName="${LOG_HOME}/trace.log" filePattern="${LOG_HOME}/trace/trace_%d{yyyy-MM-dd HH_mm_ss}.log.gz">
+                     fileName="${LOG_HOME}/trance.log" filePattern="${LOG_HOME}/history/trance/%d{yyyy-MM}/trance_%d{yyyy-MM-dd HH_mm_ss}.zip">
             <PatternLayout>
                 <pattern>%5p [%t] %d{yyyy-MM-dd HH:mm:ss} (%F:%L) %m%n</pattern>
             </PatternLayout>
@@ -63,7 +63,7 @@
 
         <!-- DEBUG级别日志 设置日志格式并配置日志压缩格式，压缩文件独立放在一个文件夹内， 日期格式不能为冒号，否则无法生成，因为文件名不允许有冒号，此appender只输出debug级别的数据到debug.log; -->
         <RollingFile name="debug_appender" immediateFlush="true"
-                     fileName="${LOG_HOME}/debug.log" filePattern="${LOG_HOME}/debug/debug_%d{yyyy-MM-dd HH_mm_ss}.log.gz">
+                     fileName="${LOG_HOME}/debug.log" filePattern="${LOG_HOME}/history/debug/%d{yyyy-MM}/debug_%d{yyyy-MM-dd HH_mm_ss}.zip">
             <PatternLayout>
                 <pattern>%-d{yyyy-MM-dd HH:mm:ss} [%thread] %m%n</pattern>
             </PatternLayout>
@@ -85,7 +85,7 @@
 
         <!-- INFO级别日志 -->
         <RollingFile name="info_appender" immediateFlush="true"
-                     fileName="${LOG_HOME}/info.log" filePattern="${LOG_HOME}/info/info_%d{yyyy-MM-dd HH_mm_ss}.log.gz">
+                     fileName="${LOG_HOME}/info.log" filePattern="${LOG_HOME}/history/info/%d{yyyy-MM}/info_%d{yyyy-MM-dd HH_mm_ss}.zip">
             <PatternLayout>
                 <pattern>%-d{yyyy-MM-dd HH:mm:ss} [%thread] %m%n</pattern>
             </PatternLayout>
@@ -102,7 +102,7 @@
 
         <!-- WARN级别日志 -->
         <RollingFile name="warn_appender" immediateFlush="true"
-                     fileName="${LOG_HOME}/warn.log" filePattern="${LOG_HOME}/warn/warn_%d{yyyy-MM-dd HH_mm_ss}.log.gz">
+                     fileName="${LOG_HOME}/warn.log" filePattern="${LOG_HOME}/history/warn/%d{yyyy-MM}/warn_%d{yyyy-MM-dd HH_mm_ss}.zip">
             <PatternLayout>
                 <pattern>%-d{yyyy-MM-dd HH:mm:ss} [%thread] %m%n</pattern>
             </PatternLayout>
@@ -119,7 +119,7 @@
 
         <!-- ERROR级别日志 -->
         <RollingFile name="error_appender" immediateFlush="true"
-                     fileName="${LOG_HOME}/error.log" filePattern="${LOG_HOME}/error/error_%d{yyyy-MM-dd HH_mm_ss}.log.gz">
+                     fileName="${LOG_HOME}/error.log" filePattern="${LOG_HOME}/history/error/%d{yyyy-MM}/error_%d{yyyy-MM-dd HH_mm_ss}.zip">
             <PatternLayout>
                 <pattern>%-d{yyyy-MM-dd HH:mm:ss} [%thread] %m%n</pattern>
             </PatternLayout>

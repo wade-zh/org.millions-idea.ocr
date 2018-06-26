@@ -1,4 +1,5 @@
 org\millions\idea\ocr\web\user\entity\db\Wallet.class
+org\millions\idea\ocr\web\user\entity\db\Backcategorys.class
 org\millions\idea\ocr\web\user\entity\db\Users.class
 org\millions\idea\ocr\web\user\entity\ext\UserEntity.class
 org\millions\idea\ocr\web\user\entity\common\LoginResult.class

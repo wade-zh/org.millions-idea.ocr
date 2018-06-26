@@ -2,6 +2,8 @@ package org.millions.idea.ocr.gateway;
 
 import com.marcosbarbero.cloud.autoconfigure.zuul.ratelimit.config.repository.DefaultRateLimiterErrorHandler;
 import com.marcosbarbero.cloud.autoconfigure.zuul.ratelimit.config.repository.RateLimiterErrorHandler;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.millions.idea.ocr.gateway.filter.ZuulExpcetionFilter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -23,6 +25,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @EnableZuulProxy
 @EnableCircuitBreaker //open breaker
 public class MiOcrGatewayApplication {
+	final static Logger logger = LogManager.getLogger(MiOcrGatewayApplication.class);
 
 	@Bean
 	public ZuulExpcetionFilter zuulExpcetionFilter(){
@@ -32,5 +35,6 @@ public class MiOcrGatewayApplication {
 
 	public static void main(String[] args) throws Exception {
 		SpringApplication.run(MiOcrGatewayApplication.class, args);
+		logger.debug("Startup success");
 	}
 }

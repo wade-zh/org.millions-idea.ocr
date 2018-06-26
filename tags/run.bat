@@ -1,6 +1,9 @@
 @echo off
+
+
 cd ./
 set parentDir = %cd%
+
 
 cd ./mi-ocr-worker-win-app
 call mi-ocr-worker-win-app-run.bat

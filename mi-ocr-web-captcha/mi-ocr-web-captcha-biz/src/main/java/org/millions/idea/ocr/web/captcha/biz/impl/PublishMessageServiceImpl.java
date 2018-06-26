@@ -14,10 +14,10 @@ import org.millions.idea.ocr.web.captcha.biz.util.EnumUtil;
 import org.millions.idea.ocr.web.captcha.entity.MultiQueue;
 import org.millions.idea.ocr.web.captcha.entity.UploadCaptchaReq;
 import org.millions.idea.ocr.web.captcha.entity.ext.UserEntity;
-import org.millions.idea.ocr.web.captcha.utility.json.JsonUtil;
 import org.millions.idea.ocr.web.captcha.utility.queue.RabbitUtil;
 import org.millions.idea.ocr.web.common.entity.Captcha;
 import org.millions.idea.ocr.web.common.entity.exception.MessageException;
+import org.millions.idea.ocr.web.common.utility.json.JsonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.data.redis.RedisProperties;
 import org.springframework.dao.DataAccessException;
@@ -119,13 +119,17 @@ public class PublishMessageServiceImpl extends MessageServiceImpl {
     }
 
     public Integer reduce(String key, Integer num) {
+        Object data = redisTemplate.opsForValue().get(key);
+        if(data == null) throw new MessageException("请重新登录");
         DefaultRedisScript<Integer> script = new DefaultRedisScript<Integer>();
         script.setScriptText(REDUCE_SCRIPT);
         script.setResultType(Integer.class);
         Object result = redisTemplate.execute(script,
                 Collections.singletonList(key), num.toString());
         Integer code = Integer.valueOf(String.valueOf(result));
-        if(code > 0) redisTemplate.expire(key, redisTemplate.getExpire(key).intValue(), TimeUnit.DAYS);
+        Long expire = redisTemplate.getExpire(key).longValue();
+        if(expire <= 0L) expire = 7*86400000L;
+        if(code > 0) redisTemplate.expire(key, expire, TimeUnit.SECONDS);
         return code;
     }
 

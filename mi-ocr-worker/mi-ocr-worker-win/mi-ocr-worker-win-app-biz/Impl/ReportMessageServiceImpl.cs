@@ -23,12 +23,19 @@ namespace mi_ocr_worker_win_app_biz.Impl
 
             // Resolve direction
             MessageSourceManager.Instance.NotifyAllReport(captcha, (code) => {
-                if (!code)
+                try
                 {
-                    call(false);
-                    return;
+                    if (!code)
+                    {
+                        call(false);
+                        return;
+                    }
+                    call(true);
                 }
-                call(true);
+                catch (Exception e)
+                {
+                    Console.WriteLine($"NotifyAllReport exception:" + e.Message);
+                }
             });
         }
 
