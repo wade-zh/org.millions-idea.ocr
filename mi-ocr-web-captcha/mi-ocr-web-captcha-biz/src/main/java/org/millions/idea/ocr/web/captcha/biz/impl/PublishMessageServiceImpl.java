@@ -68,25 +68,37 @@ public class PublishMessageServiceImpl extends MessageServiceImpl {
 
     @Override
     public String publish(UploadCaptchaReq uploadCaptchaReq) {
+        logger.info("创建订单参数:" + JsonUtil.getJson(uploadCaptchaReq));
+
         if(!EnumUtil.isExist(uploadCaptchaReq.getChannel()))
             return null;
 
-        // 查询用户信息
-        Object cache = redisTemplate.opsForValue().get(uploadCaptchaReq.getToken());
-        if(cache == null) throw new MessageException("请重新登录");
-        UserEntity userEntity = JsonUtil.getModel(String.valueOf(cache), UserEntity.class);
-        cache = redisTemplate.opsForValue().get("stock_" + userEntity.getUid());
-        if(cache == null) throw new MessageException("请重新登录");
-        if(Integer.valueOf(String.valueOf(cache)) <= 0) throw new MessageException("余额不足");
-        cache = redisTemplate.opsForValue().get(uploadCaptchaReq.getChannel());
-        if(cache == null) throw new MessageException("类型不存在");
-        Integer baseReduceNum = Integer.valueOf(String.valueOf(cache));
-        reduce("stock_" + userEntity.getUid(), baseReduceNum);
+        // 验证订单
+        validate(uploadCaptchaReq);
 
-        // 生成验证码票据并推送给后端系统
+        // 产出数据
         UUID ticket = UUID.randomUUID();
         rabbitUtil.publish(multiQueue.getCaptcha(), JsonUtil.getJson(new Captcha(ticket.toString(), uploadCaptchaReq.getChannel(), uploadCaptchaReq.getBinary(), uploadCaptchaReq.getToken())));
         return ticket.toString();
+    }
+
+    private void validate(UploadCaptchaReq uploadCaptchaReq) {
+        // 判断token是否过期，不获取过期的内容
+        Object cache = redisTemplate.opsForValue().get(uploadCaptchaReq.getToken());
+        if(cache == null) throw new MessageException("请重新登录");
+        // 判断通过token取出的数据是否为标准格式
+        UserEntity userEntity = JsonUtil.getModel(String.valueOf(cache), UserEntity.class);
+        cache = redisTemplate.opsForValue().get("stock_" + userEntity.getUid());
+        if(cache == null) throw new MessageException("请重新登录");
+        // 判断余额不足
+        if(Integer.valueOf(String.valueOf(cache)) <= 0) throw new MessageException("余额不足");
+        // 判断通道
+        cache = redisTemplate.opsForValue().get(uploadCaptchaReq.getChannel());
+        if(cache == null) throw new MessageException("类型不存在");
+        // 扣减库存
+        Integer baseReduceNum = Integer.valueOf(String.valueOf(cache));
+        Integer reduceCode = reduce("stock_" + userEntity.getUid(), baseReduceNum);
+        if (reduceCode < 0) throw new MessageException(reduceCode,"扣减库存失败");
     }
 
     private static final String REDUCE_SCRIPT;
@@ -102,7 +114,6 @@ public class PublishMessageServiceImpl extends MessageServiceImpl {
         reduceScript.append("else ");
         reduceScript.append("return -1000 ");
         reduceScript.append("end ");
-
         REDUCE_SCRIPT = reduceScript.toString();
     }
 
