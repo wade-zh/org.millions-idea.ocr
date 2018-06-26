@@ -3,18 +3,15 @@ server:
 spring:
   application:
     name: mi-ocr-gateway
-  jackson:
-    date-format: yyyy-MM-dd HH:mm:ss
-    time-zone: GMT+8
   redis:
     host: 47.94.107.244
     port: 6379
     password: 123456
-    timeout: 60000
+    timeout: 12000
     jedis:
       pool:
-        max-idle: 128
         max-active: 1024
+        max-idle: 128
 eureka:
   instance:
     virtual-host-name: mi-ocr-gateway
@@ -37,7 +34,7 @@ zuul:
     behind-proxy: true
     policy-list:
       mi-ocr-web-captcha-service:
-        - limit: 100
+        - limit: 30
           quota: 30
           refresh-interval: 1
           type:
