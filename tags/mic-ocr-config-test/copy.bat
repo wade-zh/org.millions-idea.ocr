@@ -39,8 +39,9 @@ cd .\mi-ocr-web-user\mi-ocr-web-user-parent
 call mvn clean package -Dmaven.test.skip=true
 cd ..\mi-ocr-web-user-controller
 xcopy /y .\target\mi-ocr-web-user-service.jar ..\..\publish\
-
 cd ..\..\
+
+
 xcopy /y /s /e .\tags\mi-ocr-worker-win-app .\publish\mi-ocr-worker-win-app\
 xcopy /y /s /e .\tags\mi-ocr-eureka-server .\publish\mi-ocr-eureka-server\
 xcopy /y /s /e .\tags\mi-ocr-gateway .\publish\mi-ocr-gateway\
