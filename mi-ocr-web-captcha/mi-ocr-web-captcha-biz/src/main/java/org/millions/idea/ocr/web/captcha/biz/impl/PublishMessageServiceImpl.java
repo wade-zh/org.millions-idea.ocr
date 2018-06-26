@@ -70,19 +70,19 @@ public class PublishMessageServiceImpl extends MessageServiceImpl {
     public String publish(UploadCaptchaReq uploadCaptchaReq) {
         logger.info("创建订单参数:" + JsonUtil.getJson(uploadCaptchaReq));
 
-        if(!EnumUtil.isExist(uploadCaptchaReq.getChannel()))
-            return null;
+        if(!EnumUtil.isExist(uploadCaptchaReq.getChannel())) throw new MessageException("类型不存在");
 
         // 验证订单
-        validate(uploadCaptchaReq);
-
-        // 产出数据
-        UUID ticket = UUID.randomUUID();
-        rabbitUtil.publish(multiQueue.getCaptcha(), JsonUtil.getJson(new Captcha(ticket.toString(), uploadCaptchaReq.getChannel(), uploadCaptchaReq.getBinary(), uploadCaptchaReq.getToken())));
-        return ticket.toString();
+        if(validate(uploadCaptchaReq) > 0){
+            // 产出数据
+            UUID ticket = UUID.randomUUID();
+            rabbitUtil.publish(multiQueue.getCaptcha(), JsonUtil.getJson(new Captcha(ticket.toString(), uploadCaptchaReq.getChannel(), uploadCaptchaReq.getBinary(), uploadCaptchaReq.getToken())));
+            return ticket.toString();
+        }
+        return null;
     }
 
-    private void validate(UploadCaptchaReq uploadCaptchaReq) {
+    private Integer validate(UploadCaptchaReq uploadCaptchaReq) {
         // 判断token是否过期，不获取过期的内容
         Object cache = redisTemplate.opsForValue().get(uploadCaptchaReq.getToken());
         if(cache == null) throw new MessageException("请重新登录");
@@ -99,6 +99,7 @@ public class PublishMessageServiceImpl extends MessageServiceImpl {
         Integer baseReduceNum = Integer.valueOf(String.valueOf(cache));
         Integer reduceCode = reduce("stock_" + userEntity.getUid(), baseReduceNum);
         if (reduceCode < 0) throw new MessageException(reduceCode,"扣减库存失败");
+        return reduceCode;
     }
 
     private static final String REDUCE_SCRIPT;
