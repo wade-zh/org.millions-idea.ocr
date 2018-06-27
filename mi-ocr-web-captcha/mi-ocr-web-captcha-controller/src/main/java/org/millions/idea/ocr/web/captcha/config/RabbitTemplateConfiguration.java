@@ -70,37 +70,25 @@ public class RabbitTemplateConfiguration {
     ) {
         Channel channel = null;
         try {
-            channel = connectionFactory.newConnection().createChannel();
+            /*channel = connectionFactory.newConnection().createChannel();
             channel.exchangeDeclare(rabbitConfig.getExchange(), "topic", true,false ,null);
-            Map<String, Object> arguments = new HashMap<String, Object>();
-            arguments.put("x-dead-letter-exchange", rabbitConfig.getExchange());
-            arguments.put("x-message-ttl", 30000);
             channel.queueDeclare(multiQueue.getWallet(), true, false, false, null);
             channel.queueBind(multiQueue.getWallet(), rabbitConfig.getExchange(),multiQueue.getWallet());
-            ExecutorService executorService = Executors.newFixedThreadPool(10);
+            channel.basicQos(1);
             Channel finalChannel = channel;
             channel.basicConsume(multiQueue.getWallet(), false, new DefaultConsumer(channel) {
-                /**
-                 * No-op implementation of {@link Consumer#handleDelivery}.
-                 *
-                 * @param consumerTag
-                 * @param envelope
-                 * @param properties
-                 * @param body
-                 */
                 @Override
                 public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException {
                     logger.debug("收到" + consumerTag +  "标签消息, 封包长度:" + body.length);
 
                     try{
                         String message = new String(body, "UTF-8");
-
                         walletMessageService.onMessage(finalChannel, envelope, message);
                     } catch (Exception e){
                         System.err.println(e.toString());
                     }
                 }
-            });
+            });*/
         }catch (Exception e){
             System.out.println("queueException: " + e);
         }finally {

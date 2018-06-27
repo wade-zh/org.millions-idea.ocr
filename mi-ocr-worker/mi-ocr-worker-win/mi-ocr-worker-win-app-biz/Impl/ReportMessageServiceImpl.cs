@@ -1,5 +1,6 @@
 ﻿using mi_ocr_worker_win_app_entity;
 using Newtonsoft.Json;
+using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace mi_ocr_worker_win_app_biz.Impl
 {
     public class ReportMessageServiceImpl : IReportMessageService
     {
-        public void OnMessage(EventingBasicConsumer consumer, string message, Action<bool> call)
+        public void OnMessage(EventingBasicConsumer consumer,IModel sendModel, string message, Action<bool> call)
         {
             Captcha captcha = JsonConvert.DeserializeObject<Captcha>(message);
             // Checking rule

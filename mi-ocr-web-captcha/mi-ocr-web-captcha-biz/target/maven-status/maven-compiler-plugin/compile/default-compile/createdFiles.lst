@@ -1,6 +1,0 @@
-org\millions\idea\ocr\web\captcha\biz\IMessageService.class
-org\millions\idea\ocr\web\captcha\biz\impl\PublishMessageServiceImpl.class
-org\millions\idea\ocr\web\captcha\biz\IWalletMessageService.class
-org\millions\idea\ocr\web\captcha\biz\impl\WalletMessageServiceImpl.class
-org\millions\idea\ocr\web\captcha\biz\impl\MessageServiceImpl.class
-org\millions\idea\ocr\web\captcha\biz\util\EnumUtil.class

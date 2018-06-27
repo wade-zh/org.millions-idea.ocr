@@ -68,7 +68,7 @@ public class PublishMessageServiceImpl extends MessageServiceImpl {
 
     @Override
     public String publish(UploadCaptchaReq uploadCaptchaReq) {
-        logger.info("创建订单参数:" + JsonUtil.getJson(uploadCaptchaReq));
+        //logger.info("创建订单参数:" + JsonUtil.getJson(uploadCaptchaReq));
 
         if(!EnumUtil.isExist(uploadCaptchaReq.getChannel())) throw new MessageException("类型不存在");
 
@@ -80,6 +80,7 @@ public class PublishMessageServiceImpl extends MessageServiceImpl {
             return ticket.toString();
         }
         return null;
+
     }
 
     private Integer validate(UploadCaptchaReq uploadCaptchaReq) {

@@ -82,10 +82,14 @@ namespace caffe_train_callback
             if (exit) return;
             try
             {
-                WriteLog(log);
-                this.Invoke((EventHandler)delegate {
+                WriteLog2(log);
+                /*this.Invoke((EventHandler)delegate {
+                    if (listBox1.Items.Count > 100)
+                    {
+                        listBox1.Items.Clear();
+                    }
                     listBox1.Items.Add(log);
-                });
+                });*/
             }
             catch (Exception e)
             {
@@ -162,54 +166,62 @@ namespace caffe_train_callback
              * 
             */
 
-            switch (eventFlag)
+            try
             {
-                case 1:
-                    Log("初始化网络");
-                    break;
-                case 2:
-                    Log("初始化网络完成");
-                    break;
-                case 3:
-                    if (exit) return 2;
-                    if (param1 == interation)
-                    {
-                        interation += step;
-                        Log($"完成一次迭代，次数：{param1}, 损失：{param2}");
-                        return 1;
-                    }
-                    break;
-                case 6:
-                    Log("测试开始");
-                    break;
-                case 7:
-                    TrainValInfo info = getInfo(param3);
-                    if (info.values[0] > 0.99)
-                    {
-                        WriteLog($"高精度出现，第{info.iterNum}次迭代，{info.values[0] * 100}%，accuracy：{info.values[0]}，ctc_loss = {info.values[1]} (* 1 = {info.values[1]} loss)");
-                        Log($"高精度出现，第{info.iterNum}次迭代，{info.values[0] * 100}%，accuracy：{info.values[0]}，ctc_loss = {info.values[1]} (* 1 = {info.values[1]} loss)");
-                        return 1;
-                    }
-                    if (info.values[0] > 0.995)
-                    {
-                        Log($"超高精度出现，第{info.iterNum}次迭代，{info.values[0] * 100}%，accuracy：{info.values[0]}，ctc_loss = {info.values[1]} (* 1 = {info.values[1]} loss)");
-                        return 1;
-                    }
-                    if (info.values[0] == 1F)
-                    {
-                        Log($"完整精度出现，第{info.iterNum}次迭代，{info.values[0] * 100}%，accuracy：{info.values[0]}，ctc_loss = {info.values[1]} (* 1 = {info.values[1]} loss)");
-                        return 1;
-                    }
-                    Log($"测试完毕，accuracy：{info.values[0]}，ctc_loss = {info.values[1]} (* 1 = {info.values[1]} loss)");
-                    break;
-                case 5:
-                    Log("快照完毕");
-                    break;
-                case 4:
-                    Log("训练完成");
-                    break;
+                switch (eventFlag)
+                {
+                    case 1:
+                        Log("初始化网络");
+                        break;
+                    case 2:
+                        Log("初始化网络完成");
+                        break;
+                    case 3:
+                        if (exit) return 2;
+                        if (param1 == interation)
+                        {
+                            interation += step;
+                            Log($"完成一次迭代，次数：{param1}, 损失：{param2}");
+                            return 1;
+                        }
+                        break;
+                    case 6:
+                        Log("测试开始");
+                        break;
+                    case 7:
+                        TrainValInfo info = getInfo(param3);
+                        if (info.values[0] > 0.99)
+                        {
+                            WriteLog($"高精度出现，第{info.iterNum}次迭代，{info.values[0] * 100}%，accuracy：{info.values[0]}，ctc_loss = {info.values[1]} (* 1 = {info.values[1]} loss)");
+                            Log($"高精度出现，第{info.iterNum}次迭代，{info.values[0] * 100}%，accuracy：{info.values[0]}，ctc_loss = {info.values[1]} (* 1 = {info.values[1]} loss)");
+                            return 1;
+                        }
+                        if (info.values[0] > 0.995)
+                        {
+                            Log($"超高精度出现，第{info.iterNum}次迭代，{info.values[0] * 100}%，accuracy：{info.values[0]}，ctc_loss = {info.values[1]} (* 1 = {info.values[1]} loss)");
+                            return 1;
+                        }
+                        if (info.values[0] == 1F)
+                        {
+                            Log($"完整精度出现，第{info.iterNum}次迭代，{info.values[0] * 100}%，accuracy：{info.values[0]}，ctc_loss = {info.values[1]} (* 1 = {info.values[1]} loss)");
+                            return 1;
+                        }
+                        Log($"测试完毕，accuracy：{info.values[0]}，ctc_loss = {info.values[1]} (* 1 = {info.values[1]} loss)");
+                        break;
+                    case 5:
+                        Log("快照完毕");
+                        break;
+                    case 4:
+                        Log("训练完成");
+                        break;
+                }
+                return 0;
             }
-            return 0;
+            catch (Exception ex)
+            {
+                WriteLog2(ex.ToString());
+                return 0;
+            }
         }
 
         private unsafe void btnContinueTrain_Click(object sender, EventArgs e)
@@ -217,7 +229,15 @@ namespace caffe_train_callback
             Caffe.TraindEventCallback func = new Caffe.TraindEventCallback(trainCallback);
             Caffe.setTraindEventCallback(func);
             new Thread(new ThreadStart(() => {
-                Caffe.train_network($"train --solver=solver.prototxt --weights=models/" + this.textBox2.Text);
+                try
+                {
+                    Caffe.train_network($"train --solver=solver.prototxt --weights=models/" + this.textBox2.Text);
+                }
+                catch (Exception ex)
+                {
+                    WriteLog2(ex.ToString());
+                    MessageBox.Show(ex.Message);
+                }
             })).Start();
         }
 
@@ -225,7 +245,6 @@ namespace caffe_train_callback
         {
             exit = true;
         }
-
         public void WriteLog(string msg)
         {
             string filePath = AppDomain.CurrentDomain.BaseDirectory + "Log";
@@ -234,6 +253,42 @@ namespace caffe_train_callback
                 Directory.CreateDirectory(filePath);
             }
             string logPath = AppDomain.CurrentDomain.BaseDirectory + "Log\\" + DateTime.Now.ToString("yyyy-MM-dd") + ".txt";
+            try
+            {
+                using (StreamWriter sw = File.AppendText(logPath))
+                {
+                    sw.WriteLine("消息：" + msg);
+                    sw.WriteLine("时间：" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+                    sw.WriteLine("**************************************************");
+                    sw.WriteLine();
+                    sw.Flush();
+                    sw.Close();
+                    sw.Dispose();
+                }
+            }
+            catch (IOException e)
+            {
+                using (StreamWriter sw = File.AppendText(logPath))
+                {
+                    sw.WriteLine("异常：" + e.Message);
+                    sw.WriteLine("时间：" + DateTime.Now.ToString("yyy-MM-dd HH:mm:ss"));
+                    sw.WriteLine("**************************************************");
+                    sw.WriteLine();
+                    sw.Flush();
+                    sw.Close();
+                    sw.Dispose();
+                }
+            }
+        }
+
+        public void WriteLog2(string msg)
+        {
+            string filePath = AppDomain.CurrentDomain.BaseDirectory + "Log";
+            if (!Directory.Exists(filePath))
+            {
+                Directory.CreateDirectory(filePath);
+            }
+            string logPath = AppDomain.CurrentDomain.BaseDirectory + "Log\\train_" + DateTime.Now.ToString("yyyy-MM-dd") + ".txt";
             try
             {
                 using (StreamWriter sw = File.AppendText(logPath))

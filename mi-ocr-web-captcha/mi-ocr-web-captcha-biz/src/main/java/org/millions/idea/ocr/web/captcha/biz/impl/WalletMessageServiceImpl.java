@@ -35,6 +35,7 @@ public class WalletMessageServiceImpl implements IWalletMessageService{
     private IWalletAgentService walletAgentService;
 
     @Override
+    @Async
     public void onMessage(Channel channel,Envelope envelope, String message){
         try {
             WalletReq model = JsonUtil.getModel(message, WalletReq.class);

@@ -1,4 +1,5 @@
-﻿using RabbitMQ.Client.Events;
+﻿using RabbitMQ.Client;
+using RabbitMQ.Client.Events;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,6 @@ namespace mi_ocr_worker_win_app_biz
 {
     public interface IMessageService
     {
-        void OnMessage(EventingBasicConsumer consumer, string message, Action<bool> call);
+        void OnMessage(EventingBasicConsumer consumer, IModel sendModel, string message, Action<bool> call);
     }
 }

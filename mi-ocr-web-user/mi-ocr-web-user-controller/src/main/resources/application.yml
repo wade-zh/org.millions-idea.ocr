@@ -36,4 +36,4 @@ eureka:
       hostname: localhost
   client:
     service-url:
-      defaultZone: http://193.112.151.148:20000/eureka
+      defaultZone: http://localhost:20000/eureka

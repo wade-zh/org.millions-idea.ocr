@@ -1,4 +1,5 @@
 ﻿using mi_ocr_worker_win_app_entity;
+using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,6 @@ namespace mi_ocr_worker_win_app_biz
 {
     public interface IReportMessageService 
     {
-        void OnMessage(EventingBasicConsumer consumer, string message, Action<bool> call);
+        void OnMessage(EventingBasicConsumer consumer, IModel sendModel, string message, Action<bool> call);
     }
 }

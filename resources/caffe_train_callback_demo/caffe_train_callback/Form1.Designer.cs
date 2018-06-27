@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.btnInitLmdb = new System.Windows.Forms.Button();
             this.btnTrain = new System.Windows.Forms.Button();
             this.btnContinueTrain = new System.Windows.Forms.Button();
@@ -37,22 +36,9 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // listBox1
-            // 
-            this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listBox1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(12, 50);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(776, 388);
-            this.listBox1.TabIndex = 0;
-            // 
             // btnInitLmdb
             // 
-            this.btnInitLmdb.Location = new System.Drawing.Point(199, 13);
+            this.btnInitLmdb.Location = new System.Drawing.Point(12, 81);
             this.btnInitLmdb.Name = "btnInitLmdb";
             this.btnInitLmdb.Size = new System.Drawing.Size(108, 23);
             this.btnInitLmdb.TabIndex = 1;
@@ -62,7 +48,7 @@
             // 
             // btnTrain
             // 
-            this.btnTrain.Location = new System.Drawing.Point(326, 13);
+            this.btnTrain.Location = new System.Drawing.Point(139, 81);
             this.btnTrain.Name = "btnTrain";
             this.btnTrain.Size = new System.Drawing.Size(108, 23);
             this.btnTrain.TabIndex = 2;
@@ -72,7 +58,7 @@
             // 
             // btnContinueTrain
             // 
-            this.btnContinueTrain.Location = new System.Drawing.Point(455, 13);
+            this.btnContinueTrain.Location = new System.Drawing.Point(268, 81);
             this.btnContinueTrain.Name = "btnContinueTrain";
             this.btnContinueTrain.Size = new System.Drawing.Size(108, 23);
             this.btnContinueTrain.TabIndex = 3;
@@ -83,7 +69,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(588, 16);
+            this.label1.Location = new System.Drawing.Point(401, 84);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 12);
             this.label1.TabIndex = 4;
@@ -91,7 +77,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(635, 13);
+            this.textBox1.Location = new System.Drawing.Point(448, 81);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 21);
             this.textBox1.TabIndex = 5;
@@ -108,14 +94,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(570, 177);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnContinueTrain);
             this.Controls.Add(this.btnTrain);
             this.Controls.Add(this.btnInitLmdb);
-            this.Controls.Add(this.listBox1);
             this.Name = "Form1";
             this.Text = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
@@ -125,8 +110,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button btnInitLmdb;
         private System.Windows.Forms.Button btnTrain;
         private System.Windows.Forms.Button btnContinueTrain;

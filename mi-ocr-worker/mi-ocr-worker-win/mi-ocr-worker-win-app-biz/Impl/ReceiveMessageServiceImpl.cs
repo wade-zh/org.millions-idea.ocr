@@ -18,7 +18,7 @@ namespace mi_ocr_worker_win_app_biz
     {
         private IWalletService walletService { get; set; }
 
-        public void OnMessage(EventingBasicConsumer consumer, string message, Action<bool> call)
+        public void OnMessage(EventingBasicConsumer consumer, IModel sendModel, string message, Action<bool> call)
         {
             Captcha captcha = JsonConvert.DeserializeObject<Captcha>(message);
             // Checking rule
@@ -37,18 +37,19 @@ namespace mi_ocr_worker_win_app_biz
                     return;
                 }
 
-
-                call(true);
-
-                // Reduce balance 
+                // 发送扣费请求到队列中
                 var msg = JsonConvert.SerializeObject(new WalletReq()
                 {
                     channel = captcha.Channel,
                     token = captcha.Token
                 });
                 var body = Encoding.UTF8.GetBytes(msg);
-                consumer.Model.BasicPublish(MultiQueue.Exchange, MultiQueue.Wallet, null, body);
+                var properties = sendModel.CreateBasicProperties();
+                properties.Persistent = true;// 确保消息是可靠持久的
+                sendModel.BasicPublish(MultiQueue.Exchange, MultiQueue.Wallet, null, body); 
                 Console.WriteLine($"Send deduction request: {msg}");
+
+                call(true);
             });
         }
          

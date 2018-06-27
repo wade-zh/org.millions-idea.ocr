@@ -43,10 +43,9 @@ namespace mi_ocr_worker_win_app_biz.Impl
         public abstract void OnNority(Captcha captcha, byte[] binary, Action<string> call);
 
 
-        private async void PublishMongoMessage(Captcha captcha, byte[] binary, string code)
+        private void PublishMongoMessage(Captcha captcha, byte[] binary, string code)
         {
-
-            await Task.Run(()=> {
+            Task.Run(()=> {
                 try
                 {
                     string captchaId = captcha.Ticket;
@@ -77,9 +76,9 @@ namespace mi_ocr_worker_win_app_biz.Impl
                         Console.WriteLine("Ignore current captcha, duplicate key error: " + code);
                         return;
                     }
-                    else if(e.Message.Contains("System.Net.Sockets.SocketException"))
+                    else if (e.Message.Contains("System.Net.Sockets.SocketException"))
                     {
-                        
+
                         Console.WriteLine("MongoDB connect timeout");
 
                     }
@@ -91,20 +90,22 @@ namespace mi_ocr_worker_win_app_biz.Impl
             });
         }
 
-        private async void PublishRedisMessage(Captcha captcha, byte[] binary, string code)
+        private void PublishRedisMessage(Captcha captcha, byte[] binary, string code)
         {
-            await Task.Run(() => {
+            Task.Run(() =>
+            {
                 try
                 {
-                    if (CacheHelper.Cache.Set(captcha.Ticket, code, DateTime.Now.AddSeconds(30))) Console.WriteLine("Publish redis success!");
+                    if (CacheHelper.Cache.Set(captcha.Ticket, code, DateTime.Now.AddSeconds(30)))
+                    {
+                        Console.WriteLine("Publish redis success!");
+                    }
                 }
                 catch (Exception e)
                 {
                     Console.WriteLine("PublishRedisMessage exception:" + e.Message);
-                    CacheHelper.Cache.Load();
                 }
             });
-           
         }
 
     }

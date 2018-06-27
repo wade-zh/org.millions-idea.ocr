@@ -5,6 +5,7 @@ using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -14,10 +15,11 @@ namespace mi_ocr_worker_win_app.Config
 {
     class QueueConfig
     {
-        public static IConnection Connection { get; set; }
-        public static IModel model { get; set; }
+        public static IList<IConnection> Connections { get; set; } = new List<IConnection>();
+        public static IModel receiveModel { get; set; }
+        public static IModel sendModel { get; set; }
 
-        public static void StartupMessageReceive(string queue, Action<EventingBasicConsumer, string, Action<bool>> action)
+        public static void StartupMessageReceive(string queue, Action<EventingBasicConsumer, IModel, string, Action<bool>> action)
         {
             try
             {
@@ -33,7 +35,13 @@ namespace mi_ocr_worker_win_app.Config
                 };
                 RabbitTemplate.connectionFactory = factory;
 
-                Connection = factory.CreateConnection();
+                /**
+                 *  为了防止消息堵塞，经过排查，负责接收消息的连接和负责发送消息的连接需要隔离开来
+                 *  索引0位置是接收消息，索引1的位置是发送消息
+                 *
+                 */
+                Connections.Add(factory.CreateConnection());
+                Connections.Add(factory.CreateConnection());
 
                 BindQueue(queue, action);
             }
@@ -44,22 +52,22 @@ namespace mi_ocr_worker_win_app.Config
             }
         }
 
-        private static void BindQueue(string queue, Action<EventingBasicConsumer, string, Action<bool>> action)
+        private static void BindQueue(string queue, Action<EventingBasicConsumer, IModel, string, Action<bool>> action)
         {
             try
             {
-                model = Connection.CreateModel();
-                model.ExchangeDeclare(exchange: MultiQueue.Exchange, type: "topic", durable: true, autoDelete: false, arguments: null);
-                IDictionary<string, object> arguments = new Dictionary<string, object>();
-                arguments.Add("x-dead-letter-exchange", MultiQueue.Exchange);
-                arguments.Add("x-message-ttl", 30000);
-                model.QueueDeclare(queue: queue,
+                receiveModel = Connections.First().CreateModel();
+                sendModel = Connections.First().CreateModel();
+
+                receiveModel.ExchangeDeclare(exchange: MultiQueue.Exchange, type: "topic", durable: true, autoDelete: false, arguments: null);
+                receiveModel.BasicQos(0,1, false);
+                receiveModel.QueueDeclare(queue: queue,
                                          durable: true,
                                          exclusive: false,
                                          autoDelete: false,
                                          arguments: null);
-                model.QueueBind(queue, MultiQueue.Exchange, queue);
-                var consumer = new EventingBasicConsumer(model);
+                receiveModel.QueueBind(queue, MultiQueue.Exchange, queue);
+                var consumer = new EventingBasicConsumer(receiveModel);
                 consumer.Received += (model, ea) =>
                 {
                     try
@@ -68,27 +76,35 @@ namespace mi_ocr_worker_win_app.Config
 
                         var _body = ea.Body;
                         var _message = Encoding.UTF8.GetString(_body);
-                        action(((EventingBasicConsumer)model), _message, (res) =>
+
+                        Stopwatch stopwatch = new Stopwatch();
+                        stopwatch.Start();
+                        action(((EventingBasicConsumer)model), sendModel, _message, (res) =>
                         {
                             try
                             {
-                                if (res)
+                                IModel cm = ((EventingBasicConsumer)model).Model;
+                                if (res) 
                                 {
-                                    ((EventingBasicConsumer)model).Model.BasicAck(deliveryTag: ea.DeliveryTag, multiple: false);
+                                    // 正常消息，确认消息
+                                    cm.BasicAck(deliveryTag: ea.DeliveryTag, multiple: false);
+                                    Console.WriteLine($"{ea.DeliveryTag} message is BasicAck");
+                                }
+                                else
+                                {
+                                    // 消费异常，消息重新发回队列
+                                    //cm.BasicNack(ea.DeliveryTag, false, true);
+                                    //Console.WriteLine("Cureent message is BasicNack");
                                 }
                             }
                             catch (Exception e)
                             {
-                                Console.WriteLine("EventingBasicConsumer exception:" + e.Message);
+                               Console.WriteLine("EventingBasicConsumer exception:" + e.Message);
                             }
-                        });
+                            stopwatch.Stop();
+                            Console.WriteLine($"{ea.DeliveryTag} Stopwatch is {stopwatch.Elapsed.TotalSeconds}/s");
 
-                        /*ThreadPool.QueueUserWorkItem(new WaitCallback(Run), new ThreadPoolParams()
-                         {
-                             BasicDeliverEventArgs = ea,
-                             Action = action,
-                             Model = model
-                         });*/
+                        });
                     }
                     catch (Exception e)
                     {
@@ -96,7 +112,7 @@ namespace mi_ocr_worker_win_app.Config
                     }
 
                 };
-                model.BasicConsume(queue: queue, autoAck: false, consumer: consumer);
+                receiveModel.BasicConsume(queue: queue, autoAck: false, consumer: consumer);
             }
             catch (Exception e)
             {
@@ -135,8 +151,12 @@ namespace mi_ocr_worker_win_app.Config
 
 
         public static void Close() {
-            model.Close();
-            Connection.Close();
+            receiveModel.Close();
+            sendModel.Close();
+            foreach (var item in Connections)
+            {
+                item.Close();
+            }
         }
 
 
