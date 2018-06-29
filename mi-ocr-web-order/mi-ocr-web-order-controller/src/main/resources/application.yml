@@ -1,8 +1,8 @@
 server:
-  port: 0
+  port: 8000
 mybatis:
   mapper-locations: classpath:mapper/*-mapper.xml
-  type-aliases-package: org.million.idea.ocr.web.user.entity
+  type-aliases-package: org.millions.idea.ocr.web.order.entity.db
   configuration:
     cache-enabled: false
     map-underscore-to-camel-case: true
@@ -11,7 +11,7 @@ mybatis:
     default-statement-timeout: 600
 spring:
   application:
-    name: mi-ocr-web-user-service
+    name: mi-ocr-web-order-service
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
@@ -26,13 +26,13 @@ spring:
         max-active: 1024
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://192.168.1.104:3306/mi-ocr-user?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useAffectedRows=true
+    url: jdbc:mysql://192.168.1.104:3306/mi-ocr-order?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useAffectedRows=true
     username: root
-    password: weiwei5371958!
+    password: Mysql@123456
     type: com.alibaba.druid.pool.DruidDataSource
 eureka:
   instance:
-      virtual-host-name: mi-ocr-web-user-service
+      virtual-host-name: mi-ocr-web-order-service
       hostname: localhost
   client:
     service-url:

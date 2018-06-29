@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.millions.idea.ocr.web.order.repository.mapper.ITransferMapperRepository">
+    <sql id="fields">
+       `type`,send_uid,recv_uid,amount,`desc`,`date`
+    </sql>
+    <sql id="f_fields">
+        tid,<include refid="fields"/>
+    </sql>
+
+    <insert id="transfer" parameterType="org.millions.idea.ocr.web.order.entity.db.Transfers">
+        INSERT INTO transfers VALUES(#{tid},#{type},#{sendUid},#{recvUid},#{amount},#{desc},#{date})
+    </insert>
+</mapper>

@@ -9,6 +9,7 @@ package org.millions.idea.ocr.web.user.controller;
 
 import com.netflix.ribbon.proxy.annotation.Http;
 import org.millions.idea.ocr.web.common.entity.common.HttpResp;
+import org.millions.idea.ocr.web.user.biz.IInformationService;
 import org.millions.idea.ocr.web.user.biz.IUserService;
 import org.millions.idea.ocr.web.user.entity.common.LoginResult;
 import org.millions.idea.ocr.web.user.entity.db.Users;
@@ -22,6 +23,8 @@ public class UserController {
 
     @Autowired
     private IUserService userService;
+    @Autowired
+    private IInformationService informationService;
 
     @PostMapping("/login")
     public HttpResp login(String uname, String pwd){
@@ -38,4 +41,14 @@ public class UserController {
         return new HttpResp(1,String.valueOf(userService.getBalance(token)));
     }
 
+    /**
+     * 更新用户余额
+     * @param uid
+     * @return
+     */
+    @GetMapping("/updateBalance")
+    public HttpResp updateBalance(Integer uid, String channel){
+        informationService.updateBalance(uid,channel);
+        return new HttpResp(0, HttpResp.RespCode.SUCCESS.getCode());
+    }
 }
