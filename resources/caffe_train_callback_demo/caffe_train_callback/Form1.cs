@@ -82,7 +82,8 @@ namespace caffe_train_callback
             if (exit) return;
             try
             {
-                WriteLog2(log);
+                Console.WriteLine(log);
+                //WriteLog2(log);
                 /*this.Invoke((EventHandler)delegate {
                     if (listBox1.Items.Count > 100)
                     {
