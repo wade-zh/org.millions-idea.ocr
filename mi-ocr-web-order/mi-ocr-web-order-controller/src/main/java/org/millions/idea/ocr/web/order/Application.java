@@ -13,8 +13,8 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 //@EnableDiscoveryClient
 @ComponentScan(value = {"org.millions.idea.*"})
-@MapperScan(value = {"org.millions.idea.ocr.web.order.repository.mapper"})
-@EntityScan(value = {"org.millions.idea.ocr.web.order.entity.db"})
+@MapperScan(value = {"org.millions.idea.ocr.web.finance.repository.mapper"})
+@EntityScan(value = {"org.millions.idea.ocr.web.finance.entity.db"})
 public class Application {
 	final static Logger logger = LogManager.getLogger(Application.class);
 

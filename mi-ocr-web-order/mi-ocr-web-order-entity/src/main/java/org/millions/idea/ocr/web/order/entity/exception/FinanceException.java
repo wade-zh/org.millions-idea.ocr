@@ -1,5 +1,5 @@
 /***
- * @pName mi-ocr-web-order
+ * @pName mi-ocr-web-finance
  * @name FinanceException
  * @user HongWei
  * @date 2018/6/29

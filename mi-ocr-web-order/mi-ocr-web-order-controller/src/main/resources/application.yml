@@ -2,7 +2,7 @@ server:
   port: 8000
 mybatis:
   mapper-locations: classpath:mapper/*-mapper.xml
-  type-aliases-package: org.millions.idea.ocr.web.order.entity.db
+  type-aliases-package: org.millions.idea.ocr.web.finance.entity.db
   configuration:
     cache-enabled: false
     map-underscore-to-camel-case: true
@@ -11,7 +11,7 @@ mybatis:
     default-statement-timeout: 600
 spring:
   application:
-    name: mi-ocr-web-order-service
+    name: mi-ocr-web-finance-service
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
@@ -32,7 +32,7 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
 eureka:
   instance:
-      virtual-host-name: mi-ocr-web-order-service
+      virtual-host-name: mi-ocr-web-finance-service
       hostname: localhost
   client:
     service-url:

@@ -1,5 +1,5 @@
 /***
- * @pName mi-ocr-web-order
+ * @pName mi-ocr-web-finance
  * @name RedisTemplateConfiguration
  * @user HongWei
  * @date 2018/6/24

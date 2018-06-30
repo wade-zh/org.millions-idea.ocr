@@ -1,5 +1,5 @@
 /***
- * @pName mi-ocr-web-order
+ * @pName mi-ocr-web-finance
  * @name Constant
  * @user HongWei
  * @date 2018/6/29
@@ -7,12 +7,19 @@
  */
 package org.millions.idea.ocr.web.order.entity.data;
 
-import org.springframework.beans.factory.annotation.Value;
-
 public class Constant {
-    private static Integer systemUser;
-    public static Integer getSystemUser() {
-        // TODO: 先暂时固定内容
-        return 1;
+    static {
+        sharedAccountID = 1;
+        sharedTradeNo = "A873796782";
+    }
+    private final static Integer sharedAccountID;
+    private final static String sharedTradeNo;
+
+    public static Integer getSharedAccountID() {
+        return sharedAccountID;
+    }
+
+    public static String getSharedTradeNo() {
+        return sharedTradeNo;
     }
 }
