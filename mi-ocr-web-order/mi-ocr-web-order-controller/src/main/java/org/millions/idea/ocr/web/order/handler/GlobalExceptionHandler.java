@@ -39,7 +39,7 @@ public class GlobalExceptionHandler {
                                  FinanceException exception) throws Exception {
         logger.error(String.format("自定义消息异常: %s",exception.toString()));
         System.err.println(exception.getMessage());
-        return new HttpResp(1, exception.getError().toString());
+        return new HttpResp(1, exception.getError().getError());
     }
 }
 
