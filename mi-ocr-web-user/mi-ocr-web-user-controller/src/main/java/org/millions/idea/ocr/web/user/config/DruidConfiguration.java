@@ -11,6 +11,8 @@ import com.alibaba.druid.support.http.StatViewServlet;
 import com.alibaba.druid.support.http.WebStatFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
@@ -21,6 +23,12 @@ import com.alibaba.druid.pool.DruidDataSource;
 import javax.sql.DataSource;
 
 @Configuration
+@ConditionalOnClass({DruidDataSource.class})
+@ConditionalOnProperty(
+        name = {"spring.datasource.type"},
+        havingValue = "com.alibaba.druid.pool.DruidDataSource",
+        matchIfMissing = true
+)
 public class DruidConfiguration {
     private Logger logger = LoggerFactory.getLogger(DruidConfiguration.class);
     @Bean
@@ -30,8 +38,8 @@ public class DruidConfiguration {
         DruidDataSource dataSource = new DruidDataSource();
         dataSource.setInitialSize(16);
         dataSource.setMaxActive(16);
-        dataSource.setQueryTimeout(60);
-        dataSource.setTransactionQueryTimeout(60);
+        dataSource.setQueryTimeout(6000);
+        dataSource.setTransactionQueryTimeout(6000);
         dataSource.setMinIdle(16);
         return dataSource;
     }

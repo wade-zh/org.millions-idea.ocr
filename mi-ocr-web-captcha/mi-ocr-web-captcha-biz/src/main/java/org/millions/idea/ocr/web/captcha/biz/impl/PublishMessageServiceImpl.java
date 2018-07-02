@@ -9,29 +9,27 @@ package org.millions.idea.ocr.web.captcha.biz.impl;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.millions.idea.ocr.web.captcha.agent.IUserAgentService;
+import org.millions.idea.ocr.web.captcha.agent.order.IPayAgentClient;
+import org.millions.idea.ocr.web.captcha.agent.user.IUserAgentService;
 import org.millions.idea.ocr.web.captcha.biz.util.EnumUtil;
 import org.millions.idea.ocr.web.captcha.entity.MultiQueue;
 import org.millions.idea.ocr.web.captcha.entity.UploadCaptchaReq;
+import org.millions.idea.ocr.web.captcha.entity.agent.order.PayParam;
 import org.millions.idea.ocr.web.captcha.entity.ext.UserEntity;
 import org.millions.idea.ocr.web.captcha.utility.queue.RabbitUtil;
 import org.millions.idea.ocr.web.common.entity.Captcha;
+import org.millions.idea.ocr.web.common.entity.common.HttpResp;
 import org.millions.idea.ocr.web.common.entity.exception.MessageException;
 import org.millions.idea.ocr.web.common.utility.json.JsonUtil;
+import org.millions.idea.ocr.web.common.utility.utils.SessionUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.data.redis.RedisProperties;
-import org.springframework.dao.DataAccessException;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.redis.connection.RedisConnection;
-import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.script.DefaultRedisScript;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
@@ -48,6 +46,8 @@ public class PublishMessageServiceImpl extends MessageServiceImpl {
     @Autowired
     private IUserAgentService userAgentService;
 
+    @Autowired
+    private IPayAgentClient payAgentClient;
 
     public PublishMessageServiceImpl(RabbitUtil rabbitUtil, RedisTemplate redisTemplate) {
         super(rabbitUtil, redisTemplate);
@@ -67,21 +67,45 @@ public class PublishMessageServiceImpl extends MessageServiceImpl {
 
 
     @Override
-    public String publish(UploadCaptchaReq uploadCaptchaReq) {
-        //logger.info("创建订单参数:" + JsonUtil.getJson(uploadCaptchaReq));
+    public String publish(UploadCaptchaReq model) {
+        if(!EnumUtil.isExist(model.getChannel())) throw new MessageException("类型不存在");
 
-        if(!EnumUtil.isExist(uploadCaptchaReq.getChannel())) throw new MessageException("类型不存在");
+        logger.info("发布消息参数:" + JsonUtil.getJson(model));
 
-        // 验证订单
-        if(validate(uploadCaptchaReq) > 0){
-            // 产出数据
-            UUID ticket = UUID.randomUUID();
-            rabbitUtil.publish(multiQueue.getCaptcha(), JsonUtil.getJson(new Captcha(ticket.toString(), uploadCaptchaReq.getChannel(), uploadCaptchaReq.getBinary(), uploadCaptchaReq.getToken())));
-            return ticket.toString();
-        }
-        return null;
+        String userJson = SessionUtil.getUserInfo(redisTemplate, model.getToken());
+        if(userJson == null) throw new MessageException("请重新登录");
+        UserEntity userEntity = JsonUtil.getModel(userJson, UserEntity.class);
+
+        // 扣费
+        PayParam payParam = new PayParam();
+        payParam.setUid(userEntity.getUid());
+        payParam.setUnitPrice(getChannelAmount(model.getChannel()));
+        logger.info("扣费参数:" + JsonUtil.getJson(payParam));
+
+        HttpResp resp = payAgentClient.buy(payParam);
+        logger.info("扣费结果:" + JsonUtil.getJson(resp));
+
+        if(resp.getError() != 0) throw new MessageException("无法连接交易服务器，请联系管理员维护");
+
+        // 发布到延迟处理消息队列并返回消费id
+        UUID ticket = UUID.randomUUID();
+        rabbitUtil.publish(multiQueue.getCaptcha(), JsonUtil.getJson(new Captcha(ticket.toString(), model.getChannel(), model.getBinary(), model.getToken())));
+        return ticket.toString();
 
     }
+
+
+    /**
+     * 通过channel代码取出对应的单价
+     * @param channel
+     * @return
+     */
+    private Double getChannelAmount(String channel){
+        Object cache = redisTemplate.opsForValue().get(channel);
+        if(cache == null) throw new MessageException("频道数据异常，请联系管理员维护");
+        return Double.valueOf(String.valueOf(cache));
+    }
+
 
     private Integer validate(UploadCaptchaReq uploadCaptchaReq) {
         // 判断token是否过期，不获取过期的内容

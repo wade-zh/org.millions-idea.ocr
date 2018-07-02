@@ -1,3 +1,4 @@
+org\millions\idea\ocr\web\common\utility\utils\SessionUtil.class
 org\millions\idea\ocr\web\common\utility\date\DateUtil.class
 org\millions\idea\ocr\web\common\utility\encrypt\Md5Util.class
 org\millions\idea\ocr\web\common\utility\utils\PropertyUtil.class

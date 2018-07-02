@@ -30,6 +30,8 @@ spring:
     username: root
     password: weiwei5371958!
     type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+          validation-query: select 'x'
 eureka:
   instance:
       virtual-host-name: mi-ocr-web-user-service

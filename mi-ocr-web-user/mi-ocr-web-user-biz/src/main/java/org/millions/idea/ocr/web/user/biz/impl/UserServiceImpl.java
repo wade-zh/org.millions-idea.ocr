@@ -68,18 +68,12 @@ public class UserServiceImpl implements IUserService {
         Users user = userMapperRepository.login(uname, newPwd);
         if(user == null) throw new MessageException("用户名或密码错误");
 
-        Wallet wallet = walletMapperRepository.select(user.getUid());
-        if(wallet == null) throw new MessageException("用户不存在");
-
         UserEntity userEntity = new UserEntity();
         PropertyUtil.clone(user, userEntity);
 
         String key = UUID.randomUUID().toString();
         userEntity.setToken(key);
-        userEntity.setWallet(wallet);
-
         redisTemplate.opsForValue().set(key, JsonUtil.getJson(userEntity), 30, TimeUnit.MINUTES);
-        redisTemplate.opsForValue().set("stock_" + userEntity.getUid(), userEntity.getWallet().getBalance().toString(), 7, TimeUnit.DAYS);
         return key;
     }
 

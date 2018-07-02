@@ -9,9 +9,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.ImportResource;
 
 @SpringBootApplication
-//@EnableDiscoveryClient
+@EnableDiscoveryClient
 @ComponentScan(value = {"org.millions.idea.*"})
 @MapperScan(value = {"org.millions.idea.ocr.web.finance.repository.mapper"})
 @EntityScan(value = {"org.millions.idea.ocr.web.finance.entity.db"})

@@ -1,11 +1,12 @@
 /***
- * @pName mi-ocr-web-finance
+ * @pName mi-ocr-web-captcha
  * @name Exceptions
  * @user HongWei
- * @date 2018/6/29
+ * @date 2018/7/2
  * @desc
  */
-package org.millions.idea.ocr.web.order.entity.enums.transfer;
+package org.millions.idea.ocr.web.captcha.entity.agent.order;
+
 
 public enum Exceptions {
     ORDER_CREATE_TRANSACTION_RECORD("生成交易流水失败"),
