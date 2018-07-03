@@ -85,7 +85,7 @@ public class PublishMessageServiceImpl extends MessageServiceImpl {
         HttpResp resp = payAgentClient.buy(payParam);
         logger.info("扣费结果:" + JsonUtil.getJson(resp));
 
-        if(resp.getError() != 0) throw new MessageException("无法连接交易服务器，请联系管理员维护");
+        if(resp.getError() != 0) throw new MessageException(resp.getMsg());
 
         // 发布到延迟处理消息队列并返回消费id
         UUID ticket = UUID.randomUUID();

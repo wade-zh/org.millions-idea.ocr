@@ -5,7 +5,7 @@
 <Configuration status="WARN" monitorInterval="600" name="mi-ocr-logs" packages="org.millions" >
 
     <Properties> <!-- 配置日志文件输出目录，此配置将日志输出到tomcat根目录下的指定文件夹 -->
-        <Property name="LOG_HOME">C:/logs/mi-ocr-user-logs/</Property>
+        <Property name="LOG_HOME">C:/logs/mi-ocr-order-logs/</Property>
     </Properties>
 
     <Appenders>

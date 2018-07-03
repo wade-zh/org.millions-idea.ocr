@@ -191,20 +191,9 @@ namespace caffe_train_callback
                         break;
                     case 7:
                         TrainValInfo info = getInfo(param3);
-                        if (info.values[0] == 1F)
-                        {
-                            Log($"完整精度出现，第{info.iterNum}次迭代，{info.values[0] * 100}%，accuracy：{info.values[0]}，ctc_loss = {info.values[1]} (* 1 = {info.values[1]} loss)");
-                            return 1;
-                        }
-                        if (info.values[0] > 0.995)
-                        {
-                            Log($"超高精度出现，第{info.iterNum}次迭代，{info.values[0] * 100}%，accuracy：{info.values[0]}，ctc_loss = {info.values[1]} (* 1 = {info.values[1]} loss)");
-                            return 1;
-                        }
                         if (info.values[0] > 0.99)
                         {
                             WriteLog($"高精度出现，第{info.iterNum}次迭代，{info.values[0] * 100}%，accuracy：{info.values[0]}，ctc_loss = {info.values[1]} (* 1 = {info.values[1]} loss)");
-                            Log($"高精度出现，第{info.iterNum}次迭代，{info.values[0] * 100}%，accuracy：{info.values[0]}，ctc_loss = {info.values[1]} (* 1 = {info.values[1]} loss)");
                             return 1;
                         }
                         Log($"测试完毕，accuracy：{info.values[0]}，ctc_loss = {info.values[1]} (* 1 = {info.values[1]} loss)");
