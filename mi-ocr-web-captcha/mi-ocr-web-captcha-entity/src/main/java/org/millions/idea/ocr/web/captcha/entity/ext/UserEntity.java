@@ -8,15 +8,15 @@
 package org.millions.idea.ocr.web.captcha.entity.ext;
 
 
+import org.millions.idea.ocr.web.captcha.entity.agent.order.WalletEntity;
 import org.millions.idea.ocr.web.captcha.entity.db.Users;
-import org.millions.idea.ocr.web.captcha.entity.db.Wallet;
 
 import java.sql.Timestamp;
 
 
 public class UserEntity extends Users {
     private String token;
-    private Wallet wallet;
+    private WalletEntity walletEntity;
 
     public String getToken() {
         return token;
@@ -26,26 +26,26 @@ public class UserEntity extends Users {
         this.token = token;
     }
 
-    public Wallet getWallet() {
-        return wallet;
+    public WalletEntity getWalletEntity() {
+        return walletEntity;
     }
 
-    public void setWallet(Wallet wallet) {
-        this.wallet = wallet;
+    public void setWalletEntity(WalletEntity walletEntity) {
+        this.walletEntity = walletEntity;
     }
 
     public UserEntity() {
 
     }
 
-    public UserEntity(Integer uid, String userName, String password, Integer issueId, String issueResult, String contact, Timestamp registTime, Timestamp lastActiveTime, String lastLoginIp, String token, Wallet wallet) {
+    public UserEntity(Integer uid, String userName, String password, Integer issueId, String issueResult, String contact, Timestamp registTime, Timestamp lastActiveTime, String lastLoginIp, String token, WalletEntity walletEntity) {
         super(uid, userName, password, issueId, issueResult, contact, registTime, lastActiveTime, lastLoginIp);
         this.token = token;
-        this.wallet = wallet;
+        this.walletEntity = walletEntity;
     }
 
-    public UserEntity(String token, Wallet wallet) {
+    public UserEntity(String token, WalletEntity walletEntity) {
         this.token = token;
-        this.wallet = wallet;
+        this.walletEntity = walletEntity;
     }
 }

@@ -11,29 +11,28 @@ import org.millions.idea.ocr.web.common.entity.exception.MessageException;
 import org.millions.idea.ocr.web.common.utility.encrypt.Md5Util;
 import org.millions.idea.ocr.web.common.utility.json.JsonUtil;
 import org.millions.idea.ocr.web.common.utility.utils.PropertyUtil;
+import org.millions.idea.ocr.web.user.agent.order.IWalletAgentService;
 import org.millions.idea.ocr.web.user.biz.IUserService;
-import org.millions.idea.ocr.web.user.entity.common.LoginResult;
 import org.millions.idea.ocr.web.user.entity.db.Users;
-import org.millions.idea.ocr.web.user.entity.db.Wallet;
 import org.millions.idea.ocr.web.user.entity.ext.UserEntity;
 import org.millions.idea.ocr.web.user.repository.mapper.IUserMapperRepository;
-import org.millions.idea.ocr.web.user.repository.mapper.IWalletMapperRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 @Service
 public class UserServiceImpl implements IUserService {
     private final IUserMapperRepository userMapperRepository;
-    private final IWalletMapperRepository walletMapperRepository;
     private final RedisTemplate redisTemplate;
     @Autowired
-    public UserServiceImpl(IUserMapperRepository userMapperRepository, IWalletMapperRepository walletMapperRepository, RedisTemplate redisTemplate) {
+    private IWalletAgentService walletAgentService;
+    @Autowired
+    public UserServiceImpl(IUserMapperRepository userMapperRepository,  RedisTemplate redisTemplate) {
         this.userMapperRepository = userMapperRepository;
-        this.walletMapperRepository = walletMapperRepository;
         this.redisTemplate = redisTemplate;
     }
 
@@ -73,7 +72,9 @@ public class UserServiceImpl implements IUserService {
 
         String key = UUID.randomUUID().toString();
         userEntity.setToken(key);
+        userEntity.setWallet(walletAgentService.get(userEntity.getUid()));
         redisTemplate.opsForValue().set(key, JsonUtil.getJson(userEntity), 30, TimeUnit.MINUTES);
+        redisTemplate.opsForValue().set("stock_" + userEntity.getUid(), userEntity.getWallet().getBalance().toString(), 1, TimeUnit.DAYS);
         return key;
     }
 
@@ -84,7 +85,7 @@ public class UserServiceImpl implements IUserService {
      * @return
      */
     @Override
-    public Integer getBalance(String token) {
+    public BigDecimal getBalance(String token) {
         Object json = redisTemplate.opsForValue().get(token);
         if(json == null) throw new MessageException("请重新登录");
         UserEntity userEntity = JsonUtil.getModel(String.valueOf(json), UserEntity.class);

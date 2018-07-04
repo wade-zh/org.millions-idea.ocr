@@ -14,6 +14,7 @@
         <module>../mi-ocr-web-user-repository</module>
         <module>../mi-ocr-web-user-entity</module>
         <module>../mi-ocr-web-user-biz</module>
+        <module>../mi-ocr-web-user-agent</module>
     </modules>
 
     <dependencies>

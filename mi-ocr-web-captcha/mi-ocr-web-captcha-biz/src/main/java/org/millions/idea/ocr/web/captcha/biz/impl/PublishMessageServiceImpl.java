@@ -9,6 +9,7 @@ package org.millions.idea.ocr.web.captcha.biz.impl;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.aspectj.apache.bcel.classfile.Constant;
 import org.millions.idea.ocr.web.captcha.agent.order.IPayAgentClient;
 import org.millions.idea.ocr.web.captcha.agent.user.IUserAgentService;
 import org.millions.idea.ocr.web.captcha.biz.util.EnumUtil;
@@ -29,6 +30,7 @@ import org.springframework.data.redis.core.script.DefaultRedisScript;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
@@ -42,9 +44,6 @@ public class PublishMessageServiceImpl extends MessageServiceImpl {
 
     @Autowired
     private MultiQueue multiQueue;
-
-    @Autowired
-    private IUserAgentService userAgentService;
 
     @Autowired
     private IPayAgentClient payAgentClient;
@@ -70,27 +69,34 @@ public class PublishMessageServiceImpl extends MessageServiceImpl {
     public String publish(UploadCaptchaReq model) {
         if(!EnumUtil.isExist(model.getChannel())) throw new MessageException("类型不存在");
 
-        logger.info("发布消息参数:" + JsonUtil.getJson(model));
+        BigDecimal unitAmount = getChannelAmount(model.getChannel());
+
+        validate(model, unitAmount);
 
         String userJson = SessionUtil.getUserInfo(redisTemplate, model.getToken());
         if(userJson == null) throw new MessageException("请重新登录");
         UserEntity userEntity = JsonUtil.getModel(userJson, UserEntity.class);
 
-        // 扣费
+        // 验证码票据
+        String captchaId = UUID.randomUUID().toString().replace("-","");
+
+        // 生成交易流水
         PayParam payParam = new PayParam();
         payParam.setUid(userEntity.getUid());
-        payParam.setUnitPrice(getChannelAmount(model.getChannel()));
+        payParam.setUnitPrice(unitAmount);
+        payParam.setCaptchaId(captchaId.toString());
+
         logger.info("扣费参数:" + JsonUtil.getJson(payParam));
-
-        HttpResp resp = payAgentClient.buy(payParam);
+        HttpResp resp = payAgentClient.addTradeRecord(payParam);
         logger.info("扣费结果:" + JsonUtil.getJson(resp));
-
         if(resp.getError() != 0) throw new MessageException(resp.getMsg());
+        if (resp.getMsg().length() < 32) throw new MessageException("生成交易单据失败");
+        payParam.setRecordId(resp.getMsg());
 
         // 发布到延迟处理消息队列并返回消费id
-        UUID ticket = UUID.randomUUID();
-        rabbitUtil.publish(multiQueue.getCaptcha(), JsonUtil.getJson(new Captcha(ticket.toString(), model.getChannel(), model.getBinary(), model.getToken())));
-        return ticket.toString();
+        rabbitUtil.publish(multiQueue.getOrderPay(), JsonUtil.getJson(payParam));
+        rabbitUtil.publish(multiQueue.getCaptcha(), JsonUtil.getJson(new Captcha(captchaId, model.getChannel(), model.getBinary(), model.getToken())));
+        return captchaId;
 
     }
 
@@ -100,14 +106,14 @@ public class PublishMessageServiceImpl extends MessageServiceImpl {
      * @param channel
      * @return
      */
-    private Double getChannelAmount(String channel){
+    private BigDecimal getChannelAmount(String channel){
         Object cache = redisTemplate.opsForValue().get(channel);
         if(cache == null) throw new MessageException("频道数据异常，请联系管理员维护");
-        return Double.valueOf(String.valueOf(cache));
+        return BigDecimal.valueOf(Double.valueOf(String.valueOf(cache)));
     }
 
 
-    private Integer validate(UploadCaptchaReq uploadCaptchaReq) {
+    private BigDecimal  validate(UploadCaptchaReq uploadCaptchaReq, BigDecimal unitAmount) {
         // 判断token是否过期，不获取过期的内容
         Object cache = redisTemplate.opsForValue().get(uploadCaptchaReq.getToken());
         if(cache == null) throw new MessageException("请重新登录");
@@ -116,14 +122,15 @@ public class PublishMessageServiceImpl extends MessageServiceImpl {
         cache = redisTemplate.opsForValue().get("stock_" + userEntity.getUid());
         if(cache == null) throw new MessageException("请重新登录");
         // 判断余额不足
-        if(Integer.valueOf(String.valueOf(cache)) <= 0) throw new MessageException("余额不足");
+        BigDecimal balance = new BigDecimal(String.valueOf(cache));
+        if(balance.compareTo(unitAmount) != 1) throw new MessageException("余额不足");
         // 判断通道
         cache = redisTemplate.opsForValue().get(uploadCaptchaReq.getChannel());
         if(cache == null) throw new MessageException("类型不存在");
         // 扣减库存
-        Integer baseReduceNum = Integer.valueOf(String.valueOf(cache));
-        Integer reduceCode = reduce("stock_" + userEntity.getUid(), baseReduceNum);
-        if (reduceCode < 0) throw new MessageException(reduceCode,"扣减库存失败");
+        BigDecimal baseReduceNum = BigDecimal.valueOf(Double.valueOf(String.valueOf(cache)));
+        BigDecimal reduceCode = reduce("stock_" + userEntity.getUid(), baseReduceNum);
+        if (reduceCode.compareTo(BigDecimal.ZERO) == -1 || reduceCode.compareTo(BigDecimal.ZERO) == 0) throw new MessageException("扣减库存失败");
         return reduceCode;
     }
 
@@ -143,18 +150,18 @@ public class PublishMessageServiceImpl extends MessageServiceImpl {
         REDUCE_SCRIPT = reduceScript.toString();
     }
 
-    public Integer reduce(String key, Integer num) {
+    public BigDecimal reduce(String key, BigDecimal num) {
         Object data = redisTemplate.opsForValue().get(key);
         if(data == null) throw new MessageException("请重新登录");
-        DefaultRedisScript<Integer> script = new DefaultRedisScript<Integer>();
+        DefaultRedisScript<BigDecimal> script = new DefaultRedisScript<BigDecimal>();
         script.setScriptText(REDUCE_SCRIPT);
-        script.setResultType(Integer.class);
+        script.setResultType(BigDecimal.class);
         Object result = redisTemplate.execute(script,
                 Collections.singletonList(key), num.toString());
-        Integer code = Integer.valueOf(String.valueOf(result));
+        BigDecimal code = BigDecimal.valueOf(Double.valueOf(String.valueOf(result)));
         Long expire = redisTemplate.getExpire(key).longValue();
-        if(expire <= 0L) expire = 7*86400000L;
-        if(code > 0) redisTemplate.expire(key, expire, TimeUnit.SECONDS);
+        if(expire <= 0L) expire = 1L;
+        if(code.compareTo(BigDecimal.ZERO) == -1 || code.compareTo(BigDecimal.ZERO) == 0) redisTemplate.expire(key, expire, TimeUnit.DAYS);
         return code;
     }
 

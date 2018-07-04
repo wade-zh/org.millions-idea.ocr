@@ -33,11 +33,7 @@ public class CaptchaController {
                            @RequestParam("channel") String channel,
                            @RequestParam("token") String token){
         try {
-            long startTime=System.currentTimeMillis();//记录开始时间
             String publish = publishMessageServiceImpl.publish(new UploadCaptchaReq(token, file.getBytes(), channel));
-            long endTime=System.currentTimeMillis();//记录结束时间
-            float excTime=(float)(endTime-startTime)/1000;
-            System.err.println("本次执行耗时:" + excTime + "s");
             return new HttpResp(HttpErrorCodeType.SUCCESS.ordinal(), publish);
         } catch (IOException e) {
             return new HttpResp(HttpErrorCodeType.IOException.ordinal(), HttpErrorCodeType.IOException.toString());

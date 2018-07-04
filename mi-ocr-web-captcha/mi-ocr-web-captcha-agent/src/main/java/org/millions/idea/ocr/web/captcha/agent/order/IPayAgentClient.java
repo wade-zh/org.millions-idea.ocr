@@ -11,6 +11,7 @@ import feign.Headers;
 import org.millions.idea.ocr.web.captcha.entity.agent.order.PayParam;
 import org.millions.idea.ocr.web.common.entity.common.HttpResp;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -24,4 +25,15 @@ public interface IPayAgentClient {
      */
     @PostMapping(value = "/pay/buy", consumes = "application/json")
     HttpResp buy(PayParam payParam);
+
+    /**
+     * 生成交易流水
+     * @param payParam
+     * @return
+     */
+    @PostMapping(value = "/pay/addTradeRecord", consumes = "application/json")
+    HttpResp addTradeRecord(@RequestBody PayParam payParam);
+
+    @GetMapping(value = "/pay/isExitsTradeRecord")
+    HttpResp isExitsTradeRecord(String captchaId);
 }

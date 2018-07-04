@@ -82,15 +82,7 @@ namespace caffe_train_callback
             if (exit) return;
             try
             {
-                Console.WriteLine(log);
-                //WriteLog2(log);
-                /*this.Invoke((EventHandler)delegate {
-                    if (listBox1.Items.Count > 100)
-                    {
-                        listBox1.Items.Clear();
-                    }
-                    listBox1.Items.Add(log);
-                });*/
+                WriteLog(log);
             }
             catch (Exception e)
             {
@@ -194,7 +186,6 @@ namespace caffe_train_callback
                         if (info.values[0] > 0.99)
                         {
                             WriteLog($"高精度出现，第{info.iterNum}次迭代，{info.values[0] * 100}%，accuracy：{info.values[0]}，ctc_loss = {info.values[1]} (* 1 = {info.values[1]} loss)");
-                            return 1;
                         }
                         Log($"测试完毕，accuracy：{info.values[0]}，ctc_loss = {info.values[1]} (* 1 = {info.values[1]} loss)");
                         break;

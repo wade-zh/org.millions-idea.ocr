@@ -14,7 +14,9 @@ public enum Exceptions {
     ORDER_SELECT_WALLET_INFO("查询钱包信息失败"),
     ORDER_REDUCE_WALLET_BALANCE("出账失败"),
     ORDER_ADD_WALLET_BALANCE("入账失败"),
-    ORDER_WALLET_BALANCE_ZERO("余额不足");
+    ORDER_WALLET_BALANCE_ZERO("余额不足"),
+    ORDER_BUY_TIMEOUT("交易超时"),
+    ORDER_BUY_ERROR("交易失败");
 
     private String error;
 

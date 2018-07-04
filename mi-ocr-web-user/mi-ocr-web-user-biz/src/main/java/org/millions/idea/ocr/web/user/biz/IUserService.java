@@ -11,6 +11,7 @@ import org.millions.idea.ocr.web.common.entity.common.HttpResp;
 import org.millions.idea.ocr.web.user.entity.common.LoginResult;
 import org.millions.idea.ocr.web.user.entity.db.Users;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public interface IUserService {
@@ -36,5 +37,5 @@ public interface IUserService {
      * @param token
      * @return
      */
-    Integer getBalance(String token);
+    BigDecimal getBalance(String token);
 }

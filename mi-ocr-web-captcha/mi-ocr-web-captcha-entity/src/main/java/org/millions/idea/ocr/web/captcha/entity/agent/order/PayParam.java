@@ -8,15 +8,23 @@
 package org.millions.idea.ocr.web.captcha.entity.agent.order;
 
 
+import java.math.BigDecimal;
+
 public class PayParam {
     private Integer uid;
-    private Double unitPrice;
+    private BigDecimal unitPrice;
     private Integer type;
     private String remark;
     private Integer fromUid;
     private Exceptions exceptions;
+    private String captchaId;
+    private String recordId;
+
+    public PayParam() {
+    }
 
     public Integer getUid() {
+
         return uid;
     }
 
@@ -24,11 +32,11 @@ public class PayParam {
         this.uid = uid;
     }
 
-    public Double getUnitPrice() {
+    public BigDecimal getUnitPrice() {
         return unitPrice;
     }
 
-    public void setUnitPrice(Double unitPrice) {
+    public void setUnitPrice(BigDecimal unitPrice) {
         this.unitPrice = unitPrice;
     }
 
@@ -64,11 +72,23 @@ public class PayParam {
         this.exceptions = exceptions;
     }
 
-    public PayParam() {
-
+    public String getCaptchaId() {
+        return captchaId;
     }
 
-    public PayParam(Integer uid, Double unitPrice, Integer type, String remark, Integer fromUid, Exceptions exceptions) {
+    public void setCaptchaId(String captchaId) {
+        this.captchaId = captchaId;
+    }
+
+    public String getRecordId() {
+        return recordId;
+    }
+
+    public void setRecordId(String recordId) {
+        this.recordId = recordId;
+    }
+
+    public PayParam(Integer uid, BigDecimal unitPrice, Integer type, String remark, Integer fromUid, Exceptions exceptions, String captchaId, String recordId) {
 
         this.uid = uid;
         this.unitPrice = unitPrice;
@@ -76,5 +96,7 @@ public class PayParam {
         this.remark = remark;
         this.fromUid = fromUid;
         this.exceptions = exceptions;
+        this.captchaId = captchaId;
+        this.recordId = recordId;
     }
 }

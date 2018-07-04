@@ -7,12 +7,14 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-@ComponentScan(value = {"org.millions.idea.*"})
+@ComponentScan(basePackages = "org.millions.idea")
 @MapperScan(value = {"org.millions.idea.ocr.web.user.repository.mapper"})
+@EnableFeignClients
 public class MiOcrWebUserEntranceApplication {
 	final static Logger logger = LogManager.getLogger(MiOcrWebUserEntranceApplication.class);
 

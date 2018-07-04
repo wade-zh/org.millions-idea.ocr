@@ -35,6 +35,7 @@ public class ZuulLimitInterceptor extends HandlerInterceptorAdapter {
      */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        System.err.println(response.getStatus());
         if (response.getStatus() == 429){
             logger.info("访问过于频繁:" + getUser(request) + "用户IP:" + getIPAddress(request));
             response.reset();

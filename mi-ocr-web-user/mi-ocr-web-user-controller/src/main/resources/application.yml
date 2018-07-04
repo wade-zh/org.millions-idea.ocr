@@ -28,10 +28,10 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://192.168.1.104:3306/mi-ocr-user?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useAffectedRows=true
     username: root
-    password: weiwei5371958!
+    password: Mysql@123456
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
-          validation-query: select 'x'
+      validation-query: select 'x'
 eureka:
   instance:
       virtual-host-name: mi-ocr-web-user-service
@@ -39,3 +39,8 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:20000/eureka
+services:
+  order: mi-ocr-web-order-service
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 60000
