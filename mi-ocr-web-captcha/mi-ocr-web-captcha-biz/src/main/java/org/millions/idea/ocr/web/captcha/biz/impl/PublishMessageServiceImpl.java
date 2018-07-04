@@ -34,6 +34,8 @@ import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 @Service("PublishMessageServiceImpl")
 public class PublishMessageServiceImpl extends MessageServiceImpl {
@@ -113,7 +115,7 @@ public class PublishMessageServiceImpl extends MessageServiceImpl {
     }
 
 
-    private BigDecimal  validate(UploadCaptchaReq uploadCaptchaReq, BigDecimal unitAmount) {
+    private BigDecimal validate(UploadCaptchaReq uploadCaptchaReq, BigDecimal unitAmount) {
         // 判断token是否过期，不获取过期的内容
         Object cache = redisTemplate.opsForValue().get(uploadCaptchaReq.getToken());
         if(cache == null) throw new MessageException("请重新登录");
@@ -128,7 +130,7 @@ public class PublishMessageServiceImpl extends MessageServiceImpl {
         cache = redisTemplate.opsForValue().get(uploadCaptchaReq.getChannel());
         if(cache == null) throw new MessageException("类型不存在");
         // 扣减库存
-        BigDecimal baseReduceNum = BigDecimal.valueOf(Double.valueOf(String.valueOf(cache)));
+        BigDecimal baseReduceNum = new BigDecimal(String.valueOf(cache));
         BigDecimal reduceCode = reduce("stock_" + userEntity.getUid(), baseReduceNum);
         if (reduceCode.compareTo(BigDecimal.ZERO) == -1 || reduceCode.compareTo(BigDecimal.ZERO) == 0) throw new MessageException("扣减库存失败");
         return reduceCode;
@@ -150,7 +152,7 @@ public class PublishMessageServiceImpl extends MessageServiceImpl {
         REDUCE_SCRIPT = reduceScript.toString();
     }
 
-    public BigDecimal reduce(String key, BigDecimal num) {
+    public  BigDecimal reduce(String key, BigDecimal num) {
         Object data = redisTemplate.opsForValue().get(key);
         if(data == null) throw new MessageException("请重新登录");
         DefaultRedisScript<BigDecimal> script = new DefaultRedisScript<BigDecimal>();
@@ -158,7 +160,7 @@ public class PublishMessageServiceImpl extends MessageServiceImpl {
         script.setResultType(BigDecimal.class);
         Object result = redisTemplate.execute(script,
                 Collections.singletonList(key), num.toString());
-        BigDecimal code = BigDecimal.valueOf(Double.valueOf(String.valueOf(result)));
+        BigDecimal code = new BigDecimal(String.valueOf(result));
         Long expire = redisTemplate.getExpire(key).longValue();
         if(expire <= 0L) expire = 1L;
         if(code.compareTo(BigDecimal.ZERO) == -1 || code.compareTo(BigDecimal.ZERO) == 0) redisTemplate.expire(key, expire, TimeUnit.DAYS);

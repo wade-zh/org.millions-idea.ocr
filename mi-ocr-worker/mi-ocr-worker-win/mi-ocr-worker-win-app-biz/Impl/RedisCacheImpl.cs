@@ -11,7 +11,7 @@ namespace mi_ocr_worker_win_app_biz
 {
     public class RedisCacheImpl : ICache
     {
-        int Default_Timeout = 600;//默认超时时间（单位秒）
+        int Default_Timeout = 1200;//默认超时时间（单位秒）
         string address;
         JsonSerializerSettings jsonConfig = new JsonSerializerSettings() { ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore, NullValueHandling = NullValueHandling.Ignore };
         ConnectionMultiplexer connectionMultiplexer;

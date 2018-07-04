@@ -210,13 +210,19 @@ namespace mi_ocr_worker_win_app_biz
 
             public static bool Set(string key, string data, DateTime cacheTime)
             {
-                if (!string.IsNullOrWhiteSpace(key) && data != null)
+                try
                 {
-                    //lock (cacheLocker)
+                    if (!string.IsNullOrWhiteSpace(key) && data != null)
                     {
+                        lock (cacheLocker)
+                        {
+                            cache.Set(key, data, cacheTime);
+                        }
                     }
-
-                    cache.Set(key, data, cacheTime);
+                }
+                catch (Exception)
+                {
+                    return false;
                 }
                 return true;
             }

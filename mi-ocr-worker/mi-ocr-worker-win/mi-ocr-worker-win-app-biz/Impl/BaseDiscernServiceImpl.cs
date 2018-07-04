@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -24,7 +25,7 @@ namespace mi_ocr_worker_win_app_biz.Impl
             OnNority(captcha, binary, (code) => {
                 try
                 {
-                    if (code == null)
+                    if (code == null || code.Length == 0)
                     {
                         call(null);
                         return;
@@ -96,10 +97,39 @@ namespace mi_ocr_worker_win_app_biz.Impl
             {
                 try
                 {
-                    if (CacheHelper.Cache.Set(captcha.Ticket, code, DateTime.Now.AddSeconds(30)))
+                    Stopwatch stopwatch = new Stopwatch();
+                    stopwatch.Start();
+                    long start = DateTime.Now.Ticks;
+                    bool retry = false;
+                    while (true)
                     {
-                        Console.WriteLine("Publish redis success!");
+                        try
+                        {
+                            long end = DateTime.Now.Ticks;
+                            if ((end - start) >= 120 * 10000000)
+                            {
+                                Console.WriteLine("连接缓存服务器超时");
+                            }
+                            if (CacheHelper.Cache.Set(captcha.Ticket, code, DateTime.Now.AddSeconds(30)))
+                            {
+                                if (retry)
+                                {
+                                    Console.WriteLine("重新连接缓存服务器成功");
+                                    retry = false;
+                                }
+                                break;
+                            }
+                            retry = true;
+                            Console.WriteLine("重新连接缓存服务器……");
+                            Thread.Sleep(1000);
+                        }
+                        catch (Exception)
+                        {
+                            continue;
+                        }
                     }
+                    stopwatch.Stop();
+                    Console.WriteLine("Publish redis success!" + stopwatch.Elapsed.Milliseconds + "ms");
                 }
                 catch (Exception e)
                 {

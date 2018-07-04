@@ -27,11 +27,14 @@ namespace mi_ocr_worker_win_app_biz
         {
             foreach (var item in DiscernObservers)
             {
+                bool isOk = false;
                 if (item != null)
                 {
                     item.Discern(captcha, (code) => {
+                        isOk = true;
                         call(code);
                     });
+                    break;
                 }
             }
         }

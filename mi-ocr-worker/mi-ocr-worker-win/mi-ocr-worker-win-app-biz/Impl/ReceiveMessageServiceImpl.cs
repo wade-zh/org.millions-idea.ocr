@@ -38,7 +38,7 @@ namespace mi_ocr_worker_win_app_biz
                 }
 
                 // 发送扣费请求到队列中
-                var msg = JsonConvert.SerializeObject(new WalletReq()
+                /*var msg = JsonConvert.SerializeObject(new WalletReq()
                 {
                     channel = captcha.Channel,
                     token = captcha.Token
@@ -47,7 +47,7 @@ namespace mi_ocr_worker_win_app_biz
                 var properties = sendModel.CreateBasicProperties();
                 properties.Persistent = true;// 确保消息是可靠持久的
                 sendModel.BasicPublish(MultiQueue.Exchange, MultiQueue.Wallet, null, body); 
-                Console.WriteLine($"Send deduction request: {msg}");
+                Console.WriteLine($"Send deduction request: {msg}");*/
 
                 call(true);
             });

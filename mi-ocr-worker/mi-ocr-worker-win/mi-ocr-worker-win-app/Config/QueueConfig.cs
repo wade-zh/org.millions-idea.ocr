@@ -1,6 +1,7 @@
 ﻿using mi_ocr_worker_win_app_biz;
 using mi_ocr_worker_win_app_biz.Util;
 using mi_ocr_worker_win_app_entity;
+using mi_ocr_worker_win_app_utility;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System;
@@ -18,6 +19,8 @@ namespace mi_ocr_worker_win_app.Config
         public static IList<IConnection> Connections { get; set; } = new List<IConnection>();
         public static IModel receiveModel { get; set; }
         public static IModel sendModel { get; set; }
+
+        public static IDictionary<string, int> tags { get; set; } 
 
         public static void StartupMessageReceive(string queue, Action<EventingBasicConsumer, IModel, string, Action<bool>> action)
         {
@@ -56,6 +59,7 @@ namespace mi_ocr_worker_win_app.Config
         {
             try
             {
+                tags = new Dictionary<string, int>();
                 receiveModel = Connections.First().CreateModel();
                 sendModel = Connections.First().CreateModel();
 
@@ -70,12 +74,15 @@ namespace mi_ocr_worker_win_app.Config
                 var consumer = new EventingBasicConsumer(receiveModel);
                 consumer.Received += (model, ea) =>
                 {
+                    string hash = string.Empty;
                     try
                     {
                         Console.WriteLine("Received message");
 
                         var _body = ea.Body;
                         var _message = Encoding.UTF8.GetString(_body);
+
+                        hash = Md5Util.GetMD5Hash(_body);
 
                         Stopwatch stopwatch = new Stopwatch();
                         stopwatch.Start();
@@ -93,13 +100,18 @@ namespace mi_ocr_worker_win_app.Config
                                 else
                                 {
                                     // 消费异常，消息重新发回队列
-                                    //cm.BasicNack(ea.DeliveryTag, false, true);
-                                    //Console.WriteLine("Cureent message is BasicNack");
+                                    cm.BasicReject(ea.DeliveryTag, true);
+                                    Console.WriteLine("Cureent message is BasicReject");
                                 }
                             }
                             catch (Exception e)
                             {
                                Console.WriteLine("EventingBasicConsumer exception:" + e.Message);
+
+                                if (IsOutMaxRetryCount(hash)) {
+                                    Console.WriteLine("OutMaxRetryCount: BasicAck");
+                                    ((EventingBasicConsumer)model).Model.BasicAck(deliveryTag: ea.DeliveryTag, multiple: false);
+                                }
                             }
                             stopwatch.Stop();
                             Console.WriteLine($"{ea.DeliveryTag} Stopwatch is {stopwatch.Elapsed.TotalSeconds}/s");
@@ -119,6 +131,23 @@ namespace mi_ocr_worker_win_app.Config
 
                 Console.WriteLine("BindQueue exception:" + e.ToString());
             }
+        }
+
+
+        private static bool IsOutMaxRetryCount(string hash) {
+            bool isExists = tags.Any(h => h.Key.Equals(hash));
+            if (!isExists) {
+                tags.Add(hash, 1);
+                return false;
+            }
+            int maxCount = tags.Where(k => k.Key.Equals(hash)).First().Value;
+            if (maxCount > 3)
+            {
+                tags.Remove(hash);
+                return true;
+            }
+            tags.Add(hash, maxCount + 1);
+            return false;
         }
 
 
