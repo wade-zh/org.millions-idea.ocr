@@ -82,7 +82,7 @@ namespace caffe_train_callback
             if (exit) return;
             try
             {
-                WriteLog(log);
+                //WriteLog(log);
             }
             catch (Exception e)
             {
@@ -96,7 +96,15 @@ namespace caffe_train_callback
             Caffe.TraindEventCallback func = new Caffe.TraindEventCallback(trainCallback);
             Caffe.setTraindEventCallback(func);
             new Thread(new ThreadStart(() => {
-                Caffe.train_network("train --solver=solver.prototxt");
+                try
+                {
+                    Caffe.train_network("train --solver=solver.prototxt");
+                }
+                catch (Exception ex)
+                {
+                    WriteLog2(ex.ToString());
+                    MessageBox.Show(ex.Message);
+                }
             })).Start();
         }
 

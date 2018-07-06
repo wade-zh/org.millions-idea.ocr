@@ -49,3 +49,8 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:20000/eureka
+logging:
+  level:
+    org.millions.idea.ocr.web.captcha.agent.IUserAgentService: DEBUG
+    org.millions.idea.ocr.web.captcha.agent.IWalletAgentService: DEBUG
+    org.millions.idea.ocr.web.order.repository.mapper: DEBUG
