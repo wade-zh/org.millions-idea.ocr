@@ -82,7 +82,7 @@ namespace caffe_train_callback
             if (exit) return;
             try
             {
-                //WriteLog(log);
+                WriteLog2(log);
             }
             catch (Exception e)
             {
@@ -93,6 +93,7 @@ namespace caffe_train_callback
 
         private unsafe void btnTrain_Click(object sender, EventArgs e)
         {
+            this.btnTrain.Enabled = false;
             Caffe.TraindEventCallback func = new Caffe.TraindEventCallback(trainCallback);
             Caffe.setTraindEventCallback(func);
             new Thread(new ThreadStart(() => {
@@ -103,7 +104,16 @@ namespace caffe_train_callback
                 catch (Exception ex)
                 {
                     WriteLog2(ex.ToString());
-                    MessageBox.Show(ex.Message);
+                    this.Invoke(new Action(() => {
+                        if (this.checkBox1.Checked)
+                        {
+                            Process.Start("shutdown.exe", "-s");//关机
+                        }
+                        else
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                    }));
                 }
             })).Start();
         }
@@ -215,6 +225,7 @@ namespace caffe_train_callback
 
         private unsafe void btnContinueTrain_Click(object sender, EventArgs e)
         {
+            this.btnContinueTrain.Enabled = false;
             Caffe.TraindEventCallback func = new Caffe.TraindEventCallback(trainCallback);
             Caffe.setTraindEventCallback(func);
             new Thread(new ThreadStart(() => {
@@ -225,7 +236,16 @@ namespace caffe_train_callback
                 catch (Exception ex)
                 {
                     WriteLog2(ex.ToString());
-                    MessageBox.Show(ex.Message);
+                    this.Invoke(new Action(()=> {
+                        if (this.checkBox1.Checked)
+                        {
+                            Process.Start("shutdown.exe", "-s");//关机
+                        }
+                        else
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                    }));
                 }
             })).Start();
         }
