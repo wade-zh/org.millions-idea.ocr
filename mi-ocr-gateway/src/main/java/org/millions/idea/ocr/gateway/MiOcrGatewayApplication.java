@@ -17,7 +17,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.scheduling.annotation.EnableAsync;
 
-@SpringBootApplication()
+@SpringBootApplication
 @EnableDiscoveryClient
 @EnableAsync
 @ComponentScan(basePackages = "org.millions.idea")

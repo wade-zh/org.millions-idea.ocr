@@ -32,7 +32,7 @@ namespace mi_ocr_worker_win_app_biz.Impl
                     }
                     call(code);
                     PublishRedisMessage(captcha, binary, code);
-                    PublishMongoMessage(captcha, binary, code);
+                    //PublishMongoMessage(captcha, binary, code);
                 }
                 catch (Exception e)
                 {
