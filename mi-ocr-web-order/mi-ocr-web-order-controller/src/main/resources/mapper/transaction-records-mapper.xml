@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.millions.idea.ocr.web.order.repository.mapper.ITransactionRecordMapperRepository">
+    <sql id="fields">
+      record_id,record_no,from_uid,to_uid,`trade_date`,`trade_type`,`trade_amount`,`remark`
+    </sql>
+    <sql id="f_fields">
+      auto_id,<include refid="fields"/>
+    </sql>
+
+    <insert id="insert" parameterType="org.millions.idea.ocr.web.order.entity.db.MoneyChangeLogEntity">
+        INSERT INTO transaction_records(<include refid="fields"/>)
+        VALUES(#{recordId},#{recordNo},#{fromUid},#{toUid},#{tradeDate},#{tradeType},#{tradeAmount},#{remark});
+    </insert>
+
+    <!--消费存储过程-->
+    <select id="buy" parameterType="map" statementType="CALLABLE">
+      {
+         call buy(
+               #{captchaId,mode=IN,jdbcType=VARCHAR},
+               #{fromUid,mode=IN,jdbcType=INTEGER},
+               #{toUid,mode=IN,jdbcType=INTEGER},
+               #{unitAmount,mode=IN,jdbcType=DECIMAL},
+               #{type,mode=IN,jdbcType=INTEGER},
+               #{status,mode=OUT,jdbcType=VARCHAR}
+         )
+      }
+    </select>
+
+    <!--延时的消费存储过程-->
+    <select id="delayedBuy" parameterType="map" statementType="CALLABLE">
+        {
+            call delayedBuy(
+                #{recordId,mode=IN,jdbcType=VARCHAR},
+                #{fromUid,mode=IN,jdbcType=INTEGER},
+                #{toUid,mode=IN,jdbcType=INTEGER},
+                #{unitAmount,mode=IN,jdbcType=DECIMAL},
+                #{type,mode=IN,jdbcType=INTEGER},
+                #{status,mode=OUT,jdbcType=VARCHAR}
+            )
+        }
+    </select>
+
+
+    <select id="selectByCaptchaId" resultType="org.millions.idea.ocr.web.order.entity.db.TransactionRecordEntity">
+        SELECT <include refid="f_fields"/> FROM transaction_records WHERE captcha_id = #{captchaId}
+    </select>
+</mapper>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.millions.idea.ocr.web.user.repository.mapper.IInformationMapperRepository">
+    <sql id="fields">
+       uid,balance
+    </sql>
+    <sql id="f_fields">
+        info_id,<include refid="fields"/>
+    </sql>
+
+    <update id="query">
+       UPDATE informations SET balance = balance - (SELECT unit_amount FROM channels WHERE uid = #{uid} AND code = #{channel} LIMIT 1) WHERE uid = #{uid}
+    </update>
+</mapper>

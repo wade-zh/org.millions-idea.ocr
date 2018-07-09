@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.millions.idea.ocr.web.order.repository.mapper.IMoneyChangeLogMapperRepository">
+    <sql id="fields">
+       log_id,`record_id`,from_uid,trade_type,trade_amount,`account_balance`,`remark`,`add_date`
+    </sql>
+    <sql id="f_fields">
+        auto_id,<include refid="fields"/>
+    </sql>
+
+    <insert id="insert" parameterType="org.millions.idea.ocr.web.order.entity.db.MoneyChangeLogEntity">
+        INSERT INTO money_change_logs(<include refid="fields"/>)
+        VALUES(#{logId},#{recordId},#{fromUid},#{tradeType},#{tradeAmount},(SELECT balance FROM wallet WHERE uid = #{fromUid}),#{remark},#{addDate});
+    </insert>
+</mapper>

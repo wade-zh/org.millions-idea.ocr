@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.millions.idea.ocr.web.order.repository.mapper.IWalletMapperRepository">
+    <sql id="fields">
+       `uid`,balance,edit_date,`state`,version
+    </sql>
+    <sql id="f_fields">
+        auto_id,<include refid="fields"/>
+    </sql>
+
+    <select id="selectByUid" resultType="org.millions.idea.ocr.web.order.entity.db.WalletEntity">
+        SELECT <include refid="f_fields"/> FROM wallet WHERE uid = #{uid}
+    </select>
+
+    <update id="reduceBalance">
+       UPDATE wallet SET balance = balance - #{amount}, version = version + 1 WHERE uid = #{uid} AND `state` = 0 AND balance >= #{amount} AND version = #{version};
+    </update>
+
+    <update id="addBalance">
+        UPDATE wallet SET balance = balance + #{amount} WHERE uid = #{uid} AND `state` = 0;
+    </update>
+
+</mapper>
