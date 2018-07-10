@@ -40,13 +40,13 @@ namespace mi_ocr_worker_win_app
 
             // Bind message source
             MessageSourceConfig.Configure(LocalDiscernService, LzRemoteDiscernService, RkRemoteDiscernService);
-            MessageSourceConfig.Configure(LocalReportMessageService, LzReportMessageService, RkReportMessageService);
+            //MessageSourceConfig.Configure(LocalReportMessageService, LzReportMessageService, RkReportMessageService);
 
             // Bind receive messsages callback method
             QueueConfig.StartupMessageReceive(MultiQueue.Captcha, ReceiveMessageService.OnMessage);
 
             // Bind report error messsages callback method
-            QueueConfig.StartupMessageReceive(MultiQueue.Report, ReportMessageService.OnMessage);
+           //QueueConfig.StartupMessageReceive(MultiQueue.Report, ReportMessageService.OnMessage);
 
 
             #region print some messages

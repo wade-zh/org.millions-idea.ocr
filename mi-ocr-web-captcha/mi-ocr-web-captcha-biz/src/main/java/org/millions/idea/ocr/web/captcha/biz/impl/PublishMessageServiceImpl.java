@@ -57,13 +57,24 @@ public class PublishMessageServiceImpl extends MessageServiceImpl {
     /**
      * publish to report error captcha queue
      *
-     * @param cid
      * @return
      */
     @Override
-    @Async
-    public void publish(String cid) {
-        rabbitUtil.publish(multiQueue.getReport(), cid);
+    public boolean publish(String channel, String token, String captchaId) {
+        String userJson = SessionUtil.getUserInfo(redisTemplate, token);
+        if(userJson == null) throw new MessageException("请重新登录");
+        UserEntity userEntity = JsonUtil.getModel(userJson, UserEntity.class);
+
+        BigDecimal unitAmount = getChannelAmount(channel);
+
+        PayParam payParam = new PayParam();
+        payParam.setUid(userEntity.getUid());
+        payParam.setUnitPrice(unitAmount);
+        payParam.setCaptchaId(captchaId);
+        logger.info("报错参数:" + JsonUtil.getJson(payParam));
+
+        rabbitUtil.publish(multiQueue.getReport(), JsonUtil.getJson(payParam));
+        return true;
     }
 
 

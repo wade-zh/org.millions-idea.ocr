@@ -31,10 +31,11 @@ CREATE TABLE `transaction_records`(
 	`from_uid` int(11) NOT NULL COMMENT '发起方账户',
 	`to_uid` int(11) NOT NULL COMMENT '对方账户',
 	`trade_date` datetime NOT NULL DEFAULT NOW() COMMENT '交易日',
-	`trade_type` int(11) NOT NULL COMMENT '交易类别(1=充值,2=消费,3=报错)',
+	`trade_type` int(11) NOT NULL COMMENT '交易类别(1=充值,2=消费)',
 	`trade_amount` decimal(16,4) NOT NULL COMMENT '交易额',
 	`remark` varchar(100) NOT NULL COMMENT '摘要',
 	`ack` int(11) DEFAULT 0 COMMENT '确认状态(0=未确认,1=已确认)',
+	`isAvailable` int(11) DEFAULT 1 COMMENT '是否可用(0=不可用,1=可用)',
 	PRIMARY KEY(auto_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='交易流水表';
 
@@ -50,68 +51,78 @@ CREATE TABLE `wallet`(
 	PRIMARY KEY(auto_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='钱包表';
 
-		
+
+
 -- in captchaId varchar(32),in fromUid int, in toUid int, in unitAmount decimal(16,4), in type int, out status nvarchar(32)
 -- buy 存储过程
-CREATE PROCEDURE `buy`(in fromUid int, in toUid int, in unitAmount decimal(16,4), in type int, out status nvarchar(32))
+CREATE PROCEDURE `buy`(in captchaId varchar(32),in fromUid int, in toUid int, in unitAmount decimal(16,4), in type int, out status nvarchar(32))
 BEGIN
 	DECLARE errCode INTEGER DEFAULT 0;
 	DECLARE CONTINUE HANDLER FOR SQLEXCEPTION SET errCode=1;-- 异常时设置为1
 	SET AUTOCOMMIT = 0;
 	START TRANSACTION;
 
-	#1.插入流水
-	SET @record_id = REPLACE(UUID(),'-','');
-	SET @ack = 0;
-	IF type = 3 THEN 
-		SET @ack = 1;
-	END IF;
-	INSERT INTO transaction_records(record_id, captchaId, from_uid,to_uid,trade_type,trade_amount,remark,ack,)
-	VALUES(@record_id,captchaId, fromUid, toUid, `type`, unitAmount, '转账',@ack);
-	IF ROW_COUNT() = 0 THEN
-		SET errCode = 1;
-		SET status = 'ORDER_CREATE_TRANSACTION_RECORD';
-	ELSE
-		#2.修改余额
-		SET @balance = (SELECT balance FROM wallet WHERE `uid` = fromUid);
-		IF @balance <= 0 OR @balance <= unitAmount THEN
+
+	#作废旧订单
+	IF LENGTH(captchaId) > 0 THEN
+		UPDATE transaction_records SET isAvailable = 0, trade_date = NOW() WHERE captcha_id = captchaId AND from_uid = toUid AND `to_uid` = fromUid;
+		IF ROW_COUNT() = 0 THEN
 			SET errCode = 1;
-			SET status = 'ORDER_WALLET_BALANCE_ZERO';
+		END IF;-- 禁用历史订单end
+	END IF;-- 判断验证码end
+	
+	#1.插入流水
+	IF errCode = 0 THEN
+		SELECT '插入流水';
+		SET @record_id = REPLACE(UUID(),'-','');
+		INSERT INTO transaction_records(record_id, captchaId, from_uid,to_uid,trade_type,trade_amount,remark,ack)
+			VALUES(@record_id,captchaId, fromUid, toUid, `type`, unitAmount, '转账', 0);
+		IF ROW_COUNT() = 0 THEN
+			SET errCode = 1;
+			SET status = 'ORDER_CREATE_TRANSACTION_RECORD';
 		ELSE
-			SET @version = (SELECT version FROM wallet WHERE `uid` = fromUid);
-			UPDATE wallet SET balance = balance - unitAmount,edit_date = NOW(), version = version + 1 WHERE `uid` = fromUid AND `state` = 0 AND balance >= unitAmount AND version = @version;
-			IF ROW_COUNT() = 0 THEN
+			#2.修改余额
+			SET @balance = (SELECT balance FROM wallet WHERE `uid` = fromUid);
+			IF @balance <= 0 OR @balance <= unitAmount THEN
 				SET errCode = 1;
-				SET status = 'ORDER_REDUCE_WALLET_BALANCE';
+				SET status = 'ORDER_WALLET_BALANCE_ZERO';
 			ELSE
-				SET @version = (SELECT version FROM wallet WHERE `uid` = toUid);
-				UPDATE wallet SET balance = balance + unitAmount,edit_date = NOW(), version = version + 1 WHERE `uid` = toUid AND `state` = 0 AND version = @version;
+				SET @version = (SELECT version FROM wallet WHERE `uid` = fromUid);
+				UPDATE wallet SET balance = balance - unitAmount,edit_date = NOW(), version = version + 1 WHERE `uid` = fromUid AND `state` = 0 AND balance >= unitAmount AND version = @version;
 				IF ROW_COUNT() = 0 THEN
 					SET errCode = 1;
-					SET status = 'ORDER_ADD_WALLET_BALANCE';
-				ELSE 
-					#3.资金变动
-					INSERT INTO money_change_logs(log_id,`record_id`,from_uid,trade_type,trade_amount,`account_balance`,`remark`,`add_date`) VALUES(REPLACE(UUID(),'-',''), @record_id, fromUid, 2, unitAmount, (SELECT balance FROM wallet WHERE uid = fromUid), '支出', NOW());
+					SET status = 'ORDER_REDUCE_WALLET_BALANCE';
+				ELSE
+					SET @version = (SELECT version FROM wallet WHERE `uid` = toUid);
+					UPDATE wallet SET balance = balance + unitAmount,edit_date = NOW(), version = version + 1 WHERE `uid` = toUid AND `state` = 0 AND version = @version;
 					IF ROW_COUNT() = 0 THEN
 						SET errCode = 1;
-						SET status = 'ORDER_CREATE_MONEY_CHANGE_MINUS_LOG';
-					ELSE
-						INSERT INTO money_change_logs(log_id,`record_id`,from_uid,trade_type,trade_amount,`account_balance`,`remark`,`add_date`) VALUES(REPLACE(UUID(),'-',''), @record_id, toUid, 1, unitAmount, (SELECT balance FROM wallet WHERE uid = toUid), '收入', NOW());
+						SET status = 'ORDER_ADD_WALLET_BALANCE';
+					ELSE 
+						#3.资金变动
+						INSERT INTO money_change_logs(log_id,`record_id`,from_uid,trade_type,trade_amount,`account_balance`,`remark`,`add_date`) VALUES(REPLACE(UUID(),'-',''), @record_id, fromUid, 2, unitAmount, (SELECT balance FROM wallet WHERE uid = fromUid), '支出', NOW());
 						IF ROW_COUNT() = 0 THEN
 							SET errCode = 1;
-							SET status = 'ORDER_CREATE_MONEY_CHANGE_PLUS_LOG';
-						ELSE 
-							SET errCode = 0;
-							SET status = '';
-						END IF;-- 收入账单end
-					END IF;-- 支出账单end
-				END IF;-- 增加余额end
-			END IF;-- 减少余额end
-		END IF;-- 查询余额end
-	END IF;-- 插入流水end
-
+							SET status = 'ORDER_CREATE_MONEY_CHANGE_MINUS_LOG';
+						ELSE
+							INSERT INTO money_change_logs(log_id,`record_id`,from_uid,trade_type,trade_amount,`account_balance`,`remark`,`add_date`) VALUES(REPLACE(UUID(),'-',''), @record_id, toUid, 1, unitAmount, (SELECT balance FROM wallet WHERE uid = toUid), '收入', NOW());
+							IF ROW_COUNT() = 0 THEN
+								SET errCode = 1;
+								SET status = 'ORDER_CREATE_MONEY_CHANGE_PLUS_LOG';
+							ELSE 
+								SET errCode = 0;
+								SET status = '';
+							END IF;-- 收入账单end
+						END IF;-- 支出账单end
+					END IF;-- 增加余额end
+				END IF;-- 减少余额end
+			END IF;-- 查询余额end
+		END IF;-- 插入流水end
+	END IF;-- 作废旧订单end
+	
+	
 	IF errCode = 1 THEN
-		IF len(status) = 0 THEN
+		IF LENGTH(status) = 0 OR STATUS = NULL THEN
 			SET status = 'ORDER_BUY_ERROR';
 		END IF;
 		ROLLBACK;
@@ -120,11 +131,6 @@ BEGIN
 		COMMIT;
 	END IF;
 END;
-
-
-
-
-
 
 
 
@@ -138,12 +144,9 @@ BEGIN
 	START TRANSACTION;
 
 
-	SET errCode = 1;
-	SET status = 'NULL';
-
 	#1.插入流水
 	SET @record_id = recordId;
-	UPDATE transaction_records SET ack = 1 WHERE `from_uid` = fromUid AND record_id = recordId AND ack = 0;
+	UPDATE transaction_records SET ack = 1, trade_date = NOW() WHERE `from_uid` = fromUid AND `to_uid` = toUid AND record_id = recordId AND ack = 0 AND isAvailable = 1;
 	IF ROW_COUNT() = 0 THEN
 		SET errCode = 1;
 		SET status = 'ORDER_ACK';
@@ -186,7 +189,7 @@ BEGIN
 		END IF;-- 查询余额end
 	END IF;-- 插入流水end
 	IF errCode = 1 THEN
-		IF len(status) = 0 THEN
+		IF LENGTH(status) = 0 OR STATUS = NULL THEN
 			SET status = 'ORDER_BUY_ERROR';
 		END IF;
 		ROLLBACK;

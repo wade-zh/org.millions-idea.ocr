@@ -48,8 +48,8 @@ public class CaptchaController {
     }
 
     @GetMapping("report")
-    public void report(String captchaId){
+    public void report(String token, String channel, String captchaId){
         if(captchaId == null || captchaId.length() == 0) return;
-        publishMessageServiceImpl.publish(captchaId);
+        publishMessageServiceImpl.publish(token, channel, captchaId);
     }
 }

@@ -49,12 +49,12 @@ public class MessageServiceImpl implements IMessageService {
     /**
      * publish to report error captcha queue
      *
-     * @param cid
      * @return
      */
     @Override
-    @Async
-    public void publish(String cid) {}
+    public boolean publish(String channel, String token, String captchaId) {
+        return false;
+    }
 
     @Override
     public String getCaptcha(String cid) {

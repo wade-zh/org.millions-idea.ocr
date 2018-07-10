@@ -41,6 +41,11 @@ public class RabbitTemplateConfiguration {
     private IPayMessageQueueListener reduceMessageQueueListenerImpl;
 
 
+    @Autowired
+    @Qualifier("ReportMessageQueueListener")
+    private IPayMessageQueueListener reportMessageQueueListenerImpl;
+
+
     @Bean(name="defaultConnectionFactory")
     @Primary
     public ConnectionFactory firstConnectionFactory(){
@@ -111,12 +116,10 @@ public class RabbitTemplateConfiguration {
                     try{
                         String message = new String(body, "UTF-8");
                         hash = Md5Util.getMd5(message);
-                        reduceMessageQueueListenerImpl.onMessage(channel, envelope, message);
+                        reportMessageQueueListenerImpl.onMessage(channel, envelope, message);
                     } catch (Exception e){
                         logger.error("onMessage异常:" + e.toString());
-                        if (e.getMessage().equalsIgnoreCase("A query was run and no Result Maps were found for the Mapped Statement")
-                                || e.getMessage().equalsIgnoreCase("余额不足")
-                                || isOutMaxRetryCount(hash)) {
+                        if (isOutMaxRetryCount(hash)) {
                             errorPrint("超过重试上限，删除此消息:" + hash);
                             channel.basicAck(envelope.getDeliveryTag(), false);
                             return;
@@ -130,7 +133,7 @@ public class RabbitTemplateConfiguration {
             logger.error("定义并绑定队列时抛出异常:" + e.toString());
             errorPrint("定义并绑定队列时抛出异常");
         }finally {
-            return multiQueue.getOrderPay();
+            return multiQueue.getReport();
         }
     }
 
