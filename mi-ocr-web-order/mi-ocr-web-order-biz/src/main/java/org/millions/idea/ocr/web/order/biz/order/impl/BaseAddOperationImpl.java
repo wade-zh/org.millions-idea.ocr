@@ -46,6 +46,7 @@ public class BaseAddOperationImpl<T,R>  extends BaseOrderServiceImpl<T,R>  {
         entity.setRemark(model.getRemark());
         entity.setTradeDate(DateUtil.convert(new Timestamp(System.currentTimeMillis())));
         entity.setCaptchaId(model.getCaptchaId());
+        entity.setChannelId(model.getChannelId());
         int lineCount = transactionRecordMapperRepository.insert(entity);
         if(lineCount <= 0) throw new FinanceException(String.format("%s失败", model.getRemark()), model.getExceptions());
         return recordId;

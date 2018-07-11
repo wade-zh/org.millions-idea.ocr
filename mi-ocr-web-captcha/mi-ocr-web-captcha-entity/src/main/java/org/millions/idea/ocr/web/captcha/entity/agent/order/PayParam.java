@@ -19,12 +19,9 @@ public class PayParam {
     private Exceptions exceptions;
     private String captchaId;
     private String recordId;
-
-    public PayParam() {
-    }
+    private String channelId;
 
     public Integer getUid() {
-
         return uid;
     }
 
@@ -88,7 +85,19 @@ public class PayParam {
         this.recordId = recordId;
     }
 
-    public PayParam(Integer uid, BigDecimal unitPrice, Integer type, String remark, Integer fromUid, Exceptions exceptions, String captchaId, String recordId) {
+    public String getChannelId() {
+        return channelId;
+    }
+
+    public void setChannelId(String channelId) {
+        this.channelId = channelId;
+    }
+
+    public PayParam() {
+
+    }
+
+    public PayParam(Integer uid, BigDecimal unitPrice, Integer type, String remark, Integer fromUid, Exceptions exceptions, String captchaId, String recordId, String channelId) {
 
         this.uid = uid;
         this.unitPrice = unitPrice;
@@ -98,5 +107,6 @@ public class PayParam {
         this.exceptions = exceptions;
         this.captchaId = captchaId;
         this.recordId = recordId;
+        this.channelId = channelId;
     }
 }

@@ -1,5 +1,8 @@
 INSERT INTO wallet(`uid`,balance,edit_date,`state`) VALUES(1,10000000,NOW(),0);
 INSERT INTO wallet(`uid`,balance,edit_date,`state`) VALUES(2,1,NOW(),0);
+
+
+
 INSERT INTO `transaction_records` (`auto_id`, `record_id`, `record_no`, `captcha_id`, `from_uid`, `to_uid`, `trade_date`, `trade_type`, `trade_amount`, `remark`, `ack`, `isAvailable`) VALUES ('1', 'fb1156e086154fc3af1fdc9dfe7d466a', 'A873796782', 'fb1156e086154fc3af1fdc9df555466a', '2', '1', '2018-07-10 16:33:35', '1', '100.0000', '充值', '0', '1');
 
 

@@ -21,7 +21,7 @@ public interface IMessageService {
      * publish to report error captcha queue
      * @return
      */
-    boolean publish(String channel, String token, String captchaId) ;
+    boolean publish(String token, String channel, String captchaId) ;
 
     String getCaptcha(String cid);
 }

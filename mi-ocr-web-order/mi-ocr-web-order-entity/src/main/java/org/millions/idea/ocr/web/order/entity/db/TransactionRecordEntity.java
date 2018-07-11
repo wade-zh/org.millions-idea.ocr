@@ -21,6 +21,7 @@ public class TransactionRecordEntity {
     private BigDecimal tradeAmount;
     private String remark;
     private String captchaId;
+    private String channelId;
     private Integer ack;
 
     public Integer getAutoId() {
@@ -103,6 +104,14 @@ public class TransactionRecordEntity {
         this.captchaId = captchaId;
     }
 
+    public String getChannelId() {
+        return channelId;
+    }
+
+    public void setChannelId(String channelId) {
+        this.channelId = channelId;
+    }
+
     public Integer getAck() {
         return ack;
     }
@@ -115,7 +124,7 @@ public class TransactionRecordEntity {
 
     }
 
-    public TransactionRecordEntity(Integer autoId, String recordId, String recordNo, Integer fromUid, Integer toUid, Timestamp tradeDate, Integer tradeType, BigDecimal tradeAmount, String remark, String captchaId, Integer ack) {
+    public TransactionRecordEntity(Integer autoId, String recordId, String recordNo, Integer fromUid, Integer toUid, Timestamp tradeDate, Integer tradeType, BigDecimal tradeAmount, String remark, String captchaId, String channelId, Integer ack) {
 
         this.autoId = autoId;
         this.recordId = recordId;
@@ -127,6 +136,7 @@ public class TransactionRecordEntity {
         this.tradeAmount = tradeAmount;
         this.remark = remark;
         this.captchaId = captchaId;
+        this.channelId = channelId;
         this.ack = ack;
     }
 }

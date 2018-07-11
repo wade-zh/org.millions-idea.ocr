@@ -60,7 +60,7 @@ public class PublishMessageServiceImpl extends MessageServiceImpl {
      * @return
      */
     @Override
-    public boolean publish(String channel, String token, String captchaId) {
+    public boolean publish(String token, String channel, String captchaId) {
         String userJson = SessionUtil.getUserInfo(redisTemplate, token);
         if(userJson == null) throw new MessageException("请重新登录");
         UserEntity userEntity = JsonUtil.getModel(userJson, UserEntity.class);
@@ -98,6 +98,7 @@ public class PublishMessageServiceImpl extends MessageServiceImpl {
         payParam.setUid(userEntity.getUid());
         payParam.setUnitPrice(unitAmount);
         payParam.setCaptchaId(captchaId.toString());
+        payParam.setChannelId(model.getChannel());
 
         logger.info("扣费参数:" + JsonUtil.getJson(payParam));
         HttpResp resp = payAgentClient.addTradeRecord(payParam);

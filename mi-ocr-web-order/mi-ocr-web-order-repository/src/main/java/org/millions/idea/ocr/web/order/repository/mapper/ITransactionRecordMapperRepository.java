@@ -19,6 +19,8 @@ public interface ITransactionRecordMapperRepository {
 
     void buy(Map map);
 
+    void report(Map map);
+
     void delayedBuy(Map map);
 
     TransactionRecordEntity selectByCaptchaId(@Param("captchaId") String captchaId);

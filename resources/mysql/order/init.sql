@@ -28,6 +28,7 @@ CREATE TABLE `transaction_records`(
 	`record_id` varchar(32) NOT NULL COMMENT 'uuid',
 	`record_no` varchar(52) NOT NULL DEFAULT 'A873796782' COMMENT '交易号(默认生成规则为app名称对应的ascii码)',
 	`captcha_id` varchar(32) DEFAULT NULL COMMENT '验证码票据',
+	`channel_id` varchar(32) DEFAULT NULL COMMENT '通道代码',
 	`from_uid` int(11) NOT NULL COMMENT '发起方账户',
 	`to_uid` int(11) NOT NULL COMMENT '对方账户',
 	`trade_date` datetime NOT NULL DEFAULT NOW() COMMENT '交易日',
@@ -50,7 +51,6 @@ CREATE TABLE `wallet`(
 	`version` int(11) DEFAULT 0,
 	PRIMARY KEY(auto_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='钱包表';
-
 
 
 -- in captchaId varchar(32),in fromUid int, in toUid int, in unitAmount decimal(16,4), in type int, out status nvarchar(32)
@@ -204,6 +204,35 @@ END;
 
 
 
+
+-- in captchaId varchar(32),in fromUid int, in toUid int, in unitAmount decimal(16,4), in type int, out status nvarchar(32)
+-- report 存储过程
+CREATE PROCEDURE `report`(in captchaId varchar(32),in fromUid int, in toUid int, in unitAmount decimal(16,4), in type int, out status nvarchar(32))
+BEGIN
+	DECLARE errCode INTEGER DEFAULT 0;
+	DECLARE CONTINUE HANDLER FOR SQLEXCEPTION SET errCode=1;-- 异常时设置为1
+	SET AUTOCOMMIT = 0;
+	START TRANSACTION;
+
+
+	#作废旧订单
+	IF LENGTH(captchaId) > 0 THEN
+		UPDATE transaction_records SET isAvailable = 0, trade_date = NOW() WHERE captcha_id = captchaId AND from_uid = toUid AND `to_uid` = fromUid;
+		IF ROW_COUNT() = 0 THEN
+			SET errCode = 1;
+		END IF;-- 禁用历史订单end
+	END IF;-- 判断验证码end
+
+	IF errCode = 1 THEN
+		IF LENGTH(status) = 0 OR STATUS = NULL THEN
+			SET status = 'ORDER_BUY_ERROR';
+		END IF;
+		ROLLBACK;
+	ELSE
+		SET status = 'SUCCESS';
+		COMMIT;
+	END IF;
+END;
 
 
 
