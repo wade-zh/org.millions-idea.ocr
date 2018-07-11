@@ -1,0 +1,16 @@
+<th:block xmlns:th="http://www.thymeleaf.org" th:fragment="footer">
+    <script th:replace="${script} :: script('../js/material-1.3.js')"></script>
+    <script th:replace="${script} :: script('../layui/layui.all.js')"></script>
+    <script>
+        layui.use(['carousel', 'form'], function(){
+            layui.carousel.render({
+                elem: '#banner'
+                ,width: '100%'
+                ,height: '550px'
+                ,interval: 300000
+            });
+        });
+    </script>
+    <th:block th:replace="shared/utils :: utils" />
+
+</th:block>
