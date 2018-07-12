@@ -1766,6 +1766,8 @@ code[class*=language-],pre[class*=language-] {
 
 .mi-center-ad-bg{
   background-color: #fff !important;
+    margin:0 auto;
+    text-align: center;
 }
 
 .mi-cell {
@@ -1773,13 +1775,14 @@ code[class*=language-],pre[class*=language-] {
 }
 
 .mi-cell-text{
-  padding-left: 200px;
+  /*padding-left: 200px;*/
+    text-align: initial;
 }
 
 .mi-cell-image{
-  padding-left: 100px;
-  position: relative;
-  top: 50px;
+    padding-left: 100px;
+    position: relative;
+    top: 60px;
 }
 
 

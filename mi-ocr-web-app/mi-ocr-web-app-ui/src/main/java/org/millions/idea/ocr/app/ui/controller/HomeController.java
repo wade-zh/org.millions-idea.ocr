@@ -17,4 +17,10 @@ public class HomeController {
     public String index(){
         return "un_login/index";
     }
+
+    @GetMapping(value = {"/login"})
+    public String login(){return "un_login/login";}
+
+    @GetMapping(value = {"/signin"})
+    public String signin(){return "un_login/signin";}
 }

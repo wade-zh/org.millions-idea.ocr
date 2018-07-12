@@ -3967,11 +3967,11 @@ body .layui-table-tips .layui-layer-content {
 
 .layui-carousel-ind {
     position: relative;
-    top: -35px;
+    top: -60px;
     width: 100%;
     line-height: 0!important;
     text-align: center;
-    font-size: 0
+    font-size: 0;
 }
 
 .layui-carousel[lay-indicator=outside] {

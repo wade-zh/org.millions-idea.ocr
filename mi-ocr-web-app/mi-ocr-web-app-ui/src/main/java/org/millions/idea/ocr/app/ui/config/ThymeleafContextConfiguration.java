@@ -49,6 +49,10 @@ public class ThymeleafContextConfiguration {
      */
     private void extractMultiPageSettings(Map<String, Object> vars) {
         //mapDatasService.FetchLoginPageConfigs().stream().forEach(data -> { vars.put(data.getMKey(), data.getMValue()); });
+        vars.put("title","万象AI开放平台-人工智能服务平台");
+        vars.put("keywords","abs++,万象AI,复杂验证码识别,滑动点选验证码识别,谷歌人机识别,通用文字识别,身份证识别,银行卡识别,车辆识别,门牌识别");
+        vars.put("description","");
+        vars.put("brand","万象");
     }
 
     /**
