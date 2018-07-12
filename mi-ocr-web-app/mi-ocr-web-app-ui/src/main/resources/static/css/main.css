@@ -1796,7 +1796,7 @@ code[class*=language-],pre[class*=language-] {
 }
 
 .mdl-components__nav:hover, .mdl-components__nav div{
-  width:350px;
+  /*width:350px;*/
 }
 
 .mdl-components__nav div{

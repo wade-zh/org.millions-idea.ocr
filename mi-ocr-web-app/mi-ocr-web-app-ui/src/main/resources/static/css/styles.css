@@ -926,9 +926,11 @@ a img{
   /* padding-left: 25px !important; */
  }
 
+/*
 .mi-transition{
   transition: width 0.5s;
-  -moz-transition: width 0.5s;  /* Firefox 4 */
-  -webkit-transition: width 0.5s; /* Safari å’Œ Chrome */
-  -o-transition: width 0.5s;  /* Opera */
+  -moz-transition: width 0.5s;
+  -webkit-transition: width 0.5s;
+  -o-transition: width 0.5s;
 }
+*/
