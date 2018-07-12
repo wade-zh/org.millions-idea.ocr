@@ -1,0 +1,65 @@
+.mi-center{
+    margin:0 auto;
+    width: 100%;
+    padding:50px;
+}
+
+.mi-center h4{
+    color: #000;
+}
+
+.mi-center .mdl-textfield{
+    display: block;
+}
+
+.mi-button-blue{
+    background: #4285F4 !important;
+    color:rgb(255,255,255);
+}
+
+.mi-login-layout-button{
+    width: 140px;
+    margin-right: 10px;
+}
+
+.mdl-textfield.is-focused .mdl-textfield__input{
+    position: relative;
+    top:10px;
+}
+
+.mdl-textfield{
+    width:100%;
+}
+
+.mdl-textfield__error{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.mdl-textfield__label:after {
+    background-color: #00B0FF;
+    bottom: 8px;
+    content: '';
+    height: 2px;
+    left: 45%;
+    position: absolute;
+    transition-duration: .2s;
+    transition-timing-function: cubic-bezier(.4,0,.2,1);
+    visibility: hidden;
+    width: 10px
+}
+
+.mdl-textfield.is-focused .mdl-textfield__label:after {
+    left: 0;
+    visibility: visible;
+    width: 100%
+}
+
+
+.mdl-textfield.is-focused .mdl-textfield__expandable-holder,.mdl-textfield.is-dirty .mdl-textfield__expandable-holder {
+    max-width: 600px
+}
+
+.mdl-textfield__expandable-holder .mdl-textfield__label:after {
+    bottom: 0
+}

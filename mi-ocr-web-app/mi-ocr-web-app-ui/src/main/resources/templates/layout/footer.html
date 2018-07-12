@@ -1,6 +1,10 @@
+<script src="../../static/js/jquery-3.3.1.min.js"></script>
+<script src="../../static/js/menu.js"></script>
 <th:block xmlns:th="http://www.thymeleaf.org" th:fragment="footer">
+    <script th:replace="${script} :: script('../js/jquery-3.3.1.min.js')"></script>
     <script th:replace="${script} :: script('../js/material-1.3.js')"></script>
     <script th:replace="${script} :: script('../layui/layui.all.js')"></script>
+    <script th:replace="${script} :: script('../js/menu.js')"></script>
     <script>
         layui.use(['carousel', 'form'], function(){
             layui.carousel.render({
