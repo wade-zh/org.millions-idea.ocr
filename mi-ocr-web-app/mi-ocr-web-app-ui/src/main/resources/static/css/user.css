@@ -1,0 +1,79 @@
+.mi-news{
+    min-height:425px !important;
+}
+
+.mi-news .mdl-tabs__tab-bar{
+    background: #f9f9f9;
+}
+
+.mdl-layout__content{
+    min-height: 700px;
+}
+
+.mi-cell-sum{
+    display: block;
+    min-height: 100px;
+    background: #fff;
+}
+
+.mi-cell-sum-table{
+    position: relative;
+    overflow: hidden;
+    top: 25px;
+    margin:0 auto;
+}
+
+.mi-cell-sum-table td{
+    border: none;
+}
+
+.mi-shadow--2dp {
+    box-shadow: 0 1px 0px 0 rgba(0,0,0,.14),0 0px 1px -2px rgba(0,0,0,.2),0 0px 3px 0 rgba(0,0,0,.12)
+}
+
+.mi-cell-background{
+    background: #fff;
+}
+
+.mi-cell-charts{
+    max-height: 425px;
+    overflow: hidden;
+}
+
+
+.mi-xs-table {
+    table-layout: fixed;
+    width: 100%;
+    border: none;
+}
+
+.mi-xs-table tr td{
+    text-overflow: ellipsis; /* for IE */
+    -moz-text-overflow: ellipsis; /* for Firefox,mozilla */
+    overflow: hidden;
+    white-space: nowrap;
+    text-align: left;
+    border: none;
+    background: #fff;
+}
+
+
+.mi-xs-table a{
+    color: #666;
+}
+
+.mi-cell-charts .column{
+    height: 48px;
+    line-height: 48px;
+    font-size: 15px;
+}
+
+.mi-cell-charts .column .left{
+    float: left;
+    padding-left: 1em;
+}
+
+.mi-cell-charts .column .right{
+    float: right;
+    padding-right: 1em;
+}

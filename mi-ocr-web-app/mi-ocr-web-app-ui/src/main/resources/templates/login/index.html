@@ -1,125 +1,166 @@
 <!doctype html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:th="http://www.thymeleaf.org"
-	  xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
-	  layout:decorate="~{layout/layout}">
-  <head>
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="keywords" th:content="${keywords}">
     <meta name="description" th:content="${description}">
     <title th:text="${title} + '-用户中心'"></title>
-  </head>
-  <body>
-	  <th:block layout:fragment="body">
-			<!--content begin-->
-			<main class="docs-layout-content mdl-layout__content mdl-color-text--grey-600">
-				<div class="content mdl-grid mdl-grid--no-spacing" id="content">
-					<div class="mdl-components mdl-js-components mdl-cell mdl-cell--12-col">
-						<!--left menu begin-->
-						<th:block th:replace="layout/left_menu :: left_menu" />
-						<!--left menu end-->
+    <link rel="stylesheet" href="../css/user.css">
+</head>
+<body>
+<th:block layout:fragment="body">
+    <!--content begin-->
+    <main class="docs-layout-content mdl-layout__content mdl-color-text--grey-600">
+        <div class="content mdl-grid mdl-grid--no-spacing" id="content">
+            <div class="mdl-components mdl-js-components mdl-cell mdl-cell--12-col">
+                <!--left menu begin-->
+                <th:block th:replace="layout/left_menu :: left_menu"/>
+                <!--left menu end-->
 
-						<!--main begin-->
-						<main class="mdl-layout__content">
+                <!--main begin-->
+                <main class="mdl-layout__content">
 
-							<!--sum begin-->
-							<div class="mdl-grid">
-								<div class="mdl-cell mdl-cell--3-col">
-									<div class="mi-cell-sum mi-shadow--2dp">
-										<table width="80%" class="mi-cell-sum-table">
-											<td width="76px">
-												<div class="x-block-icon" style="background-color: rgb(0, 137, 240);">
-													<i tip="" class="iconfont icon-overview-balance"></i>
-												</div>
-											</td>
-											<td class="x-block-right">
-												<span>余额：</span><a data-track-id="blocks" data-track-name="余额" target="_self" title="" href="/billing/#/account/index"><!--_d73119--><strong>￥0</strong><!--_d73119--></a> <br>
-												代金券：<a data-track-id="blocks" data-track-name="代金券" target="_self" title="" href="/finance/#/finance/coupon/list"><!--_d73126--><strong>0</strong><!--_d73126--></a>
-												<a data-track-id="blocks" data-track-name="充值按钮" target="_self" title="" href="/finance/#/finance/account/recharge" class=" recharge"><!--_d73131-->充值<!--_d73131--></a><!--_d73128-->
-											</td>
-										</table>
-									</div>
-								</div>
-								<div class="mdl-cell mdl-cell--3-col">
-									<div class="mi-cell-sum mi-shadow--2dp">
-										<table width="80%" class="mi-cell-sum-table">
-											<td width="76px">
-												<div class="x-block-icon" style="background-color: rgb(0, 137, 240);">
-													<i tip="" class="iconfont icon-overview-balance"></i>
-												</div>
-											</td>
-											<td class="x-block-right">
-												<span>可开票金额：</span><br>
-												<strong class=" deactive">￥0.00</strong>
-											</td>
-										</table>
-									</div>
-								</div>
-								<div class="mdl-cell mdl-cell--3-col">
-									<div class="mi-cell-sum mi-shadow--2dp">
-										<table width="80%" class="mi-cell-sum-table">
-											<td width="76px">
-												<div class="x-block-icon" style="background-color: rgb(0, 137, 240);">
-													<i tip="" class="iconfont icon-overview-balance"></i>
-												</div>
-											</td>
-											<td class="x-block-right">
-												<!--_d73157-->
-												待续费实例：<a data-track-id="blocks" data-track-name="待续费实例" target="_self" title="" href="/billing/#/renew/list"><!--_d73160--><strong>0</strong><!--_d73160--></a><br>
-												待支付订单：<a data-track-id="blocks" data-track-name="待支付订单" target="_self" title="" href="/billing/#/order/list~filters=%5B%5B%22status%22%2C%22UNPURCHASED%22%5D%5D"><!--_d73165--><strong>0</strong><!--_d73165--></a>
-												<!--_d73157-->
-											</td>
-										</table>
-									</div>
-								</div>
-								<div class="mdl-cell mdl-cell--3-col">
-									<div class="mi-cell-sum mi-shadow--2dp">
-										<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
-											<div class="mdl-tabs__tab-bar">
-												<a href="#starks-panel" class="mdl-tabs__tab is-active">Starks</a>
-												<a href="#lannisters-panel" class="mdl-tabs__tab">Lannisters</a>
-												<a href="#targaryens-panel" class="mdl-tabs__tab">Targaryens</a>
-											</div>
+                    <!--sum begin-->
+                    <div class="mdl-grid">
+                        <div class="mdl-cell mdl-cell--4-col mi-cell-sum mi-shadow--2dp">
+                            <table width="80%" class="mi-cell-sum-table">
+                                <td width="76px">
+                                    <div class="x-block-icon" style="background-color: rgb(0, 137, 240);">
+                                        <i tip="" class="iconfont icon-overview-balance"></i>
+                                    </div>
+                                </td>
+                                <td class="x-block-right">
+                                    <span>余额：</span><a data-track-id="blocks" data-track-name="余额" target="_self"
+                                                       title="" href="/billing/#/account/index">
+                                    <!--_d73119--><strong>￥0</strong><!--_d73119--></a> <br>
+                                    代金券：<a data-track-id="blocks" data-track-name="代金券" target="_self" title=""
+                                           href="/finance/#/finance/coupon/list"><!--_d73126--><strong>0</strong>
+                                    <!--_d73126--></a>
+                                    <a data-track-id="blocks" data-track-name="充值按钮" target="_self" title=""
+                                       href="/finance/#/finance/account/recharge" class=" recharge"><!--_d73131-->充值
+                                        <!--_d73131--></a><!--_d73128-->
+                                </td>
+                            </table>
+                        </div>
+                        <div class="mdl-cell mdl-cell--4-col mi-cell-sum mi-shadow--2dp">
+                            <table width="80%" class="mi-cell-sum-table">
+                                <td width="76px">
+                                    <div class="x-block-icon" style="background-color: rgb(0, 137, 240);">
+                                        <i tip="" class="iconfont icon-overview-balance"></i>
+                                    </div>
+                                </td>
+                                <td class="x-block-right">
+                                    <span>可开票金额：</span><br>
+                                    <strong class=" deactive">￥0.00</strong>
+                                </td>
+                            </table>
+                        </div>
+                        <div class="mdl-cell mdl-cell--4-col mi-cell-sum mi-shadow--2dp">
+                            <table width="80%" class="mi-cell-sum-table">
+                                <td width="76px">
+                                    <div class="x-block-icon" style="background-color: rgb(0, 137, 240);">
+                                        <i tip="" class="iconfont icon-overview-balance"></i>
+                                    </div>
+                                </td>
+                                <td class="x-block-right">
+                                    <!--_d73157-->
+                                    待续费实例：<a data-track-id="blocks" data-track-name="待续费实例" target="_self" title=""
+                                             href="/billing/#/renew/list"><!--_d73160--><strong>0</strong><!--_d73160-->
+                                </a><br>
+                                    待支付订单：<a data-track-id="blocks" data-track-name="待支付订单" target="_self" title=""
+                                             href="/billing/#/order/list~filters=%5B%5B%22status%22%2C%22UNPURCHASED%22%5D%5D">
+                                    <!--_d73165--><strong>0</strong><!--_d73165--></a>
+                                    <!--_d73157-->
+                                </td>
+                            </table>
+                        </div>
+                    </div>
+                    <!--sum end-->
 
-											<div class="mdl-tabs__panel is-active" id="starks-panel">
-												<ul>
-													<li>Eddard</li>
-													<li>Catelyn</li>
-													<li>Robb</li>
-													<li>Sansa</li>
-													<li>Brandon</li>
-													<li>Arya</li>
-													<li>Rickon</li>
-												</ul>
-											</div>
-											<div class="mdl-tabs__panel" id="lannisters-panel">
-												<ul>
-													<li>Tywin</li>
-													<li>Cersei</li>
-													<li>Jamie</li>
-													<li>Tyrion</li>
-												</ul>
-											</div>
-											<div class="mdl-tabs__panel" id="targaryens-panel">
-												<ul>
-													<li>Viserys</li>
-													<li>Daenerys</li>
-												</ul>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<!--sum end-->
+                    <!--charts begin-->
+                    <div class="mdl-grid">
+                        <div class="mi-shadow--2dp mdl-cell mdl-cell--9-col mi-cell-background mi-cell-charts">
+                            <div class="column">
+                                <div class="left">消费趋势</div>
+                                <div class="right">近一个月</div>
+                            </div>
+                            <div id="echarts" style="width: 100%;height:90%;margin-top: 10px;margin-left: 50px;"></div>
+                        </div>
+                        <div class="mi-shadow--2dp mdl-cell mdl-cell--3-col">
+                            <div class="mi-cell-background mi-shadow--2dp">
+                                <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect mi-news">
+                                    <div class="mdl-tabs__tab-bar">
+                                        <a href="#starks-panel" class="mdl-tabs__tab is-active">公告</a>
+                                        <a href="#lannisters-panel" class="mdl-tabs__tab">站内信</a>
+                                    </div>
+                                    <div class="mdl-tabs__panel is-active" id="starks-panel">
+                                        <table class="mdl-data-table mdl-js-data-table mi-xs-table">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="mdl-data-table__cell--non-numeric" style="width: 70%">
+                                                        <a href="#">测试测试测试测试测试测试测试测试测试测试测试测试</a>
+                                                    </td>
+                                                    <td>2018.07.13</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="mdl-tabs__panel" id="lannisters-panel">
+                                        <ul>
+                                            <li>Tywin</li>
+                                            <li>Cersei</li>
+                                            <li>Jamie</li>
+                                            <li>Tyrion</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--charts end-->
 
-						</main>
-						<!--main end-->
-					</div>
-				</div>
-			</main>
-			<!--content end-->
-	  </th:block>
-  </body>
+
+                </main>
+                <!--main end-->
+            </div>
+        </div>
+    </main>
+    <!--content end-->
+</th:block>
+    <th:block layout:fragment="free_footer">
+    <script src="../js/echarts.js"></script>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('echarts'));
+
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: 'ECharts 入门示例'
+            },
+            tooltip: {},
+            legend: {
+                data:['销量']
+            },
+            xAxis: {
+                data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+            },
+            yAxis: {},
+            series: [{
+                name: '销量',
+                type: 'bar',
+                data: [5, 20, 36, 10, 10, 20]
+            }]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+</th:block>
+</body>
 </html>
