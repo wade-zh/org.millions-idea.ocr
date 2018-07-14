@@ -77,3 +77,21 @@
     float: right;
     padding-right: 1em;
 }
+
+
+
+.balance{
+    font-size:20px;
+}
+
+.light-blue{
+    background-color: #00b0ff;
+}
+
+.mi-top-border{
+    border-top: 2px solid;
+}
+
+.mi-border-color-green{
+    border-color: #00c853;
+}

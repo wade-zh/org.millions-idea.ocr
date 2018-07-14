@@ -27,23 +27,16 @@
 
                     <!--sum begin-->
                     <div class="mdl-grid">
-                        <div class="mdl-cell mdl-cell--4-col mi-cell-sum mi-shadow--2dp">
+                        <div class="mdl-cell mdl-cell--4-col mi-cell-sum mi-shadow--2dp mi-top-border mi-border-color-green">
                             <table width="80%" class="mi-cell-sum-table">
                                 <td width="76px">
                                     <div class="x-block-icon" style="background-color: rgb(0, 137, 240);">
                                         <i tip="" class="iconfont icon-overview-balance"></i>
                                     </div>
                                 </td>
-                                <td class="x-block-right">
-                                    <span>余额：</span><a data-track-id="blocks" data-track-name="余额" target="_self"
-                                                       title="" href="/billing/#/account/index">
-                                    <!--_d73119--><strong>￥0</strong><!--_d73119--></a> <br>
-                                    代金券：<a data-track-id="blocks" data-track-name="代金券" target="_self" title=""
-                                           href="/finance/#/finance/coupon/list"><!--_d73126--><strong>0</strong>
-                                    <!--_d73126--></a>
-                                    <a data-track-id="blocks" data-track-name="充值按钮" target="_self" title=""
-                                       href="/finance/#/finance/account/recharge" class=" recharge"><!--_d73131-->充值
-                                        <!--_d73131--></a><!--_d73128-->
+                                <td>
+                                    <span>余额：</span><br>
+                                    <strong class="balance">10.0000</strong>
                                 </td>
                             </table>
                         </div>
@@ -101,12 +94,12 @@
                                     <div class="mdl-tabs__panel is-active" id="starks-panel">
                                         <table class="mdl-data-table mdl-js-data-table mi-xs-table">
                                             <tbody>
-                                                <tr>
-                                                    <td class="mdl-data-table__cell--non-numeric" style="width: 70%">
-                                                        <a href="#">测试测试测试测试测试测试测试测试测试测试测试测试</a>
-                                                    </td>
-                                                    <td>2018.07.13</td>
-                                                </tr>
+                                            <tr>
+                                                <td class="mdl-data-table__cell--non-numeric" style="width: 70%">
+                                                    <a href="#">测试测试测试测试测试测试测试测试测试测试测试测试</a>
+                                                </td>
+                                                <td>2018.07.13</td>
+                                            </tr>
                                             </tbody>
                                         </table>
                                     </div>
@@ -132,11 +125,11 @@
     </main>
     <!--content end-->
 </th:block>
-    <th:block layout:fragment="free_footer">
+<th:block layout:fragment="free_footer">
     <script src="../js/echarts.js"></script>
     <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts'),'light');
+        var myChart = echarts.init(document.getElementById('echarts'), 'light');
 
         // 指定图表的配置项和数据
         var option = {
@@ -144,7 +137,7 @@
                 trigger: 'axis'
             },
             legend: {
-                data:['邮件营销','联盟广告','视频广告']
+                data: ['邮件营销', '联盟广告', '视频广告']
             },
             grid: {
                 left: '3%',
@@ -160,31 +153,31 @@
             xAxis: {
                 type: 'category',
                 boundaryGap: false,
-                data: ['周一','周二','周三','周四','周五','周六','周日']
+                data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
             },
             yAxis: {
                 type: 'value'
             },
             series: [
                 {
-                    name:'邮件营销',
-                    type:'line',
+                    name: '邮件营销',
+                    type: 'line',
                     stack: '总量',
-                    data:[120, 132, 101, 134, 90, 230, 210],
+                    data: [120, 132, 101, 134, 90, 230, 210],
                     smooth: true
                 },
                 {
-                    name:'联盟广告',
-                    type:'line',
+                    name: '联盟广告',
+                    type: 'line',
                     stack: '总量',
-                    data:[220, 182, 191, 234, 290, 330, 310],
+                    data: [220, 182, 191, 234, 290, 330, 310],
                     smooth: true
                 },
                 {
-                    name:'视频广告',
-                    type:'line',
+                    name: '视频广告',
+                    type: 'line',
                     stack: '总量',
-                    data:[150, 232, 201, 154, 190, 330, 410],
+                    data: [150, 232, 201, 154, 190, 330, 410],
                     smooth: true
                 }
             ]
