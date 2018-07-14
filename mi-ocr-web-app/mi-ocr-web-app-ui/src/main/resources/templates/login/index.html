@@ -87,6 +87,19 @@
                         <div class="mi-shadow--2dp mdl-cell mdl-cell--3-col">
                             <div class="mi-cell-background mi-shadow--2dp">
                                 <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect mi-news">
+                                    <dialog class="mdl-dialog mi-top-border mi-border-color-blue">
+                                        <h6>【升级】服务器升级通知</h6>
+                                        <small>2018/07/03</small>
+                                        <div class="mdl-dialog__content">
+                                            <p>
+                                                于2018年7月14日~2018年7月24日期间，本系统将进入维护阶段，请您提前安排好工作事宜，给您造成不便，很抱歉
+                                            </p>
+                                        </div>
+                                        <div class="mdl-dialog__actions">
+                                            <button type="button" class="mdl-button close">关闭</button>
+                                        </div>
+                                    </dialog>
+
                                     <div class="mdl-tabs__tab-bar">
                                         <a href="#starks-panel" class="mdl-tabs__tab is-active">公告</a>
                                         <a href="#lannisters-panel" class="mdl-tabs__tab">站内信</a>
@@ -126,6 +139,7 @@
     <!--content end-->
 </th:block>
 <th:block layout:fragment="free_footer">
+    <script src="../js/user.js"></script>
     <script src="../js/echarts.js"></script>
     <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
