@@ -16,8 +16,6 @@ import org.springframework.web.context.WebApplicationContext;
 
 import java.util.Date;
 
-import static org.junit.Assert.*;
-
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class TestControllerTest {
