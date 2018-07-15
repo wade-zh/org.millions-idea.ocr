@@ -27,7 +27,7 @@
 
                     <!--sum begin-->
                     <div class="mdl-grid">
-                        <div class="mdl-cell mdl-cell--4-col mi-cell-sum mi-shadow--2dp mi-top-border mi-border-color-green">
+                        <div class="mdl-cell mdl-cell--4-col mi-cell-sum mi-shadow--2dp mi-top-border">
                             <table width="80%" class="mi-cell-sum-table">
                                 <td width="76px">
                                     <div class="x-block-icon" style="background-color: rgb(0, 137, 240);">
@@ -36,7 +36,7 @@
                                 </td>
                                 <td>
                                     <span>余额：</span><br>
-                                    <strong class="balance">10.0000</strong>
+                                    ￥<strong class="balance">0.0000</strong>
                                 </td>
                             </table>
                         </div>
@@ -48,8 +48,8 @@
                                     </div>
                                 </td>
                                 <td class="x-block-right">
-                                    <span>可开票金额：</span><br>
-                                    <strong class=" deactive">￥0.00</strong>
+                                    <span>剩余接口可调用次数：</span><br>
+                                    <strong class=" deactive">0次</strong>
                                 </td>
                             </table>
                         </div>
@@ -62,7 +62,7 @@
                                 </td>
                                 <td class="x-block-right">
                                     <!--_d73157-->
-                                    待续费实例：<a data-track-id="blocks" data-track-name="待续费实例" target="_self" title=""
+                                    已支付订单：<a data-track-id="blocks" data-track-name="待续费实例" target="_self" title=""
                                              href="/billing/#/renew/list"><!--_d73160--><strong>0</strong><!--_d73160-->
                                 </a><br>
                                     待支付订单：<a data-track-id="blocks" data-track-name="待支付订单" target="_self" title=""
@@ -130,13 +130,15 @@
                     </div>
                     <!--charts end-->
 
-
                 </main>
                 <!--main end-->
             </div>
         </div>
     </main>
     <!--content end-->
+</th:block>
+<th:block th:fragment="free_footer">
+    <script src="../js/user.js"></script>
 </th:block>
 </body>
 </html>

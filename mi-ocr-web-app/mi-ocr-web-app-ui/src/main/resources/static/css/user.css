@@ -66,23 +66,21 @@
     color: #989898;
 }
 
-.mi-cell-charts .column{
+.column{
     height: 48px;
     line-height: 48px;
     font-size: 15px;
 }
 
-.mi-cell-charts .column .left{
+.column .left{
     float: left;
     padding-left: 1em;
 }
 
-.mi-cell-charts .column .right{
+.column .right{
     float: right;
     padding-right: 1em;
 }
-
-
 
 .balance{
     font-size:20px;
@@ -100,6 +98,10 @@
     border-color: #00c853;
 }
 
+.mi-border-color-red{
+    border-color: #d84315;
+}
+
 .mi-border-color-blue{
     border-color: rgb(33, 150, 243);
 }
@@ -111,4 +113,16 @@
 
 .mi-news .close{
     color: #00b0ff;
+}
+
+.mi-cell-api-watch .top{
+    display: block;
+    min-height: 100px;
+}
+
+.right .mdl-button{
+    position: relative;
+    top:-15px;
+    right:-20px;
+    color:#fff;
 }

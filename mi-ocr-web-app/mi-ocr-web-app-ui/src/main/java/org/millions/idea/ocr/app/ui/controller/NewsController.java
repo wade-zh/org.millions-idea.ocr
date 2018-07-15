@@ -1,8 +1,8 @@
 /***
  * @pName mi-ocr-web-app
- * @name UserController
+ * @name NewsController
  * @user HongWei
- * @date 2018/7/12
+ * @date 2018/7/15
  * @desc
  */
 package org.millions.idea.ocr.app.ui.controller;
@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/user")
-public class UserController {
-    @GetMapping(value = {"","/index"})
-    public String index(){return "user/index";}
+@RequestMapping("/news")
+public class NewsController {
 
+    @GetMapping(value = {"","/index"})
+    public String index(){
+        return "news/index";
+    }
 }
