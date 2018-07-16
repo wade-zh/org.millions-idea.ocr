@@ -13,6 +13,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -50,7 +51,10 @@ public class UserController {
     @PostMapping
     public User create(@Valid @RequestBody User user, BindingResult errors){
         if (errors.hasErrors()){
-            errors.getAllErrors().stream().forEach(error -> System.out.println(error.getDefaultMessage()));
+            errors.getAllErrors().stream().forEach(error -> {
+                FieldError fieldError = (FieldError)error;
+                System.out.println(fieldError.getField() + "::" + error.getDefaultMessage());
+            });
         }
         System.out.println(user.getId());
         System.out.println(user.getAddDate());

@@ -7,9 +7,11 @@
  */
 package com.example.security;
 
+import com.example.security.validate.MyConstraint;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 public class User {
@@ -31,7 +33,11 @@ public class User {
 
     @NotBlank
     private String name;
+
+    @MyConstraint(message = "这是一个测试")
     private Integer age;
+
+    @NotNull(message = "时间不能为空")
     private Date addDate;
 
     @JsonView(UserDetailView.class)
