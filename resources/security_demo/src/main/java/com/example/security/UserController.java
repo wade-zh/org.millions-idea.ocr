@@ -8,6 +8,9 @@
 package com.example.security;
 
 import com.fasterxml.jackson.annotation.JsonView;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import org.springframework.data.domain.Pageable;
@@ -43,7 +46,9 @@ public class UserController {
 
     @GetMapping("/{id:\\d+}")
     @JsonView(User.UserDetailView.class)
-    public User getInfo(@PathVariable Integer id){
+    @ApiOperation(value="获取用户详细信息", notes="根据url的id来获取用户详细信息")
+    @ApiImplicitParam(name = "id", value = "用户ID", required = true, dataType = "Integer", paramType = "path")
+    public User getInfo( @ApiParam("用户id") @PathVariable Integer id){
         return userList.stream().filter(u -> u.getId().equals(id)).findFirst().get();
     }
 

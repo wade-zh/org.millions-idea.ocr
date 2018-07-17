@@ -30,10 +30,10 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
-		<dependency>
+		<!--<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
+		</dependency>-->
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -41,11 +41,11 @@
 			<scope>test</scope>
 		</dependency>
 		
-		<dependency>
+		<!--<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
-		</dependency>
+		</dependency>-->
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -53,7 +53,7 @@
 		</dependency>
 
         <!--第三方登录-->
-        <dependency>
+        <!--<dependency>
             <groupId>org.springframework.social</groupId>
             <artifactId>spring-social-config</artifactId>
             <version>1.1.6.RELEASE</version>
@@ -69,7 +69,7 @@
             <groupId>org.springframework.social</groupId>
             <artifactId>spring-social-security</artifactId>
             <version>1.1.6.RELEASE</version>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>org.springframework.social</groupId>
@@ -100,6 +100,20 @@
 			<groupId>commons-beanutils</groupId>
 			<artifactId>commons-beanutils</artifactId>
 			<version>1.9.3</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger2 -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>2.9.2</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>2.9.2</version>
 		</dependency>
 
 	</dependencies>

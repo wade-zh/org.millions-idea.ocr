@@ -9,6 +9,7 @@ package com.example.security;
 
 import com.example.security.validate.MyConstraint;
 import com.fasterxml.jackson.annotation.JsonView;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -32,9 +33,11 @@ public class User {
     private Integer id;
 
     @NotBlank
+    @ApiModelProperty("用户名称")
     private String name;
 
     @MyConstraint(message = "这是一个测试")
+    @ApiModelProperty("用户年龄")
     private Integer age;
 
     @NotNull(message = "时间不能为空")
