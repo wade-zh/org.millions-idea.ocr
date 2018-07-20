@@ -13,6 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
@@ -52,8 +53,13 @@ public class BrowserSecurityController {
         return new HttpResp(401, "请先登录");
     }
 
+    /**
+     * 从thread中获取authentication
+     * 方法中记载了2种实现方式，使用形参是第一种，使用Holder是第二种
+     * @return
+     */
     @GetMapping("/me")
-    public Object getCurrentUserInfo(){
+    public Object getCurrentUserInfo(Authentication authentication){
         return SecurityContextHolder.getContext().getAuthentication();
     }
 }
