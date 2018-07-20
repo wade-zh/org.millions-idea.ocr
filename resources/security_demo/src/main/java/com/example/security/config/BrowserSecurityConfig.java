@@ -7,7 +7,6 @@
  */
 package com.example.security.config;
 
-import com.example.security.ValidateController;
 import com.example.security.core.BrowserProperties;
 import com.example.security.core.SampleAuthenticationFailureHandler;
 import com.example.security.validate.ValidateCodeFilter;
@@ -19,7 +18,12 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
+import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 import org.springframework.stereotype.Component;
+
+import javax.annotation.Resource;
+import javax.sql.DataSource;
 
 /**
  * 应用安全适配器配置
@@ -44,6 +48,10 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/authentication/require")
                 .loginProcessingUrl("/authentication/form") //使用自定义的登录api
+                /*.and()        //记住我
+                .rememberMe()
+                .tokenRepository(null)
+                .tokenValiditySeconds(6000)*/
                 .and()
                 .authorizeRequests()    //下面都是需要授权的配置
                 .antMatchers("/authentication/require"
