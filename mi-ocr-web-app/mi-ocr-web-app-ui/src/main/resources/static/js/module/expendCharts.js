@@ -2,7 +2,7 @@
 define('expendCharts',['jquery','echarts'],function ($,echarts) {
     $(function () {
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts'), 'light');
+        /*var myChart = echarts.init(document.getElementById('echarts'), 'light');
 
         // 指定图表的配置项和数据
         var option = {
@@ -22,7 +22,7 @@ define('expendCharts',['jquery','echarts'],function ($,echarts) {
             },
             toolbox: {
                 feature: {
-                    /*saveAsImage: {}*/
+                    /!*saveAsImage: {}*!/
                 }
             },
             xAxis: {
@@ -53,6 +53,6 @@ define('expendCharts',['jquery','echarts'],function ($,echarts) {
 
 
         // 使用刚指定的配置项和数据显示图表。
-        myChart.setOption(option);
+        myChart.setOption(option);*/
     })
 })

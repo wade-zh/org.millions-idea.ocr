@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/user")
 public class UserController {
+
+
     @GetMapping(value = {"","/index"})
     public String index(){return "user/index";}
 

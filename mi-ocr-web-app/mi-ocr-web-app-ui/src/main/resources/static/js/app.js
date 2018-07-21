@@ -12,18 +12,16 @@ require.config({
         'echarts': './echarts',
         'carousel': './module/carousel',
         'expendCharts': './module/expendCharts',// 消费图表
-        'apiWatch': './module/apiWatch',// API监控
         'console': './module/console'
     },
     'urlArgs': 'r=' + (new Date()).getTime()
 });
-require(['jquery', 'layui','carousel','echarts','expendCharts', 'apiWatch', 'console'], function (
+require(['jquery', 'layui','carousel','echarts','expendCharts','console'], function (
     $,
     layui,
     carousel,
     echarts,
     expendCharts,
-    apiWatch,
     console) {
 
 });
