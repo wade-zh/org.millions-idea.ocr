@@ -14,5 +14,5 @@ gateway:
 user:
   name: test
   security:
-    loginPage: /user/require
-    processingUrl: ${gateway.master}/user/login
+    loginPage: /common/require
+    processingUrl: ${gateway.master}/common/login

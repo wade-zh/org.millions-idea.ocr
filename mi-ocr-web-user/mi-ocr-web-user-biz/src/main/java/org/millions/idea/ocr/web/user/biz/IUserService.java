@@ -17,19 +17,28 @@ import java.util.List;
 public interface IUserService {
 
     /**
-     * Get user information by uid
+     * 根据uid查询用户信息
      * @param uid
      * @return
      */
     Users getUser(Integer uid);
 
     /**
-     * Login
+     * 直接登录账户
      * @param uname
      * @param pwd
      * @return
      */
-    String login(String uname, String pwd);
+    String directLogin(String uname, String pwd);
+
+    /**
+     * 通过web渠道登录账户
+     * @param username
+     * @param password
+     * @param vcode
+     * @return
+     */
+    Integer webLogin(String username, String password, String vcode);
 
 
     /**

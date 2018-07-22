@@ -28,6 +28,7 @@ import java.util.concurrent.TimeUnit;
 public class UserServiceImpl implements IUserService {
     private final IUserMapperRepository userMapperRepository;
     private final RedisTemplate redisTemplate;
+
     @Autowired
     private IWalletAgentService walletAgentService;
     @Autowired
@@ -56,7 +57,7 @@ public class UserServiceImpl implements IUserService {
      * @return
      */
     @Override
-    public String login(String uname, String pwd) {
+    public String directLogin(String uname, String pwd) {
         /*
             登录流程：
                 1、获取加密后的密码
@@ -92,5 +93,30 @@ public class UserServiceImpl implements IUserService {
         return userEntity.getWallet().getBalance();
     }
 
+    /**
+     * 通过web渠道登录账户
+     *
+     * @param username
+     * @param password
+     * @param vcode
+     * @return
+     */
+    @Override
+    public Integer webLogin(String username, String password, String vcode) throws MessageException{
+        /*
+            1、判断验证码是否正确
+            2、判断用户名密码是否正确
+         */
+
+        // 1、判断验证码是否正确
+
+        // 2、判断用户名密码是否正确
+        String nPassword = Md5Util.getMd5(username + password);
+        Users user = userMapperRepository.login(username, nPassword);
+        if(user == null) throw new MessageException("用户名或密码错误");
+        String key = Md5Util.getMd5(user.getUid() + user.getUserName());
+        redisTemplate.opsForValue().set(key, JsonUtil.getJson(user), 30, TimeUnit.MINUTES);
+        return user.getUid();
+    }
 
 }

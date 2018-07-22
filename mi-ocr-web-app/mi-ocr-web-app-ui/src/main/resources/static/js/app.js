@@ -7,21 +7,30 @@ require.config({
         }
     },'paths': {
         'jquery': './jquery-3.3.1.min',
-        'request': 'request',
+        'request': './module/request',
         'layui': '../layui/layui',
         'echarts': './echarts',
         'carousel': './module/carousel',
         'expendCharts': './module/expendCharts',// 消费图表
-        'console': './module/console'
+        'console': './module/console',
+        'user': './module/user'
     },
     'urlArgs': 'r=' + (new Date()).getTime()
 });
-require(['jquery', 'layui','carousel','echarts','expendCharts','console'], function (
+/*require(['jquery','request', 'layui','carousel','echarts','expendCharts','console','common'], function (
     $,
+    request,
     layui,
     carousel,
     echarts,
     expendCharts,
-    console) {
+    console,
+    common) {
 
+});*/
+require(['jquery','request', 'layui'], function (
+    $,
+    request,
+    layui) {
+    require(["user"]);
 });
