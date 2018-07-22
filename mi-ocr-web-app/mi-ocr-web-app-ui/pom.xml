@@ -30,7 +30,6 @@
 		</dependency>
 
 		<!--基础套件-->
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -45,6 +44,20 @@
 			<optional>false</optional>
 		</dependency>
 
+		<!--安全验证-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+			<version>RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<!--模板引擎-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
@@ -57,6 +70,12 @@
 		<dependency>
 			<groupId>nz.net.ultraq.thymeleaf</groupId>
 			<artifactId>thymeleaf-layout-dialect</artifactId>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.thymeleaf.extras/thymeleaf-extras-springsecurity4 -->
+		<dependency>
+			<groupId>org.thymeleaf.extras</groupId>
+			<artifactId>thymeleaf-extras-springsecurity4</artifactId>
+			<version>3.0.2.RELEASE</version>
 		</dependency>
 
 		<!--工具包-->
@@ -86,18 +105,7 @@
 		</dependency>
 
 
-		<!--安全验证-->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-			<version>RELEASE</version>
-		</dependency>
 
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-test</artifactId>
-			<scope>test</scope>
-		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -110,8 +118,20 @@
 			<version>1.0-SNAPSHOT</version>
 		</dependency>
 
+        <dependency>
+            <groupId>org.millions-idea.ocr</groupId>
+            <artifactId>mi-ocr-web-common-utility</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
 
-	</dependencies>
+        <!--Mock框架-->
+        <dependency>
+            <groupId>com.github.tomakehurst</groupId>
+            <artifactId>wiremock</artifactId>
+            <version>2.18.0</version>
+        </dependency>
+
+    </dependencies>
 
 	<dependencyManagement>
 		<dependencies>
