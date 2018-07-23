@@ -25,7 +25,7 @@
 								  <span class="mdl-components__link-text">Badges</span>
 								</a>
 							</span>-->
-							<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect " style="margin-top: -20px;">
+							<!--<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect " style="margin-top: -20px;">
 								<div class="mdl-tabs__tab-bar" style="margin-top: -20px;">
 									<a href="#starks-panel" class="mdl-tabs__tab is-active">请登录</a>
 								</div>
@@ -33,20 +33,20 @@
 								<div class="mdl-tabs__panel is-active" id="starks-panel">
 									<ul class="mi-login-pannel">
 										<li class="mi-login-item">
-											<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+											<div class="mdl-textfield mdl-js-textfield mdl-textfield&#45;&#45;floating-label">
 												<input class="mdl-textfield__input" type="text" id="username">
 												<label class="mdl-textfield__label" for="username">用户名</label>
 											</div>
 										</li>
 										<li class="mi-login-item">
-											<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+											<div class="mdl-textfield mdl-js-textfield mdl-textfield&#45;&#45;floating-label">
 												<input class="mdl-textfield__input" type="password" id="username">
 												<label class="mdl-textfield__label" for="username">密码</label>
 											</div>
 										</li>
 									</ul>
 								</div>
-							</div>
+							</div>-->
 						</aside>
 
 
@@ -268,5 +268,8 @@
 			</main>
 			<!--content end-->
 	  </th:block>
+  <th:block layout:fragment="free_footer">
+	  <script th:replace="shared/main :: main('main-home.js?v=180715')"></script>
+  </th:block>
   </body>
 </html>

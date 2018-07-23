@@ -6,7 +6,7 @@ define('user',['jquery', 'request'],function ($, request) {
                 "password": password
             };
             request.post({
-                url: "/api/web-login",
+                url: "/authentication/form",
                 data: body,
                 success: function (data) {
                     console.log(data);
@@ -25,13 +25,12 @@ define('user',['jquery', 'request'],function ($, request) {
 
         /*动态添加事件*/
         $loginBtn.click(function () {
-            console.log("click")
             UserService.login($username.val(), $password.val(), null);
         });
 
         $password.keyup(function (event) {
             if(event.keyCode == 13) {
-                UserService.login($username.val(), $password.val(), null);
+                $loginBtn.click();
             }
         });
 

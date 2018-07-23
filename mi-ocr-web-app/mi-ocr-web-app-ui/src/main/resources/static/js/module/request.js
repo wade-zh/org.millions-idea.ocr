@@ -1,12 +1,15 @@
 define('request', ['jquery','layui'], function ($) {
     return {
-        post: function (param) {
+            post: function (param) {
             var index;
             $.ajax({
                 type: "POST",
                 url: param.url,
                 data: param.data,
                 dataType: "json",
+                xhrFields: {
+                    withCredentials: true
+                },
                 success: param.success,
                 error: function () {
                     layer.close(index);

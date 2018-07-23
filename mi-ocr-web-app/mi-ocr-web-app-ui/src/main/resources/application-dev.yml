@@ -26,4 +26,4 @@ gateway:
 user:
   security:
     loginPage: /login
-    processingUrl: /api/web-login
+    processingUrl: /authentication/form

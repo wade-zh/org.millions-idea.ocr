@@ -28,9 +28,3 @@ require.config({
     common) {
 
 });*/
-require(['jquery','request', 'layui'], function (
-    $,
-    request,
-    layui) {
-    require(["user"]);
-});
