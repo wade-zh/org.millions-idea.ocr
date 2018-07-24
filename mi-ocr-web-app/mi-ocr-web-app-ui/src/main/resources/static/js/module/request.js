@@ -1,27 +1,27 @@
 define('request', ['jquery','layui'], function ($) {
     return {
             post: function (param) {
-            var index;
-            $.ajax({
-                type: "POST",
-                url: param.url,
-                data: param.data,
-                dataType: "json",
-                xhrFields: {
-                    withCredentials: true
-                },
-                success: param.success,
-                error: function () {
-                    layer.close(index);
-                },
-                beforeSend: function () {
-                    index = layer.load(4, {
-                        shade: [0.1,'#000']
-                    });
-                },
-                complete: function () {
-                    layer.close(index);
-                }
+                /*var header = $("meta[name='_csrf_header']").attr("content");
+                var token =$("meta[name='_csrf']").attr("content");*/
+                var index;
+                $.ajax({
+                    type: "POST",
+                    url: param.url,
+                    data: param.data,
+                    dataType: "json",
+                    success: param.success,
+                    error: function () {
+                        layer.close(index);
+                    },
+                    beforeSend: function (xhr) {
+                        /*xhr.setRequestHeader(header, token);*/
+                        index = layer.load(4, {
+                            shade: [0.1,'#000']
+                        });
+                    },
+                    complete: function () {
+                        layer.close(index);
+                    }
             });
         },
         POST: function (param) {

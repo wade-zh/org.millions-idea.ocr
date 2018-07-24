@@ -19,7 +19,7 @@ public class VisitController {
         return "visit/index";
     }
 
-    @GetMapping(value = {"/login"})
+    @GetMapping(value = {"/signup"})
     public String login(){return "visit/login";}
 
     @GetMapping(value = {"/signin"})

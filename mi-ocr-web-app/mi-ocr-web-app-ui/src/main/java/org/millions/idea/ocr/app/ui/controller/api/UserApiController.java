@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class UserApiController {
 
-    @PostMapping("/api/web-login")
-    public HttpResp webLogin(String username, String password, String vcode) {
+    @PostMapping("/asyncLogin")
+    public HttpResp asyncLogin(String username, String password, String vcode) {
         /*return userAgentService.webLogin(username, password, vcode);*/
         return null;
     }

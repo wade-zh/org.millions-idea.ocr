@@ -1,4 +1,6 @@
 <th:block xmlns:th="http://www.thymeleaf.org" th:fragment="header">
+    <!--<meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header"  th:content="${_csrf.headerName}"/>-->
     <link rel="apple-touch-icon-precomposed" th:replace="${link} :: style('images/ios-desktop.png')">
     <link rel="shortcut icon" th:replace="${link} :: style('images/favicon.png')">
     <link rel="stylesheet" th:replace="${link} :: style('../layui/css/layui.css')">

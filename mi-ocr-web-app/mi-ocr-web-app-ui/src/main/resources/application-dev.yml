@@ -25,5 +25,5 @@ gateway:
 
 user:
   security:
-    loginPage: /login
-    processingUrl: /authentication/form
+    loginPage: /signup
+    processingUrl: /asyncLogin
