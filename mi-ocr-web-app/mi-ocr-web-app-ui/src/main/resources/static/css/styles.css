@@ -1336,3 +1336,8 @@ a img{
   margin-bottom: 20px;
   font-size: 14px
 }
+
+.mi-radius{
+  border-radius: 8px;
+  box-shadow: 0px 2px 5px #888888;
+}

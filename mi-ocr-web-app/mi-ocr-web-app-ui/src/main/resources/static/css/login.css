@@ -2,6 +2,7 @@
     margin:0 auto;
     width: 100%;
     padding:50px;
+    margin-top: 50px;
 }
 
 .mi-center h4{
@@ -13,8 +14,10 @@
 }
 
 .mi-button-blue{
-    background: #4285F4 !important;
-    color:rgb(255,255,255);
+    border-color: #00bfa5;
+    border-bottom-width: 2px;
+    outline: 0;
+    padding-bottom: 7px
 }
 
 .mi-login-layout-button{
@@ -37,16 +40,8 @@
 }
 
 .mdl-textfield__label:after {
-    background-color: #00B0FF;
-    bottom: 8px;
-    content: '';
-    height: 2px;
-    left: 45%;
-    position: absolute;
-    transition-duration: .2s;
-    transition-timing-function: cubic-bezier(.4,0,.2,1);
-    visibility: hidden;
-    width: 10px
+    background-color: transparent !important;
+    height: 4px;
 }
 
 .mdl-textfield.is-focused .mdl-textfield__label:after {
@@ -62,4 +57,19 @@
 
 .mdl-textfield__expandable-holder .mdl-textfield__label:after {
     bottom: 0
+}
+
+
+.input-text-green:focus {
+    border-color: #00bfa5 !important;
+    border-bottom-width: 2px;
+    outline: 0;
+    padding-bottom: 7px
+}
+
+.input-text-blue:focus {
+    border-color: #00B0FF !important;
+    border-bottom-width: 2px;
+    outline: 0;
+    padding-bottom: 7px
 }
