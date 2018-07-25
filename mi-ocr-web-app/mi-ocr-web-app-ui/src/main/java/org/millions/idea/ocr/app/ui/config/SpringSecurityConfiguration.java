@@ -12,6 +12,7 @@ import org.millions.idea.ocr.app.entity.config.UserProperties;
 import org.millions.idea.ocr.web.common.utility.encrypt.Md5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -22,9 +23,11 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -44,12 +47,13 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Qualifier("CustomerDetailsService")
     private UserDetailsService customerDetailsService;
 
-    /**
+/*
+    *//**
      * 密码加密
      *
      * @param auth
      * @throws Exception
-     */
+     *//*
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
@@ -67,7 +71,7 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
         });
         auth.inMemoryAuthentication().withUser("username").password("password").roles("USER");
         auth.authenticationProvider(daoAuthenticationProvider);
-    }
+    }*/
 
     /**
      * 保护机制
@@ -86,12 +90,13 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
                         , "/index"   // 首页
                         , "/api/**" // 接口
                         , "/news/**" // 新闻
-                        , "/asyncLogin" // 异步登录接口
                 ).permitAll()  // 设置无保护机制的路由或页面
                 .and().authorizeRequests()    // 定义哪些路由或页面需要启用保护机制
                 .anyRequest().hasRole("USER")  // 任意一个请求
-                .and().formLogin()
+                .and()
+                .formLogin()
                 .loginPage(userProperties.getSecurity().getLoginPage())  // 登录入口
+                .loginProcessingUrl(userProperties.getSecurity().getProcessingUrl())
                 .permitAll()
                 .successHandler(new AuthenticationSuccessHandler() {
                     @Override
@@ -132,5 +137,10 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/images/**")
                 .antMatchers("/layui/**")
                 .antMatchers("/fonts/**");
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
     }
 }

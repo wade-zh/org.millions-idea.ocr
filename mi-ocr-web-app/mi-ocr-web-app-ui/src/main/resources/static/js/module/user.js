@@ -6,7 +6,7 @@ define('user',['jquery', 'request'],function ($, request) {
                 "password": password
             };
             request.post({
-                url: "/asyncLogin",
+                url: "/api/asyncLogin",
                 data: body,
                 success: function (data) {
                     console.log(data);

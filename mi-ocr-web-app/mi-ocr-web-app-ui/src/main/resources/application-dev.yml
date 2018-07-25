@@ -26,4 +26,4 @@ gateway:
 user:
   security:
     loginPage: /signup
-    processingUrl: /asyncLogin
+    processingUrl: /api/asyncLogin

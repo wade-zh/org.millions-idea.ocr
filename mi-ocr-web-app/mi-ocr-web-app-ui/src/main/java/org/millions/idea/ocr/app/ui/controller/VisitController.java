@@ -7,9 +7,13 @@
  */
 package org.millions.idea.ocr.app.ui.controller;
 
+import org.millions.idea.ocr.web.common.utility.utils.RequestUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Controller
 public class VisitController {
@@ -19,8 +23,10 @@ public class VisitController {
         return "visit/index";
     }
 
-    @GetMapping(value = {"/signup"})
-    public String login(){return "visit/login";}
+    @RequestMapping(value = {"/signup"})
+    public String login(HttpServletRequest request, HttpServletResponse response){
+        return "visit/signup";
+    }
 
     @GetMapping(value = {"/signin"})
     public String signin(){return "visit/signin";}
