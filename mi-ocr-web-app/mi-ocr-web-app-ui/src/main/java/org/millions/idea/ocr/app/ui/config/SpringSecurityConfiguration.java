@@ -56,8 +56,6 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
      */
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
-        daoAuthenticationProvider.setUserDetailsService(customerDetailsService);
         auth.userDetailsService(customerDetailsService).passwordEncoder(new PasswordEncoder() {
             @Override
             public String encode(CharSequence charSequence) {
@@ -69,8 +67,6 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 return charSequence.equals(Md5Util.getMd5(s));
             }
         });
-        auth.inMemoryAuthentication().withUser("username").password("password").roles("USER");
-        auth.authenticationProvider(daoAuthenticationProvider);
     }
 
     /**
