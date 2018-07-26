@@ -23,8 +23,8 @@ public class CustomerDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        /*return new User(username, "123456", AuthorityUtils.commaSeparatedStringToAuthorityList("USER"));*/
         logger.info("登录用户名：" + username);
-        return new User(username, new BCryptPasswordEncoder().encode("123456"), AuthorityUtils.commaSeparatedStringToAuthorityList("user"));
+        return new User(username, "123456", AuthorityUtils.commaSeparatedStringToAuthorityList("USER"));
+        /*return new User(username, new BCryptPasswordEncoder().encode("123456"), AuthorityUtils.commaSeparatedStringToAuthorityList("USER"));*/
     }
 }

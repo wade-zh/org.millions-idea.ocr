@@ -47,13 +47,13 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Qualifier("CustomerDetailsService")
     private UserDetailsService customerDetailsService;
 
-/*
-    *//**
+
+    /**
      * 密码加密
      *
      * @param auth
      * @throws Exception
-     *//*
+     */
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
@@ -71,7 +71,7 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
         });
         auth.inMemoryAuthentication().withUser("username").password("password").roles("USER");
         auth.authenticationProvider(daoAuthenticationProvider);
-    }*/
+    }
 
     /**
      * 保护机制
@@ -86,7 +86,6 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers(
                         userProperties.getSecurity().getLoginPage() // 登录页
-                        , "/"
                         , "/index"   // 首页
                         , "/api/**" // 接口
                         , "/news/**" // 新闻
@@ -98,12 +97,13 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .loginPage(userProperties.getSecurity().getLoginPage())  // 登录入口
                 .loginProcessingUrl(userProperties.getSecurity().getProcessingUrl())
                 .permitAll()
+                .successForwardUrl("/user")
                 .successHandler(new AuthenticationSuccessHandler() {
                     @Override
                     public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
                         httpServletResponse.setContentType("application/json;charset=utf-8");
                         PrintWriter out = httpServletResponse.getWriter();
-                        out.write("{\"error\":0,\"message\":\"登录成功\"}");
+                        out.write("{\"error\":0,\"message\":\"SUCCESS\"}");
                         out.flush();
                         out.close();
                     }
@@ -113,7 +113,7 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
                     public void onAuthenticationFailure(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException, ServletException {
                         httpServletResponse.setContentType("application/json;charset=utf-8");
                         PrintWriter out = httpServletResponse.getWriter();
-                        out.write("{\"error\":1,\"message\":\"登录失败\"}");
+                        out.write("{\"error\":1,\"message\":\"ERROR\"}");
                         out.flush();
                         out.close();
                     }
@@ -136,11 +136,12 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/js/**")
                 .antMatchers("/images/**")
                 .antMatchers("/layui/**")
-                .antMatchers("/fonts/**");
+                .antMatchers("/fonts/**")
+                .antMatchers("/noamd-js/**");
     }
-
+/*
     @Bean
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
-    }
+    }*/
 }

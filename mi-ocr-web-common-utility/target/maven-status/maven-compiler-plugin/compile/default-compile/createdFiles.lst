@@ -4,5 +4,6 @@ org\millions\idea\ocr\web\common\utility\encrypt\Md5Util.class
 org\millions\idea\ocr\web\common\utility\utils\PropertyUtil.class
 org\millions\idea\ocr\web\common\utility\json\JsonUtil.class
 org\millions\idea\ocr\web\common\utility\jedis\JedisUtil.class
+org\millions\idea\ocr\web\common\utility\utils\RequestUtil.class
 org\millions\idea\ocr\web\common\utility\jedis\RedisConfig.class
 org\millions\idea\ocr\web\common\utility\jedis\RedisUtil.class

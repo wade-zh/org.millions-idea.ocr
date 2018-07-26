@@ -275,3 +275,4 @@ __pycache__/
 /mi-ocr-web/mi-ocr-web-utility/target/mi-ocr-web-service.jar
 /mi-ocr-web-captcha/mi-ocr-web-captcha-controller/src/main/resources/*.yml
 /test.bat
+/mi-ocr-web-app/logs

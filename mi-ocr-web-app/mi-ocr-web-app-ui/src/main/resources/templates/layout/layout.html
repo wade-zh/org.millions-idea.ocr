@@ -20,7 +20,13 @@
         </div>
     </header>
     <th:block layout:fragment="body" />
-    <div>
+    <!--short message begin-->
+    <div id="mdl-short-message-container" class="mdl-js-snackbar mdl-snackbar">
+        <div class="mdl-snackbar__text"></div>
+        <button class="mdl-snackbar__action" type="button"></button>
+    </div>
+    <!--short message end-->
+    <div style="z-index: 999">
         <section class="docs-text-styling download mdl-color--grey-800">
             <a href="../started/index.html#download" class="mdl-color-text--grey-50">Download Kit</a>
         </section>
