@@ -9,12 +9,14 @@ package org.millions.idea.ocr.app.ui.config;
 
 
 import org.millions.idea.ocr.app.entity.config.UserProperties;
-import org.millions.idea.ocr.web.common.utility.encrypt.Md5Util;
+import org.millions.idea.ocr.app.ui.config.security.PasswordEncoderEx;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.authentication.dao.ReflectionSaltSource;
+import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -23,11 +25,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -44,9 +43,20 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 
     @Autowired
-    @Qualifier("CustomerDetailsService")
-    private UserDetailsService customerDetailsService;
+    @Qualifier("UserDetailsServiceEx")
+    private UserDetailsService userDetailsServiceEx;
 
+    @Bean
+    public Md5PasswordEncoder md5PasswordEncoder(){
+        return new PasswordEncoderEx();
+    }
+
+    @Bean
+    public ReflectionSaltSource reflectionSaltSource(){
+        ReflectionSaltSource reflectionSaltSource = new ReflectionSaltSource();
+        reflectionSaltSource.setUserPropertyToUse("salt");
+        return reflectionSaltSource;
+    }
 
     /**
      * 密码加密
@@ -56,17 +66,11 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
      */
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(customerDetailsService).passwordEncoder(new PasswordEncoder() {
-            @Override
-            public String encode(CharSequence charSequence) {
-                return Md5Util.getMd5((String) charSequence);
-            }
-
-            @Override
-            public boolean matches(CharSequence charSequence, String s) {
-                return charSequence.equals(Md5Util.getMd5(s));
-            }
-        });
+        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+        provider.setSaltSource(reflectionSaltSource());
+        provider.setPasswordEncoder(md5PasswordEncoder());
+        provider.setUserDetailsService(userDetailsServiceEx);
+        auth.authenticationProvider(provider);
     }
 
     /**
@@ -85,13 +89,15 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
                         , "/index"   // 首页
                         , "/api/**" // 接口
                         , "/news/**" // 新闻
+                        , "/userInfo"
                 ).permitAll()  // 设置无保护机制的路由或页面
                 .and().authorizeRequests()    // 定义哪些路由或页面需要启用保护机制
                 .anyRequest().hasRole("USER")  // 任意一个请求
                 .and()
                 .formLogin()
+                .usernameParameter("username").passwordParameter("password").permitAll()
                 .loginPage(userProperties.getSecurity().getLoginPage())  // 登录入口
-                .loginProcessingUrl(userProperties.getSecurity().getProcessingUrl())
+                .loginProcessingUrl(userProperties.getSecurity().getProcessingUrl())    // 登录验证接口
                 .permitAll()
                 .successForwardUrl("/user")
                 .successHandler(new AuthenticationSuccessHandler() {
@@ -114,8 +120,6 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
                         out.close();
                     }
                 })
-                .loginProcessingUrl(userProperties.getSecurity().getProcessingUrl())    // 登录验证接口
-                .usernameParameter("username").passwordParameter("password").permitAll()
                 .and().logout().permitAll();
     }
 

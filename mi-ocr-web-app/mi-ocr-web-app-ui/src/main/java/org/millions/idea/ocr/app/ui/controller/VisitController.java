@@ -8,9 +8,12 @@
 package org.millions.idea.ocr.app.ui.controller;
 
 import org.millions.idea.ocr.web.common.utility.utils.RequestUtil;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -31,4 +34,10 @@ public class VisitController {
     @GetMapping(value = {"/signin"})
     public String signin(){return "visit/signin";}
 
+
+    @GetMapping("/userInfo")
+    @ResponseBody
+    public Object getCurrentUserInfo(Authentication authentication){
+        return SecurityContextHolder.getContext().getAuthentication();
+    }
 }
