@@ -92,7 +92,7 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
                         , "/userInfo"
                 ).permitAll()  // 设置无保护机制的路由或页面
                 .and().authorizeRequests()    // 定义哪些路由或页面需要启用保护机制
-                .anyRequest().hasRole("USER")  // 任意一个请求
+                .anyRequest().hasRole("ADMIN")  // 任意一个请求
                 .and()
                 .formLogin()
                 .usernameParameter("username").passwordParameter("password").permitAll()
