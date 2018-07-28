@@ -34,11 +34,23 @@ public class SessionFilter implements Filter {
     private RedisTemplate redisTemplate;
 
     private static final Set<String> EXCLUDE = Collections.unmodifiableSet(new HashSet<>(
-            Arrays.asList("/user-api/login", "/user-api/category/initCache")));
+            Arrays.asList("/user-api/login", "/user-api/category/initCache","/user-api/web/**")));
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
 
+    }
+
+    public boolean isExists(String path){
+        for (String item : EXCLUDE){
+            if(item.contains("*")){
+                String[] split = item.split("[*]");
+                if (split.length > 0){
+                    return item.startsWith(split[0]);
+                }
+            }
+        }
+        return false;
     }
 
     @Override
@@ -46,7 +58,7 @@ public class SessionFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         String path = request.getRequestURI().substring(request.getContextPath().length()).replaceAll("[/]+$", "");
-        if(EXCLUDE.contains(path)) {
+        if(isExists(path)) {
             filterChain.doFilter(servletRequest, response);
             return;
         }

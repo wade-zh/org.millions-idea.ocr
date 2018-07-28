@@ -8,6 +8,7 @@
 package org.millions.idea.ocr.web.user.biz.impl;
 
 import org.millions.idea.ocr.web.common.entity.exception.MessageException;
+import org.millions.idea.ocr.web.common.utility.date.DateUtil;
 import org.millions.idea.ocr.web.common.utility.encrypt.Md5Util;
 import org.millions.idea.ocr.web.common.utility.json.JsonUtil;
 import org.millions.idea.ocr.web.common.utility.utils.PropertyUtil;
@@ -16,16 +17,20 @@ import org.millions.idea.ocr.web.user.biz.IUserService;
 import org.millions.idea.ocr.web.user.entity.db.Users;
 import org.millions.idea.ocr.web.user.entity.ext.UserEntity;
 import org.millions.idea.ocr.web.user.repository.mapper.IUserMapperRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 @Service
 public class UserServiceImpl implements IUserService {
+    private Logger logger = LoggerFactory.getLogger(getClass());
     private final IUserMapperRepository userMapperRepository;
     private final RedisTemplate redisTemplate;
 
@@ -46,7 +51,7 @@ public class UserServiceImpl implements IUserService {
      */
     @Override
     public Users getUser(Integer uid) {
-        return userMapperRepository.query(uid);
+        return userMapperRepository.select(uid);
     }
 
     /**
@@ -94,29 +99,22 @@ public class UserServiceImpl implements IUserService {
     }
 
     /**
-     * 通过web渠道登录账户
+     * 根据username查询用户信息
      *
      * @param username
-     * @param password
-     * @param vcode
      * @return
      */
     @Override
-    public Integer webLogin(String username, String password, String vcode) throws MessageException{
-        /*
-            1、判断验证码是否正确
-            2、判断用户名密码是否正确
-         */
+    public Users webLogin(String username,  String lastLoginIp) throws MessageException{
+        Users user =  userMapperRepository.selectUserByUsername(username);
+        if(user == null) throw new MessageException("用户不存在");
 
-        // 1、判断验证码是否正确
+        Timestamp lastActiveTime = DateUtil.convert(new Timestamp(System.currentTimeMillis()));
+        if (lastLoginIp == null) lastLoginIp = "0.0.0.0";
+        int result = userMapperRepository.updateActive(username,lastActiveTime,lastLoginIp);
+        logger.info("UserService_updateActive" + result);
 
-        // 2、判断用户名密码是否正确
-        String nPassword = Md5Util.getMd5(username + password);
-        Users user = userMapperRepository.login(username, nPassword);
-        if(user == null) throw new MessageException("用户名或密码错误");
-        String key = Md5Util.getMd5(user.getUid() + user.getUserName());
-        redisTemplate.opsForValue().set(key, JsonUtil.getJson(user), 30, TimeUnit.MINUTES);
-        return user.getUid();
+        return user;
     }
 
 }

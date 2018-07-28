@@ -105,7 +105,7 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
                     public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
                         httpServletResponse.setContentType("application/json;charset=utf-8");
                         PrintWriter out = httpServletResponse.getWriter();
-                        out.write("{\"error\":0,\"message\":\"SUCCESS\"}");
+                        out.write("{\"error\":0,\"msg\":\"SUCCESS\"}");
                         out.flush();
                         out.close();
                     }
@@ -115,7 +115,7 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
                     public void onAuthenticationFailure(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException, ServletException {
                         httpServletResponse.setContentType("application/json;charset=utf-8");
                         PrintWriter out = httpServletResponse.getWriter();
-                        out.write("{\"error\":1,\"message\":\"ERROR\"}");
+                        out.write("{\"error\":1,\"msg\":\"ERROR\"}");
                         out.flush();
                         out.close();
                     }

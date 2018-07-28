@@ -32,7 +32,8 @@ public class GlobalExceptionHandler {
     public HttpResp preException(HttpServletRequest request,
                                  MessageException exception) throws Exception {
         logger.error(String.format("自定义异常消息: %s",exception.toString()));
-        return new HttpResp(exception.getError() == 0 ? 1 : exception.getError(), exception.getMessage());
+        if(exception.getError() == null) exception.setError(1);
+        return new org.millions.idea.ocr.web.common.entity.common.HttpResp(exception.getError() == 0 ? 1 : exception.getError(), exception.getMessage());
     }
 
 

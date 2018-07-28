@@ -12,6 +12,7 @@ import org.apache.ibatis.annotations.Param;
 import org.millions.idea.ocr.web.user.entity.db.Users;
 import org.springframework.stereotype.Component;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 @Mapper
@@ -22,8 +23,14 @@ public interface IUserMapperRepository {
      * @param uid
      * @return
      */
-    Users query(@Param("uid") Integer uid);
+    Users select(@Param("uid") Integer uid);
 
+    /**
+     * Query by username
+     * @param username
+     * @return
+     */
+    Users selectUserByUsername(@Param("username") String username);
 
     /**
      * Query users information
@@ -32,4 +39,16 @@ public interface IUserMapperRepository {
      * @return
      */
     Users login(@Param("uname") String uname, @Param("pwd") String pwd);
+
+
+    /**
+     * 更新用户最后活动信息
+     * @param username
+     * @param lastActiveTime
+     * @param lastLoginIp
+     * @return
+     */
+    int updateActive(@Param("username") String username,
+                     @Param("lastActiveTime") Timestamp lastActiveTime,
+                     @Param("lastLoginIp") String lastLoginIp);
 }

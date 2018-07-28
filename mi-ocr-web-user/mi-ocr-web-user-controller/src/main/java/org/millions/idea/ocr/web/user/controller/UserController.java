@@ -13,7 +13,6 @@ import org.millions.idea.ocr.web.user.entity.db.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -36,13 +35,11 @@ public class UserController {
     /**
      * 通过web渠道登录账户
      * @param username
-     * @param password
-     * @param vcode
      * @return
      */
-    @PostMapping("/web-login")
-    public Integer webLogin(String username, String password, String vcode){
-        return userService.webLogin(username, password, vcode);
+    @PostMapping("/web/login")
+    public Users webLogin(String username, String ip){
+        return userService.webLogin(username, ip);
     }
 
     /**

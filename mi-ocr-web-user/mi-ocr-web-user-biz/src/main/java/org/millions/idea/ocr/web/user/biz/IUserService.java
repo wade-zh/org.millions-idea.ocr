@@ -12,6 +12,7 @@ import org.millions.idea.ocr.web.user.entity.common.LoginResult;
 import org.millions.idea.ocr.web.user.entity.db.Users;
 
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.util.List;
 
 public interface IUserService {
@@ -31,15 +32,6 @@ public interface IUserService {
      */
     String directLogin(String uname, String pwd);
 
-    /**
-     * 通过web渠道登录账户
-     * @param username
-     * @param password
-     * @param vcode
-     * @return
-     */
-    Integer webLogin(String username, String password, String vcode);
-
 
     /**
      * 查询余额
@@ -47,4 +39,11 @@ public interface IUserService {
      * @return
      */
     BigDecimal getBalance(String token);
+
+    /**
+     * 根据username查询用户信息
+     * @param username
+     * @return
+     */
+    Users webLogin(String username,  String lastLoginIp);
 }
