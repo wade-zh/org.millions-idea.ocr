@@ -1,5 +1,7 @@
 package org.millions.idea.ocr.web.biz;
 
+import org.millions.idea.ocr.web.entity.agent.UserEntity;
+
 /***
  * @pName mi-ocr-web-app
  * @name IUserService
@@ -9,5 +11,5 @@ package org.millions.idea.ocr.web.biz;
  */
 
 public interface IUserService {
-    boolean login(String username, String password, String vcode);
+    UserEntity login(String username, String ip);
 }

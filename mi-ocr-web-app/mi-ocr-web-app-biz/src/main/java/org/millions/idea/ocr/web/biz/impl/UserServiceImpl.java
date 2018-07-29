@@ -7,20 +7,21 @@
  */
 package org.millions.idea.ocr.web.biz.impl;
 
+import org.millions.idea.ocr.web.entity.agent.UserEntity;
 import org.millions.idea.ocr.web.agent.IUserAgentService;
 import org.millions.idea.ocr.web.biz.IUserService;
-import org.millions.idea.ocr.web.common.entity.common.HttpResp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 @Service
 public class UserServiceImpl implements IUserService {
+
     @Autowired
     private IUserAgentService userAgentService;
 
     @Override
-    public boolean login(String username, String password, String vcode) {
-        Integer userId = userAgentService.webLogin(username, password, vcode);
-        return userId != 0;
+    public UserEntity login(String username, String ip) {
+        return userAgentService.webLogin(username, ip);
     }
 }

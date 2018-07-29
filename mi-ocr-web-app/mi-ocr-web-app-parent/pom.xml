@@ -10,17 +10,45 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>../mi-ocr-web-app-entity</module>
-        <module>../mi-ocr-web-app-ui</module>
-        <module>../mi-ocr-web-app-biz</module>
         <module>../mi-ocr-web-app-agent</module>
+        <module>../mi-ocr-web-app-entity</module>
+        <module>../mi-ocr-web-app-controller</module>
+        <module>../mi-ocr-web-app-biz</module>
     </modules>
 
     <dependencies>
+        <!--Active sync change-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <version>2.0.2.RELEASE</version>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-autoconfigure</artifactId>
             <version>2.0.1.RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-test</artifactId>
+            <version>2.0.1.RELEASE</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>5.0.5.RELEASE</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -69,6 +97,7 @@
                 <version>2.6</version>
                 <optional>false</optional>
             </dependency>
+
         </dependencies>
     </dependencyManagement>
 

@@ -37,7 +37,7 @@ public class RequestUtil {
      * @param request
      * @return
      */
-    public static String getIpAddr(HttpServletRequest request) {
+    public static String getIp(HttpServletRequest request) {
         String ip = request.getHeader("X-Forwarded-For");
         if (StringUtils.isBlank(ip) || "unknown".equalsIgnoreCase(ip)) {
             ip = request.getHeader("X-Real-IP");
