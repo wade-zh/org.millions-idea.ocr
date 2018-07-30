@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.millions.idea.ocr.web.user.repository.mapper.IUserMapperRepository">
     <sql id="fields">
-       user_name,password,regist_time,last_active_time,last_login_ip,last_login_area
+       user_name,password,email,regist_time,last_active_time,last_login_ip,last_login_area
     </sql>
     <sql id="f_fields">
         uid,<include refid="fields"/>
@@ -26,6 +26,6 @@
     </select>
 
     <insert id="insert" parameterType="org.millions.idea.ocr.web.user.entity.db.Users">
-        INSERT INTO `users`(user_name,password,regist_time) VALUES(#{username}, #{password}, CURRENT_TIMESTAMP);
+        INSERT INTO `users`(user_name,password,email,regist_time) VALUES(#{userName}, #{password}, #{email} ,CURRENT_TIMESTAMP);
     </insert>
 </mapper>

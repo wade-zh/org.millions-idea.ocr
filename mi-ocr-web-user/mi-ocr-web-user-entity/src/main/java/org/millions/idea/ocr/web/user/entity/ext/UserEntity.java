@@ -36,8 +36,8 @@ public class UserEntity extends Users {
 
     }
 
-    public UserEntity(Integer uid, String userName, String password, Timestamp registTime, Timestamp lastActiveTime, String lastLoginIp, String lastLoginArea, String token, WalletEntity wallet) {
-        super(uid, userName, password, registTime, lastActiveTime, lastLoginIp, lastLoginArea);
+    public UserEntity(Integer uid, String userName, String password, String email, Timestamp registTime, Timestamp lastActiveTime, String lastLoginIp, String lastLoginArea, String token, WalletEntity wallet) {
+        super(uid, userName, password, email, registTime, lastActiveTime, lastLoginIp, lastLoginArea);
         this.token = token;
         this.wallet = wallet;
     }

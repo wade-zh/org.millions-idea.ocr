@@ -20,4 +20,9 @@ public interface IUserAgentService {
 
     @RequestMapping(value = "/web/login", method = RequestMethod.POST)
     UserEntity webLogin(@RequestParam("username") String username, @RequestParam("ip") String ip);
+
+    @RequestMapping(value = "/web/addUser", method = RequestMethod.POST)
+    Boolean addUser(@RequestParam("userName") String username,
+                    @RequestParam("password") String password,
+                    @RequestParam("email") String email);
 }

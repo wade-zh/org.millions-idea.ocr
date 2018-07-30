@@ -25,7 +25,7 @@
                     <h4 align="left">注册</h4>
                     <div class="mdl-cell mdl-cell--6-col" style="display: inline-block" align="center">
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input input-text-blue" type="text" id="username" name="username" pattern="[A-Z,a-z]*" >
+                            <input class="mdl-textfield__input input-text-blue" type="text" id="username" name="username" pattern="^[a-zA-Z0-9_-]{4,16}$" >
                             <label class="mdl-textfield__label" for="username">请输入用户名</label>
                         </div>
 
@@ -40,19 +40,19 @@
                         </div>
 
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                            <input class="mdl-textfield__input input-text-blue" type="input" id="email" name="email">
+                            <input class="mdl-textfield__input input-text-blue" type="input" id="email" name="email" pattern="^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$">
                             <label class="mdl-textfield__label" for="password2">请输入常用邮箱</label>
                         </div>
 
                         <br>
-                        <a class="cta-signup button cta-main"
+                        <button id="btn-register" class="cta-signup button cta-main"
                            data-g-action="Sign Up"
                            data-g-label="Canvas"
                            href="/um/StartNow?hl=en&amp;sourceid=awo&amp;subid=ww-ww-et-g-awa-a-g_hpafoot1_1!o2" rel="nofollow">
                             <font style="vertical-align: inherit;">
                                 <font style="vertical-align: inherit;">现在开始</font>
                             </font>
-                        </a>
+                        </button>
                     </div>
                     <div class="mdl-cell mdl-cell--5-col" style="display: inline-block">11</div>
                 </div>

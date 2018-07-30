@@ -130,7 +130,8 @@ public class UserServiceImpl implements IUserService {
      */
     @Override
     public boolean addUser(Users user) {
-        user.setPassword(user.getUserName() + user.getPassword());
+        if(user.getEmail().indexOf("@") == 0) return false;
+        user.setPassword(Md5Util.getMd5(user.getUserName() + user.getPassword()));
         return userMapperRepository.insert(user) > 0;
     }
 

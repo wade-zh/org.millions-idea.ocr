@@ -22,25 +22,65 @@ define('user',['jquery', 'request','alert'],function ($, request, alert) {
                     }
                 }
             });
+        },
+        /**
+         * 发送注册请求
+         * @param username
+         * @param password
+         * @param email
+         */
+        register: function (username, password, email, callback) {
+            var body = {
+                "username": username,
+                "password": password,
+                "email": email
+            };
+            request.post({
+                url: "/api/register",
+                data: body,
+                success: function (data) {
+                    if(data.error == 0){
+                        location.href = "/signup"
+                    }else{
+                        alert.mdl.footerShortMessage('注册失败');
+                    }
+                    callback();
+                }
+            });
+        },
+        verifyPassword: function ($password,$password2) {
+            if($password2.val() != $password.val()){
+                $password2.parent().addClass("is-invalid");
+            }
         }
     }
     $(function () {
 
         /*按钮事件*/
         var $loginBtn = $("#user-login-btn"),
-            $signInBtn = $("#user-create-btn");
+            $signInBtn = $("#user-create-btn"),
+            $registerBtn = $("#btn-register");
 
         /*页面元素*/
         var $username = $("#username"),
-            $password = $("#password");
+            $password = $("#password"),
+            $password2 = $("#password2"),
+            $email = $("#email");
 
         /*动态添加事件*/
         $loginBtn.click(function () {
             UserService.login($username.val(), $password.val(), null);
-        });
+        })
 
         $signInBtn.click(function () {
             location.href = "/signin"
+        })
+
+        $registerBtn.click(function () {
+            $registerBtn.attr("disabled",true);
+            UserService.register($username.val(), $password.val(), $email.val(), function () {
+                $registerBtn.removeAttr("disabled");
+            });
         })
 
         $password.keyup(function (event) {
@@ -49,6 +89,9 @@ define('user',['jquery', 'request','alert'],function ($, request, alert) {
             }
         });
 
+        $password2.blur(function () {
+            UserService.verifyPassword($password,$password2);
+        });
 
 
     })

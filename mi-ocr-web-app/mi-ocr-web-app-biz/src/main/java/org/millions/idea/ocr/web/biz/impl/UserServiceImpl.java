@@ -24,4 +24,9 @@ public class UserServiceImpl implements IUserService {
     public UserEntity login(String username, String ip) {
         return userAgentService.webLogin(username, ip);
     }
+
+    @Override
+    public Boolean register(String username, String password, String email) {
+        return userAgentService.addUser(username, password, email);
+    }
 }

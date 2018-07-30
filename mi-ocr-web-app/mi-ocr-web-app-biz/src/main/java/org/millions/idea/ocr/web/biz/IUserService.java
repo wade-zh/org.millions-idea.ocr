@@ -12,4 +12,6 @@ import org.millions.idea.ocr.web.entity.agent.UserEntity;
 
 public interface IUserService {
     UserEntity login(String username, String ip);
+
+    Boolean register(String username, String password, String email);
 }

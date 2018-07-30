@@ -9,11 +9,15 @@ CREATE TABLE `users` (
   `uid` int(11) NOT NULL AUTO_INCREMENT,
   `user_name` varchar(32) NOT NULL COMMENT '用户名',
   `password` varchar(32) NOT NULL COMMENT '用户密码',
+  `email` varchar(32) NOT NULL COMMENT '注册邮箱',
   `regist_time` datetime NOT NULL COMMENT '注册时间',
   `last_active_time` datetime DEFAULT NULL COMMENT '最后活动时间',
   `last_login_ip` varchar(15) DEFAULT NULL COMMENT '最后登录IP',
   `last_login_area` varchar(32) DEFAULT NULL COMMENT '最后登录区域',
-  PRIMARY KEY (`uid`)
+  PRIMARY KEY (`uid`),
+  UNIQUE KEY `uq_uid_uname_email` (`uid`,`user_name`,`email`) USING BTREE COMMENT '联合主键保证数据唯一性',
+  UNIQUE KEY `uq_uname` (`user_name`) COMMENT '用户名唯一索引',
+  UNIQUE KEY `uq_email` (`email`) COMMENT '邮箱唯一索引'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户表';
 
 

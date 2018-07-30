@@ -13,12 +13,29 @@ public class Users {
     private Integer uid;
     private String userName;
     private String password;
+    private String email;
     private Timestamp registTime;
     private Timestamp lastActiveTime;
     private String lastLoginIp;
     private String lastLoginArea;
 
+    public Users(Integer uid, String userName, String password, String email, Timestamp registTime, Timestamp lastActiveTime, String lastLoginIp, String lastLoginArea) {
+        this.uid = uid;
+        this.userName = userName;
+        this.password = password;
+        this.email = email;
+        this.registTime = registTime;
+        this.lastActiveTime = lastActiveTime;
+        this.lastLoginIp = lastLoginIp;
+        this.lastLoginArea = lastLoginArea;
+    }
+
+    public Users() {
+
+    }
+
     public Integer getUid() {
+
         return uid;
     }
 
@@ -40,6 +57,14 @@ public class Users {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Timestamp getRegistTime() {
@@ -71,21 +96,6 @@ public class Users {
     }
 
     public void setLastLoginArea(String lastLoginArea) {
-        this.lastLoginArea = lastLoginArea;
-    }
-
-    public Users() {
-
-    }
-
-    public Users(Integer uid, String userName, String password, Timestamp registTime, Timestamp lastActiveTime, String lastLoginIp, String lastLoginArea) {
-
-        this.uid = uid;
-        this.userName = userName;
-        this.password = password;
-        this.registTime = registTime;
-        this.lastActiveTime = lastActiveTime;
-        this.lastLoginIp = lastLoginIp;
         this.lastLoginArea = lastLoginArea;
     }
 }
