@@ -50,5 +50,6 @@ public interface IUserMapperRepository {
      */
     int updateActive(@Param("username") String username,
                      @Param("lastActiveTime") Timestamp lastActiveTime,
-                     @Param("lastLoginIp") String lastLoginIp);
+                     @Param("lastLoginIp") String lastLoginIp,
+                     @Param("lastLoginArea") String lastLoginArea);
 }

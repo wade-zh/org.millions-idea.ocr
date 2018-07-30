@@ -8,7 +8,11 @@
 package org.millions.idea.ocr.web.common.utility.utils;
 
 
+import com.arronlong.httpclientutil.HttpClientUtil;
+import com.arronlong.httpclientutil.common.HttpConfig;
 import org.apache.commons.lang3.StringUtils;
+import org.millions.idea.ocr.web.common.utility.json.Address;
+import org.millions.idea.ocr.web.common.utility.json.JsonUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import java.net.InetAddress;
@@ -24,7 +28,6 @@ public class RequestUtil {
         }
         return false;
     }
-
 
     /**
      * 获取访问者IP
@@ -88,4 +91,18 @@ public class RequestUtil {
             }
         }
     }
+
+    public static String getCity(String ip){
+        try {
+            String url = "http://ip.ws.126.net/ipquery?ip=" + ip;
+            String json = HttpClientUtil.get(HttpConfig.custom().url(url));
+            if(json == null) return null;
+            json = json.substring(json.indexOf("{"), json.length());
+            Address address = (Address)JsonUtil.getModel(json, Address.class);
+            return address.getProvince() + address.getCity();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
 }

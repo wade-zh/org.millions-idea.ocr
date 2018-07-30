@@ -16,20 +16,37 @@ public class UserEntity {
     private Timestamp registTime;
     private Timestamp lastActiveTime;
     private String lastLoginIp;
+    private String lastLoginArea;
 
     @Override
     public String toString() {
-        return "Users{" +
+        return "UserEntity{" +
                 "uid=" + uid +
                 ", userName='" + userName + '\'' +
                 ", password='" + password + '\'' +
                 ", registTime=" + registTime +
                 ", lastActiveTime=" + lastActiveTime +
                 ", lastLoginIp='" + lastLoginIp + '\'' +
+                ", lastLoginArea='" + lastLoginArea + '\'' +
                 '}';
     }
 
+    public UserEntity() {
+    }
+
+    public UserEntity(Integer uid, String userName, String password, Timestamp registTime, Timestamp lastActiveTime, String lastLoginIp, String lastLoginArea) {
+
+        this.uid = uid;
+        this.userName = userName;
+        this.password = password;
+        this.registTime = registTime;
+        this.lastActiveTime = lastActiveTime;
+        this.lastLoginIp = lastLoginIp;
+        this.lastLoginArea = lastLoginArea;
+    }
+
     public Integer getUid() {
+
         return uid;
     }
 
@@ -77,16 +94,11 @@ public class UserEntity {
         this.lastLoginIp = lastLoginIp;
     }
 
-    public UserEntity() {
-
+    public String getLastLoginArea() {
+        return lastLoginArea;
     }
 
-    public UserEntity(Integer uid, String userName, String password, Timestamp registTime, Timestamp lastActiveTime, String lastLoginIp) {
-        this.uid = uid;
-        this.userName = userName;
-        this.password = password;
-        this.registTime = registTime;
-        this.lastActiveTime = lastActiveTime;
-        this.lastLoginIp = lastLoginIp;
+    public void setLastLoginArea(String lastLoginArea) {
+        this.lastLoginArea = lastLoginArea;
     }
 }

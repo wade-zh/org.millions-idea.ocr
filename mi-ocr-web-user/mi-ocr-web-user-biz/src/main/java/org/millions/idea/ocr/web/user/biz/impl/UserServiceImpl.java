@@ -10,8 +10,10 @@ package org.millions.idea.ocr.web.user.biz.impl;
 import org.millions.idea.ocr.web.common.entity.exception.MessageException;
 import org.millions.idea.ocr.web.common.utility.date.DateUtil;
 import org.millions.idea.ocr.web.common.utility.encrypt.Md5Util;
+import org.millions.idea.ocr.web.common.utility.json.Address;
 import org.millions.idea.ocr.web.common.utility.json.JsonUtil;
 import org.millions.idea.ocr.web.common.utility.utils.PropertyUtil;
+import org.millions.idea.ocr.web.common.utility.utils.RequestUtil;
 import org.millions.idea.ocr.web.user.agent.order.IWalletAgentService;
 import org.millions.idea.ocr.web.user.biz.IUserService;
 import org.millions.idea.ocr.web.user.entity.db.Users;
@@ -111,7 +113,10 @@ public class UserServiceImpl implements IUserService {
 
         Timestamp lastActiveTime = DateUtil.convert(new Timestamp(System.currentTimeMillis()));
         if (lastLoginIp == null) lastLoginIp = "0.0.0.0";
-        int result = userMapperRepository.updateActive(username,lastActiveTime,lastLoginIp);
+
+        String area = RequestUtil.getCity(lastLoginIp);
+
+        int result = userMapperRepository.updateActive(username,lastActiveTime,lastLoginIp,area);
         logger.info("UserService_updateActive" + result);
 
         return user;

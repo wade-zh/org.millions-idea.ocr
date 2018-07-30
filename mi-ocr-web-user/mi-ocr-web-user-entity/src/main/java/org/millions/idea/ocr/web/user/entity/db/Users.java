@@ -16,18 +16,7 @@ public class Users {
     private Timestamp registTime;
     private Timestamp lastActiveTime;
     private String lastLoginIp;
-
-    @Override
-    public String toString() {
-        return "Users{" +
-                "uid=" + uid +
-                ", userName='" + userName + '\'' +
-                ", password='" + password + '\'' +
-                ", registTime=" + registTime +
-                ", lastActiveTime=" + lastActiveTime +
-                ", lastLoginIp='" + lastLoginIp + '\'' +
-                '}';
-    }
+    private String lastLoginArea;
 
     public Integer getUid() {
         return uid;
@@ -77,11 +66,19 @@ public class Users {
         this.lastLoginIp = lastLoginIp;
     }
 
+    public String getLastLoginArea() {
+        return lastLoginArea;
+    }
+
+    public void setLastLoginArea(String lastLoginArea) {
+        this.lastLoginArea = lastLoginArea;
+    }
+
     public Users() {
 
     }
 
-    public Users(Integer uid, String userName, String password, Timestamp registTime, Timestamp lastActiveTime, String lastLoginIp) {
+    public Users(Integer uid, String userName, String password, Timestamp registTime, Timestamp lastActiveTime, String lastLoginIp, String lastLoginArea) {
 
         this.uid = uid;
         this.userName = userName;
@@ -89,5 +86,6 @@ public class Users {
         this.registTime = registTime;
         this.lastActiveTime = lastActiveTime;
         this.lastLoginIp = lastLoginIp;
+        this.lastLoginArea = lastLoginArea;
     }
 }

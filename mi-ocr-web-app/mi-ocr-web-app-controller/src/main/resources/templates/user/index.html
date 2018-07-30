@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
       layout:decorate="~{layout/layout}">
 <head>
     <meta charset="utf-8">
@@ -26,7 +27,7 @@
                 <!--main begin-->
                 <main class="mdl-layout__content">
                     <div class="mdl-components__warning mi-warning"><b style="font-weight: bold">系统提醒: </b>
-                        <span>尊敬的<span id="current-username">...</span>用户您好，您上次在<span id="current-city">...</span>登录，IP地址<span id="current-ip">...</span>，如发现异常，请立刻联系客服锁定账号</span>
+                        <span>尊敬的 <span sec:authentication="name"></span> 用户您好，您上次在 <span th:text="${city}"></span> 登录，登录IP <span th:text="${ip}"></span>，如发现异常，请立刻联系客服锁定账号</span>
                     </div>
 
                     <!--sum begin-->

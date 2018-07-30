@@ -7,6 +7,7 @@
  */
 package org.millions.idea.ocr.web.config.security;
 
+import org.millions.idea.ocr.web.common.utility.json.Address;
 import org.millions.idea.ocr.web.entity.agent.UserEntity;
 import org.millions.idea.ocr.web.utils.ServletUtil;
 import org.millions.idea.ocr.web.biz.IUserService;
@@ -31,11 +32,11 @@ public class UserDetailsServiceEx implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserEntity userEntity = userService.login(username, RequestUtil.getIp(ServletUtil.getRequest()));
+        String ip = RequestUtil.getIp(ServletUtil.getRequest());
+        UserEntity userEntity = userService.login(username, ip);
         logger.debug(JsonUtil.getJson(userEntity));
-        return new UserDetailsEx(userEntity.getUserName(), userEntity.getUserName(), userEntity.getPassword(), AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_ADMIN"));
+        return new UserDetailsEx(userEntity, userEntity.getUserName(), userEntity.getUserName(), userEntity.getPassword(), AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_ADMIN"));
     }
-
 
 
 }

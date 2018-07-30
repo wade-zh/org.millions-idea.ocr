@@ -99,15 +99,23 @@
             <version>2.6</version>
             <optional>false</optional>
         </dependency>
+
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
             <version>2.5</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.arronlong/httpclientutil -->
+        <dependency>
+            <groupId>com.arronlong</groupId>
+            <artifactId>httpclientutil</artifactId>
+            <version>1.0</version>
+        </dependency>
     </dependencies>
 
     <build>
-        <finalName>mi-ocr-web-captcha-service</finalName>
+        <finalName>mi-ocr-web-common-utility</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

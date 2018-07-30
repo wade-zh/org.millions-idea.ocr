@@ -12,6 +12,7 @@ CREATE TABLE `users` (
   `regist_time` datetime NOT NULL COMMENT '注册时间',
   `last_active_time` datetime DEFAULT NULL COMMENT '最后活动时间',
   `last_login_ip` varchar(15) DEFAULT NULL COMMENT '最后登录IP',
+  `last_login_area` varchar(32) DEFAULT NULL COMMENT '最后登录区域',
   PRIMARY KEY (`uid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户表';
 
