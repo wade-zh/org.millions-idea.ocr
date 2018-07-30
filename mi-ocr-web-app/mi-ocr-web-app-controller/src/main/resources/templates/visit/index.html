@@ -1,0 +1,275 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	  layout:decorate="~{layout/layout}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="keywords" th:content="${keywords}">
+    <meta name="description" th:content="${description}">
+    <title th:text="${title}"></title>
+  </head>
+  <body>
+	  <th:block layout:fragment="body">
+			<!--content begin-->
+			<main class="docs-layout-content mdl-layout__content mdl-color-text--grey-600">
+				<div class="content mdl-grid mdl-grid--no-spacing" id="content">
+					<div class="mdl-components mdl-js-components mdl-cell mdl-cell--12-col">
+						<aside style="display: none" class="mdl-components__nav docs-text-styling mdl-shadow--4dp mi-transition">
+							<!-- <span class="item" onclick="window.location.href='#link'">
+								<a href="#link" class="mdl-components__link mdl-component badges">
+								  <div class="mdl-components__link-image" style="background-image: url('#')">
+								  </div>
+								  <span class="mdl-components__link-text">Badges</span>
+								</a>
+							</span>-->
+							<!--<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect " style="margin-top: -20px;">
+								<div class="mdl-tabs__tab-bar" style="margin-top: -20px;">
+									<a href="#starks-panel" class="mdl-tabs__tab is-active">请登录</a>
+								</div>
+
+								<div class="mdl-tabs__panel is-active" id="starks-panel">
+									<ul class="mi-login-pannel">
+										<li class="mi-login-item">
+											<div class="mdl-textfield mdl-js-textfield mdl-textfield&#45;&#45;floating-label">
+												<input class="mdl-textfield__input" type="text" id="username">
+												<label class="mdl-textfield__label" for="username">用户名</label>
+											</div>
+										</li>
+										<li class="mi-login-item">
+											<div class="mdl-textfield mdl-js-textfield mdl-textfield&#45;&#45;floating-label">
+												<input class="mdl-textfield__input" type="password" id="username">
+												<label class="mdl-textfield__label" for="username">密码</label>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>-->
+						</aside>
+
+
+						<main class="mdl-layout__content">
+
+							<div class="mdl-components__warning mi-warning"><b style="font-weight: bold">新闻公告: </b>工程师正在加班加点开发……</div>
+							<!-- banner begin -->
+							<div class="mi-banner">
+								<div class="layui-carousel mi-center-ad" id="banner">
+									<div carousel-item="" class="mdl-grid mi-cell">
+										<div class="mi-center-ad-bg">
+											<div class="mdl-cell mdl-cell--6-col mi-cell mi-cell-text">
+												<div class="product-carousel-slide-icon-container">
+													<img src="https://lh3.googleusercontent.com/UUmrgHrkU3Thk-f9um23FNXP-iEq0GgctLSZpbTHjJ1HQ9RwO7zp7sa9XhXUAnTcNRNNZtVw67uU8vZbtdRH61Xf0A0yX42ZO9wY=h120" class="product-carousel-slide-icon" alt="Google Allo 和 Google Duo 图标">
+												</div>
+												<h3 class="product-carousel-slide-heading" data-unite-orphan="10">Google Allo 和 Google&nbsp;Duo</h3>
+												<p class="product-carousel-slide-subheading-1" data-unite-orphan="">可让您时刻与在意的人保持联系。</p>
+												<h5 class="product-carousel-slide-subheading-2" data-unite-orphan="">一款智能即时通讯应用，能让聊天更加生动有趣，可执行更多操作。也是一款简单的视频通话应用，可让您预览来电。</h5>
+											</div>
+											<div class="mdl-cell mdl-cell--3-col mi-cell mi-cell-image">
+												<picture class="product-carousel-slide-image">
+													<img src="https://lh3.googleusercontent.com/3QrdqzT-tIX29VAlZN9a_O5pAZDQDbIgKlgspo8J-fbQUcEAtqP0nzaOJbuuk_LQYKSb-rWD_7ICAPDIsiTk0AqSUQ7RJ-asxHQzsec=w320" class="allo-duo" data-glue-carousel-image="" alt="Google Allo 和 Google Duo">
+												</picture>
+											</div>
+										</div>
+										<div>条目3</div>
+										<div>条目4</div>
+										<div>条目5</div>
+									</div>
+								</div>
+							</div>
+							<!-- banner end -->
+
+							<!-- price list begin -->
+							<div class="android-wear-section ">
+								<div class="android-wear-band mdl-grid">
+									<div class="mdl-cell mdl-cell--7-col">
+										<div class="android-wear-band-text">
+											<h4 class="section-sub-heading border-green">价钱</h4>
+											<h2><font style="vertical-align: inherit;" class="mdl-typography--display-2 mdl-typography--font-thin"><font style="vertical-align: inherit;">
+												您只需为结果付费。
+											</font></font></h2>
+											<h3><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+												没有结果，没有费用。
+											</font></font></h3>
+											<p class="mdl-typography--headline mdl-typography--font-thin w-p">
+												为了保证并发处理能力，我们采用预付费形式<br/>
+												即您上传验证码成功后立刻扣费，不过，您可以在上传时指定超时阈值，超过阈值范围后，系统会自动返还
+											</p>
+											<p>
+												<a class="mdl-typography--font-regular mdl-typography--text-uppercase android-alt-link" href="">
+													查看价钱表&nbsp;<i class="material-icons">chevron_right</i>
+												</a>
+											</p>
+										</div>
+									</div>
+
+
+									<div class="mdl-cell mdl-cell--5-col">
+										<div class="card card-success card-main">
+											<div class="card-inner" style="margin-top: 50px; padding-bottom: 5px !important">
+												<div class="card-success-video">
+													<img src="https://www.google.com/services/images/section-advertise-card-img_1x.jpg"></picture>
+												</div>
+												<div class="card-success-content">
+													<p>
+														With the help of AdWords, the Tree House Brothers built their business from
+														the ground up.
+													</p>
+												</div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+							</div>
+							<!-- price list end -->
+
+
+
+							<!-- ad begin-->
+							<div class="android-screen-section mdl-typography--text-center">
+								<a name="screens"></a>
+								<div class="mdl-typography--display-1-color-contrast">支持所有的图像验证码</div>
+								<div class="android-screens">
+									<div class="android-wear android-screen">
+										<a class="android-image-link" href="">
+											<img class="android-screen-image" src="images/wear-silver-on.png">
+											<img class="android-screen-image" src="images/wear-black-on.png">
+										</a>
+										<a class="android-link mdl-typography--font-regular mdl-typography--text-uppercase" href="">普通的</a>
+									</div>
+									<div class="android-phone android-screen">
+										<a class="android-image-link" href="">
+											<img class="android-screen-image" src="images/nexus6-on.jpg">
+										</a>
+										<a class="android-link mdl-typography--font-regular mdl-typography--text-uppercase" href="">混合的</a>
+									</div>
+									<div class="android-tablet android-screen">
+										<a class="android-image-link" href="">
+											<img class="android-screen-image" src="images/nexus9-on.jpg">
+										</a>
+										<a class="android-link mdl-typography--font-regular mdl-typography--text-uppercase" href="">复杂的</a>
+									</div>
+									<div class="android-tv android-screen">
+										<a class="android-image-link" href="">
+											<img class="android-screen-image" src="images/tv-on.jpg">
+										</a>
+										<a class="android-link mdl-typography--font-regular mdl-typography--text-uppercase" href="">交互式的</a>
+									</div>
+									<div class="android-auto android-screen">
+										<a class="android-image-link" href="">
+											<img class="android-screen-image" src="images/auto-on.jpg">
+										</a>
+										<a class="android-link mdl-typography--font-regular mdl-typography--text-uppercase mdl-typography--text-left" href="">人工智能的</a>
+									</div>
+								</div>
+							</div>
+							<!-- ad end-->
+
+
+
+							<!-- banner blue begin -->
+							<section class="section section-overview-benefits section-overview-benefits-v4 section-dark light-blue" id="benefits" data-gtm-vis-first-on-screen-160853_728="1961245" data-gtm-vis-total-visible-time-160853_728="100" data-gtm-vis-has-fired-160853_728="1" data-gtm-vis-first-on-screen-160853_660="1961249" data-gtm-vis-total-visible-time-160853_660="100" data-gtm-vis-has-fired-160853_660="1" data-gtm-vis-first-on-screen-160853_663="1961379" data-gtm-vis-total-visible-time-160853_663="10000" data-gtm-vis-first-on-screen-160853_662="1961379" data-gtm-vis-total-visible-time-160853_662="3000" data-gtm-vis-first-on-screen-160853_661="1961379" data-gtm-vis-first-on-screen-160853_664="1961379" data-gtm-vis-total-visible-time-160853_664="5000" data-gtm-vis-total-visible-time-160853_661="1000" data-gtm-vis-recent-on-screen-160853_663="1968591" data-gtm-vis-recent-on-screen-160853_662="1968591" data-gtm-vis-recent-on-screen-160853_661="1968591" data-gtm-vis-recent-on-screen-160853_664="1968591" data-gtm-vis-has-fired-160853_661="1" data-gtm-vis-has-fired-160853_662="1" data-gtm-vis-has-fired-160853_664="1" data-gtm-vis-has-fired-160853_663="1">
+								<div class="site-width ">
+									<h4 class="section-sub-heading border-red"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+										优点
+									</font></font></h4>
+									<h2 class="mdl-typography--display-2 mdl-typography--font-thin"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+										为什么选择万象？
+									</font></font></h2>
+									<div class="cols-row extra-margin-bottom">
+										<div class="col-5">
+											<h3><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+												支持所有样式的验证码。
+											</font></font></h3>
+											<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+												万象是"millions-idea.org"社区中的一员，无论您遇到什么类型的验证码，我们都可以为您提供帮助
+											</font></font></p>
+										</div>
+										<div class="col-5 col-offset-2">
+											<h3><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+												人工智能引领未来。
+											</font></font></h3>
+											<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+												对于一些传统的图像式验证码，我们为其建立了数据模型，使用AI智能预测结果，价格更便宜
+											</font></font></p>
+										</div>
+									</div>
+									<div class="cols-row extra-margin-bottom">
+										<div class="col-5">
+											<h3><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+												在本地或全球业务。
+											</font></font></h3>
+											<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+												随着不断改革开放，业务已扩展到全球化，对此，我们的AI模型支持识别日韩等小国家特有的验证码
+											</font></font></p>
+										</div>
+										<div class="col-5 col-offset-2">
+											<h3><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+												如果您需要我们，我们就在这里。
+											</font></font></h3>
+											<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+												万象接入软件</font><span class="phone-number"><a href="tel:1-844-252-8611?subid=ww-ww-et-g-awa-a-g_hpafoot1_1!o2"><font style="vertical-align: inherit;">非常简单</font></a></span><font style="vertical-align: inherit;">，或者QQ</font><span class="phone-number"><a href="#"><font style="vertical-align: inherit;">2175656094 </font></a></span><span class="phone-number"><sup><font style="vertical-align: inherit;">*</font></sup></span><font style="vertical-align: inherit;">联系我们获取免费技术支持</font><span class="phone-number"><sup><font style="vertical-align: inherit;">*</font></sup></span></font><span class="phone-number"><a href="#"><font style="vertical-align: inherit;"></font></a><sup><font style="vertical-align: inherit;"></font></sup></span>
+											</p>
+										</div>
+									</div>
+								</div>
+							</section>
+							<!-- banner blue end -->
+
+
+							<!-- register begin-->
+							<section class="section section-overview-get-started-v4 light-gray" data-gtm-vis-first-on-screen-160853_728="6015026" data-gtm-vis-total-visible-time-160853_728="100" data-gtm-vis-has-fired-160853_728="1" data-gtm-vis-first-on-screen-160853_660="6015029" data-gtm-vis-total-visible-time-160853_660="100" data-gtm-vis-has-fired-160853_660="1" data-gtm-vis-first-on-screen-160853_663="6015128" data-gtm-vis-total-visible-time-160853_663="5000" data-gtm-vis-first-on-screen-160853_662="6015129" data-gtm-vis-total-visible-time-160853_662="3000" data-gtm-vis-first-on-screen-160853_661="6015129" data-gtm-vis-first-on-screen-160853_664="6015139" data-gtm-vis-total-visible-time-160853_664="5000" data-gtm-vis-has-fired-160853_662="1" data-gtm-vis-has-fired-160853_664="1">
+								<div class="site-width">
+									<h4 class="section-sub-heading border-green"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+										开始吧
+									</font></font></h4>
+									<div class="mdl-grid">
+										<div class="mdl-cell mdl-cell--5-col">
+											<h3><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+												立即注册自己。
+											</font></font></h3>
+											<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+												只需创建一个帐户，设置预算，撰写第一个广告并确定您希望其显示在哪里。</font><font style="vertical-align: inherit;">您可以随时对其进行微调。
+											</font></font></p>
+											<p>
+												<a class="cta-signup button cta-main" data-g-action="Sign Up" data-g-label="Canvas" href="/um/StartNow?hl=en&amp;sourceid=awo&amp;subid=ww-ww-et-g-awa-a-g_hpafoot1_1!o2" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">现在开始</font></font></a>
+											</p>
+										</div>
+										<div class="mdl-cell mdl-cell--5-col">
+											<h3><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+												我们随时为您提供帮助 - 立即致电Google的帐户设置和支持。
+											</font></font></h3>
+											<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+												我们专业的AdWords专家团队将与您合作，确保您的AdWords帐户设置成功，无需额外费用，每天投资10美元或更多。</font><font style="vertical-align: inherit;">他们甚至会制作你的广告系列。
+											</font></font></p>
+											<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+												前30天对于了解哪些对您有用以及什么不对您来说非常重要，我们将指导您完成每个步骤。
+											</font></font></p>
+											<p class="phone-number font-medium">
+												<a href="tel:1-844-252-8611?subid=ww-ww-et-g-awa-a-g_hpafoot1_1!o2"><svg class="icon-phone-green" enable-background="new 0 0 32 32" height="16px" version="1.1" viewBox="0 0 32 32" width="16px" x="0px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" y="0px">
+						<path d="M6.4,13.9c2.6,5,6.7,9.1,11.7,11.7l3.9-3.9c0.5-0.5,1.2-0.6,1.8-0.4c2,0.7,4.1,1,6.4,1c1,0,1.8,0.8,1.8,1.8v6.2 c0,1-0.8,1.8-1.8,1.8C13.5,32,0,18.5,0,1.8C0,0.8,0.8,0,1.8,0H8c1,0,1.8,0.8,1.8,1.8c0,2.2,0.4,4.4,1,6.4c0.2,0.6,0.1,1.3-0.4,1.8 L6.4,13.9z">
+						</path></svg><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+													1-844-252-8611 </font></font><sup><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">*</font></font></sup></a>
+											</p>
+											<p class="font-small"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+												*对于预算为每天10美元或以上的广告预算的客户。</font><font style="vertical-align: inherit;">电话支持的营业时间是周一至周五，美国东部时间上午9点至晚上9点
+											</font></font></p>
+										</div>
+									</div>
+								</div>
+							</section>
+							<!-- register end-->
+
+						</main>
+					</div>
+				</div>
+			</main>
+			<!--content end-->
+	  </th:block>
+  <th:block layout:fragment="free_footer">
+	  <script th:replace="shared/main :: main('main-home.js?v=180715')"></script>
+  </th:block>
+  </body>
+</html>

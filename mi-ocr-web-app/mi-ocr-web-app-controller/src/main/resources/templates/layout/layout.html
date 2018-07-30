@@ -1,0 +1,66 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <!--/*  Each token will be replaced by their respective titles in the resulting page. */-->
+    <th:block th:replace="layout/header :: header" />
+</head>
+<body class="mdl-demo mdl-base">
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="docs-layout-header mdl-layout__header  is-casting-shadow mi-header mdl-grid light-blue">
+        <div class="site-big-logo-pannel" style="width: 195px; padding-left:15px">
+            <img style="display: inline-block;" class="site-big-logo" alt="abstract++" src="../images/logo.png" srcset="../images/logo.png">
+        </div>
+        <div class="mdl-layout__tab-bar mdl-js-ripple-effect mi-header-navigation bar" style="display: inline-block;">
+            <a href="#overview" class="mdl-layout__tab is-active">首页</a>
+            <a href="#features" class="mdl-layout__tab">运作方式</a>
+            <a href="#features" class="mdl-layout__tab">开发者接入</a>
+            <a href="#features" class="mdl-layout__tab">工具</a>
+            <a href="#features" class="mdl-layout__tab">FAQ</a>
+        </div>
+        <!--verify is login-->
+        <div sec:authorize="isAuthenticated()" style="width: 36%;height: 64px;" class="mi-link-access">
+            <a href="/user" class="mdl-layout__tab mdl-navigation__link mi-color-white"
+               style="position: relative; float: right;height: 64px;line-height: 64px;">
+                <i class="material-icons" id="link-user" >
+                    account_circle
+                </i>
+            </a>
+            <a href="/logout" class="mdl-layout__tab mdl-navigation__link mi-color-white"
+               style="position: relative; float: right;height: 64px;line-height: 64px;">
+                <i class="material-icons" id="link-logout" >
+                    power_settings_new
+                </i>
+            </a>
+        </div>
+        <!--verify is login end-->
+    </header>
+    <th:block layout:fragment="body" />
+    <!--short message begin-->
+    <div id="mdl-short-message-container" class="mdl-js-snackbar mdl-snackbar">
+        <div class="mdl-snackbar__text"></div>
+        <button class="mdl-snackbar__action" type="button"></button>
+    </div>
+    <!--short message end-->
+    <div>
+        <section class="docs-text-styling download mdl-color--grey-800">
+            <a href="../started/index.html#download" class="mdl-color-text--grey-50">Download Kit</a>
+        </section>
+        <footer class="docs-text-styling docs-footer mdl-mini-footer mdl-color--grey-900">
+            <ul>
+                <li class="mdl-mini-footer--social-btn">
+                    <a href="https://twitter.com/googledesign" class="social-btn social-btn__twitter" role="button" title="Twitter"></a>
+                </li>
+            </ul>
+            <ul class="docs-link-list">
+                <li><a class="mdl-color-text--grey-600" href="https://developers.google.com/web/starter-kit/">Web Starter Kit</a></li>
+                <li><a class="mdl-color-text--grey-600" href="https://github.com/google/material-design-lite/issues">Help</a></li>
+            </ul>
+        </footer>
+    </div>
+</div>
+<th:block th:replace="layout/footer :: footer" />
+<th:block layout:fragment="free_footer" />
+</body>
+</html>

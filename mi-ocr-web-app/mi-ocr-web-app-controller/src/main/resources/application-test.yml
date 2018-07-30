@@ -1,0 +1,18 @@
+profiles: test
+
+spring:
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: LEGACYHTML5
+    encoding: UTF-8
+    cache: false
+
+gateway:
+  master: http://localhost:20001
+
+user:
+  name: test
+  security:
+    loginPage: /common/require
+    processingUrl: ${gateway.master}/common/login

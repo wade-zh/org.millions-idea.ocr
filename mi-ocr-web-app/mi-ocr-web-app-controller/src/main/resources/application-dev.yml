@@ -1,0 +1,29 @@
+profiles: dev
+
+spring:
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: LEGACYHTML5
+    encoding: UTF-8
+    cache: false
+
+eureka:
+  instance:
+      virtual-host-name: mi-ocr-web-app
+      hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://localhost:20000/eureka
+
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 60000
+
+gateway:
+  master: http://localhost:20001
+
+user:
+  security:
+    loginPage: /signup
+    processingUrl: /api/asyncLogin
