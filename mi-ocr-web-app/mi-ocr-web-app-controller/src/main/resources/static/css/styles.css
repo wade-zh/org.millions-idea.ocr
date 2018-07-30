@@ -1354,6 +1354,18 @@ a img{
   color:#fff !important;
 }
 
+.mi-background-green{
+  background-color: #00c853 !important;
+}
+
+
+.mi-background-blue{
+  border-color: #00bfa5;
+  border-bottom-width: 2px;
+  outline: 0;
+  padding-bottom: 7px
+}
+
 .mi-link-access{
   color:#fff !important;
 }

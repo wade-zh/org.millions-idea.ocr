@@ -46,4 +46,11 @@ public interface IUserService {
      * @return
      */
     Users webLogin(String username,  String lastLoginIp);
+
+    /**
+     * 添加新用户
+     * @param user
+     * @return
+     */
+    boolean addUser(Users user);
 }

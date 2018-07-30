@@ -39,6 +39,10 @@ define('user',['jquery', 'request','alert'],function ($, request, alert) {
             UserService.login($username.val(), $password.val(), null);
         });
 
+        $signInBtn.click(function () {
+            location.href = "/signin"
+        })
+
         $password.keyup(function (event) {
             if(event.keyCode == 13) {
                 $loginBtn.click();

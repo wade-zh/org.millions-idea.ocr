@@ -16,12 +16,6 @@
     display: block;
 }
 
-.mi-button-blue{
-    border-color: #00bfa5;
-    border-bottom-width: 2px;
-    outline: 0;
-    padding-bottom: 7px
-}
 
 .mi-login-layout-button{
     width: 140px;

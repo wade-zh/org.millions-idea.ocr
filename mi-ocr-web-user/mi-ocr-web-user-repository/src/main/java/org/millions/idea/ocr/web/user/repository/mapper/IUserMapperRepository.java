@@ -52,4 +52,12 @@ public interface IUserMapperRepository {
                      @Param("lastActiveTime") Timestamp lastActiveTime,
                      @Param("lastLoginIp") String lastLoginIp,
                      @Param("lastLoginArea") String lastLoginArea);
+
+
+    /**
+     * 插入新记录
+     * @param user
+     * @return
+     */
+    int insert(Users user);
 }

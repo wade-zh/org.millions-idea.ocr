@@ -122,4 +122,16 @@ public class UserServiceImpl implements IUserService {
         return user;
     }
 
+    /**
+     * 添加新用户
+     *
+     * @param user
+     * @return
+     */
+    @Override
+    public boolean addUser(Users user) {
+        user.setPassword(user.getUserName() + user.getPassword());
+        return userMapperRepository.insert(user) > 0;
+    }
+
 }

@@ -61,4 +61,14 @@ public class UserController {
     public HttpResp getBalance(String token){
         return new HttpResp(1,String.valueOf(userService.getBalance(token)));
     }
+
+    /**
+     * 添加新用户
+     * @param user
+     * @return
+     */
+    @PostMapping("/web/addUser")
+    public Boolean addUser(Users user){
+        return userService.addUser(user);
+    }
 }

@@ -86,6 +86,7 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers(
                         userProperties.getSecurity().getLoginPage() // 登录页
+                        , "/signin"   // 注册
                         , "/"   // 首页
                         , "/index"   // 首页
                         , "/api/**" // 接口

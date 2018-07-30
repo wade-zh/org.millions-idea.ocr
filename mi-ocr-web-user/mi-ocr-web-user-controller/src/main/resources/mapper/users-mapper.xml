@@ -24,4 +24,8 @@
     <select id="login" resultType="org.millions.idea.ocr.web.user.entity.db.Users">
         SELECT * FROM users WHERE user_name = #{uname} AND password = #{pwd}
     </select>
+
+    <insert id="insert" parameterType="org.millions.idea.ocr.web.user.entity.db.Users">
+        INSERT INTO `users`(user_name,password,regist_time) VALUES(#{username}, #{password}, CURRENT_TIMESTAMP);
+    </insert>
 </mapper>
