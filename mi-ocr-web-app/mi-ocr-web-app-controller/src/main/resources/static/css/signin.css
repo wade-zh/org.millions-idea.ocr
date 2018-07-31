@@ -75,7 +75,7 @@
     /*overflow-y: auto;*/
     overflow-y: unset !important;
     overflow-x: unset !important;
-    min-height: 730px;
+    min-height: 680px;
 }
 
 
@@ -130,6 +130,6 @@ canvas{
 .mi-animate-zc{
     display: block;
     width: 395px;
-    height: 370px;
+    height: 330px;
     background: url("../images/signin/computer.png") no-repeat center;
 }
