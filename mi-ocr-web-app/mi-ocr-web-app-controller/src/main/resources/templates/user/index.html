@@ -26,6 +26,8 @@
 
                 <!--main begin-->
                 <main class="mdl-layout__content">
+                    <input type="hidden" name="uid" th:value="${uid}">
+
                     <div class="mdl-components__warning mi-warning"><b style="font-weight: bold">系统提醒: </b>
                         <span>尊敬的 <span sec:authentication="name"></span> 用户您好，您上次在 <span th:text="${city}"></span> 登录，登录IP <span th:text="${ip}"></span>，如发现异常，请立刻联系客服锁定账号</span>
                     </div>
@@ -59,7 +61,7 @@
                                 </td>
                                 <td>
                                     <span>成功率：</span><br>
-                                    <strong class="balance">0%</strong>
+                                    <strong id="success-rate" class="balance">0</strong>%
                                 </td>
                             </table>
                         </div>
@@ -71,8 +73,16 @@
                                     </i>
                                 </td>
                                 <td class="x-block-right">
-                                    <span>昨日消耗：</span><br>
-                                    <strong class=" deactive">0.0000元</strong>
+
+                                    <div>
+                                        <span>昨日消耗总额：</span>
+                                        <strong id="recent_consume" class="deactive">0.0000</strong>元
+                                    </div>
+
+                                    <div>
+                                        <span>今日消耗总额：</span>
+                                        <strong id="consume" class="deactive">0.0000</strong>元
+                                    </div>
                                 </td>
                             </table>
                         </div>

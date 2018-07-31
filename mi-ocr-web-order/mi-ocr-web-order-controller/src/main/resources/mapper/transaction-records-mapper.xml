@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.millions.idea.ocr.web.order.repository.mapper.ITransactionRecordMapperRepository">
     <sql id="fields">
-      record_id,record_no,from_uid,to_uid,`trade_date`,`trade_type`,`trade_amount`,`remark`,captcha_id,channel_id
+      record_id,record_no,from_uid,to_uid,`trade_date`,`trade_type`,`trade_amount`,`remark`,captcha_id,channel_id,ack,isAvailable
     </sql>
     <sql id="f_fields">
       auto_id,<include refid="fields"/>
@@ -57,7 +57,19 @@
     </select>
 
 
+    <!--
+        根据captchaId查询归属订单 韦德 2018年6月1日14:00:02
+    -->
     <select id="selectByCaptchaId" resultType="org.millions.idea.ocr.web.order.entity.db.TransactionRecordEntity">
         SELECT <include refid="f_fields"/> FROM transaction_records WHERE captcha_id = #{captchaId}
+    </select>
+
+    <!--
+        根据uid查询近期订单集合(当天与昨天) 韦德 2018年7月31日22:59:24
+    -->
+    <select id="selectRecentOrders" resultType="org.millions.idea.ocr.web.order.entity.agent.OrderDetailEntity">
+      SELECT <include refid="f_fields"/>,1 AS `toDays` FROM transaction_records WHERE from_uid = #{uid} AND trade_type = 2 AND TO_DAYS(trade_date) = TO_DAYS(NOW())
+        UNION
+        SELECT <include refid="f_fields"/>,0 AS `toDays` FROM transaction_records WHERE from_uid = #{uid} AND trade_type = 2 AND TO_DAYS(NOW()) - TO_DAYS(trade_date) = 1
     </select>
 </mapper>

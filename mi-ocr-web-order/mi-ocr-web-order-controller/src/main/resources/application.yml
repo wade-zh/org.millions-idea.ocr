@@ -13,17 +13,17 @@ spring:
   application:
     name: mi-ocr-web-order-service
   rabbitmq:
-    addresses: 139.199.211.96
-    host: 139.199.211.96
+    addresses: 192.168.1.105
+    host: 192.168.1.105
     port: 5672
-    username: wade
-    password: wade
+    username: admin
+    password: admin
     virtual-host: /
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
   redis:
-    host: 47.94.107.244
+    host: 192.168.1.105
     port: 6379
     password: 123456
     timeout: 12000

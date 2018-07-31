@@ -235,6 +235,6 @@ BEGIN
 END;
 
 
-
-
+#查询当天和昨天的历史订单
+CREATE VIEW `v_getRecentOrders` AS select `transaction_records`.`auto_id` AS `auto_id`,`transaction_records`.`record_id` AS `record_id`,`transaction_records`.`record_no` AS `record_no`,`transaction_records`.`captcha_id` AS `captcha_id`,`transaction_records`.`channel_id` AS `channel_id`,`transaction_records`.`from_uid` AS `from_uid`,`transaction_records`.`to_uid` AS `to_uid`,`transaction_records`.`trade_date` AS `trade_date`,`transaction_records`.`trade_type` AS `trade_type`,`transaction_records`.`trade_amount` AS `trade_amount`,`transaction_records`.`remark` AS `remark`,`transaction_records`.`ack` AS `ack`,`transaction_records`.`isAvailable` AS `isAvailable`,1 AS `toDays` from `transaction_records` where ((`transaction_records`.`from_uid` = 2) and (to_days(`transaction_records`.`trade_date`) = to_days(now())) and (`transaction_records`.`trade_type` = 2)) union select `transaction_records`.`auto_id` AS `auto_id`,`transaction_records`.`record_id` AS `record_id`,`transaction_records`.`record_no` AS `record_no`,`transaction_records`.`captcha_id` AS `captcha_id`,`transaction_records`.`channel_id` AS `channel_id`,`transaction_records`.`from_uid` AS `from_uid`,`transaction_records`.`to_uid` AS `to_uid`,`transaction_records`.`trade_date` AS `trade_date`,`transaction_records`.`trade_type` AS `trade_type`,`transaction_records`.`trade_amount` AS `trade_amount`,`transaction_records`.`remark` AS `remark`,`transaction_records`.`ack` AS `ack`,`transaction_records`.`isAvailable` AS `isAvailable`,0 AS `toDays` from `transaction_records` where ((`transaction_records`.`from_uid` = 2) and ((to_days(now()) - to_days(`transaction_records`.`trade_date`)) = 1) and (`transaction_records`.`trade_type` = 2))
  

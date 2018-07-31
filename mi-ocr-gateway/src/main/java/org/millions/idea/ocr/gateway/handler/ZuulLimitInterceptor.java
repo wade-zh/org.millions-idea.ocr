@@ -59,6 +59,17 @@ public class ZuulLimitInterceptor extends HandlerInterceptorAdapter {
             writer.flush();
             writer.close();
             return false;
+        }else if (response.getStatus() != 200){
+            response.reset();
+            response.setContentType("application/json;charset=utf-8");
+            response.setDateHeader("Expires", 0);
+            response.setHeader("Cache-Control", "no-cache");
+            response.setHeader("Prama", "no-cache");
+            PrintWriter writer = response.getWriter();
+            writer.write(JSON.toJSONString(new HttpResp(1, String.valueOf(response.getStatus()))));
+            writer.flush();
+            writer.close();
+            return false;
         }
         return super.preHandle(request,response,handler);
     }

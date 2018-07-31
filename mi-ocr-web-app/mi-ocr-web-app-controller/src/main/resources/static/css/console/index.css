@@ -138,3 +138,9 @@
     top: 10px;
     cursor: pointer;
 }
+
+.sum li{
+    display: block;
+    float:left;
+}
+

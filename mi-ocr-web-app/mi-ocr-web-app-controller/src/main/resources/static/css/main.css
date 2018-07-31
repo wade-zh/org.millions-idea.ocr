@@ -60,7 +60,8 @@ body{
 }
 
 .mi-header .bar{
-    width:1000px;
+    min-width: 600px;
+    width: 600px;
     /* margin:0 auto; */
     padding-left: 15px;
 }

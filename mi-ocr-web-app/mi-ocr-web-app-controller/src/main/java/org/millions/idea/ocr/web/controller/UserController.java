@@ -27,6 +27,7 @@ public class UserController {
         model.addAttribute("city",userDetails.getDetail().getLastLoginArea());
         model.addAttribute("ip",userDetails.getDetail().getLastLoginIp());
         model.addAttribute("balance",userDetails.getDetail().getBalance());
+        model.addAttribute("uid",userDetails.getDetail().getUid());
         return "user/index";
     }
 }
