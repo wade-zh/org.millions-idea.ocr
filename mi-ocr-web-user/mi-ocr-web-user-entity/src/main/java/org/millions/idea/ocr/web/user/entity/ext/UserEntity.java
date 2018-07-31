@@ -1,6 +1,6 @@
 /***
  * @pName mi-ocr-web-user
- * @name UserEntity
+ * @name UserDetailEntity
  * @user HongWei
  * @date 2018/6/25
  * @desc

@@ -16,6 +16,8 @@ import org.millions.idea.ocr.web.common.utility.utils.PropertyUtil;
 import org.millions.idea.ocr.web.common.utility.utils.RequestUtil;
 import org.millions.idea.ocr.web.user.agent.order.IWalletAgentService;
 import org.millions.idea.ocr.web.user.biz.IUserService;
+import org.millions.idea.ocr.web.user.entity.agent.UserDetailEntity;
+import org.millions.idea.ocr.web.user.entity.agent.WalletEntity;
 import org.millions.idea.ocr.web.user.entity.db.Users;
 import org.millions.idea.ocr.web.user.entity.ext.UserEntity;
 import org.millions.idea.ocr.web.user.repository.mapper.IUserMapperRepository;
@@ -107,10 +109,13 @@ public class UserServiceImpl implements IUserService {
      * @return
      */
     @Override
-    public Users webLogin(String username,  String lastLoginIp) throws MessageException{
+    public UserDetailEntity webLogin(String username, String lastLoginIp) throws MessageException{
+        // 查询用户基础资料
         Users user =  userMapperRepository.selectUserByUsername(username);
         if(user == null) throw new MessageException("用户不存在");
 
+
+        // 更新归属地
         Timestamp lastActiveTime = DateUtil.convert(new Timestamp(System.currentTimeMillis()));
         if (lastLoginIp == null) lastLoginIp = "0.0.0.0";
 
@@ -119,7 +124,13 @@ public class UserServiceImpl implements IUserService {
         int result = userMapperRepository.updateActive(username,lastActiveTime,lastLoginIp,area);
         logger.info("UserService_updateActive" + result);
 
-        return user;
+        // 查询用户钱包信息
+        WalletEntity wallet = walletAgentService.get(user.getUid());
+        UserDetailEntity detail = new UserDetailEntity();
+        PropertyUtil.clone(user, detail);
+        PropertyUtil.clone(wallet, detail);
+
+        return detail;
     }
 
     /**

@@ -8,6 +8,7 @@
 package org.millions.idea.ocr.web.user.biz;
 
 import org.millions.idea.ocr.web.common.entity.common.HttpResp;
+import org.millions.idea.ocr.web.user.entity.agent.UserDetailEntity;
 import org.millions.idea.ocr.web.user.entity.common.LoginResult;
 import org.millions.idea.ocr.web.user.entity.db.Users;
 
@@ -45,7 +46,7 @@ public interface IUserService {
      * @param username
      * @return
      */
-    Users webLogin(String username,  String lastLoginIp);
+    UserDetailEntity webLogin(String username, String lastLoginIp);
 
     /**
      * 添加新用户

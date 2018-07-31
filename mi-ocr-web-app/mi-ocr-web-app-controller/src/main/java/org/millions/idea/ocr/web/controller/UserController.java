@@ -14,6 +14,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.math.BigDecimal;
+
 @Controller
 @RequestMapping("/user")
 public class UserController {
@@ -24,6 +26,7 @@ public class UserController {
         if (userDetails.getDetail().getLastLoginIp().length() == 0) userDetails.getDetail().setLastLoginIp("0.0.0.0");
         model.addAttribute("city",userDetails.getDetail().getLastLoginArea());
         model.addAttribute("ip",userDetails.getDetail().getLastLoginIp());
+        model.addAttribute("balance",userDetails.getDetail().getBalance());
         return "user/index";
     }
 }

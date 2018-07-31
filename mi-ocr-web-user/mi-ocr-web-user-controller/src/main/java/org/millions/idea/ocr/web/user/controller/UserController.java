@@ -9,6 +9,7 @@ package org.millions.idea.ocr.web.user.controller;
 
 import org.millions.idea.ocr.web.common.entity.common.HttpResp;
 import org.millions.idea.ocr.web.user.biz.IUserService;
+import org.millions.idea.ocr.web.user.entity.agent.UserDetailEntity;
 import org.millions.idea.ocr.web.user.entity.db.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,7 +39,7 @@ public class UserController {
      * @return
      */
     @PostMapping("/web/login")
-    public Users webLogin(String username, String ip){
+    public UserDetailEntity webLogin(String username, String ip){
         return userService.webLogin(username, ip);
     }
 

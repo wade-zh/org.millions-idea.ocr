@@ -1,6 +1,9 @@
 package org.millions.idea.ocr.web.biz;
 
+import org.millions.idea.ocr.web.entity.agent.UserDetailEntity;
 import org.millions.idea.ocr.web.entity.agent.UserEntity;
+
+import java.math.BigDecimal;
 
 /***
  * @pName mi-ocr-web-app
@@ -11,7 +14,14 @@ import org.millions.idea.ocr.web.entity.agent.UserEntity;
  */
 
 public interface IUserService {
-    UserEntity login(String username, String ip);
+    UserDetailEntity login(String username, String ip);
 
     Boolean register(String username, String password, String email);
+
+    /**
+     * 查询用户余额
+     * @param uid
+     * @return
+     */
+    BigDecimal getBalance(Integer uid);
 }

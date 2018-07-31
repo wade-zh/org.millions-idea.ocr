@@ -1,15 +1,16 @@
 /***
- * @pName mi-ocr-web-user
+ * @pName mi-ocr-web-app
  * @name UserDetailEntity
  * @user HongWei
- * @date 2018/6/22
- * @desc This is user table
+ * @date 2018/7/31
+ * @desc
  */
-package org.millions.idea.ocr.web.user.entity.db;
+package org.millions.idea.ocr.web.entity.agent;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 
-public class Users {
+public class UserDetailEntity {
     private Integer uid;
     private String userName;
     private String password;
@@ -19,23 +20,13 @@ public class Users {
     private String lastLoginIp;
     private String lastLoginArea;
 
-    public Users(Integer uid, String userName, String password, String email, Timestamp registTime, Timestamp lastActiveTime, String lastLoginIp, String lastLoginArea) {
-        this.uid = uid;
-        this.userName = userName;
-        this.password = password;
-        this.email = email;
-        this.registTime = registTime;
-        this.lastActiveTime = lastActiveTime;
-        this.lastLoginIp = lastLoginIp;
-        this.lastLoginArea = lastLoginArea;
-    }
 
-    public Users() {
+    private BigDecimal balance;
+    private Timestamp editDate;
+    private Integer state;
 
-    }
 
     public Integer getUid() {
-
         return uid;
     }
 
@@ -97,5 +88,48 @@ public class Users {
 
     public void setLastLoginArea(String lastLoginArea) {
         this.lastLoginArea = lastLoginArea;
+    }
+
+    public BigDecimal getBalance() {
+        return balance;
+    }
+
+    public void setBalance(BigDecimal balance) {
+        this.balance = balance;
+    }
+
+    public Timestamp getEditDate() {
+        return editDate;
+    }
+
+    public void setEditDate(Timestamp editDate) {
+        this.editDate = editDate;
+    }
+
+    public Integer getState() {
+        return state;
+    }
+
+    public void setState(Integer state) {
+        this.state = state;
+    }
+
+    public UserDetailEntity() {
+
+    }
+
+    public UserDetailEntity(Integer uid, String userName, String password, String email, Timestamp registTime, Timestamp lastActiveTime, String lastLoginIp, String lastLoginArea, BigDecimal balance, Timestamp editDate, Integer state) {
+
+        this.uid = uid;
+        this.userName = userName;
+        this.password = password;
+        this.email = email;
+        this.registTime = registTime;
+        this.lastActiveTime = lastActiveTime;
+        this.lastLoginIp = lastLoginIp;
+        this.lastLoginArea = lastLoginArea;
+        this.balance = balance;
+        this.editDate = editDate;
+        this.state = state;
     }
 }

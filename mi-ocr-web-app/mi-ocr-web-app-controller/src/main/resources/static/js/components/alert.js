@@ -41,7 +41,14 @@ define("alert", ["jquery"] ,function ($) {
             container.MaterialSnackbar.showSnackbar(data);
         }
     }
+
+    var baseService = {
+        msg: function (msg) {
+            layer.msg(msg);
+        }
+    }
     return {
-        mdl: mdlService
+        mdl: mdlService,
+        base: baseService
     };
 })

@@ -8,6 +8,7 @@
 package org.millions.idea.ocr.web.agent;
 
 import feign.Headers;
+import org.millions.idea.ocr.web.entity.agent.UserDetailEntity;
 import org.millions.idea.ocr.web.entity.agent.UserEntity;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface IUserAgentService {
 
     @RequestMapping(value = "/web/login", method = RequestMethod.POST)
-    UserEntity webLogin(@RequestParam("username") String username, @RequestParam("ip") String ip);
+    UserDetailEntity webLogin(@RequestParam("username") String username, @RequestParam("ip") String ip);
 
     @RequestMapping(value = "/web/addUser", method = RequestMethod.POST)
     Boolean addUser(@RequestParam("userName") String username,
