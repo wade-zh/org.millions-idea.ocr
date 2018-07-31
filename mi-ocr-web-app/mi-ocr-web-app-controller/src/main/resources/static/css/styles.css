@@ -1372,3 +1372,10 @@ a img{
 .mi-link-access a:hover{
    /*border-bottom: 2px solid #fff !important;*/
 }
+
+
+.mi-side-animate {
+  animation: two-up-down .8s ease infinite 80ms alternate;
+  -webkit-animation: two-up-down .8s ease infinite 80ms alternate;
+}
+@keyframes two-up-down{from{-webkit-transform:translate(0,8px);transform:translate(0,8px)}to{-webkit-transform:translate(0,-8px);transform:translate(0,-8px)}}

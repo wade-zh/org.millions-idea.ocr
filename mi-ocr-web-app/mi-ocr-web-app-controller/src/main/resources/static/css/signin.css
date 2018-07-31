@@ -71,12 +71,11 @@
     padding-bottom: 7px
 }
 
-/*å›ºå®šmainåŒºåŸŸ*/
 .mdl-layout__content{
     /*overflow-y: auto;*/
     overflow-y: unset !important;
     overflow-x: unset !important;
-    min-height: 680px;
+    min-height: 730px;
 }
 
 
@@ -126,4 +125,11 @@ canvas{
     text-transform: uppercase;
     white-space: nowrap;
     box-shadow: 0px 10px 20px 0px rgba(0, 200, 83, 0.31);
+}
+
+.mi-animate-zc{
+    display: block;
+    width: 395px;
+    height: 370px;
+    background: url("../images/signin/computer.png") no-repeat center;
 }
