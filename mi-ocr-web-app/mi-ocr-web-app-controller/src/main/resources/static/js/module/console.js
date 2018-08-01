@@ -69,6 +69,9 @@ define('console',['jquery','alert'],function ($,alert) {
             recentConsume = getRecentConsume(data);
             consume = getConsume(data);
 
+            if(isNaN(success) || success == null) success = "0";
+            if(recentConsume == 0) recentConsume = "0.0000";
+            if(consume == 0) consume = "0.0000";
             $success.text(success);
             $recentConsume.text(recentConsume);
             $consume.text(consume);
@@ -108,7 +111,6 @@ define('console',['jquery','alert'],function ($,alert) {
                 }
             }
         })
-        console.log(count)
         return count;
     }
 
@@ -121,7 +123,6 @@ define('console',['jquery','alert'],function ($,alert) {
                 }
             }
         })
-        console.log(count)
         return count;
     }
 })

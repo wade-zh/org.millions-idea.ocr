@@ -55,9 +55,16 @@ public interface IUserMapperRepository {
 
 
     /**
-     * 插入新记录
+     * 添加用户并返回主键 韦德 2018年8月1日10:11:43
      * @param user
      * @return
      */
     int insert(Users user);
+
+    /**
+     * 删除记录
+     * @param uid
+     * @return
+     */
+    int delete(@Param("uid") Integer uid);
 }

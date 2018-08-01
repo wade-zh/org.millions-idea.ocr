@@ -16,7 +16,7 @@ import org.millions.idea.ocr.web.order.biz.listener.IPayMessageQueueListener;
 import org.millions.idea.ocr.web.order.biz.order.impl.BaseAddOperationImpl;
 import org.millions.idea.ocr.web.order.entity.agent.PayParam;
 import org.millions.idea.ocr.web.order.entity.data.Constant;
-import org.millions.idea.ocr.web.order.entity.db.WalletEntity;
+import org.millions.idea.ocr.web.order.entity.db.Wallet;
 import org.millions.idea.ocr.web.order.entity.enums.transfer.Exceptions;
 import org.millions.idea.ocr.web.order.entity.exception.FinanceException;
 import org.millions.idea.ocr.web.order.repository.mapper.IMoneyChangeLogMapperRepository;
@@ -99,7 +99,7 @@ public class ReportMessageQueueListenerImpl extends BaseAddOperationImpl<PayPara
         private PayParam model;
         private Map map;
         private Object result;
-        private WalletEntity entity;
+        private Wallet entity;
 
         /**
          * Instantiates a new Retry action.
@@ -126,7 +126,7 @@ public class ReportMessageQueueListenerImpl extends BaseAddOperationImpl<PayPara
          *
          * @return the entity
          */
-        public WalletEntity getEntity() {
+        public Wallet getEntity() {
             return entity;
         }
 

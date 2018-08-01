@@ -10,9 +10,9 @@ package org.millions.idea.ocr.web.order.biz.order.impl;
 import org.millions.idea.ocr.web.common.utility.date.DateUtil;
 import org.millions.idea.ocr.web.order.entity.agent.PayParam;
 import org.millions.idea.ocr.web.order.entity.data.Constant;
-import org.millions.idea.ocr.web.order.entity.db.MoneyChangeLogEntity;
-import org.millions.idea.ocr.web.order.entity.db.TransactionRecordEntity;
-import org.millions.idea.ocr.web.order.entity.db.WalletEntity;
+import org.millions.idea.ocr.web.order.entity.db.MoneyChangeLog;
+import org.millions.idea.ocr.web.order.entity.db.TransactionRecord;
+import org.millions.idea.ocr.web.order.entity.db.Wallet;
 import org.millions.idea.ocr.web.order.entity.enums.transfer.Exceptions;
 import org.millions.idea.ocr.web.order.entity.exception.FinanceException;
 import org.millions.idea.ocr.web.order.repository.mapper.IMoneyChangeLogMapperRepository;
@@ -35,7 +35,7 @@ public class BaseAddOperationImpl<T,R>  extends BaseOrderServiceImpl<T,R>  {
      * @throws FinanceException
      */
     protected String createTradeRecord(PayParam model) throws FinanceException {
-        TransactionRecordEntity entity = new TransactionRecordEntity();
+        TransactionRecord entity = new TransactionRecord();
         String recordId = UUID.randomUUID().toString().replace("-", "");
         entity.setRecordId(recordId);
         entity.setRecordNo(Constant.getSharedTradeNo());
@@ -59,14 +59,14 @@ public class BaseAddOperationImpl<T,R>  extends BaseOrderServiceImpl<T,R>  {
      * @return
      */
     protected void reduceBalance(Integer uid, BigDecimal amount) throws FinanceException{
-        WalletEntity entity = walletMapperRepository.selectByUid(uid);
+        Wallet entity = walletMapperRepository.selectByUid(uid);
         if(entity == null) throw new FinanceException("查询钱包失败",Exceptions.ORDER_SELECT_WALLET_INFO);
         if(entity.getBalance().compareTo(BigDecimal.ZERO) == 1 || entity.getBalance().compareTo(amount) == 1) throw new FinanceException("余额不足",Exceptions.ORDER_WALLET_BALANCE_ZERO);
         int lineCount = walletMapperRepository.reduceBalance(uid, amount, entity.getVersion());
         System.err.println(String.format("更新失败 uid:%s, amount:%s, version:%s", String.valueOf(uid), String.valueOf(amount), String.valueOf(entity.getVersion())));
         if(lineCount <= 0) {
-            WalletEntity walletEntity = walletMapperRepository.selectByUid(uid);
-            if (walletEntity == null) throw new FinanceException("查询钱包失败",Exceptions.ORDER_SELECT_WALLET_INFO);
+            Wallet wallet = walletMapperRepository.selectByUid(uid);
+            if (wallet == null) throw new FinanceException("查询钱包失败",Exceptions.ORDER_SELECT_WALLET_INFO);
             if(entity.getBalance().compareTo(BigDecimal.ZERO) == 1){
                 throw new FinanceException("余额不足",Exceptions.ORDER_WALLET_BALANCE_ZERO);
             }else{
@@ -94,7 +94,7 @@ public class BaseAddOperationImpl<T,R>  extends BaseOrderServiceImpl<T,R>  {
      * @throws FinanceException
      */
     protected void addMoneyMinusLog(String recordId, Integer fromUid, BigDecimal amount) throws FinanceException{
-        MoneyChangeLogEntity entity = new MoneyChangeLogEntity();
+        MoneyChangeLog entity = new MoneyChangeLog();
         String logId = UUID.randomUUID().toString().replace("-", "");
         entity.setLogId(logId);
         entity.setRecordId(recordId);
@@ -115,7 +115,7 @@ public class BaseAddOperationImpl<T,R>  extends BaseOrderServiceImpl<T,R>  {
      * @throws FinanceException
      */
     protected void addMoneyPlusLog(String recordId, Integer fromUid, BigDecimal amount) throws FinanceException{
-        MoneyChangeLogEntity entity = new MoneyChangeLogEntity();
+        MoneyChangeLog entity = new MoneyChangeLog();
         String logId = UUID.randomUUID().toString().replace("-", "");
         entity.setLogId(logId);
         entity.setRecordId(recordId);

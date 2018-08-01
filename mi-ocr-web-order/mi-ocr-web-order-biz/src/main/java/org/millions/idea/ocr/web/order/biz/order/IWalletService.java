@@ -7,7 +7,7 @@
  */
 package org.millions.idea.ocr.web.order.biz.order;
 
-import org.millions.idea.ocr.web.order.entity.db.WalletEntity;
+import org.millions.idea.ocr.web.order.entity.db.Wallet;
 
 public interface IWalletService {
     /**
@@ -15,5 +15,11 @@ public interface IWalletService {
      * @param uid
      * @return
      */
-    WalletEntity getWallet(Integer uid);
+    Wallet getWallet(Integer uid);
+
+    /**
+     * 添加新钱包并返回主键 韦德 2018年8月1日10:13:25
+     * @param uid
+     */
+    Integer addNewWallet(Integer uid);
 }

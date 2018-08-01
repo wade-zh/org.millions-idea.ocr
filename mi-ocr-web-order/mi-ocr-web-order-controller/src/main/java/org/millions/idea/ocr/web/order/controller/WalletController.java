@@ -7,9 +7,8 @@
  */
 package org.millions.idea.ocr.web.order.controller;
 
-import org.millions.idea.ocr.web.common.utility.date.DateUtil;
 import org.millions.idea.ocr.web.order.biz.order.IWalletService;
-import org.millions.idea.ocr.web.order.entity.db.WalletEntity;
+import org.millions.idea.ocr.web.order.entity.db.Wallet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,9 +19,15 @@ public class WalletController {
     private IWalletService walletService;
 
     @RequestMapping(value = "/get",method = RequestMethod.GET)
-    public WalletEntity get(Integer uid){
-        WalletEntity entity = walletService.getWallet(uid);
+    public Wallet get(Integer uid){
+        Wallet entity = walletService.getWallet(uid);
         entity.setEditDate(null);
         return entity;
+    }
+
+
+    @GetMapping("/addNewWallet")
+    public Integer addNewWallet(Integer uid){
+        return walletService.addNewWallet(uid);
     }
 }

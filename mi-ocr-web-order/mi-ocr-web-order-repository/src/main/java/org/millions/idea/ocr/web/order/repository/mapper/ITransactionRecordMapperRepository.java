@@ -10,14 +10,14 @@ package org.millions.idea.ocr.web.order.repository.mapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.millions.idea.ocr.web.order.entity.agent.OrderDetailEntity;
-import org.millions.idea.ocr.web.order.entity.db.TransactionRecordEntity;
+import org.millions.idea.ocr.web.order.entity.db.TransactionRecord;
 
 import java.util.List;
 import java.util.Map;
 
 @Mapper
 public interface ITransactionRecordMapperRepository {
-    int insert(TransactionRecordEntity entity);
+    int insert(TransactionRecord entity);
 
     void buy(Map map);
 
@@ -30,7 +30,7 @@ public interface ITransactionRecordMapperRepository {
      * @param captchaId
      * @return
      */
-    TransactionRecordEntity selectByCaptchaId(@Param("captchaId") String captchaId);
+    TransactionRecord selectByCaptchaId(@Param("captchaId") String captchaId);
 
     /**
      * 根据uid查询近期订单集合(当天与昨天) 韦德 2018年7月31日22:59:24

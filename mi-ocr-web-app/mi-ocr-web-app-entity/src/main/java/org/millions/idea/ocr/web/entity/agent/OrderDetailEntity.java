@@ -1,21 +1,31 @@
 /***
  * @pName mi-ocr-web-order
- * @name TransactionRecordEntity
+ * @name OrderDetailEntity
  * @user HongWei
- * @date 2018/6/30
+ * @date 2018/7/31
  * @desc
  */
-package org.millions.idea.ocr.web.order.entity.db;
+package org.millions.idea.ocr.web.entity.agent;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonView;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
-public class TransactionRecordEntity {
+public class OrderDetailEntity {
+
+    public interface OrderSampleViewEntity {}
+
     private Integer autoId;
     private String recordId;
     private String recordNo;
     private Integer fromUid;
     private Integer toUid;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Timestamp tradeDate;
     private Integer tradeType;
     private BigDecimal tradeAmount;
@@ -23,9 +33,42 @@ public class TransactionRecordEntity {
     private String captchaId;
     private String channelId;
     private Integer ack;
+    private Integer toDays;
     private Integer isAvailable;
 
+    public OrderDetailEntity(Integer autoId, String recordId, String recordNo, Integer fromUid, Integer toUid, Timestamp tradeDate, Integer tradeType, BigDecimal tradeAmount, String remark, String captchaId, String channelId, Integer ack, Integer toDays, Integer isAvailable) {
+        this.autoId = autoId;
+        this.recordId = recordId;
+        this.recordNo = recordNo;
+        this.fromUid = fromUid;
+        this.toUid = toUid;
+        this.tradeDate = tradeDate;
+        this.tradeType = tradeType;
+        this.tradeAmount = tradeAmount;
+        this.remark = remark;
+        this.captchaId = captchaId;
+        this.channelId = channelId;
+        this.ack = ack;
+        this.toDays = toDays;
+        this.isAvailable = isAvailable;
+    }
+
+    public OrderDetailEntity() {
+
+    }
+
+    @JsonView(OrderSampleViewEntity.class)
+    public Integer getIsAvailable() {
+
+        return isAvailable;
+    }
+
+    public void setIsAvailable(Integer isAvailable) {
+        this.isAvailable = isAvailable;
+    }
+
     public Integer getAutoId() {
+
         return autoId;
     }
 
@@ -53,6 +96,7 @@ public class TransactionRecordEntity {
         return fromUid;
     }
 
+    @JsonView(OrderSampleViewEntity.class)
     public void setFromUid(Integer fromUid) {
         this.fromUid = fromUid;
     }
@@ -65,6 +109,7 @@ public class TransactionRecordEntity {
         this.toUid = toUid;
     }
 
+    @JsonView(OrderSampleViewEntity.class)
     public Timestamp getTradeDate() {
         return tradeDate;
     }
@@ -73,6 +118,7 @@ public class TransactionRecordEntity {
         this.tradeDate = tradeDate;
     }
 
+    @JsonView(OrderSampleViewEntity.class)
     public Integer getTradeType() {
         return tradeType;
     }
@@ -81,6 +127,7 @@ public class TransactionRecordEntity {
         this.tradeType = tradeType;
     }
 
+    @JsonView(OrderSampleViewEntity.class)
     public BigDecimal getTradeAmount() {
         return tradeAmount;
     }
@@ -113,6 +160,7 @@ public class TransactionRecordEntity {
         this.channelId = channelId;
     }
 
+    @JsonView(OrderSampleViewEntity.class)
     public Integer getAck() {
         return ack;
     }
@@ -121,32 +169,12 @@ public class TransactionRecordEntity {
         this.ack = ack;
     }
 
-    public Integer getIsAvailable() {
-        return isAvailable;
+    @JsonView(OrderSampleViewEntity.class)
+    public Integer getToDays() {
+        return toDays;
     }
 
-    public void setIsAvailable(Integer isAvailable) {
-        this.isAvailable = isAvailable;
-    }
-
-    public TransactionRecordEntity() {
-
-    }
-
-    public TransactionRecordEntity(Integer autoId, String recordId, String recordNo, Integer fromUid, Integer toUid, Timestamp tradeDate, Integer tradeType, BigDecimal tradeAmount, String remark, String captchaId, String channelId, Integer ack, Integer isAvailable) {
-
-        this.autoId = autoId;
-        this.recordId = recordId;
-        this.recordNo = recordNo;
-        this.fromUid = fromUid;
-        this.toUid = toUid;
-        this.tradeDate = tradeDate;
-        this.tradeType = tradeType;
-        this.tradeAmount = tradeAmount;
-        this.remark = remark;
-        this.captchaId = captchaId;
-        this.channelId = channelId;
-        this.ack = ack;
-        this.isAvailable = isAvailable;
+    public void setToDays(Integer toDays) {
+        this.toDays = toDays;
     }
 }

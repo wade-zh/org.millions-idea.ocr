@@ -8,7 +8,7 @@
         auto_id,<include refid="fields"/>
     </sql>
 
-    <select id="selectByUid" resultType="org.millions.idea.ocr.web.order.entity.db.WalletEntity">
+    <select id="selectByUid" resultType="org.millions.idea.ocr.web.order.entity.db.Wallet">
         SELECT <include refid="f_fields"/> FROM wallet WHERE uid = #{uid}
     </select>
 
@@ -19,5 +19,13 @@
     <update id="addBalance">
         UPDATE wallet SET balance = balance + #{amount} WHERE uid = #{uid} AND `state` = 0;
     </update>
+
+    <!--
+        插入新记录 韦德 2018年8月1日10:20:27
+    -->
+    <insert id="insert" parameterType="org.millions.idea.ocr.web.order.entity.db.Wallet"
+        keyProperty="autoId" useGeneratedKeys="true">
+      INSERT INTO wallet(`uid`,balance,edit_date,`state`) VALUES(#{uid},#{balance},NOW(),#{state});
+    </insert>
 
 </mapper>

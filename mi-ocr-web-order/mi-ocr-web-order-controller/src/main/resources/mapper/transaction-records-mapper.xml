@@ -8,7 +8,7 @@
       auto_id,<include refid="fields"/>
     </sql>
 
-    <insert id="insert" parameterType="org.millions.idea.ocr.web.order.entity.db.MoneyChangeLogEntity">
+    <insert id="insert" parameterType="org.millions.idea.ocr.web.order.entity.db.MoneyChangeLog">
         INSERT INTO transaction_records(<include refid="fields"/>)
         VALUES(#{recordId},#{recordNo},#{fromUid},#{toUid},#{tradeDate},#{tradeType},#{tradeAmount},#{remark},#{captchaId},#{channelId});
     </insert>
@@ -60,7 +60,7 @@
     <!--
         根据captchaId查询归属订单 韦德 2018年6月1日14:00:02
     -->
-    <select id="selectByCaptchaId" resultType="org.millions.idea.ocr.web.order.entity.db.TransactionRecordEntity">
+    <select id="selectByCaptchaId" resultType="org.millions.idea.ocr.web.order.entity.db.TransactionRecord">
         SELECT <include refid="f_fields"/> FROM transaction_records WHERE captcha_id = #{captchaId}
     </select>
 

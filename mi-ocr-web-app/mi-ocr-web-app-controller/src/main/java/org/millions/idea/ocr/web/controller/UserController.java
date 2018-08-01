@@ -22,8 +22,8 @@ public class UserController {
     @GetMapping(value = {"","/index"})
     public String index(final Model model){
         UserDetailsEx userDetails = (UserDetailsEx) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (userDetails.getDetail().getLastLoginArea().length() == 0) userDetails.getDetail().setLastLoginArea("未知");
-        if (userDetails.getDetail().getLastLoginIp().length() == 0) userDetails.getDetail().setLastLoginIp("0.0.0.0");
+        if (userDetails.getDetail().getLastLoginArea() == null || userDetails.getDetail().getLastLoginArea().length() == 0) userDetails.getDetail().setLastLoginArea("未知");
+        if (userDetails.getDetail().getLastLoginIp() == null || userDetails.getDetail().getLastLoginIp().length() == 0) userDetails.getDetail().setLastLoginIp("0.0.0.0");
         model.addAttribute("city",userDetails.getDetail().getLastLoginArea());
         model.addAttribute("ip",userDetails.getDetail().getLastLoginIp());
         model.addAttribute("balance",userDetails.getDetail().getBalance());

@@ -1,6 +1,6 @@
 /***
  * @pName mi-ocr-web-order
- * @name WalletEntity
+ * @name Wallet
  * @user HongWei
  * @date 2018/7/1
  * @desc
@@ -10,7 +10,7 @@ package org.millions.idea.ocr.web.order.entity.db;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
-public class WalletEntity {
+public class Wallet {
     private Integer autoId;
     private Integer uid;
     private BigDecimal balance;
@@ -66,11 +66,11 @@ public class WalletEntity {
         this.version = version;
     }
 
-    public WalletEntity() {
+    public Wallet() {
 
     }
 
-    public WalletEntity(Integer autoId, Integer uid, BigDecimal balance, Timestamp editDate, Integer state, Integer version) {
+    public Wallet(Integer autoId, Integer uid, BigDecimal balance, Timestamp editDate, Integer state, Integer version) {
 
         this.autoId = autoId;
         this.uid = uid;

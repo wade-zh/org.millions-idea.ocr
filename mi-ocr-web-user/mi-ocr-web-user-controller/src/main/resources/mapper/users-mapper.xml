@@ -25,7 +25,18 @@
         SELECT * FROM users WHERE user_name = #{uname} AND password = #{pwd}
     </select>
 
-    <insert id="insert" parameterType="org.millions.idea.ocr.web.user.entity.db.Users">
+    <!--
+        添加用户并返回主键 韦德 2018年8月1日10:11:43
+    -->
+    <insert id="insert" parameterType="org.millions.idea.ocr.web.user.entity.db.Users"
+        keyProperty="uid" useGeneratedKeys="true">
         INSERT INTO `users`(user_name,password,email,regist_time) VALUES(#{userName}, #{password}, #{email} ,CURRENT_TIMESTAMP);
     </insert>
+
+    <!--
+        删除记录 韦德 2018年8月1日13:42:33
+    -->
+    <delete id="delete">
+        DELETE FROM users WHERE uid = #{uid}
+    </delete>
 </mapper>

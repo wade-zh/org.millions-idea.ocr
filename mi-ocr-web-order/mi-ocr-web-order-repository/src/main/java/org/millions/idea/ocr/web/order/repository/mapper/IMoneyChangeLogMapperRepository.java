@@ -8,9 +8,9 @@
 package org.millions.idea.ocr.web.order.repository.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
-import org.millions.idea.ocr.web.order.entity.db.MoneyChangeLogEntity;
+import org.millions.idea.ocr.web.order.entity.db.MoneyChangeLog;
 
 @Mapper
 public interface IMoneyChangeLogMapperRepository {
-    int insert(MoneyChangeLogEntity entity);
+    int insert(MoneyChangeLog entity);
 }

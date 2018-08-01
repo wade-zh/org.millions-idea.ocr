@@ -12,7 +12,7 @@ import org.millions.idea.ocr.web.common.utility.json.JsonUtil;
 import org.millions.idea.ocr.web.order.biz.order.IPayService;
 import org.millions.idea.ocr.web.order.entity.agent.PayParam;
 import org.millions.idea.ocr.web.order.entity.data.Constant;
-import org.millions.idea.ocr.web.order.entity.db.TransactionRecordEntity;
+import org.millions.idea.ocr.web.order.entity.db.TransactionRecord;
 import org.millions.idea.ocr.web.order.entity.enums.transfer.Exceptions;
 import org.millions.idea.ocr.web.order.entity.exception.FinanceException;
 import org.millions.idea.ocr.web.order.repository.mapper.IMoneyChangeLogMapperRepository;
@@ -174,7 +174,7 @@ public class PayServiceImpl extends BaseAddOperationImpl<PayParam, String> imple
      */
     @Override
     public boolean isExitsTradeRecord(String captchaId) {
-        TransactionRecordEntity entity = transactionRecordMapperRepository.selectByCaptchaId(captchaId);
+        TransactionRecord entity = transactionRecordMapperRepository.selectByCaptchaId(captchaId);
         return entity != null;
     }
 

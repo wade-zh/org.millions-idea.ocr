@@ -8,7 +8,7 @@
         auto_id,<include refid="fields"/>
     </sql>
 
-    <insert id="insert" parameterType="org.millions.idea.ocr.web.order.entity.db.MoneyChangeLogEntity">
+    <insert id="insert" parameterType="org.millions.idea.ocr.web.order.entity.db.MoneyChangeLog">
         INSERT INTO money_change_logs(<include refid="fields"/>)
         VALUES(#{logId},#{recordId},#{fromUid},#{tradeType},#{tradeAmount},(SELECT balance FROM wallet WHERE uid = #{fromUid}),#{remark},#{addDate});
     </insert>

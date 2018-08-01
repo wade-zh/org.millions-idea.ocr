@@ -24,4 +24,8 @@ public interface IWalletAgentService {
 
     @RequestMapping(value = "/wallet/get?uid={uid}",method = RequestMethod.GET)
     WalletEntity get(@PathVariable("uid") Integer uid);
+
+
+    @RequestMapping(value = "/wallet/addNewWallet?uid={uid}",method = RequestMethod.GET)
+    Integer addNewWallet(@PathVariable("uid") Integer uid);
 }

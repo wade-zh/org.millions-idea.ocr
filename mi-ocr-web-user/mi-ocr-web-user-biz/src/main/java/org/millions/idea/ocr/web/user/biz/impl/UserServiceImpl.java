@@ -10,7 +10,6 @@ package org.millions.idea.ocr.web.user.biz.impl;
 import org.millions.idea.ocr.web.common.entity.exception.MessageException;
 import org.millions.idea.ocr.web.common.utility.date.DateUtil;
 import org.millions.idea.ocr.web.common.utility.encrypt.Md5Util;
-import org.millions.idea.ocr.web.common.utility.json.Address;
 import org.millions.idea.ocr.web.common.utility.json.JsonUtil;
 import org.millions.idea.ocr.web.common.utility.utils.PropertyUtil;
 import org.millions.idea.ocr.web.common.utility.utils.RequestUtil;
@@ -26,6 +25,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
@@ -37,13 +37,13 @@ public class UserServiceImpl implements IUserService {
     private Logger logger = LoggerFactory.getLogger(getClass());
     private final IUserMapperRepository userMapperRepository;
     private final RedisTemplate redisTemplate;
+    private final IWalletAgentService walletAgentService;
 
     @Autowired
-    private IWalletAgentService walletAgentService;
-    @Autowired
-    public UserServiceImpl(IUserMapperRepository userMapperRepository,  RedisTemplate redisTemplate) {
+    public UserServiceImpl(IUserMapperRepository userMapperRepository, RedisTemplate redisTemplate, IWalletAgentService walletAgentService) {
         this.userMapperRepository = userMapperRepository;
         this.redisTemplate = redisTemplate;
+        this.walletAgentService = walletAgentService;
     }
 
 
@@ -141,9 +141,21 @@ public class UserServiceImpl implements IUserService {
      */
     @Override
     public boolean addUser(Users user) {
+        // 插入用户表
         if(user.getEmail().indexOf("@") == 0) return false;
         user.setPassword(Md5Util.getMd5(user.getUserName() + user.getPassword()));
-        return userMapperRepository.insert(user) > 0;
+        int addUserCount = userMapperRepository.insert(user);
+        logger.debug("UserServiceImpl_addUser_userMapperRepository_insert" + addUserCount + ":" + user.getUid());
+        if(addUserCount <= 0 || user.getUid() == null) return false;
+        // 插入钱包表
+        Integer walletId = walletAgentService.addNewWallet(user.getUid());
+        logger.debug("UserServiceImpl_addUser_walletAgentService_add" + walletId);
+        if (walletId == null || walletId <= 0){
+            // TODO 下一版考虑TCC补偿事务或者基于MQ的分布式事务
+            userMapperRepository.delete(user.getUid());
+            return false;
+        }
+        return user.getUid() != null && user.getUid() > 0 && walletId > 0;
     }
 
 }

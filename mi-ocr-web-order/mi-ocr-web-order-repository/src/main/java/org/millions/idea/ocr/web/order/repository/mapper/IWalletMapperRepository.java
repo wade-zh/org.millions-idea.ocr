@@ -9,7 +9,7 @@ package org.millions.idea.ocr.web.order.repository.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.millions.idea.ocr.web.order.entity.db.WalletEntity;
+import org.millions.idea.ocr.web.order.entity.db.Wallet;
 
 import java.math.BigDecimal;
 
@@ -20,7 +20,7 @@ public interface IWalletMapperRepository {
      * @param uid
      * @return
      */
-    WalletEntity selectByUid(@Param("uid") Integer uid);
+    Wallet selectByUid(@Param("uid") Integer uid);
 
     /**
      * 增加用户余额
@@ -37,4 +37,11 @@ public interface IWalletMapperRepository {
      * @return
      */
     int reduceBalance(@Param("uid") Integer uid, @Param("amount") BigDecimal amount, @Param("version") Integer version);
+
+    /**
+     * 插入新记录 韦德 2018年8月1日10:20:27
+     * @param wallet
+     * @return
+     */
+    int insert(Wallet wallet);
 }

@@ -1,6 +1,6 @@
 /***
  * @pName mi-ocr-web-order
- * @name MoneyChangeLogEntity
+ * @name MoneyChangeLog
  * @user HongWei
  * @date 2018/6/30
  * @desc
@@ -10,7 +10,7 @@ package org.millions.idea.ocr.web.order.entity.db;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
-public class MoneyChangeLogEntity {
+public class MoneyChangeLog {
     private Integer autoId;
     private String logId;
     private String recordId;
@@ -93,11 +93,11 @@ public class MoneyChangeLogEntity {
         this.addDate = addDate;
     }
 
-    public MoneyChangeLogEntity() {
+    public MoneyChangeLog() {
 
     }
 
-    public MoneyChangeLogEntity(Integer autoId, String logId, String recordId, Integer fromUid, Integer tradeType, BigDecimal tradeAmount, BigDecimal accountBalance, String remark, Timestamp addDate) {
+    public MoneyChangeLog(Integer autoId, String logId, String recordId, Integer fromUid, Integer tradeType, BigDecimal tradeAmount, BigDecimal accountBalance, String remark, Timestamp addDate) {
 
         this.autoId = autoId;
         this.logId = logId;
