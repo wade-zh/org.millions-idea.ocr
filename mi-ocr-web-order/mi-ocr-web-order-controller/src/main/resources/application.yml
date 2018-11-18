@@ -13,17 +13,17 @@ spring:
   application:
     name: mi-ocr-web-order-service
   rabbitmq:
-    addresses: 192.168.1.105
-    host: 192.168.1.105
+    addresses: 121.42.187.74
+    host: 121.42.187.74
     port: 5672
-    username: admin
-    password: admin
+    username: test
+    password: 123456
     virtual-host: /
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
   redis:
-    host: 192.168.1.105
+    host: 193.112.151.148
     port: 6379
     password: 123456
     timeout: 12000
@@ -33,12 +33,13 @@ spring:
         max-active: 1024
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://192.168.1.104:3306/mi-ocr-order?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useAffectedRows=true
-    username: root
-    password: Mysql@123456
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
       validation-query: select 'x'
+    url: jdbc:mysql://193.112.151.148:3306/mi-ocr-order?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useAffectedRows=true
+    username: root
+    password: 1qQp53iydbJ709Ue
+    #password: Mysql@123456
 ribbon:
   ReadTimeout: 60000
   ConnectTimeout: 60000

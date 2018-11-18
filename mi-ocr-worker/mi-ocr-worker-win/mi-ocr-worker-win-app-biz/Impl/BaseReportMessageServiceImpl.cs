@@ -20,7 +20,7 @@ namespace mi_ocr_worker_win_app_biz.Impl
                     call(false);
                     return;
                 }
-                DeleteErrorSampleAsync(captcha);
+                //DeleteErrorSampleAsync(captcha);
             });
         }
 

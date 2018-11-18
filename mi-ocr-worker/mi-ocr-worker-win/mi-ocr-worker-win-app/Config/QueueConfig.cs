@@ -99,8 +99,9 @@ namespace mi_ocr_worker_win_app.Config
                                 }
                                 else
                                 {
-                                    // 消费异常，消息重新发回队列
-                                    cm.BasicReject(ea.DeliveryTag, true);
+                                    // 消费异常，抛弃消息
+                                    //cm.BasicReject(ea.DeliveryTag, true);
+                                    cm.BasicReject(ea.DeliveryTag, false);
                                     Console.WriteLine("Cureent message is BasicReject");
                                 }
                             }

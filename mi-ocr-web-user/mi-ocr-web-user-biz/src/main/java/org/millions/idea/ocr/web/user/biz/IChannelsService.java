@@ -7,16 +7,16 @@
  */
 package org.millions.idea.ocr.web.user.biz;
 
-import org.millions.idea.ocr.web.user.entity.db.Backcategorys;
+import org.millions.idea.ocr.web.user.entity.db.Channels;
 
 import java.util.List;
 
-public interface IBackCategoryService {
+public interface IChannelsService {
     /**
      * Query all categorys
      * @return
      */
-    List<Backcategorys> queryAll();
+    List<Channels> queryAll();
 
     /**
      * Write categorys in cache

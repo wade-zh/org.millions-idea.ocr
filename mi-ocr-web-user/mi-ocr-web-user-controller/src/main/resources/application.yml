@@ -16,7 +16,7 @@ spring:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
   redis:
-    host: 192.168.1.105
+    host: 193.112.151.148
     port: 6379
     password: 123456
     timeout: 12000
@@ -26,9 +26,10 @@ spring:
         max-active: 1024
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://192.168.1.104:3306/mi-ocr-user?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useAffectedRows=true
+    url: jdbc:mysql://193.112.151.148:3306/mi-ocr-user?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useAffectedRows=true
     username: root
-    password: Mysql@123456
+    # password: Mysql@123456
+    password: 1qQp53iydbJ709Ue
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
       validation-query: select 'x'

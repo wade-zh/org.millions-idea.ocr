@@ -108,6 +108,8 @@ public class PublishMessageServiceImpl extends MessageServiceImpl {
         payParam.setRecordId(resp.getMsg());
 
         // 发布到延迟处理消息队列并返回消费id
+        //HttpResp buyResult = payAgentClient.buy(payParam);
+        //System.out.println("消费结果：" + JsonUtil.getJson(buyResult));
         rabbitUtil.publish(multiQueue.getOrderPay(), JsonUtil.getJson(payParam));
         rabbitUtil.publish(multiQueue.getCaptcha(), JsonUtil.getJson(new Captcha(captchaId, model.getChannel(), model.getBinary(), model.getToken())));
         return captchaId;

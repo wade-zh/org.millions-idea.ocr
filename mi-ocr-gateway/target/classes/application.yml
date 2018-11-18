@@ -4,7 +4,7 @@ spring:
   application:
     name: mi-ocr-gateway
   redis:
-    host: 47.94.107.244
+    host: 193.112.151.148
     port: 6379
     password: 123456
     timeout: 12000
@@ -36,7 +36,7 @@ zuul:
     behind-proxy: true
     policy-list:
       mi-ocr-web-captcha-service:
-        - limit: 3000
+        - limit: 10
           quota: 30
           refresh-interval: 1
           type:

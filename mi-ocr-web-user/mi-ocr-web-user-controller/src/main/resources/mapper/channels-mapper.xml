@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.millions.idea.ocr.web.user.repository.mapper.IChannelsMapperRepository">
+    <select id="selectAll" resultType="org.millions.idea.ocr.web.user.entity.db.Channels">
+        SELECT * FROM channels
+    </select>
+</mapper>

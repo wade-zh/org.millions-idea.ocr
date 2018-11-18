@@ -7,8 +7,7 @@
  */
 package org.millions.idea.ocr.web.user.controller;
 
-import org.millions.idea.ocr.web.user.biz.IBackCategoryService;
-import org.millions.idea.ocr.web.user.entity.db.Users;
+import org.millions.idea.ocr.web.user.biz.IChannelsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/category")
 public class CategoryController {
     @Autowired
-    private IBackCategoryService backCategoryService;
+    private IChannelsService backCategoryService;
 
     @GetMapping("/initCache")
     public String initCache(){

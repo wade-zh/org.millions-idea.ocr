@@ -10,7 +10,7 @@
 
     <insert id="insert" parameterType="org.millions.idea.ocr.web.order.entity.db.MoneyChangeLog">
         INSERT INTO transaction_records(<include refid="fields"/>)
-        VALUES(#{recordId},#{recordNo},#{fromUid},#{toUid},#{tradeDate},#{tradeType},#{tradeAmount},#{remark},#{captchaId},#{channelId});
+        VALUES(#{recordId},#{recordNo},#{fromUid},#{toUid},#{tradeDate},#{tradeType},#{tradeAmount},#{remark},#{captchaId},#{channelId},0,1);
     </insert>
 
     <!--消费存储过程-->

@@ -10,11 +10,12 @@ require.config({
         'request': './components/request',
         'layui': '../layui/layui',
         'alert': './components/alert',
-        'console': './module/console'
+        'console': './module/console',
+        'echarts': './echarts',
     },
     'urlArgs': 'r=' + (new Date()).getTime()
 });
 
-require(['jquery','request','layui','alert','console'],function ($, request, layui, alert, console) {
+require(['jquery','request','layui','alert', 'echarts', 'console'],function ($, request, layui, alert, console) {
 
 })
